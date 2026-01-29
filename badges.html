@@ -3,18 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Certification Badges - WhaleLord Design System</title>
-    
-    <!-- WhaleLord Design System -->
-    <link rel="stylesheet" href="whalelord-tokens.css">
-    <link rel="stylesheet" href="base-styles.css">
+    <title>Certification Badges - Compass Design System</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="badges.css">
-    
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid var(--color-pearl-200);
+            margin-bottom: var(--spacing-6);
+        }
+        
+        .tab-btn {
+            padding: var(--spacing-3) var(--spacing-5);
+            background: none;
+            border: none;
+            font-family: var(--font-heading);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-pearl-600);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+        
+        .tab-btn:hover {
+            color: var(--color-waves-500);
+        }
+        
+        .tab-btn.active {
+            color: var(--color-waves-500);
+            border-bottom-color: var(--color-waves-500);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Preview Box */
+        .preview-box {
+            background: white;
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-8);
+            margin-bottom: var(--spacing-6);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-4);
+            flex-wrap: wrap;
+        }
+
+        /* Hero */
+        .hero-subtitle {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-6);
+            line-height: var(--line-height-relaxed);
+        }
+
+        pre {
+            background: var(--color-pearl-800);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-4);
+            overflow-x: auto;
+            margin-bottom: var(--spacing-6);
+        }
+
+        code {
+            font-family: var(--font-mono);
+            font-size: var(--font-size-sm);
+            color: var(--color-pearl-50);
+            line-height: var(--line-height-relaxed);
+        }
+    </style>
 </head>
 <body>
     <nav class="nav">
@@ -29,50 +99,58 @@
         </div>
     </nav>
 
+    <div class="sidenav" id="sidenav"></div>
+
     <div class="main-content">
         <div class="container-with-sidenav">
-            
-            <!-- PAGE HEADER -->
-            <div class="page-header">
-                <h1 class="page-title">Certification Badges</h1>
-                <p class="page-subtitle">Trust signals for quality certifications, compliance standards, and product attributes. Compact, professional badges using DM Sans with 6px radius.</p>
-            </div>
+            <header class="hero">
+                <h1>Certification Badges</h1>
+                <p class="hero-subtitle">Trust signals for quality certifications, compliance standards, and product attributes. Not for status indicators like "New" or "Limited Stock".</p>
+            </header>
 
-            <!-- WHAT ARE CERTIFICATION BADGES -->
-            <div style="margin-bottom: var(--spacing-2xl); padding: var(--spacing-lg); background: #E6F2F8; border-left: 4px solid #025E96; border-radius: 8px;">
-                <h2 style="font-size: 24px; margin-bottom: 12px; color: #01385A;">What Are Certification Badges?</h2>
-                <p style="line-height: 1.75;">
-                    Certification badges are visual indicators of quality seals, compliance standards, and trusted certifications. 
-                    They build buyer confidence by displaying credentials like MSC Certified, Organic, Sustainable, or ISO standards. 
-                    These badges are NOT for status indicators like "New" or "Limited Stock" - those are separate components.
-                </p>
-            </div>
-
-            <!-- WHEN TO USE -->
-            <div style="margin: var(--spacing-2xl) 0; padding: var(--spacing-xl); background: white; border: 1px solid #E2E8F0; border-radius: 12px;">
-                <h3 style="font-size: 20px; margin-bottom: 16px;">When to Use Certification Badges</h3>
-                <ul style="line-height: 1.75;">
-                    <li>✅ Environmental certifications (Sustainable, Organic, Eco-Friendly)</li>
-                    <li>✅ Marine/seafood certifications (MSC, ASC, Friend of the Sea)</li>
-                    <li>✅ Compliance standards (ISO 22000, HACCP, FDA Approved)</li>
-                    <li>✅ Quality seals and trust signals</li>
-                </ul>
-                
-                <h3 style="font-size: 20px; margin: 24px 0 16px;">When NOT to Use</h3>
-                <ul style="line-height: 1.75;">
-                    <li>❌ Status indicators ("New", "Limited Stock", "Fresh") - use status indicators instead</li>
-                    <li>❌ Promotional tags ("Sale", "Deal", "Hot") - use status indicators</li>
-                    <li>❌ Action buttons - use actual buttons</li>
-                </ul>
-            </div>
+            <!-- USAGE & PURPOSE -->
+            <section class="component-section" style="background: var(--color-shore-editorial); padding: var(--spacing-8); border-radius: var(--radius-lg); margin-bottom: var(--spacing-12);">
+                <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-4);">Usage & Purpose</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-6);">
+                    <div>
+                        <h4 style="font-size: var(--font-size-base); font-weight: 600; margin-bottom: var(--spacing-2);">Green Badges</h4>
+                        <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                            Environmental certifications: Sustainable, Organic, Eco-Friendly, Grass-Fed. Soft mint green builds eco-trust.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: var(--font-size-base); font-weight: 600; margin-bottom: var(--spacing-2);">Blue Badges</h4>
+                        <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                            Marine/seafood certifications: MSC, ASC, Friend of the Sea, Dolphin Safe. Ocean blue reinforces quality standards.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: var(--font-size-base); font-weight: 600; margin-bottom: var(--spacing-2);">Gray Badges</h4>
+                        <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                            Standard compliance: ISO 22000, HACCP, FDA Approved. Neutral gray for regulatory credentials.
+                        </p>
+                    </div>
+                </div>
+                <div style="margin-top: var(--spacing-5); padding-top: var(--spacing-5); border-top: 1px solid var(--color-border-default);">
+                    <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                        <strong>Specifications:</strong> 6px radius (subtle, less than buttons' 8px), 6px 12px padding, 12px font size. Professional B2B appearance.
+                    </p>
+                </div>
+            </section>
 
             <!-- GREEN BADGES -->
-            <section class="section">
-                <h2>Green Badges (Sustainable/Organic)</h2>
-                <p>Use green badges for environmental certifications: Sustainable, Organic, Eco-Friendly, Grass-Fed.</p>
+            <section class="component-section">
+                <h2>Green (Sustainable/Organic)</h2>
+                <p>Environmental certifications that build eco-conscious trust with buyers.</p>
                 
-                <div class="component-demo">
-                    <div class="demo-row">
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'green-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'green-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'green-jsx')">JSX</button>
+                </div>
+                
+                <div id="green-preview" class="tab-content active">
+                    <div class="preview-box">
                         <span class="cert-badge cert-badge-green">
                             <span class="cert-badge-icon"></span>
                             Sustainable
@@ -87,31 +165,15 @@
                         </span>
                     </div>
                 </div>
-
-                <div class="code-example">
-                    <div class="code-header">
-                        <span>HTML</span>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                    </div>
+                
+                <div id="green-html" class="tab-content">
                     <pre><code>&lt;span class="cert-badge cert-badge-green"&gt;
   &lt;span class="cert-badge-icon"&gt;&lt;/span&gt;
   Sustainable
-&lt;/span&gt;
-
-&lt;!-- With actual icon --&gt;
-&lt;span class="cert-badge cert-badge-green"&gt;
-  &lt;span class="cert-badge-icon"&gt;
-    &lt;img src="/logos/organic.svg" alt="Organic" /&gt;
-  &lt;/span&gt;
-  Organic
 &lt;/span&gt;</code></pre>
                 </div>
-
-                <div class="code-example">
-                    <div class="code-header">
-                        <span>React + JSX</span>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                    </div>
+                
+                <div id="green-jsx" class="tab-content">
                     <pre><code>const GreenBadge = ({ children, icon }) =&gt; (
   &lt;span className="cert-badge cert-badge-green"&gt;
     {icon ? (
@@ -129,41 +191,21 @@
 &lt;GreenBadge&gt;Sustainable&lt;/GreenBadge&gt;
 &lt;GreenBadge icon="/logos/organic.svg"&gt;Organic&lt;/GreenBadge&gt;</code></pre>
                 </div>
-
-                <div class="specs">
-                    <h4>Colors & Contrast</h4>
-                    <table class="spec-table">
-                        <thead>
-                            <tr>
-                                <th>Property</th>
-                                <th>Value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>background</code></td>
-                                <td>#D4F4E2 (Success-100)</td>
-                            </tr>
-                            <tr>
-                                <td><code>color</code></td>
-                                <td>#2C7048 (Success-700)</td>
-                            </tr>
-                            <tr>
-                                <td><code>contrast ratio</code></td>
-                                <td>4.9:1 (WCAG AA compliant)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </section>
 
             <!-- BLUE BADGES -->
-            <section class="section">
-                <h2>Blue Badges (Marine Certifications)</h2>
-                <p>Use blue badges for marine/seafood certifications: MSC, ASC, Friend of the Sea, Dolphin Safe.</p>
+            <section class="component-section">
+                <h2>Blue (Marine Certifications)</h2>
+                <p>Marine and seafood quality standards from recognized organizations.</p>
                 
-                <div class="component-demo">
-                    <div class="demo-row">
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'blue-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'blue-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'blue-jsx')">JSX</button>
+                </div>
+                
+                <div id="blue-preview" class="tab-content active">
+                    <div class="preview-box">
                         <span class="cert-badge cert-badge-blue">
                             <span class="cert-badge-icon"></span>
                             MSC Certified
@@ -178,31 +220,15 @@
                         </span>
                     </div>
                 </div>
-
-                <div class="code-example">
-                    <div class="code-header">
-                        <span>HTML</span>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                    </div>
+                
+                <div id="blue-html" class="tab-content">
                     <pre><code>&lt;span class="cert-badge cert-badge-blue"&gt;
   &lt;span class="cert-badge-icon"&gt;&lt;/span&gt;
   MSC Certified
-&lt;/span&gt;
-
-&lt;!-- With actual icon --&gt;
-&lt;span class="cert-badge cert-badge-blue"&gt;
-  &lt;span class="cert-badge-icon"&gt;
-    &lt;img src="/logos/msc.svg" alt="MSC" /&gt;
-  &lt;/span&gt;
-  MSC Certified
 &lt;/span&gt;</code></pre>
                 </div>
-
-                <div class="code-example">
-                    <div class="code-header">
-                        <span>React + JSX</span>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                    </div>
+                
+                <div id="blue-jsx" class="tab-content">
                     <pre><code>const BlueBadge = ({ children, icon }) =&gt; (
   &lt;span className="cert-badge cert-badge-blue"&gt;
     {icon ? (
@@ -220,41 +246,21 @@
 &lt;BlueBadge&gt;MSC Certified&lt;/BlueBadge&gt;
 &lt;BlueBadge icon="/logos/asc.svg"&gt;ASC Certified&lt;/BlueBadge&gt;</code></pre>
                 </div>
-
-                <div class="specs">
-                    <h4>Colors & Contrast</h4>
-                    <table class="spec-table">
-                        <thead>
-                            <tr>
-                                <th>Property</th>
-                                <th>Value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>background</code></td>
-                                <td>#E6F2F8 (Waves-50)</td>
-                            </tr>
-                            <tr>
-                                <td><code>color</code></td>
-                                <td>#01385A (Waves-700)</td>
-                            </tr>
-                            <tr>
-                                <td><code>contrast ratio</code></td>
-                                <td>7.8:1 (WCAG AAA compliant)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </section>
 
             <!-- GRAY BADGES -->
-            <section class="section">
-                <h2>Gray Badges (Standards & Compliance)</h2>
-                <p>Use gray badges for standard compliance certifications: ISO, HACCP, FDA Approved, GMP.</p>
+            <section class="component-section">
+                <h2>Gray (Standards & Compliance)</h2>
+                <p>Regulatory and compliance certifications for professional credibility.</p>
                 
-                <div class="component-demo">
-                    <div class="demo-row">
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'gray-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'gray-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'gray-jsx')">JSX</button>
+                </div>
+                
+                <div id="gray-preview" class="tab-content active">
+                    <div class="preview-box">
                         <span class="cert-badge cert-badge-gray">
                             <span class="cert-badge-icon"></span>
                             ISO 22000
@@ -269,31 +275,15 @@
                         </span>
                     </div>
                 </div>
-
-                <div class="code-example">
-                    <div class="code-header">
-                        <span>HTML</span>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                    </div>
+                
+                <div id="gray-html" class="tab-content">
                     <pre><code>&lt;span class="cert-badge cert-badge-gray"&gt;
   &lt;span class="cert-badge-icon"&gt;&lt;/span&gt;
   ISO 22000
-&lt;/span&gt;
-
-&lt;!-- With actual icon --&gt;
-&lt;span class="cert-badge cert-badge-gray"&gt;
-  &lt;span class="cert-badge-icon"&gt;
-    &lt;img src="/logos/iso.svg" alt="ISO" /&gt;
-  &lt;/span&gt;
-  ISO 22000
 &lt;/span&gt;</code></pre>
                 </div>
-
-                <div class="code-example">
-                    <div class="code-header">
-                        <span>React + JSX</span>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                    </div>
+                
+                <div id="gray-jsx" class="tab-content">
                     <pre><code>const GrayBadge = ({ children, icon }) =&gt; (
   &lt;span className="cert-badge cert-badge-gray"&gt;
     {icon ? (
@@ -311,184 +301,6 @@
 &lt;GrayBadge&gt;ISO 22000&lt;/GrayBadge&gt;
 &lt;GrayBadge icon="/logos/haccp.svg"&gt;HACCP&lt;/GrayBadge&gt;</code></pre>
                 </div>
-
-                <div class="specs">
-                    <h4>Colors & Contrast</h4>
-                    <table class="spec-table">
-                        <thead>
-                            <tr>
-                                <th>Property</th>
-                                <th>Value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>background</code></td>
-                                <td>#EDF2F7 (Pearl-100)</td>
-                            </tr>
-                            <tr>
-                                <td><code>color</code></td>
-                                <td>#2D3748 (Pearl-700)</td>
-                            </tr>
-                            <tr>
-                                <td><code>contrast ratio</code></td>
-                                <td>8.2:1 (WCAG AAA compliant)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <!-- SPECIFICATIONS -->
-            <section class="section">
-                <h2>Badge Specifications</h2>
-                <div class="specs">
-                    <table class="spec-table">
-                        <thead>
-                            <tr>
-                                <th>Property</th>
-                                <th>Value</th>
-                                <th>Notes</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>padding</code></td>
-                                <td>6px 12px</td>
-                                <td>Compact, professional sizing</td>
-                            </tr>
-                            <tr>
-                                <td><code>border-radius</code></td>
-                                <td>6px</td>
-                                <td>Subtle rounding (less than buttons' 8px)</td>
-                            </tr>
-                            <tr>
-                                <td><code>font-family</code></td>
-                                <td>DM Sans</td>
-                                <td>var(--font-heading)</td>
-                            </tr>
-                            <tr>
-                                <td><code>font-size</code></td>
-                                <td>12px</td>
-                                <td>Small, unobtrusive</td>
-                            </tr>
-                            <tr>
-                                <td><code>font-weight</code></td>
-                                <td>600 (Semibold)</td>
-                                <td>Clear readability</td>
-                            </tr>
-                            <tr>
-                                <td><code>icon size</code></td>
-                                <td>16x16px</td>
-                                <td>Optional icon placeholder</td>
-                            </tr>
-                            <tr>
-                                <td><code>gap</code></td>
-                                <td>8px</td>
-                                <td>Space between icon and text</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <!-- BEST PRACTICES -->
-            <section class="section">
-                <h2>Best Practices</h2>
-                
-                <div class="guidelines-grid">
-                    <div class="guideline do">
-                        <h4>✅ Do</h4>
-                        <ul>
-                            <li>Use green for environmental certifications</li>
-                            <li>Use blue for marine/seafood certifications</li>
-                            <li>Use gray for standard compliance</li>
-                            <li>Place near product title or image</li>
-                            <li>Include certification logo when available</li>
-                            <li>Keep text concise (2-3 words max)</li>
-                            <li>Use actual certification names</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="guideline dont">
-                        <h4>❌ Don't</h4>
-                        <ul>
-                            <li>Don't use for status indicators ("New", "Limited")</li>
-                            <li>Don't use for promotional tags ("Sale", "Hot Deal")</li>
-                            <li>Don't make badges clickable (not buttons)</li>
-                            <li>Don't use multiple color variants on one badge</li>
-                            <li>Don't use badges without certification backing</li>
-                            <li>Don't make text too long (breaks layout)</li>
-                            <li>Don't stack more than 3 badges per product</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ACCESSIBILITY -->
-            <section class="section">
-                <div style="background: #D9F0F2; padding: 32px; border-radius: 12px;">
-                    <h3>♿ Accessibility Guidelines</h3>
-                    <div class="a11y-checklist">
-                        <div class="a11y-item">
-                            <div class="check">✓</div>
-                            <p><strong>Color contrast:</strong> All variants meet WCAG AA minimum (4.5:1), blue/gray exceed AAA</p>
-                        </div>
-                        <div class="a11y-item">
-                            <div class="check">✓</div>
-                            <p><strong>Font:</strong> DM Sans at 12px with 600 weight ensures readability</p>
-                        </div>
-                        <div class="a11y-item">
-                            <div class="check">✓</div>
-                            <p><strong>Icons:</strong> Include alt text when using actual certification logos</p>
-                        </div>
-                        <div class="a11y-item">
-                            <div class="check">✓</div>
-                            <p><strong>Not interactive:</strong> Badges are visual indicators only, not focusable</p>
-                        </div>
-                        <div class="a11y-item">
-                            <div class="check">✓</div>
-                            <p><strong>Screen readers:</strong> Text content is naturally accessible</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CSS CLASSES REFERENCE -->
-            <section class="section">
-                <h2>CSS Classes Reference</h2>
-                <div class="specs">
-                    <table class="spec-table">
-                        <thead>
-                            <tr>
-                                <th>Class</th>
-                                <th>Purpose</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>.cert-badge</code></td>
-                                <td>Base badge styles - Required on all badges</td>
-                            </tr>
-                            <tr>
-                                <td><code>.cert-badge-green</code></td>
-                                <td>Green variant for sustainable/organic</td>
-                            </tr>
-                            <tr>
-                                <td><code>.cert-badge-blue</code></td>
-                                <td>Blue variant for marine certifications</td>
-                            </tr>
-                            <tr>
-                                <td><code>.cert-badge-gray</code></td>
-                                <td>Gray variant for standard compliance</td>
-                            </tr>
-                            <tr>
-                                <td><code>.cert-badge-icon</code></td>
-                                <td>Icon placeholder (16x16px)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
             </section>
 
         </div>
@@ -501,22 +313,16 @@
     <script src="navigation.js"></script>
     
     <script>
-        function copyCode(button) {
-            const codeBlock = button.closest('.code-example').querySelector('code');
-            const code = codeBlock.textContent;
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.component-section');
+            const tabButtons = section.querySelectorAll('.tab-btn');
+            const tabContents = section.querySelectorAll('.tab-content');
             
-            navigator.clipboard.writeText(code).then(() => {
-                const originalText = button.textContent;
-                button.textContent = 'Copied!';
-                button.style.background = '#48BB78';
-                
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.style.background = '';
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy:', err);
-            });
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
         }
     </script>
 </body>
