@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="accordion.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 2px solid var(--color-border-default);
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            font-family: var(--font-heading);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: var(--color-waves-500);
+        }
+
+        .tab-btn.active {
+            color: var(--color-waves-500);
+            border-bottom-color: var(--color-waves-500);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Preview Box */
+        .preview-box {
+            padding: var(--spacing-10);
+            background: var(--color-shore-base);
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-lg);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-6);
+            align-items: center;
+        }
+
+        /* Dark preview box for dark variant */
+        .preview-box-dark {
+            background: var(--color-pearl-800);
+            padding: var(--spacing-10);
+            border: 1px solid var(--color-pearl-700);
+            border-radius: var(--radius-lg);
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Hero Subtitle */
+        .hero-subtitle {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            margin-top: var(--spacing-4);
+            line-height: var(--line-height-relaxed);
+        }
+
+        /* Code blocks */
+        pre {
+            background: var(--color-pearl-900);
+            color: var(--color-text-inverse);
+            padding: var(--spacing-6);
+            border-radius: var(--radius-md);
+            overflow-x: auto;
+            font-size: var(--font-size-sm);
+            line-height: var(--line-height-relaxed);
+        }
+
+        code {
+            font-family: var(--font-mono);
+        }
+
+        /* Demo container */
+        .demo-container {
+            width: 100%;
+            max-width: 700px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-brand">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M16 4L4 10V22L16 28L28 22V10L16 4Z" fill="#025E96"/>
+            </svg>
+            <span>Compass Design System</span>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header class="hero">
+                <h1>Accordion</h1>
+                <p class="hero-subtitle">Collapsible content panels for organizing information hierarchically. Ideal for FAQs, product specifications, shipping policies, and settings.</p>
+            </header>
+
+            <!-- USAGE & PURPOSE -->
+            <section class="component-section" style="background: var(--color-shore-editorial); padding: var(--spacing-8); border-radius: var(--radius-lg); margin-bottom: var(--spacing-12);">
+                <h3>Usage & Purpose</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-6);">
+                    <div>
+                        <h4 style="color: var(--color-waves-700); margin-bottom: var(--spacing-2);">Light Accordion</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Default style for main content areas, FAQ pages, and product details on light backgrounds.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--color-waves-700); margin-bottom: var(--spacing-2);">Dark Accordion</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Alternative style for dark sections, modals, or sidebar navigation on dark backgrounds.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--color-waves-700); margin-bottom: var(--spacing-2);">With Badges</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Add count indicators, status badges, or category labels to provide additional context.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- LIGHT ACCORDION (DEFAULT) -->
+            <section class="component-section">
+                <h2>Light Accordion (Default)</h2>
+                <p>Standard accordion with white background for use in main content areas. Automatically responsive across all device sizes.</p>
+
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'light-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'light-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'light-jsx')">JSX</button>
+                </div>
+
+                <div id="light-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="demo-container">
+                            <div class="accordion">
+                                <div class="accordion-item active">
+                                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                                        <span class="accordion-header-text">What is your return policy?</span>
+                                        <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            We accept returns within 30 days of delivery for most seafood products. Items must be unused and in their original refrigerated packaging. Fresh seafood requires return authorization within 24 hours of delivery. Contact our support team to initiate a return.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                                        <span class="accordion-header-text">How do I track my order?</span>
+                                        <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            Once your order ships, you'll receive a tracking number via email. You can also view real-time tracking updates in your account dashboard under "Orders". Temperature-controlled shipments include GPS tracking for quality assurance.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                                        <span class="accordion-header-text">What certifications do you have?</span>
+                                        <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            All our suppliers are MSC (Marine Stewardship Council) certified and HACCP compliant. We also maintain certifications for organic seafood handling and sustainable fishing practices. Certificates are available upon request for B2B buyers.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                                        <span class="accordion-header-text">Do you offer wholesale pricing?</span>
+                                        <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            Yes! Wholesale pricing is available for orders over 500kg or monthly contracts. Volume discounts range from 10-25% depending on order size and frequency. Contact our B2B sales team at <a href="mailto:wholesale@whalelord.com">wholesale@whalelord.com</a> for a custom quote.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="light-html" class="tab-content">
+                    <pre><code>&lt;!-- Light Accordion (Default) --&gt;
+&lt;div class="accordion"&gt;
+  &lt;div class="accordion-item active"&gt;
+    &lt;button class="accordion-header" onclick="toggleAccordion(this)"&gt;
+      &lt;span class="accordion-header-text"&gt;What is your return policy?&lt;/span&gt;
+      &lt;svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+        &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"&gt;&lt;/path&gt;
+      &lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;div class="accordion-content"&gt;
+      &lt;div class="accordion-body"&gt;
+        We accept returns within 30 days of delivery...
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="accordion-item"&gt;
+    &lt;button class="accordion-header" onclick="toggleAccordion(this)"&gt;
+      &lt;span class="accordion-header-text"&gt;How do I track my order?&lt;/span&gt;
+      &lt;svg class="accordion-icon"&gt;...&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;div class="accordion-content"&gt;
+      &lt;div class="accordion-body"&gt;
+        Once your order ships, you'll receive a tracking number...
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function toggleAccordion(button) {
+  const item = button.closest('.accordion-item');
+  const wasActive = item.classList.contains('active');
+  
+  // Single-open mode: close all others
+  document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+  
+  // Toggle current item
+  if (!wasActive) {
+    item.classList.add('active');
+  }
+}
+&lt;/script&gt;</code></pre>
+                </div>
+
+                <div id="light-jsx" class="tab-content">
+                    <pre><code>import { useState } from 'react';
+
+const Accordion = ({ items, allowMultiple = false }) =&gt; {
+  const [openItems, setOpenItems] = useState(new Set([0])); // First item open by default
+
+  const toggleItem = (index) =&gt; {
+    setOpenItems((prev) =&gt; {
+      const newSet = new Set(allowMultiple ? prev : []);
+      if (prev.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  };
+
+  return (
+    &lt;div className="accordion"&gt;
+      {items.map((item, index) =&gt; (
+        &lt;div
+          key={index}
+          className={`accordion-item ${openItems.has(index) ? 'active' : ''}`}
+        &gt;
+          &lt;button
+            className="accordion-header"
+            onClick={() =&gt; toggleItem(index)}
+          &gt;
+            &lt;span className="accordion-header-text"&gt;{item.title}&lt;/span&gt;
+            &lt;svg className="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+              &lt;path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" /&gt;
+            &lt;/svg&gt;
+          &lt;/button&gt;
+          &lt;div className="accordion-content"&gt;
+            &lt;div className="accordion-body"&gt;{item.content}&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+};
+
+// Usage
+&lt;Accordion
+  items={[
+    { title: 'What is your return policy?', content: 'We accept returns...' },
+    { title: 'How do I track my order?', content: 'Once your order ships...' }
+  ]}
+  allowMultiple={false}
+/&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- DARK ACCORDION -->
+            <section class="component-section">
+                <h2>Dark Accordion</h2>
+                <p>Alternative dark style for use in dark sections, modals, or sidebar navigation. Maintains readability with high contrast text and borders.</p>
+
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'dark-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'dark-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'dark-jsx')">JSX</button>
+                </div>
+
+                <div id="dark-preview" class="tab-content active">
+                    <div class="preview-box-dark">
+                        <div class="demo-container">
+                            <div class="accordion accordion-dark">
+                                <div class="accordion-item active">
+                                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                                        <span class="accordion-header-text">Product Storage Requirements</span>
+                                        <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            Fresh seafood must be stored at 0-4°C (32-39°F). Frozen products require -18°C (0°F) or below. Use within 48 hours of thawing for optimal quality.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                                        <span class="accordion-header-text">Shipping Temperature Control</span>
+                                        <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            All shipments include GPS-tracked temperature monitoring. You'll receive real-time alerts if temperature deviates from safe ranges during transit.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                                        <span class="accordion-header-text">Quality Guarantee</span>
+                                        <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            We guarantee product quality or your money back. Report any issues within 24 hours of delivery with photos for immediate refund or replacement.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="dark-html" class="tab-content">
+                    <pre><code>&lt;!-- Dark Accordion --&gt;
+&lt;div class="accordion accordion-dark"&gt;
+  &lt;div class="accordion-item active"&gt;
+    &lt;button class="accordion-header" onclick="toggleAccordion(this)"&gt;
+      &lt;span class="accordion-header-text"&gt;Product Storage Requirements&lt;/span&gt;
+      &lt;svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+        &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"&gt;&lt;/path&gt;
+      &lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;div class="accordion-content"&gt;
+      &lt;div class="accordion-body"&gt;
+        Fresh seafood must be stored at 0-4°C...
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div id="dark-jsx" class="tab-content">
+                    <pre><code>// Simply add accordion-dark class
+&lt;Accordion
+  className="accordion-dark"
+  items={darkItems}
+/&gt;
+
+// Or with variant prop
+const Accordion = ({ variant = 'light', items }) =&gt; (
+  &lt;div className={`accordion ${variant === 'dark' ? 'accordion-dark' : ''}`}&gt;
+    {/* accordion items */}
+  &lt;/div&gt;
+);
+
+// Usage
+&lt;Accordion variant="dark" items={items} /&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- ACCORDION WITH BADGES -->
+            <section class="component-section">
+                <h2>Accordion with Badges</h2>
+                <p>Add contextual badges to show counts, statuses, or categories. Useful for settings pages, category filters, or notification panels.</p>
+
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'badge-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'badge-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'badge-jsx')">JSX</button>
+                </div>
+
+                <div id="badge-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="demo-container">
+                            <div class="accordion">
+                                <div class="accordion-item">
+                                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                                        <div class="accordion-header-with-badge">
+                                            <span class="accordion-header-text">Fresh Seafood</span>
+                                            <span class="accordion-badge">24 Products</span>
+                                        </div>
+                                        <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            Browse our selection of sustainably sourced fresh seafood including salmon, tuna, shrimp, and shellfish. All products are caught within 48 hours of delivery.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                                        <div class="accordion-header-with-badge">
+                                            <span class="accordion-header-text">Frozen Products</span>
+                                            <span class="accordion-badge">156 Products</span>
+                                        </div>
+                                        <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            Flash-frozen at peak freshness to preserve quality and extend shelf life. Includes fish fillets, whole fish, shrimp, and specialty items.
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item active">
+                                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                                        <div class="accordion-header-with-badge">
+                                            <span class="accordion-header-text">Processed Goods</span>
+                                            <span class="accordion-badge">89 Products</span>
+                                        </div>
+                                        <svg class="accordion-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                        </svg>
+                                    </button>
+                                    <div class="accordion-content">
+                                        <div class="accordion-body">
+                                            Value-added products including smoked salmon, canned seafood, fish cakes, and marinated items. Ready-to-use for restaurants and food service.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="badge-html" class="tab-content">
+                    <pre><code>&lt;!-- Accordion with Badges --&gt;
+&lt;div class="accordion"&gt;
+  &lt;div class="accordion-item"&gt;
+    &lt;button class="accordion-header" onclick="toggleAccordion(this)"&gt;
+      &lt;div class="accordion-header-with-badge"&gt;
+        &lt;span class="accordion-header-text"&gt;Fresh Seafood&lt;/span&gt;
+        &lt;span class="accordion-badge"&gt;24 Products&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;svg class="accordion-icon"&gt;...&lt;/svg&gt;
+    &lt;/button&gt;
+    &lt;div class="accordion-content"&gt;
+      &lt;div class="accordion-body"&gt;
+        Browse our selection of sustainably sourced...
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div id="badge-jsx" class="tab-content">
+                    <pre><code>const AccordionWithBadge = ({ items }) =&gt; (
+  &lt;div className="accordion"&gt;
+    {items.map((item, index) =&gt; (
+      &lt;div key={index} className="accordion-item"&gt;
+        &lt;button className="accordion-header" onClick={() =&gt; toggle(index)}&gt;
+          &lt;div className="accordion-header-with-badge"&gt;
+            &lt;span className="accordion-header-text"&gt;{item.title}&lt;/span&gt;
+            {item.badge && &lt;span className="accordion-badge"&gt;{item.badge}&lt;/span&gt;}
+          &lt;/div&gt;
+          &lt;ChevronDownIcon className="accordion-icon" /&gt;
+        &lt;/button&gt;
+        &lt;div className="accordion-content"&gt;
+          &lt;div className="accordion-body"&gt;{item.content}&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    ))}
+  &lt;/div&gt;
+);
+
+// Usage
+&lt;AccordionWithBadge
+  items={[
+    { title: 'Fresh Seafood', badge: '24 Products', content: '...' },
+    { title: 'Frozen Products', badge: '156 Products', content: '...' }
+  ]}
+/&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- RESPONSIVE BEHAVIOR -->
+            <section class="component-section">
+                <h2>Responsive Behavior</h2>
+                <p>Accordions automatically adapt to different screen sizes with optimized padding and font sizes.</p>
+
+                <div style="background: var(--color-shore-editorial); padding: var(--spacing-6); border-radius: var(--radius-md); margin-top: var(--spacing-6);">
+                    <h4 style="margin-bottom: var(--spacing-4);">Breakpoint Adjustments:</h4>
+                    <ul style="color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                        <li><strong>Mobile (≤640px):</strong> Reduced padding (16px → 12px), smaller text (16px → 14px), smaller icons (20px → 18px)</li>
+                        <li><strong>Tablet (641-1024px):</strong> Medium padding (20px), standard text (16px), standard icons (20px)</li>
+                        <li><strong>Desktop (≥1025px):</strong> Full padding (24px), standard text (16px), standard icons (20px)</li>
+                    </ul>
+                    <p style="margin-top: var(--spacing-4); color: var(--color-text-secondary);">Text automatically wraps on smaller screens, and touch targets remain accessible at minimum 44x44px.</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+
+    <script>
+        function toggleAccordion(button) {
+            const item = button.closest('.accordion-item');
+            const accordion = button.closest('.accordion');
+            const wasActive = item.classList.contains('active');
+
+            // Single-open mode: close all items in this accordion
+            accordion.querySelectorAll('.accordion-item').forEach(i => {
+                i.classList.remove('active');
+            });
+
+            // Toggle current item
+            if (!wasActive) {
+                item.classList.add('active');
+            }
+        }
+
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.component-section');
+            const tabButtons = section.querySelectorAll('.tab-btn');
+            const tabContents = section.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
