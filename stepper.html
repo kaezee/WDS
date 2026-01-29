@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stepper - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="stepper.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 2px solid var(--color-border-default);
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            font-family: var(--font-heading);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: var(--color-waves-500);
+        }
+
+        .tab-btn.active {
+            color: var(--color-waves-500);
+            border-bottom-color: var(--color-waves-500);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Preview Box */
+        .preview-box {
+            padding: var(--spacing-10);
+            background: var(--color-shore-base);
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-lg);
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Hero Subtitle */
+        .hero-subtitle {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            margin-top: var(--spacing-4);
+            line-height: var(--line-height-relaxed);
+        }
+
+        /* Code blocks */
+        pre {
+            background: var(--color-pearl-900);
+            color: var(--color-text-inverse);
+            padding: var(--spacing-6);
+            border-radius: var(--radius-md);
+            overflow-x: auto;
+            font-size: var(--font-size-sm);
+            line-height: var(--line-height-relaxed);
+        }
+
+        code {
+            font-family: var(--font-mono);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header class="hero">
+                <h1>Stepper</h1>
+                <p class="hero-subtitle">Progress indicators for multi-step processes like checkout flows, onboarding, and quote requests.</p>
+            </header>
+
+            <!-- USAGE & PURPOSE -->
+            <section class="component-section" style="background: var(--color-shore-editorial); padding: var(--spacing-8); border-radius: var(--radius-lg); margin-bottom: var(--spacing-12);">
+                <h3>Usage & Purpose</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-6);">
+                    <div>
+                        <h4 style="color: var(--color-waves-700); margin-bottom: var(--spacing-2);">Horizontal Stepper</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Default layout for desktop checkout flows and onboarding processes.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--color-waves-700); margin-bottom: var(--spacing-2);">Vertical Stepper</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">For detailed forms with content between steps, better for mobile layouts.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--color-waves-700); margin-bottom: var(--spacing-2);">Compact Stepper</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Space-saving variant for sidebars, modals, or quick 3-4 step processes.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--color-waves-700); margin-bottom: var(--spacing-2);">With Icons</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Visual indicators replacing numbers for branded flows and order tracking.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--color-waves-700); margin-bottom: var(--spacing-2);">With Descriptions</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Add helper text for complex processes needing explanation at each step.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- HORIZONTAL STEPPER -->
+            <section class="component-section">
+                <h2>Horizontal Stepper (Default)</h2>
+                <p>Standard horizontal progress indicator for desktop workflows. Automatically converts to vertical on mobile.</p>
+
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'horizontal-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'horizontal-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'horizontal-jsx')">JSX</button>
+                </div>
+
+                <div id="horizontal-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div style="max-width: 800px; width: 100%;">
+                            <div class="stepper">
+                                <div class="stepper-step completed">
+                                    <div class="stepper-circle">✓</div>
+                                    <span class="stepper-label">Product Details</span>
+                                </div>
+                                <div class="stepper-line completed"></div>
+                                <div class="stepper-step active">
+                                    <div class="stepper-circle">2</div>
+                                    <span class="stepper-label">Shipping Info</span>
+                                </div>
+                                <div class="stepper-line"></div>
+                                <div class="stepper-step">
+                                    <div class="stepper-circle">3</div>
+                                    <span class="stepper-label">Payment</span>
+                                </div>
+                                <div class="stepper-line"></div>
+                                <div class="stepper-step">
+                                    <div class="stepper-circle">4</div>
+                                    <span class="stepper-label">Confirmation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="horizontal-html" class="tab-content">
+                    <pre><code>&lt;div class="stepper"&gt;
+  &lt;!-- Completed Step --&gt;
+  &lt;div class="stepper-step completed"&gt;
+    &lt;div class="stepper-circle"&gt;✓&lt;/div&gt;
+    &lt;span class="stepper-label"&gt;Product Details&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="stepper-line completed"&gt;&lt;/div&gt;
+  
+  &lt;!-- Active Step --&gt;
+  &lt;div class="stepper-step active"&gt;
+    &lt;div class="stepper-circle"&gt;2&lt;/div&gt;
+    &lt;span class="stepper-label"&gt;Shipping Info&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="stepper-line"&gt;&lt;/div&gt;
+  
+  &lt;!-- Upcoming Steps --&gt;
+  &lt;div class="stepper-step"&gt;
+    &lt;div class="stepper-circle"&gt;3&lt;/div&gt;
+    &lt;span class="stepper-label"&gt;Payment&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="stepper-line"&gt;&lt;/div&gt;
+  
+  &lt;div class="stepper-step"&gt;
+    &lt;div class="stepper-circle"&gt;4&lt;/div&gt;
+    &lt;span class="stepper-label"&gt;Confirmation&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div id="horizontal-jsx" class="tab-content">
+                    <pre><code>const HorizontalStepper = ({ steps, currentStep }) =&gt; (
+  &lt;div className="stepper"&gt;
+    {steps.map((step, index) =&gt; {
+      const stepNumber = index + 1;
+      const isCompleted = stepNumber &lt; currentStep;
+      const isActive = stepNumber === currentStep;
+      
+      return (
+        &lt;React.Fragment key={index}&gt;
+          &lt;div className={`stepper-step ${isCompleted ? 'completed' : ''} ${isActive ? 'active' : ''}`}&gt;
+            &lt;div className="stepper-circle"&gt;
+              {isCompleted ? '✓' : stepNumber}
+            &lt;/div&gt;
+            &lt;span className="stepper-label"&gt;{step.label}&lt;/span&gt;
+          &lt;/div&gt;
+          
+          {index &lt; steps.length - 1 && (
+            &lt;div className={`stepper-line ${isCompleted ? 'completed' : ''}`} /&gt;
+          )}
+        &lt;/React.Fragment&gt;
+      );
+    })}
+  &lt;/div&gt;
+);
+
+// Usage
+const checkoutSteps = [
+  { label: 'Product Details' },
+  { label: 'Shipping Info' },
+  { label: 'Payment' },
+  { label: 'Confirmation' }
+];
+
+&lt;HorizontalStepper steps={checkoutSteps} currentStep={2} /&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- VERTICAL STEPPER -->
+            <section class="component-section">
+                <h2>Vertical Stepper</h2>
+                <p>For forms with content between steps or mobile-first layouts. Useful when each step requires explanation or input fields.</p>
+
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'vertical-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'vertical-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'vertical-jsx')">JSX</button>
+                </div>
+
+                <div id="vertical-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div style="max-width: 500px; width: 100%;">
+                            <div class="stepper stepper-vertical">
+                                <div class="stepper-step completed">
+                                    <div class="stepper-circle">✓</div>
+                                    <div>
+                                        <span class="stepper-label">Company Information</span>
+                                    </div>
+                                    <div class="stepper-line completed"></div>
+                                </div>
+                                <div class="stepper-step completed">
+                                    <div class="stepper-circle">✓</div>
+                                    <div>
+                                        <span class="stepper-label">Product Selection</span>
+                                    </div>
+                                    <div class="stepper-line completed"></div>
+                                </div>
+                                <div class="stepper-step active">
+                                    <div class="stepper-circle">3</div>
+                                    <div>
+                                        <span class="stepper-label">Delivery Details</span>
+                                    </div>
+                                    <div class="stepper-line"></div>
+                                </div>
+                                <div class="stepper-step">
+                                    <div class="stepper-circle">4</div>
+                                    <div>
+                                        <span class="stepper-label">Review & Submit</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="vertical-html" class="tab-content">
+                    <pre><code>&lt;div class="stepper stepper-vertical"&gt;
+  &lt;div class="stepper-step completed"&gt;
+    &lt;div class="stepper-circle"&gt;✓&lt;/div&gt;
+    &lt;div&gt;
+      &lt;span class="stepper-label"&gt;Company Information&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="stepper-line completed"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="stepper-step active"&gt;
+    &lt;div class="stepper-circle"&gt;2&lt;/div&gt;
+    &lt;div&gt;
+      &lt;span class="stepper-label"&gt;Product Selection&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="stepper-line"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="stepper-step"&gt;
+    &lt;div class="stepper-circle"&gt;3&lt;/div&gt;
+    &lt;div&gt;
+      &lt;span class="stepper-label"&gt;Delivery Details&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div id="vertical-jsx" class="tab-content">
+                    <pre><code>const VerticalStepper = ({ steps, currentStep }) =&gt; (
+  &lt;div className="stepper stepper-vertical"&gt;
+    {steps.map((step, index) =&gt; {
+      const stepNumber = index + 1;
+      const isCompleted = stepNumber &lt; currentStep;
+      const isActive = stepNumber === currentStep;
+      const isLast = index === steps.length - 1;
+      
+      return (
+        &lt;div key={index} className={`stepper-step ${isCompleted ? 'completed' : ''} ${isActive ? 'active' : ''}`}&gt;
+          &lt;div className="stepper-circle"&gt;
+            {isCompleted ? '✓' : stepNumber}
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;span className="stepper-label"&gt;{step.label}&lt;/span&gt;
+          &lt;/div&gt;
+          {!isLast && &lt;div className={`stepper-line ${isCompleted ? 'completed' : ''}`} /&gt;}
+        &lt;/div&gt;
+      );
+    })}
+  &lt;/div&gt;
+);</code></pre>
+                </div>
+            </section>
+
+            <!-- COMPACT STEPPER -->
+            <section class="component-section">
+                <h2>Compact Stepper</h2>
+                <p>Smaller variant for sidebars, modals, or space-constrained interfaces. Works in both horizontal and vertical orientations.</p>
+
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'compact-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'compact-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'compact-jsx')">JSX</button>
+                </div>
+
+                <div id="compact-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-10); width: 100%;">
+                            <!-- Compact Horizontal -->
+                            <div>
+                                <h4 style="margin-bottom: var(--spacing-4); color: var(--color-pearl-800);">Horizontal</h4>
+                                <div class="stepper stepper-compact">
+                                    <div class="stepper-step completed">
+                                        <div class="stepper-circle">✓</div>
+                                        <span class="stepper-label">Setup</span>
+                                    </div>
+                                    <div class="stepper-line completed"></div>
+                                    <div class="stepper-step active">
+                                        <div class="stepper-circle">2</div>
+                                        <span class="stepper-label">Review</span>
+                                    </div>
+                                    <div class="stepper-line"></div>
+                                    <div class="stepper-step">
+                                        <div class="stepper-circle">3</div>
+                                        <span class="stepper-label">Done</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Compact Vertical -->
+                            <div>
+                                <h4 style="margin-bottom: var(--spacing-4); color: var(--color-pearl-800);">Vertical</h4>
+                                <div class="stepper stepper-vertical stepper-compact">
+                                    <div class="stepper-step completed">
+                                        <div class="stepper-circle">✓</div>
+                                        <div><span class="stepper-label">Setup</span></div>
+                                        <div class="stepper-line completed"></div>
+                                    </div>
+                                    <div class="stepper-step active">
+                                        <div class="stepper-circle">2</div>
+                                        <div><span class="stepper-label">Review</span></div>
+                                        <div class="stepper-line"></div>
+                                    </div>
+                                    <div class="stepper-step">
+                                        <div class="stepper-circle">3</div>
+                                        <div><span class="stepper-label">Done</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="compact-html" class="tab-content">
+                    <pre><code>&lt;!-- Add stepper-compact class --&gt;
+&lt;div class="stepper stepper-compact"&gt;
+  &lt;div class="stepper-step completed"&gt;
+    &lt;div class="stepper-circle"&gt;✓&lt;/div&gt;
+    &lt;span class="stepper-label"&gt;Setup&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="stepper-line completed"&gt;&lt;/div&gt;
+  
+  &lt;div class="stepper-step active"&gt;
+    &lt;div class="stepper-circle"&gt;2&lt;/div&gt;
+    &lt;span class="stepper-label"&gt;Review&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="stepper-line"&gt;&lt;/div&gt;
+  
+  &lt;div class="stepper-step"&gt;
+    &lt;div class="stepper-circle"&gt;3&lt;/div&gt;
+    &lt;span class="stepper-label"&gt;Done&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Vertical Compact --&gt;
+&lt;div class="stepper stepper-vertical stepper-compact"&gt;
+  ...
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div id="compact-jsx" class="tab-content">
+                    <pre><code>// Just add stepper-compact class
+&lt;div className="stepper stepper-compact"&gt;
+  {/* steps */}
+&lt;/div&gt;
+
+// Vertical compact
+&lt;div className="stepper stepper-vertical stepper-compact"&gt;
+  {/* steps */}
+&lt;/div&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- STEPPER WITH ICONS -->
+            <section class="component-section">
+                <h2>Stepper with Icons</h2>
+                <p>Replace step numbers with relevant icons for more visual, branded workflows. Particularly useful for order tracking and delivery status.</p>
+
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'icons-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'icons-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'icons-jsx')">JSX</button>
+                </div>
+
+                <div id="icons-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div style="max-width: 800px; width: 100%;">
+                            <div class="stepper stepper-icon">
+                                <div class="stepper-step completed">
+                                    <div class="stepper-circle">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="stepper-label">Order Placed</span>
+                                </div>
+                                <div class="stepper-line completed"></div>
+                                <div class="stepper-step completed">
+                                    <div class="stepper-circle">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="stepper-label">Processing</span>
+                                </div>
+                                <div class="stepper-line completed"></div>
+                                <div class="stepper-step active">
+                                    <div class="stepper-circle">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="stepper-label">In Transit</span>
+                                </div>
+                                <div class="stepper-line"></div>
+                                <div class="stepper-step">
+                                    <div class="stepper-circle">
+                                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                                        </svg>
+                                    </div>
+                                    <span class="stepper-label">Delivered</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="icons-html" class="tab-content">
+                    <pre><code>&lt;div class="stepper stepper-icon"&gt;
+  &lt;div class="stepper-step completed"&gt;
+    &lt;div class="stepper-circle"&gt;
+      &lt;svg fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+        &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"&gt;&lt;/path&gt;
+      &lt;/svg&gt;
+    &lt;/div&gt;
+    &lt;span class="stepper-label"&gt;Order Placed&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="stepper-line completed"&gt;&lt;/div&gt;
+  
+  &lt;div class="stepper-step active"&gt;
+    &lt;div class="stepper-circle"&gt;
+      &lt;svg fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+        &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6..."&gt;&lt;/path&gt;
+      &lt;/svg&gt;
+    &lt;/div&gt;
+    &lt;span class="stepper-label"&gt;In Transit&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div id="icons-jsx" class="tab-content">
+                    <pre><code>import { Check, Package, Truck, Home } from 'lucide-react';
+
+const IconStepper = ({ steps, currentStep }) =&gt; (
+  &lt;div className="stepper stepper-icon"&gt;
+    {steps.map((step, index) =&gt; {
+      const Icon = step.icon;
+      const stepNumber = index + 1;
+      const isCompleted = stepNumber &lt; currentStep;
+      const isActive = stepNumber === currentStep;
+      
+      return (
+        &lt;React.Fragment key={index}&gt;
+          &lt;div className={`stepper-step ${isCompleted ? 'completed' : ''} ${isActive ? 'active' : ''}`}&gt;
+            &lt;div className="stepper-circle"&gt;
+              &lt;Icon /&gt;
+            &lt;/div&gt;
+            &lt;span className="stepper-label"&gt;{step.label}&lt;/span&gt;
+          &lt;/div&gt;
+          {index &lt; steps.length - 1 && (
+            &lt;div className={`stepper-line ${isCompleted ? 'completed' : ''}`} /&gt;
+          )}
+        &lt;/React.Fragment&gt;
+      );
+    })}
+  &lt;/div&gt;
+);
+
+// Usage
+const orderSteps = [
+  { label: 'Order Placed', icon: Check },
+  { label: 'Processing', icon: Package },
+  { label: 'In Transit', icon: Truck },
+  { label: 'Delivered', icon: Home }
+];
+
+&lt;IconStepper steps={orderSteps} currentStep={3} /&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- STEPPER WITH DESCRIPTIONS -->
+            <section class="component-section">
+                <h2>Stepper with Descriptions</h2>
+                <p>Add helper text below each step label for processes requiring additional context or explanation.</p>
+
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'desc-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'desc-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'desc-jsx')">JSX</button>
+                </div>
+
+                <div id="desc-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div style="max-width: 600px; width: 100%;">
+                            <div class="stepper stepper-vertical">
+                                <div class="stepper-step completed">
+                                    <div class="stepper-circle">✓</div>
+                                    <div>
+                                        <span class="stepper-label">Business Details</span>
+                                        <span class="stepper-description">Company name, tax ID, and registration</span>
+                                    </div>
+                                    <div class="stepper-line completed"></div>
+                                </div>
+                                <div class="stepper-step active">
+                                    <div class="stepper-circle">2</div>
+                                    <div>
+                                        <span class="stepper-label">Product Preferences</span>
+                                        <span class="stepper-description">Select product categories and volume requirements</span>
+                                    </div>
+                                    <div class="stepper-line"></div>
+                                </div>
+                                <div class="stepper-step">
+                                    <div class="stepper-circle">3</div>
+                                    <div>
+                                        <span class="stepper-label">Delivery Information</span>
+                                        <span class="stepper-description">Shipping addresses and delivery schedules</span>
+                                    </div>
+                                    <div class="stepper-line"></div>
+                                </div>
+                                <div class="stepper-step">
+                                    <div class="stepper-circle">4</div>
+                                    <div>
+                                        <span class="stepper-label">Payment Setup</span>
+                                        <span class="stepper-description">Choose payment terms and methods</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="desc-html" class="tab-content">
+                    <pre><code>&lt;div class="stepper stepper-vertical"&gt;
+  &lt;div class="stepper-step completed"&gt;
+    &lt;div class="stepper-circle"&gt;✓&lt;/div&gt;
+    &lt;div&gt;
+      &lt;span class="stepper-label"&gt;Business Details&lt;/span&gt;
+      &lt;span class="stepper-description"&gt;Company name, tax ID, and registration&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="stepper-line completed"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="stepper-step active"&gt;
+    &lt;div class="stepper-circle"&gt;2&lt;/div&gt;
+    &lt;div&gt;
+      &lt;span class="stepper-label"&gt;Product Preferences&lt;/span&gt;
+      &lt;span class="stepper-description"&gt;Select categories and volume requirements&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="stepper-line"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div id="desc-jsx" class="tab-content">
+                    <pre><code>const DescriptionStepper = ({ steps, currentStep }) =&gt; (
+  &lt;div className="stepper stepper-vertical"&gt;
+    {steps.map((step, index) =&gt; {
+      const stepNumber = index + 1;
+      const isCompleted = stepNumber &lt; currentStep;
+      const isActive = stepNumber === currentStep;
+      const isLast = index === steps.length - 1;
+      
+      return (
+        &lt;div key={index} className={`stepper-step ${isCompleted ? 'completed' : ''} ${isActive ? 'active' : ''}`}&gt;
+          &lt;div className="stepper-circle"&gt;
+            {isCompleted ? '✓' : stepNumber}
+          &lt;/div&gt;
+          &lt;div&gt;
+            &lt;span className="stepper-label"&gt;{step.label}&lt;/span&gt;
+            &lt;span className="stepper-description"&gt;{step.description}&lt;/span&gt;
+          &lt;/div&gt;
+          {!isLast && &lt;div className={`stepper-line ${isCompleted ? 'completed' : ''}`} /&gt;}
+        &lt;/div&gt;
+      );
+    })}
+  &lt;/div&gt;
+);
+
+// Usage
+const onboardingSteps = [
+  { 
+    label: 'Business Details',
+    description: 'Company name, tax ID, and registration'
+  },
+  { 
+    label: 'Product Preferences',
+    description: 'Select categories and volume requirements'
+  }
+];
+
+&lt;DescriptionStepper steps={onboardingSteps} currentStep={2} /&gt;</code></pre>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+
+    <script>
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.component-section');
+            const tabButtons = section.querySelectorAll('.tab-btn');
+            const tabContents = section.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>

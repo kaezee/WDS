@@ -1,0 +1,334 @@
+/* STEPPER COMPONENT - COMPASS DESIGN SYSTEM */
+
+/* ===========================
+   BASE HORIZONTAL STEPPER
+   =========================== */
+
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+.stepper-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+  z-index: 2;
+}
+
+.stepper-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--color-bg-primary);
+  border: 2px solid var(--color-border-default);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-2);
+  transition: all 0.2s ease;
+}
+
+.stepper-label {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-align: center;
+  line-height: var(--line-height-normal);
+}
+
+/* Connector Line */
+.stepper-line {
+  flex: 1;
+  height: 2px;
+  background: var(--color-border-default);
+  margin: 0 -20px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===========================
+   STEPPER STATES
+   =========================== */
+
+/* Completed Step */
+.stepper-step.completed .stepper-circle {
+  background: var(--color-success-500);
+  border-color: var(--color-success-500);
+  color: var(--color-text-inverse);
+}
+
+.stepper-step.completed .stepper-label {
+  color: var(--color-text-secondary);
+}
+
+.stepper-line.completed {
+  background: var(--color-success-500);
+}
+
+/* Active Step */
+.stepper-step.active .stepper-circle {
+  background: var(--color-waves-500);
+  border-color: var(--color-waves-500);
+  color: var(--color-text-inverse);
+}
+
+.stepper-step.active .stepper-label {
+  color: var(--color-pearl-800);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Upcoming Step (default state) */
+/* Uses base styles */
+
+/* ===========================
+   VERTICAL STEPPER
+   =========================== */
+
+.stepper-vertical {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.stepper-vertical .stepper-step {
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  flex: none;
+  margin-bottom: var(--spacing-6);
+}
+
+.stepper-vertical .stepper-step:last-child {
+  margin-bottom: 0;
+}
+
+.stepper-vertical .stepper-circle {
+  margin-bottom: 0;
+  margin-right: var(--spacing-4);
+  flex-shrink: 0;
+}
+
+.stepper-vertical .stepper-label {
+  text-align: left;
+  margin-top: 8px;
+}
+
+.stepper-vertical .stepper-line {
+  position: absolute;
+  left: 19px;
+  top: 48px;
+  width: 2px;
+  height: calc(100% - 8px);
+  margin: 0;
+  flex: none;
+}
+
+.stepper-vertical .stepper-step {
+  position: relative;
+}
+
+/* Hide line on last step */
+.stepper-vertical .stepper-step:last-child .stepper-line {
+  display: none;
+}
+
+/* ===========================
+   COMPACT STEPPER
+   =========================== */
+
+.stepper-compact .stepper-circle {
+  width: 32px;
+  height: 32px;
+  font-size: var(--font-size-sm);
+}
+
+.stepper-compact .stepper-label {
+  font-size: var(--font-size-xs);
+}
+
+.stepper-compact .stepper-line {
+  margin-bottom: 26px;
+}
+
+/* Vertical compact adjustments */
+.stepper-vertical.stepper-compact .stepper-step {
+  margin-bottom: var(--spacing-4);
+}
+
+.stepper-vertical.stepper-compact .stepper-line {
+  left: 15px;
+  top: 40px;
+}
+
+/* ===========================
+   STEPPER WITH ICONS
+   =========================== */
+
+.stepper-icon .stepper-circle {
+  font-size: 18px;
+}
+
+.stepper-icon .stepper-circle svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ===========================
+   STEPPER WITH DESCRIPTIONS
+   =========================== */
+
+.stepper-description {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin-top: 4px;
+  line-height: var(--line-height-normal);
+}
+
+.stepper-vertical .stepper-description {
+  text-align: left;
+}
+
+.stepper-step.active .stepper-description {
+  color: var(--color-text-secondary);
+}
+
+/* Content area for vertical stepper with descriptions */
+.stepper-content {
+  margin-top: var(--spacing-3);
+  padding-left: 56px;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.stepper-vertical.stepper-compact .stepper-content {
+  padding-left: 48px;
+}
+
+/* ===========================
+   RESPONSIVE DESIGN
+   =========================== */
+
+/* Mobile (up to 640px) */
+@media (max-width: 640px) {
+  /* Convert horizontal to vertical on mobile */
+  .stepper:not(.stepper-vertical) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stepper:not(.stepper-vertical) .stepper-step {
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+    flex: none;
+    margin-bottom: var(--spacing-6);
+  }
+
+  .stepper:not(.stepper-vertical) .stepper-step:last-child {
+    margin-bottom: 0;
+  }
+
+  .stepper:not(.stepper-vertical) .stepper-circle {
+    margin-bottom: 0;
+    margin-right: var(--spacing-4);
+  }
+
+  .stepper:not(.stepper-vertical) .stepper-label {
+    text-align: left;
+    margin-top: 8px;
+  }
+
+  .stepper:not(.stepper-vertical) .stepper-line {
+    position: absolute;
+    left: 19px;
+    top: 48px;
+    width: 2px;
+    height: calc(100% - 8px);
+    margin: 0;
+    flex: none;
+  }
+
+  .stepper:not(.stepper-vertical) .stepper-step {
+    position: relative;
+  }
+
+  .stepper:not(.stepper-vertical) .stepper-step:last-child .stepper-line {
+    display: none;
+  }
+
+  /* Compact adjustments */
+  .stepper-compact:not(.stepper-vertical) .stepper-line {
+    left: 15px;
+    top: 40px;
+  }
+}
+
+/* Tablet (641px - 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .stepper-circle {
+    width: 36px;
+    height: 36px;
+    font-size: var(--font-size-sm);
+  }
+
+  .stepper-label {
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* ===========================
+   ACCESSIBILITY
+   =========================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .stepper-circle {
+    transition: none;
+  }
+}
+
+/* ===========================
+   UTILITIES
+   =========================== */
+
+/* Hide labels (show only circles) */
+.stepper-no-labels .stepper-label {
+  display: none;
+}
+
+.stepper-no-labels .stepper-description {
+  display: none;
+}
+
+.stepper-no-labels .stepper-circle {
+  margin-bottom: 0;
+}
+
+/* Center align vertical stepper */
+.stepper-vertical-center .stepper-step {
+  align-items: center;
+}
+
+.stepper-vertical-center .stepper-label,
+.stepper-vertical-center .stepper-description {
+  text-align: center;
+}
+
+.stepper-vertical-center .stepper-content {
+  padding-left: 0;
+  text-align: center;
+}
