@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Fields & Forms - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="forms.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            border-bottom: 2px solid var(--color-border-default);
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            font-family: var(--font-heading);
+            font-size: var(--font-size-base);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-text-secondary);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: var(--color-waves-500);
+        }
+
+        .tab-btn.active {
+            color: var(--color-waves-500);
+            border-bottom-color: var(--color-waves-500);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Preview Box */
+        .preview-box {
+            padding: var(--spacing-10);
+            background: var(--color-shore-base);
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-lg);
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-6);
+        }
+
+        /* Hero Subtitle */
+        .hero-subtitle {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            margin-top: var(--spacing-4);
+            line-height: var(--line-height-relaxed);
+        }
+
+        /* Code blocks */
+        pre {
+            background: var(--color-pearl-900);
+            color: var(--color-text-inverse);
+            padding: var(--spacing-6);
+            border-radius: var(--radius-md);
+            overflow-x: auto;
+            font-size: var(--font-size-sm);
+            line-height: var(--line-height-relaxed);
+        }
+
+        code {
+            font-family: var(--font-mono);
+        }
+
+        /* Demo Sections */
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-6);
+        }
+
+        .demo-item {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-3);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-brand">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M16 4L4 10V22L16 28L28 22V10L16 4Z" fill="#025E96"/>
+            </svg>
+            <span>Compass Design System</span>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header class="hero">
+                <h1>Input Fields & Forms</h1>
+                <p class="hero-subtitle">Text inputs, textareas, select dropdowns, checkboxes, and radio buttons for capturing user data in B2B workflows.</p>
+            </header>
+
+            <!-- USAGE & PURPOSE -->
+            <section class="component-section" style="background: var(--color-shore-editorial); padding: var(--spacing-8); border-radius: var(--radius-lg); margin-bottom: var(--spacing-12);">
+                <h3>Usage & Purpose</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-6);">
+                    <div>
+                        <h4 style="color: var(--color-waves-700); margin-bottom: var(--spacing-2);">Text Input</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Single-line fields for names, emails, search queries, and short-form data entry.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--color-waves-700); margin-bottom: var(--spacing-2);">Textarea</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Multi-line fields for descriptions, notes, comments, and long-form content.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--color-waves-700); margin-bottom: var(--spacing-2);">Select Dropdown</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Single-choice selection from predefined options like categories, regions, or statuses.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--color-waves-700); margin-bottom: var(--spacing-2);">Checkbox</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Binary choices or multiple selections like terms acceptance, feature toggles, or filters.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--color-waves-700); margin-bottom: var(--spacing-2);">Radio Button</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Exclusive single selection from 2-5 options like payment methods or shipping preferences.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TEXT INPUT -->
+            <section class="component-section">
+                <h2>Text Input</h2>
+                <p>Standard single-line text fields with support for labels, placeholders, helper text, and validation states.</p>
+
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'text-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'text-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'text-jsx')">JSX</button>
+                </div>
+
+                <div id="text-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="demo-grid">
+                            <!-- Default -->
+                            <div class="input-group">
+                                <label class="input-label" for="input-default">Company Name</label>
+                                <input type="text" id="input-default" class="input-field input-md" placeholder="Enter company name">
+                                <span class="input-helper">This will be displayed on your invoices</span>
+                            </div>
+
+                            <!-- Required -->
+                            <div class="input-group">
+                                <label class="input-label input-label-required" for="input-required">Email Address</label>
+                                <input type="email" id="input-required" class="input-field input-md" placeholder="email@example.com">
+                            </div>
+
+                            <!-- Error State -->
+                            <div class="input-group">
+                                <label class="input-label" for="input-error">Tax ID</label>
+                                <input type="text" id="input-error" class="input-field input-md input-error" placeholder="00-0000000" value="Invalid">
+                                <span class="input-error-message">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                                    </svg>
+                                    Please enter a valid tax ID format
+                                </span>
+                            </div>
+
+                            <!-- Success State -->
+                            <div class="input-group">
+                                <label class="input-label" for="input-success">Business License</label>
+                                <input type="text" id="input-success" class="input-field input-md input-success" placeholder="License number" value="BL-2024-1234">
+                                <span class="input-success-message">
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                    </svg>
+                                    License verified
+                                </span>
+                            </div>
+
+                            <!-- Disabled -->
+                            <div class="input-group">
+                                <label class="input-label" for="input-disabled">Account ID</label>
+                                <input type="text" id="input-disabled" class="input-field input-md" placeholder="Auto-generated" disabled>
+                                <span class="input-helper">This field is automatically assigned</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="text-html" class="tab-content">
+                    <pre><code>&lt;!-- Default Input --&gt;
+&lt;div class="input-group"&gt;
+  &lt;label class="input-label" for="company"&gt;Company Name&lt;/label&gt;
+  &lt;input type="text" id="company" class="input-field input-md" placeholder="Enter company name"&gt;
+  &lt;span class="input-helper"&gt;This will be displayed on your invoices&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Required Input --&gt;
+&lt;div class="input-group"&gt;
+  &lt;label class="input-label input-label-required" for="email"&gt;Email Address&lt;/label&gt;
+  &lt;input type="email" id="email" class="input-field input-md" placeholder="email@example.com"&gt;
+&lt;/div&gt;
+
+&lt;!-- Error State --&gt;
+&lt;div class="input-group"&gt;
+  &lt;label class="input-label" for="tax-id"&gt;Tax ID&lt;/label&gt;
+  &lt;input type="text" id="tax-id" class="input-field input-md input-error" value="Invalid"&gt;
+  &lt;span class="input-error-message"&gt;Please enter a valid tax ID format&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Success State --&gt;
+&lt;div class="input-group"&gt;
+  &lt;label class="input-label" for="license"&gt;Business License&lt;/label&gt;
+  &lt;input type="text" id="license" class="input-field input-md input-success" value="BL-2024-1234"&gt;
+  &lt;span class="input-success-message"&gt;License verified&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Disabled --&gt;
+&lt;div class="input-group"&gt;
+  &lt;label class="input-label" for="account-id"&gt;Account ID&lt;/label&gt;
+  &lt;input type="text" id="account-id" class="input-field input-md" disabled&gt;
+  &lt;span class="input-helper"&gt;This field is automatically assigned&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div id="text-jsx" class="tab-content">
+                    <pre><code>const TextInput = ({ label, id, type = 'text', required, error, success, helper, disabled, ...props }) =&gt; (
+  &lt;div className="input-group"&gt;
+    &lt;label className={`input-label ${required ? 'input-label-required' : ''}`} htmlFor={id}&gt;
+      {label}
+    &lt;/label&gt;
+    &lt;input
+      type={type}
+      id={id}
+      className={`input-field input-md ${error ? 'input-error' : ''} ${success ? 'input-success' : ''}`}
+      disabled={disabled}
+      {...props}
+    /&gt;
+    {error && &lt;span className="input-error-message"&gt;{error}&lt;/span&gt;}
+    {success && &lt;span className="input-success-message"&gt;{success}&lt;/span&gt;}
+    {helper && &lt;span className="input-helper"&gt;{helper}&lt;/span&gt;}
+  &lt;/div&gt;
+);
+
+// Usage
+&lt;TextInput
+  label="Company Name"
+  id="company"
+  placeholder="Enter company name"
+  helper="This will be displayed on your invoices"
+/&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- INPUT SIZES -->
+            <section class="component-section">
+                <h2>Input Sizes</h2>
+                <p>Three size variants for different contexts: small for compact layouts, medium (default) for standard forms, and large for high-visibility fields.</p>
+
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'sizes-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'sizes-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'sizes-jsx')">JSX</button>
+                </div>
+
+                <div id="sizes-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="demo-item">
+                            <label class="input-label">Small (36px)</label>
+                            <input type="text" class="input-field input-sm" placeholder="Compact input field">
+                        </div>
+                        <div class="demo-item">
+                            <label class="input-label">Medium (44px) - Default</label>
+                            <input type="text" class="input-field input-md" placeholder="Standard input field">
+                        </div>
+                        <div class="demo-item">
+                            <label class="input-label">Large (52px)</label>
+                            <input type="text" class="input-field input-lg" placeholder="Prominent input field">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sizes-html" class="tab-content">
+                    <pre><code>&lt;!-- Small --&gt;
+&lt;input type="text" class="input-field input-sm" placeholder="Compact input field"&gt;
+
+&lt;!-- Medium (Default) --&gt;
+&lt;input type="text" class="input-field input-md" placeholder="Standard input field"&gt;
+
+&lt;!-- Large --&gt;
+&lt;input type="text" class="input-field input-lg" placeholder="Prominent input field"&gt;</code></pre>
+                </div>
+
+                <div id="sizes-jsx" class="tab-content">
+                    <pre><code>// Size variants
+&lt;input type="text" className="input-field input-sm" placeholder="Compact" /&gt;
+&lt;input type="text" className="input-field input-md" placeholder="Standard" /&gt;
+&lt;input type="text" className="input-field input-lg" placeholder="Prominent" /&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- INPUT WITH ICON -->
+            <section class="component-section">
+                <h2>Input with Icon</h2>
+                <p>Add contextual icons to clarify input purpose, like search magnifiers, email symbols, or currency indicators.</p>
+
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'icon-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'icon-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'icon-jsx')">JSX</button>
+                </div>
+
+                <div id="icon-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="demo-grid">
+                            <!-- Search Icon -->
+                            <div class="input-group">
+                                <label class="input-label">Search Products</label>
+                                <div class="input-with-icon">
+                                    <span class="input-icon-left">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <path d="m21 21-4.35-4.35"></path>
+                                        </svg>
+                                    </span>
+                                    <input type="text" class="input-field input-md" placeholder="Search by name or SKU">
+                                </div>
+                            </div>
+
+                            <!-- Email Icon -->
+                            <div class="input-group">
+                                <label class="input-label">Contact Email</label>
+                                <div class="input-with-icon">
+                                    <span class="input-icon-left">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                            <polyline points="22,6 12,13 2,6"></polyline>
+                                        </svg>
+                                    </span>
+                                    <input type="email" class="input-field input-md" placeholder="email@company.com">
+                                </div>
+                            </div>
+
+                            <!-- Currency Icon -->
+                            <div class="input-group">
+                                <label class="input-label">Unit Price</label>
+                                <div class="input-with-icon">
+                                    <span class="input-icon-left" style="font-weight: 600; color: var(--color-pearl-700);">$</span>
+                                    <input type="number" class="input-field input-md" placeholder="0.00">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="icon-html" class="tab-content">
+                    <pre><code>&lt;!-- Input with Left Icon --&gt;
+&lt;div class="input-group"&gt;
+  &lt;label class="input-label"&gt;Search Products&lt;/label&gt;
+  &lt;div class="input-with-icon"&gt;
+    &lt;span class="input-icon-left"&gt;
+      &lt;svg width="20" height="20"&gt;...&lt;/svg&gt;
+    &lt;/span&gt;
+    &lt;input type="text" class="input-field input-md" placeholder="Search by name or SKU"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Text Icon (Currency) --&gt;
+&lt;div class="input-with-icon"&gt;
+  &lt;span class="input-icon-left"&gt;$&lt;/span&gt;
+  &lt;input type="number" class="input-field input-md" placeholder="0.00"&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div id="icon-jsx" class="tab-content">
+                    <pre><code>const InputWithIcon = ({ label, icon, ...props }) =&gt; (
+  &lt;div className="input-group"&gt;
+    {label && &lt;label className="input-label"&gt;{label}&lt;/label&gt;}
+    &lt;div className="input-with-icon"&gt;
+      &lt;span className="input-icon-left"&gt;{icon}&lt;/span&gt;
+      &lt;input className="input-field input-md" {...props} /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+);
+
+// Usage
+&lt;InputWithIcon
+  label="Search Products"
+  icon={&lt;SearchIcon /&gt;}
+  placeholder="Search by name or SKU"
+/&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- TEXTAREA -->
+            <section class="component-section">
+                <h2>Textarea</h2>
+                <p>Multi-line text fields for longer content like product descriptions, order notes, or feedback messages.</p>
+
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'textarea-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'textarea-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'textarea-jsx')">JSX</button>
+                </div>
+
+                <div id="textarea-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="demo-grid">
+                            <!-- Default -->
+                            <div class="input-group">
+                                <label class="input-label" for="textarea-default">Product Description</label>
+                                <textarea id="textarea-default" class="textarea-field textarea-md" placeholder="Describe your product in detail..."></textarea>
+                                <span class="input-helper">Provide key features, specifications, and benefits</span>
+                            </div>
+
+                            <!-- With Content -->
+                            <div class="input-group">
+                                <label class="input-label" for="textarea-notes">Order Notes</label>
+                                <textarea id="textarea-notes" class="textarea-field textarea-md">Customer requested delivery between 9 AM - 12 PM. Use loading dock B for large orders. Contact facility manager for access code.</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="textarea-html" class="tab-content">
+                    <pre><code>&lt;!-- Textarea --&gt;
+&lt;div class="input-group"&gt;
+  &lt;label class="input-label" for="description"&gt;Product Description&lt;/label&gt;
+  &lt;textarea id="description" class="textarea-field textarea-md" placeholder="Describe your product..."&gt;&lt;/textarea&gt;
+  &lt;span class="input-helper"&gt;Provide key features and benefits&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- Textarea Sizes --&gt;
+&lt;textarea class="textarea-field textarea-sm"&gt;&lt;/textarea&gt;  &lt;!-- 80px min-height --&gt;
+&lt;textarea class="textarea-field textarea-md"&gt;&lt;/textarea&gt;  &lt;!-- 120px min-height --&gt;
+&lt;textarea class="textarea-field textarea-lg"&gt;&lt;/textarea&gt;  &lt;!-- 160px min-height --&gt;</code></pre>
+                </div>
+
+                <div id="textarea-jsx" class="tab-content">
+                    <pre><code>const Textarea = ({ label, id, helper, error, ...props }) =&gt; (
+  &lt;div className="input-group"&gt;
+    {label && &lt;label className="input-label" htmlFor={id}&gt;{label}&lt;/label&gt;}
+    &lt;textarea
+      id={id}
+      className={`textarea-field textarea-md ${error ? 'input-error' : ''}`}
+      {...props}
+    /&gt;
+    {error && &lt;span className="input-error-message"&gt;{error}&lt;/span&gt;}
+    {helper && &lt;span className="input-helper"&gt;{helper}&lt;/span&gt;}
+  &lt;/div&gt;
+);
+
+// Usage
+&lt;Textarea
+  label="Product Description"
+  id="description"
+  placeholder="Describe your product..."
+  helper="Provide key features and benefits"
+/&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- SELECT DROPDOWN -->
+            <section class="component-section">
+                <h2>Select Dropdown</h2>
+                <p>Single-selection dropdowns for choosing from predefined options like categories, regions, or order statuses.</p>
+
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'select-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'select-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'select-jsx')">JSX</button>
+                </div>
+
+                <div id="select-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="demo-grid">
+                            <!-- Default -->
+                            <div class="input-group">
+                                <label class="input-label" for="select-category">Product Category</label>
+                                <div class="select-wrapper">
+                                    <select id="select-category" class="select-field">
+                                        <option value="">Select a category</option>
+                                        <option value="fresh">Fresh Seafood</option>
+                                        <option value="frozen">Frozen Products</option>
+                                        <option value="processed">Processed Goods</option>
+                                        <option value="equipment">Equipment & Supplies</option>
+                                    </select>
+                                    <span class="select-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- With Selection -->
+                            <div class="input-group">
+                                <label class="input-label" for="select-region">Shipping Region</label>
+                                <div class="select-wrapper">
+                                    <select id="select-region" class="select-field">
+                                        <option value="">Select region</option>
+                                        <option value="northeast" selected>Northeast US</option>
+                                        <option value="southeast">Southeast US</option>
+                                        <option value="midwest">Midwest US</option>
+                                        <option value="west">West Coast</option>
+                                    </select>
+                                    <span class="select-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Disabled -->
+                            <div class="input-group">
+                                <label class="input-label" for="select-disabled">Payment Method</label>
+                                <div class="select-wrapper">
+                                    <select id="select-disabled" class="select-field" disabled>
+                                        <option value="net30">Net 30 Terms</option>
+                                    </select>
+                                    <span class="select-icon">
+                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <span class="input-helper">Payment terms are set by your account manager</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="select-html" class="tab-content">
+                    <pre><code>&lt;!-- Select Dropdown --&gt;
+&lt;div class="input-group"&gt;
+  &lt;label class="input-label" for="category"&gt;Product Category&lt;/label&gt;
+  &lt;div class="select-wrapper"&gt;
+    &lt;select id="category" class="select-field"&gt;
+      &lt;option value=""&gt;Select a category&lt;/option&gt;
+      &lt;option value="fresh"&gt;Fresh Seafood&lt;/option&gt;
+      &lt;option value="frozen"&gt;Frozen Products&lt;/option&gt;
+      &lt;option value="processed"&gt;Processed Goods&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;span class="select-icon"&gt;
+      &lt;svg width="20" height="20"&gt;...&lt;/svg&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Select Sizes --&gt;
+&lt;select class="select-field select-sm"&gt;...&lt;/select&gt;
+&lt;select class="select-field"&gt;...&lt;/select&gt;         &lt;!-- Default medium --&gt;
+&lt;select class="select-field select-lg"&gt;...&lt;/select&gt;</code></pre>
+                </div>
+
+                <div id="select-jsx" class="tab-content">
+                    <pre><code>const Select = ({ label, id, options, helper, error, ...props }) =&gt; (
+  &lt;div className="input-group"&gt;
+    {label && &lt;label className="input-label" htmlFor={id}&gt;{label}&lt;/label&gt;}
+    &lt;div className="select-wrapper"&gt;
+      &lt;select
+        id={id}
+        className={`select-field ${error ? 'input-error' : ''}`}
+        {...props}
+      &gt;
+        {options.map(opt =&gt; (
+          &lt;option key={opt.value} value={opt.value}&gt;{opt.label}&lt;/option&gt;
+        ))}
+      &lt;/select&gt;
+      &lt;span className="select-icon"&gt;
+        &lt;ChevronDownIcon /&gt;
+      &lt;/span&gt;
+    &lt;/div&gt;
+    {error && &lt;span className="input-error-message"&gt;{error}&lt;/span&gt;}
+    {helper && &lt;span className="input-helper"&gt;{helper}&lt;/span&gt;}
+  &lt;/div&gt;
+);
+
+// Usage
+&lt;Select
+  label="Product Category"
+  id="category"
+  options={[
+    { value: '', label: 'Select a category' },
+    { value: 'fresh', label: 'Fresh Seafood' },
+    { value: 'frozen', label: 'Frozen Products' }
+  ]}
+/&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- CHECKBOX -->
+            <section class="component-section">
+                <h2>Checkbox</h2>
+                <p>Binary selections or multiple-choice options for features, preferences, filters, or terms acceptance.</p>
+
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'checkbox-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'checkbox-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'checkbox-jsx')">JSX</button>
+                </div>
+
+                <div id="checkbox-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div style="display: flex; flex-direction: column; gap: var(--spacing-4);">
+                            <!-- Default -->
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="checkbox-input">
+                                <span class="checkbox-label">Send email notifications for new orders</span>
+                            </label>
+
+                            <!-- Checked -->
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="checkbox-input" checked>
+                                <span class="checkbox-label">Enable automatic inventory updates</span>
+                            </label>
+
+                            <!-- With Long Text -->
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="checkbox-input" checked>
+                                <span class="checkbox-label">I agree to the Terms of Service and Privacy Policy. By checking this box, I acknowledge that I have read and understood the marketplace guidelines, payment terms, and data handling procedures.</span>
+                            </label>
+
+                            <!-- Disabled -->
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="checkbox-input" disabled>
+                                <span class="checkbox-label">Premium analytics dashboard (requires subscription)</span>
+                            </label>
+
+                            <!-- Disabled Checked -->
+                            <label class="checkbox-wrapper">
+                                <input type="checkbox" class="checkbox-input" checked disabled>
+                                <span class="checkbox-label">Two-factor authentication (managed by admin)</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="checkbox-html" class="tab-content">
+                    <pre><code>&lt;!-- Checkbox --&gt;
+&lt;label class="checkbox-wrapper"&gt;
+  &lt;input type="checkbox" class="checkbox-input"&gt;
+  &lt;span class="checkbox-label"&gt;Send email notifications for new orders&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- Checked --&gt;
+&lt;label class="checkbox-wrapper"&gt;
+  &lt;input type="checkbox" class="checkbox-input" checked&gt;
+  &lt;span class="checkbox-label"&gt;Enable automatic inventory updates&lt;/span&gt;
+&lt;/label&gt;
+
+&lt;!-- Disabled --&gt;
+&lt;label class="checkbox-wrapper"&gt;
+  &lt;input type="checkbox" class="checkbox-input" disabled&gt;
+  &lt;span class="checkbox-label"&gt;Premium analytics (requires subscription)&lt;/span&gt;
+&lt;/label&gt;</code></pre>
+                </div>
+
+                <div id="checkbox-jsx" class="tab-content">
+                    <pre><code>const Checkbox = ({ label, checked, disabled, onChange, ...props }) =&gt; (
+  &lt;label className="checkbox-wrapper"&gt;
+    &lt;input
+      type="checkbox"
+      className="checkbox-input"
+      checked={checked}
+      disabled={disabled}
+      onChange={onChange}
+      {...props}
+    /&gt;
+    &lt;span className="checkbox-label"&gt;{label}&lt;/span&gt;
+  &lt;/label&gt;
+);
+
+// Usage
+&lt;Checkbox
+  label="Send email notifications for new orders"
+  checked={notifications}
+  onChange={(e) =&gt; setNotifications(e.target.checked)}
+/&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- RADIO BUTTON -->
+            <section class="component-section">
+                <h2>Radio Button</h2>
+                <p>Exclusive single selection from 2-5 options, ideal for payment methods, shipping options, or account types.</p>
+
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'radio-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'radio-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'radio-jsx')">JSX</button>
+                </div>
+
+                <div id="radio-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="input-group">
+                            <label class="input-label">Shipping Method</label>
+                            <div class="radio-group">
+                                <label class="radio-wrapper">
+                                    <input type="radio" name="shipping" class="radio-input" checked>
+                                    <span class="radio-label">Standard Delivery (3-5 business days) - Free</span>
+                                </label>
+                                <label class="radio-wrapper">
+                                    <input type="radio" name="shipping" class="radio-input">
+                                    <span class="radio-label">Express Delivery (1-2 business days) - $15.00</span>
+                                </label>
+                                <label class="radio-wrapper">
+                                    <input type="radio" name="shipping" class="radio-input">
+                                    <span class="radio-label">Overnight Delivery (next day) - $35.00</span>
+                                </label>
+                                <label class="radio-wrapper">
+                                    <input type="radio" name="shipping" class="radio-input" disabled>
+                                    <span class="radio-label">Same-Day Delivery (unavailable in your area)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="input-group" style="margin-top: var(--spacing-8);">
+                            <label class="input-label">Payment Method</label>
+                            <div class="radio-group">
+                                <label class="radio-wrapper">
+                                    <input type="radio" name="payment" class="radio-input" checked>
+                                    <span class="radio-label">Credit Card</span>
+                                </label>
+                                <label class="radio-wrapper">
+                                    <input type="radio" name="payment" class="radio-input">
+                                    <span class="radio-label">Bank Transfer</span>
+                                </label>
+                                <label class="radio-wrapper">
+                                    <input type="radio" name="payment" class="radio-input">
+                                    <span class="radio-label">Net 30 Terms</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="radio-html" class="tab-content">
+                    <pre><code>&lt;!-- Radio Button Group --&gt;
+&lt;div class="input-group"&gt;
+  &lt;label class="input-label"&gt;Shipping Method&lt;/label&gt;
+  &lt;div class="radio-group"&gt;
+    &lt;label class="radio-wrapper"&gt;
+      &lt;input type="radio" name="shipping" class="radio-input" checked&gt;
+      &lt;span class="radio-label"&gt;Standard Delivery (3-5 days) - Free&lt;/span&gt;
+    &lt;/label&gt;
+    &lt;label class="radio-wrapper"&gt;
+      &lt;input type="radio" name="shipping" class="radio-input"&gt;
+      &lt;span class="radio-label"&gt;Express Delivery (1-2 days) - $15.00&lt;/span&gt;
+    &lt;/label&gt;
+    &lt;label class="radio-wrapper"&gt;
+      &lt;input type="radio" name="shipping" class="radio-input"&gt;
+      &lt;span class="radio-label"&gt;Overnight Delivery (next day) - $35.00&lt;/span&gt;
+    &lt;/label&gt;
+    &lt;label class="radio-wrapper"&gt;
+      &lt;input type="radio" name="shipping" class="radio-input" disabled&gt;
+      &lt;span class="radio-label"&gt;Same-Day (unavailable)&lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div id="radio-jsx" class="tab-content">
+                    <pre><code>const RadioGroup = ({ label, name, options, value, onChange }) =&gt; (
+  &lt;div className="input-group"&gt;
+    {label && &lt;label className="input-label"&gt;{label}&lt;/label&gt;}
+    &lt;div className="radio-group"&gt;
+      {options.map(option =&gt; (
+        &lt;label key={option.value} className="radio-wrapper"&gt;
+          &lt;input
+            type="radio"
+            name={name}
+            className="radio-input"
+            value={option.value}
+            checked={value === option.value}
+            disabled={option.disabled}
+            onChange={() =&gt; onChange(option.value)}
+          /&gt;
+          &lt;span className="radio-label"&gt;{option.label}&lt;/span&gt;
+        &lt;/label&gt;
+      ))}
+    &lt;/div&gt;
+  &lt;/div&gt;
+);
+
+// Usage
+&lt;RadioGroup
+  label="Shipping Method"
+  name="shipping"
+  value={shippingMethod}
+  onChange={setShippingMethod}
+  options={[
+    { value: 'standard', label: 'Standard Delivery (3-5 days) - Free' },
+    { value: 'express', label: 'Express Delivery (1-2 days) - $15.00' },
+    { value: 'overnight', label: 'Overnight (next day) - $35.00' },
+    { value: 'same-day', label: 'Same-Day (unavailable)', disabled: true }
+  ]}
+/&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- FORM LAYOUT EXAMPLE -->
+            <section class="component-section">
+                <h2>Complete Form Example</h2>
+                <p>A realistic B2B seafood marketplace form demonstrating proper layout, validation states, and field combinations.</p>
+
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'example-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'example-html')">HTML</button>
+                </div>
+
+                <div id="example-preview" class="tab-content active">
+                    <div class="preview-box" style="max-width: 800px;">
+                        <form>
+                            <div class="form-section">
+                                <h3 class="form-section-title">Supplier Information</h3>
+                                <div class="form-row">
+                                    <div class="input-group">
+                                        <label class="input-label input-label-required" for="company-name">Company Name</label>
+                                        <input type="text" id="company-name" class="input-field input-md" placeholder="Ocean Fresh Seafood Ltd.">
+                                    </div>
+                                    <div class="input-group">
+                                        <label class="input-label input-label-required" for="tax-id">Tax ID</label>
+                                        <input type="text" id="tax-id" class="input-field input-md" placeholder="00-0000000">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="input-group">
+                                        <label class="input-label input-label-required" for="email">Business Email</label>
+                                        <div class="input-with-icon">
+                                            <span class="input-icon-left">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                                    <polyline points="22,6 12,13 2,6"></polyline>
+                                                </svg>
+                                            </span>
+                                            <input type="email" id="email" class="input-field input-md" placeholder="contact@oceanfresh.com">
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <label class="input-label input-label-required" for="phone">Phone Number</label>
+                                        <input type="tel" id="phone" class="input-field input-md" placeholder="+1 (555) 000-0000">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h3 class="form-section-title">Product Details</h3>
+                                <div class="form-row">
+                                    <div class="input-group">
+                                        <label class="input-label input-label-required" for="category">Product Category</label>
+                                        <div class="select-wrapper">
+                                            <select id="category" class="select-field">
+                                                <option value="">Select category</option>
+                                                <option value="fresh" selected>Fresh Seafood</option>
+                                                <option value="frozen">Frozen Products</option>
+                                                <option value="processed">Processed Goods</option>
+                                            </select>
+                                            <span class="select-icon">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+                                        <label class="input-label input-label-required" for="region">Operating Region</label>
+                                        <div class="select-wrapper">
+                                            <select id="region" class="select-field">
+                                                <option value="">Select region</option>
+                                                <option value="northeast">Northeast US</option>
+                                                <option value="southeast" selected>Southeast US</option>
+                                                <option value="west">West Coast</option>
+                                            </select>
+                                            <span class="select-icon">
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label class="input-label" for="description">Business Description</label>
+                                    <textarea id="description" class="textarea-field textarea-md" placeholder="Tell us about your business, production capacity, and specialty products..."></textarea>
+                                    <span class="input-helper">Highlight your unique offerings and capabilities (optional)</span>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h3 class="form-section-title">Certifications & Preferences</h3>
+                                <div style="display: flex; flex-direction: column; gap: var(--spacing-4);">
+                                    <label class="checkbox-wrapper">
+                                        <input type="checkbox" class="checkbox-input" checked>
+                                        <span class="checkbox-label">MSC Certified (Marine Stewardship Council)</span>
+                                    </label>
+                                    <label class="checkbox-wrapper">
+                                        <input type="checkbox" class="checkbox-input" checked>
+                                        <span class="checkbox-label">HACCP Compliant</span>
+                                    </label>
+                                    <label class="checkbox-wrapper">
+                                        <input type="checkbox" class="checkbox-input">
+                                        <span class="checkbox-label">Organic Certification</span>
+                                    </label>
+                                    <label class="checkbox-wrapper">
+                                        <input type="checkbox" class="checkbox-input" checked>
+                                        <span class="checkbox-label">Send me weekly market updates and price alerts</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-section">
+                                <h3 class="form-section-title">Preferred Payment Terms</h3>
+                                <div class="radio-group">
+                                    <label class="radio-wrapper">
+                                        <input type="radio" name="payment" class="radio-input">
+                                        <span class="radio-label">Immediate Payment (Credit Card / Bank Transfer)</span>
+                                    </label>
+                                    <label class="radio-wrapper">
+                                        <input type="radio" name="payment" class="radio-input" checked>
+                                        <span class="radio-label">Net 30 Terms (Requires credit approval)</span>
+                                    </label>
+                                    <label class="radio-wrapper">
+                                        <input type="radio" name="payment" class="radio-input">
+                                        <span class="radio-label">Net 60 Terms (For established suppliers only)</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div style="margin-top: var(--spacing-8);">
+                                <label class="checkbox-wrapper">
+                                    <input type="checkbox" class="checkbox-input">
+                                    <span class="checkbox-label">I agree to the WhaleLord Marketplace Terms of Service, Privacy Policy, and Supplier Agreement. I confirm that all information provided is accurate and up to date.</span>
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div id="example-html" class="tab-content">
+                    <pre><code>&lt;form&gt;
+  &lt;div class="form-section"&gt;
+    &lt;h3 class="form-section-title"&gt;Supplier Information&lt;/h3&gt;
+    &lt;div class="form-row"&gt;
+      &lt;div class="input-group"&gt;
+        &lt;label class="input-label input-label-required"&gt;Company Name&lt;/label&gt;
+        &lt;input type="text" class="input-field input-md" placeholder="Ocean Fresh Seafood Ltd."&gt;
+      &lt;/div&gt;
+      &lt;div class="input-group"&gt;
+        &lt;label class="input-label input-label-required"&gt;Tax ID&lt;/label&gt;
+        &lt;input type="text" class="input-field input-md" placeholder="00-0000000"&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="form-section"&gt;
+    &lt;h3 class="form-section-title"&gt;Certifications&lt;/h3&gt;
+    &lt;label class="checkbox-wrapper"&gt;
+      &lt;input type="checkbox" class="checkbox-input" checked&gt;
+      &lt;span class="checkbox-label"&gt;MSC Certified&lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+
+    <script>
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.component-section');
+            const tabButtons = section.querySelectorAll('.tab-btn');
+            const tabContents = section.querySelectorAll('.tab-content');
+
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>
