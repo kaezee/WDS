@@ -1,0 +1,434 @@
+/* BUTTON COMPONENTS - WHALELORD DESIGN SYSTEM */
+
+/* ===========================
+   BASE BUTTON STYLES
+   =========================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading); /* DM Sans - was var(--font-body) which is Inter */
+  font-weight: var(--font-weight-medium);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-waves-500);
+  outline-offset: 2px;
+}
+
+/* ===========================
+   BUTTON SIZES
+   =========================== */
+
+.btn-sm {
+  height: var(--height-button-sm);
+  padding: 0 16px;
+  font-size: var(--font-size-sm);
+}
+
+.btn-md {
+  height: var(--height-button-md);
+  padding: 0 24px;
+  font-size: var(--font-size-base);
+}
+
+.btn-lg {
+  height: var(--height-button-lg);
+  padding: 0 32px;
+  font-size: var(--font-size-lg);
+}
+
+/* ===========================
+   PRIMARY BLUE BUTTONS
+   Main CTAs - Use on light backgrounds
+   =========================== */
+
+.btn-primary {
+  background: var(--color-waves-500);
+  color: #FFFFFF;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-waves-700);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.btn-primary:active:not(:disabled) {
+  background: var(--color-waves-700);
+}
+
+.btn-primary:disabled {
+  background: var(--color-pearl-300);
+  color: var(--color-pearl-400);
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+/* ===========================
+   LIGHT FLUID BUTTONS
+   For use on dark backgrounds (#025E96, etc)
+   =========================== */
+
+/* Fill variant */
+.btn-light-fill {
+  background: var(--color-waves-50);
+  color: var(--color-pearl-900);
+}
+
+.btn-light-fill:hover:not(:disabled) {
+  background: var(--color-waves-100);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.btn-light-fill:active:not(:disabled) {
+  background: var(--color-waves-100);
+}
+
+.btn-light-fill:disabled {
+  background: var(--color-pearl-300);
+  color: var(--color-pearl-400);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Outline variant */
+.btn-light-outline {
+  background: transparent;
+  color: var(--color-waves-50);
+  border: 1px solid var(--color-waves-50);
+  padding: 0 23px; /* Reduced by 1px to account for border */
+}
+
+.btn-light-outline.btn-sm {
+  padding: 0 15px;
+}
+
+.btn-light-outline.btn-lg {
+  padding: 0 31px;
+}
+
+.btn-light-outline:hover:not(:disabled) {
+  background: rgba(230, 242, 248, 0.1);
+  border-color: var(--color-waves-100);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.btn-light-outline:active:not(:disabled) {
+  background: rgba(230, 242, 248, 0.15);
+}
+
+.btn-light-outline:disabled {
+  border-color: var(--color-pearl-400);
+  color: var(--color-pearl-400);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ===========================
+   TERTIARY STROKE BUTTONS
+   Secondary actions - Use anywhere
+   =========================== */
+
+.btn-tertiary {
+  background: transparent;
+  color: var(--color-pearl-900);
+  border: 1px solid var(--color-pearl-400);
+  padding: 0 23px; /* Reduced by 1px to account for border */
+}
+
+.btn-tertiary.btn-sm {
+  padding: 0 15px;
+}
+
+.btn-tertiary.btn-lg {
+  padding: 0 31px;
+}
+
+.btn-tertiary:hover:not(:disabled) {
+  background: var(--color-pearl-100);
+  border-color: var(--color-pearl-500);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.btn-tertiary:active:not(:disabled) {
+  background: var(--color-pearl-200);
+}
+
+.btn-tertiary:disabled {
+  border-color: var(--color-pearl-300);
+  color: var(--color-pearl-400);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* ===========================
+   FLUID WIDTH
+   =========================== */
+
+.btn-fluid {
+  width: 100%;
+}
+
+/* ===========================
+   DEMO STYLES
+   =========================== */
+
+.component-demo {
+  background: white;
+  border: 1px solid var(--color-pearl-200);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-8);
+  margin-bottom: var(--spacing-6);
+}
+
+.demo-row {
+  display: flex;
+  gap: var(--spacing-8);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.demo-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.demo-item label {
+  font-size: var(--font-size-sm);
+  color: var(--color-pearl-600);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Dark background demo container */
+.demo-dark {
+  background: var(--color-waves-500);
+  padding: var(--spacing-8);
+  border-radius: var(--radius-lg);
+}
+
+/* Code Examples */
+.code-example {
+  background: var(--color-pearl-800);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--spacing-6);
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-3) var(--spacing-4);
+  background: var(--color-pearl-900);
+  border-bottom: 1px solid var(--color-pearl-700);
+}
+
+.code-header span {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-pearl-400);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.copy-btn {
+  background: var(--color-waves-500);
+  color: white;
+  border: none;
+  padding: 4px 12px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.copy-btn:hover {
+  background: var(--color-waves-600);
+}
+
+.code-example pre {
+  margin: 0;
+  padding: var(--spacing-4);
+  overflow-x: auto;
+}
+
+.code-example code {
+  background: none;
+  padding: 0;
+  color: var(--color-pearl-50);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+/* Specifications Table */
+.specs {
+  background: var(--color-pearl-50);
+  border: 1px solid var(--color-pearl-200);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-6);
+  margin-bottom: var(--spacing-6);
+}
+
+.specs h4 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-4);
+}
+
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.spec-table th {
+  text-align: left;
+  padding: var(--spacing-3);
+  background: white;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  color: var(--color-pearl-700);
+  border-bottom: 2px solid var(--color-pearl-300);
+}
+
+.spec-table td {
+  padding: var(--spacing-3);
+  border-bottom: 1px solid var(--color-pearl-200);
+  font-size: var(--font-size-sm);
+}
+
+.spec-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* States Grid */
+.states-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--spacing-6);
+  margin-bottom: var(--spacing-6);
+}
+
+.state-demo {
+  background: white;
+  border: 1px solid var(--color-pearl-200);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--spacing-3);
+}
+
+.state-demo h4 {
+  font-size: var(--font-size-sm);
+  color: var(--color-pearl-600);
+  margin: 0;
+}
+
+.state-demo code {
+  font-size: var(--font-size-xs);
+}
+
+/* Guidelines */
+.guidelines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--spacing-6);
+}
+
+.guideline {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-6);
+  border: 2px solid;
+}
+
+.guideline.do {
+  border-color: var(--color-info-500);
+  background: #F0FAFF;
+}
+
+.guideline.dont {
+  border-color: var(--color-error-500);
+  background: #FFF5F5;
+}
+
+.guideline h4 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-4);
+}
+
+.guideline ul {
+  list-style: none;
+  padding: 0;
+}
+
+.guideline li {
+  padding: var(--spacing-2) 0;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-relaxed);
+}
+
+.guideline li::before {
+  content: '•';
+  margin-right: var(--spacing-2);
+  font-weight: bold;
+}
+
+/* Accessibility Checklist */
+.a11y-checklist {
+  display: grid;
+  gap: var(--spacing-4);
+}
+
+.a11y-item {
+  display: flex;
+  gap: var(--spacing-4);
+  align-items: flex-start;
+}
+
+.a11y-item .check {
+  background: rgba(255, 255, 255, 0.2);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-lg);
+  flex-shrink: 0;
+}
+
+.a11y-item p {
+  margin: 0;
+  line-height: var(--line-height-relaxed);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .demo-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .states-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .guidelines-grid {
+    grid-template-columns: 1fr;
+  }
+}
