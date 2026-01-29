@@ -2,7 +2,7 @@
 
 /* ===========================
    ORDER STATUS INDICATORS
-   Outlined pills for order tracking states
+   Filled pills with borders for order tracking states
    =========================== */
 
 .order-status {
@@ -15,7 +15,6 @@
   font-weight: var(--font-weight-semibold);
   border-radius: 6px;
   border: 1px solid;
-  background: transparent;
   white-space: nowrap;
   line-height: 1.4;
   transition: all 0.2s ease;
@@ -23,31 +22,37 @@
 
 /* Order Status Color Variants */
 .order-status-delivered {
+  background: #D4F4E2; /* Success-100 */
   border-color: #2C7048; /* Success-700 */
   color: #2C7048;
 }
 
 .order-status-processing {
+  background: #FFE8D9; /* Warning-100 */
   border-color: #CC5500; /* Warning-700 */
   color: #CC5500;
 }
 
 .order-status-cancelled {
+  background: #FFE5E8; /* Error-100 */
   border-color: #A4161A; /* Error-700 */
   color: #A4161A;
 }
 
 .order-status-archived {
-  border-color: #718096; /* Pearl-500 */
-  color: #718096;
+  background: #EDF2F7; /* Pearl-100 */
+  border-color: #2D3748; /* Pearl-700 */
+  color: #2D3748;
 }
 
 .order-status-pending {
+  background: #E6F2F8; /* Waves-50 */
   border-color: #01385A; /* Waves-700 */
   color: #01385A;
 }
 
 .order-status-shipped {
+  background: #E6F2F8; /* Waves-50 */
   border-color: #025E96; /* Waves-500 */
   color: #025E96;
 }
