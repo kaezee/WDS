@@ -99,10 +99,11 @@
      Use for: Page backgrounds, card surfaces, sections
      ============================================ */
   
-  --color-shore-base: #F7FAFC;  /* PRIMARY BACKGROUND - Default page canvas */
-  --color-shore-ice: #D9F0F2;   /* Secondary sections, data tables, hover states */
-  --color-shore-sand: #EDE6D8;  /* Editorial content, empty states, footers */
-  --color-shore-foam: #E6F2F8;  /* Light accents on dark backgrounds */
+  --color-shore-base: #F7FAFC;       /* PRIMARY BACKGROUND - Default page canvas */
+  --color-shore-hover: #D4EAF4;      /* Button hover states, selected filters, active navigation */
+  --color-shore-editorial: #F5F7FA;  /* Blog cards, testimonials, secondary content */
+  --color-shore-foam: #E6F2F8;       /* Hero sections, branded areas, info backgrounds */
+  --color-shore-muted: #E2E8F0;      /* Archived orders, disabled states, read-only areas */
 
 
   /* ============================================
@@ -140,9 +141,9 @@
      Use for: Error messages, validation, urgent attention, critical issues
      ============================================ */
   
-  --color-error-300: #E57A6A;    /* Light - Error backgrounds */
-  --color-error-500: #C24E3A;    /* PRIMARY ERROR - Borders, icons */
-  --color-error-700: #742F22;    /* Dark - Error text (high contrast) */
+  --color-error-300: #FF6B6B;    /* Light - Error text, icons */
+  --color-error-500: #E63946;    /* PRIMARY ERROR - Borders, icons, alerts */
+  --color-error-700: #A4161A;    /* Dark - Error text on light backgrounds (high contrast) */
 
 
   /* ============================================
@@ -151,9 +152,9 @@
      Use for: Warnings, limited stock, pending states, attention needed
      ============================================ */
   
-  --color-warning-300: #FBBF24;  /* Light - Warning backgrounds */
-  --color-warning-500: #F59E0B;  /* PRIMARY WARNING - Borders, icons */
-  --color-warning-700: #B45309;  /* Dark - Warning text (high contrast) */
+  --color-warning-300: #FFB347;  /* Light - Warning text, icons */
+  --color-warning-500: #FF8C42;  /* PRIMARY WARNING - Borders, icons, alerts */
+  --color-warning-700: #CC5500;  /* Dark - Warning text on light backgrounds (high contrast) */
 
 
   /* ============================================
@@ -379,10 +380,11 @@
  * 900: #01121E
  * 
  * SHORE (SURFACES)
- * Base: #F7FAFC  ← MAIN BACKGROUND
- * Ice:  #D9F0F2
- * Sand: #EDE6D8
- * Foam: #E6F2F8
+ * Base:      #F7FAFC  ← MAIN BACKGROUND
+ * Hover:     #D4EAF4
+ * Editorial: #F5F7FA
+ * Foam:      #E6F2F8
+ * Muted:     #E2E8F0
  * 
  * PEARL (GRAYSCALE)
  * 50:  #F7FAFC
@@ -398,6 +400,6 @@
  * 
  * CORAL SEMANTIC
  * Success: #48BB78 (green)
- * Error:   #C24E3A (red)
- * Warning: #F59E0B (amber)
+ * Error:   #E63946 (red)
+ * Warning: #FF8C42 (amber)
  */
