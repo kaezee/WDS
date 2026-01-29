@@ -5,15 +5,12 @@
    =========================== */
 
 .accordion {
-  border: 1px solid var(--color-pearl-700);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
   width: 100%;
-  background: var(--color-pearl-900);
 }
 
 .accordion-item {
   border-bottom: 1px solid var(--color-pearl-700);
+  background: var(--color-pearl-900);
 }
 
 .accordion-item:last-child {
@@ -49,24 +46,27 @@
 .accordion-header:focus {
   outline: none;
   background: var(--color-pearl-800);
-  box-shadow: inset 0 0 0 2px var(--color-waves-300);
+  box-shadow: inset 0 0 0 2px var(--color-pearl-700);
 }
 
 .accordion-header-text {
   flex: 1;
   line-height: var(--line-height-normal);
+  color: var(--color-text-inverse);
 }
 
+/* Icon: + when closed, X when open */
 .accordion-icon {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   color: var(--color-pearl-400);
   flex-shrink: 0;
-  transition: transform 0.3s ease;
+  transition: none;
 }
 
+/* No rotation - we swap between + and X */
 .accordion-item.active .accordion-icon {
-  transform: rotate(180deg);
+  transform: none;
 }
 
 /* ===========================
@@ -92,42 +92,15 @@
 }
 
 /* ===========================
-   BORDERED VARIANT (HIGHLIGHTED)
+   LIGHT VARIANT (ONLY USE ON DARK SURFACES)
    =========================== */
-
-.accordion-bordered {
-  border: 2px solid var(--color-waves-500);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-}
-
-.accordion-bordered .accordion-item {
-  border-bottom-color: var(--color-border-default);
-}
-
-.accordion-bordered .accordion-header {
-  background: var(--color-bg-primary);
-}
-
-.accordion-bordered .accordion-header:hover {
-  background: var(--color-shore-base);
-}
-
-/* ===========================
-   LIGHT VARIANT (FOR LIGHT BACKGROUNDS)
-   =========================== */
-
-.accordion-light {
-  border-color: var(--color-border-default);
-  background: var(--color-bg-primary);
-}
 
 .accordion-light .accordion-item {
   border-bottom-color: var(--color-border-default);
+  background: var(--color-bg-primary);
 }
 
 .accordion-light .accordion-header {
-  background: transparent;
   color: var(--color-pearl-800);
 }
 
@@ -137,7 +110,11 @@
 
 .accordion-light .accordion-header:focus {
   background: var(--color-shore-base);
-  box-shadow: inset 0 0 0 2px var(--color-waves-500);
+  box-shadow: inset 0 0 0 2px var(--color-border-default);
+}
+
+.accordion-light .accordion-header-text {
+  color: var(--color-pearl-800);
 }
 
 .accordion-light .accordion-icon {
@@ -149,7 +126,7 @@
 }
 
 /* ===========================
-   WITH BADGE/ICON VARIANTS
+   WITH BADGE VARIANTS
    =========================== */
 
 .accordion-header-with-badge {
@@ -160,8 +137,8 @@
 
 .accordion-badge {
   padding: 4px 10px;
-  background: var(--color-waves-900);
-  color: var(--color-waves-200);
+  background: var(--color-pearl-700);
+  color: var(--color-text-inverse);
   border-radius: var(--radius-sm);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
@@ -169,20 +146,20 @@
 }
 
 .accordion-light .accordion-badge {
-  background: var(--color-waves-50);
-  color: var(--color-waves-700);
+  background: var(--color-pearl-200);
+  color: var(--color-pearl-800);
 }
 
 /* Icon on the left of header text */
 .accordion-header-icon {
   width: 20px;
   height: 20px;
-  color: var(--color-waves-300);
+  color: var(--color-pearl-400);
   flex-shrink: 0;
 }
 
 .accordion-light .accordion-header-icon {
-  color: var(--color-waves-500);
+  color: var(--color-text-secondary);
 }
 
 /* ===========================
@@ -202,8 +179,8 @@
   }
 
   .accordion-icon {
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
   }
 
   .accordion-header-icon {
@@ -236,7 +213,7 @@
 
 /* Keyboard focus visible */
 .accordion-header:focus-visible {
-  outline: 2px solid var(--color-waves-500);
+  outline: 2px solid var(--color-pearl-600);
   outline-offset: -2px;
 }
 
@@ -270,23 +247,23 @@
   margin-bottom: var(--spacing-2);
 }
 
-/* For links inside accordion */
+/* For links inside accordion - NO COLORED TEXT */
 .accordion-body a {
-  color: var(--color-waves-300);
+  color: var(--color-text-inverse);
   text-decoration: underline;
-  transition: color 0.2s;
+  transition: opacity 0.2s;
 }
 
 .accordion-body a:hover {
-  color: var(--color-waves-100);
+  opacity: 0.8;
 }
 
 .accordion-light .accordion-body a {
-  color: var(--color-waves-500);
+  color: var(--color-pearl-800);
 }
 
 .accordion-light .accordion-body a:hover {
-  color: var(--color-waves-700);
+  opacity: 0.7;
 }
 
 /* For code blocks inside accordion */
@@ -296,16 +273,38 @@
   background: var(--color-pearl-800);
   padding: 2px 6px;
   border-radius: var(--radius-sm);
-  color: var(--color-error-300);
+  color: var(--color-pearl-300);
 }
 
 .accordion-light .accordion-body code {
   background: var(--color-pearl-100);
-  color: var(--color-error-500);
+  color: var(--color-pearl-700);
 }
 
 /* ===========================
-   FLUSH VARIANT (No Borders)
+   BORDERED VARIANT (HIGHLIGHTED)
+   =========================== */
+
+.accordion-bordered {
+  border: 2px solid var(--color-waves-500);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.accordion-bordered .accordion-item {
+  border-bottom-color: var(--color-border-default);
+}
+
+.accordion-bordered .accordion-header {
+  background: var(--color-bg-primary);
+}
+
+.accordion-bordered .accordion-header:hover {
+  background: var(--color-shore-base);
+}
+
+/* ===========================
+   FLUSH VARIANT (NO BORDERS)
    =========================== */
 
 .accordion-flush {
