@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhaleLord Design System - Compass</title>
+    
+    <!-- WhaleLord Design System -->
+    <link rel="stylesheet" href="whalelord-tokens.css">
+    <link rel="stylesheet" href="base-styles.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Design System Metadata for AI Tools -->
+    <meta name="design-system" content="WhaleLord Compass">
+    <meta name="ds-version" content="1.0">
+    <meta name="ds-primary-color" content="#025E96">
+    <meta name="ds-primary-color-name" content="Waves">
+    <meta name="ds-font-heading" content="DM Sans">
+    <meta name="ds-font-data" content="Inter">
+    <meta name="ds-font-code" content="Roboto Mono">
+    <meta name="description" content="WhaleLord Compass Design System - Ocean-inspired UI components for B2B seafood marketplace interfaces. Built with accessibility, performance, and developer experience in mind.">
+    
+    <style>
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto var(--spacing-3xl) auto;
+            padding: var(--spacing-3xl) var(--spacing-lg);
+        }
+        
+        .hero h1 {
+            font-size: var(--font-size-6xl);
+            font-weight: var(--font-weight-extrabold);
+            color: var(--color-waves-500);
+            margin-bottom: var(--spacing-md);
+            line-height: var(--line-height-tight);
+        }
+        
+        .hero-subtitle {
+            font-size: var(--font-size-lg);
+            line-height: var(--line-height-relaxed);
+            color: var(--color-text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Principles Grid */
+        .principles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
+            margin: var(--spacing-2xl) 0;
+        }
+        
+        .principle {
+            padding: var(--spacing-xl);
+            background: white;
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-base);
+        }
+        
+        .principle:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-waves-300);
+        }
+        
+        .principle h3 {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-md);
+            color: var(--color-text-primary);
+        }
+        
+        .principle p {
+            color: var(--color-text-secondary);
+            line-height: var(--line-height-relaxed);
+        }
+        
+        /* Component Cards */
+        .card {
+            padding: var(--spacing-xl);
+            background: white;
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-base);
+        }
+        
+        .card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-waves-300);
+        }
+        
+        .card h3 {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-md);
+            color: var(--color-waves-700);
+        }
+        
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin: var(--spacing-md) 0;
+        }
+        
+        .card li {
+            padding: var(--spacing-sm) 0;
+        }
+        
+        .card a {
+            color: var(--color-text-primary);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        
+        .card a:hover {
+            color: var(--color-waves-500);
+        }
+        
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            margin: var(--spacing-2xl) 0;
+        }
+        
+        /* CTA Section */
+        .bg-primary {
+            background: var(--color-waves-500);
+            padding: var(--spacing-3xl) var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            margin: var(--spacing-3xl) 0;
+        }
+        
+        .bg-primary h2 {
+            color: white;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .bg-primary p {
+            color: white;
+            opacity: 0.95;
+        }
+        
+        .text-white {
+            color: white;
+        }
+        
+        .inline-flex {
+            display: inline-flex;
+        }
+        
+        .items-center {
+            align-items: center;
+        }
+        
+        .px-6 {
+            padding-left: var(--spacing-xl);
+            padding-right: var(--spacing-xl);
+        }
+        
+        .py-3 {
+            padding-top: var(--spacing-md);
+            padding-bottom: var(--spacing-md);
+        }
+        
+        .bg-white {
+            background: white;
+        }
+        
+        .rounded-lg {
+            border-radius: var(--radius-lg);
+        }
+        
+        .font-semibold {
+            font-weight: var(--font-weight-semibold);
+        }
+        
+        .transition-colors {
+            transition: all var(--transition-base);
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            padding: var(--spacing-md) var(--spacing-xl);
+            background: white;
+            color: var(--color-waves-500);
+            font-family: var(--font-heading);
+            font-weight: var(--font-weight-semibold);
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            transition: all var(--transition-base);
+            border: 2px solid transparent;
+        }
+        
+        .cta-button:hover {
+            background: var(--color-waves-50);
+            border-color: white;
+        }
+        
+        /* Quick Start Box */
+        .quick-start {
+            background: var(--color-shore-ice);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            border-left: 4px solid var(--color-waves-500);
+            margin: var(--spacing-2xl) 0;
+        }
+        
+        .quick-start h3 {
+            color: var(--color-waves-700);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .quick-start code {
+            display: block;
+            background: white;
+            padding: var(--spacing-md);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-mono);
+            font-size: var(--font-size-sm);
+            margin: var(--spacing-sm) 0;
+            overflow-x: auto;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: var(--font-size-4xl);
+            }
+            
+            .principles {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            
+            <!-- HERO SECTION -->
+            <div class="hero">
+                <h1>Compass Design System</h1>
+                <p class="hero-subtitle">
+                    A comprehensive design system for building B2B seafood marketplace interfaces. 
+                    Ocean-inspired, accessible, and optimized for professional trading platforms with React and Tailwind CSS.
+                </p>
+            </div>
+
+            <!-- QUICK START -->
+            <div class="quick-start">
+                <h3>🚀 Quick Start for Developers</h3>
+                <p>Import the WhaleLord design tokens to get started:</p>
+                <code>&lt;link rel="stylesheet" href="whalelord-tokens.css"&gt;</code>
+                <code>&lt;link rel="stylesheet" href="base-styles.css"&gt;</code>
+                <p style="margin-top: var(--spacing-md);">Then use CSS variables in your components:</p>
+                <code>background: var(--color-waves-500);  /* Primary blue */</code>
+                <code>font-family: var(--font-heading);    /* DM Sans */</code>
+            </div>
+
+            <!-- DESIGN PRINCIPLES -->
+            <section class="section">
+                <h2>Design Principles</h2>
+                <div class="principles">
+                    <div class="principle">
+                        <h3>🌊 Ocean-Inspired</h3>
+                        <p>
+                            Our color palette draws from maritime themes — Waves blues for trust and professionalism, 
+                            Pearl neutrals for clean surfaces, and Coral accents for semantic feedback. 
+                            Every color tells the story of premium seafood sourcing.
+                        </p>
+                    </div>
+                    <div class="principle">
+                        <h3>⚡ Performance First</h3>
+                        <p>
+                            Built with CSS custom properties and utility-first approach for minimal overhead. 
+                            Optimized for fast load times and smooth interactions across all devices and network conditions.
+                        </p>
+                    </div>
+                    <div class="principle">
+                        <h3>♿ Accessibility Built-in</h3>
+                        <p>
+                            WCAG AA compliance by default. Every component tested for color contrast (4.5:1 minimum), 
+                            keyboard navigation, screen reader compatibility, and touch target sizing (44x44px minimum).
+                        </p>
+                    </div>
+                    <div class="principle">
+                        <h3>📱 Responsive by Design</h3>
+                        <p>
+                            Mobile-first approach with touch-friendly targets and adaptive layouts. 
+                            Components work seamlessly from 320px mobile screens to 2560px desktop monitors.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FOUNDATION -->
+            <section class="section">
+                <h2>Foundation</h2>
+                <p>Core design tokens and guidelines that define the WhaleLord visual language.</p>
+                
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>🎨 Colors</h3>
+                        <p>Ocean-inspired palette with Waves (primary blues), Shore (neutral surfaces), Pearl (grayscale), and Coral (semantic feedback).</p>
+                        <ul>
+                            <li>→ <a href="colors.html">View Color System</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>✍️ Typography</h3>
+                        <p>DM Sans for content, Inter for data values, Roboto Mono for code. Complete type scale from 12px to 60px.</p>
+                        <ul>
+                            <li>→ <a href="typography.html">View Typography</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- COMPONENT LIBRARY -->
+            <section class="section">
+                <h2>Component Library</h2>
+                <p>Production-ready components with React + Tailwind code examples, accessibility guidelines, and usage documentation. Each component includes live previews and copy-paste code.</p>
+                
+                <div class="grid-2">
+                    <div class="card">
+                        <h3>Form Elements</h3>
+                        <ul>
+                            <li>→ <a href="buttons.html">Buttons</a></li>
+                            <li>→ <a href="forms.html">Input Fields & Textarea</a></li>
+                            <li>→ <a href="badges.html">Badges & Tags</a></li>
+                            <li>→ <a href="chips.html">Chips (Removable Tags)</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Interactive Components</h3>
+                        <ul>
+                            <li>→ <a href="accordion.html">Accordion</a></li>
+                            <li>→ <a href="stepper.html">Stepper (Progress Indicator)</a></li>
+                            <li>→ <a href="snackbar.html">Snackbar / Toast</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Marketplace Patterns</h3>
+                        <ul>
+                            <li>→ <a href="components.html">Product Cards</a></li>
+                            <li>→ <a href="status-indicators.html">Status Indicators</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Navigation & Layout</h3>
+                        <ul>
+                            <li>→ Navigation Bars <span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">(Coming soon)</span></li>
+                            <li>→ Breadcrumbs <span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">(Coming soon)</span></li>
+                            <li>→ Tabs <span style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">(Coming soon)</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DESIGN TOKENS -->
+            <section class="section bg-primary text-white">
+                <h2>Design Tokens</h2>
+                <p>Download the complete design token file with all WhaleLord colors, typography, spacing, and component variables. Import this single file to use the design system in any project.</p>
+                <div style="margin-top: var(--spacing-xl);">
+                    <a href="whalelord-tokens.css" download class="cta-button">
+                        Download whalelord-tokens.css →
+                    </a>
+                </div>
+            </section>
+
+            <!-- FOR AI TOOLS -->
+            <section class="section">
+                <h2>For AI-Powered Development</h2>
+                <p>
+                    This design system is optimized for AI tools like Claude, ChatGPT, Cursor, and v0.dev. 
+                    The complete system documentation is available on this GitHub page, allowing AI assistants 
+                    to generate perfectly branded WhaleLord interfaces.
+                </p>
+                
+                <div class="quick-start">
+                    <h3>🤖 Using with AI Tools</h3>
+                    <p>Reference this design system in your prompts:</p>
+                    <code style="white-space: pre-wrap;">"Using the WhaleLord design system at https://kaezee.github.io/whalelord_design-system/, create a product listing page with filters and shopping cart."</code>
+                    <p style="margin-top: var(--spacing-md);">The AI will:</p>
+                    <ul style="margin-left: var(--spacing-lg); margin-top: var(--spacing-sm);">
+                        <li>✓ Use Waves (#025E96) for primary actions</li>
+                        <li>✓ Apply DM Sans for content, Inter for prices</li>
+                        <li>✓ Follow accessibility guidelines</li>
+                        <li>✓ Match component patterns exactly</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CONTRIBUTING -->
+            <section class="section">
+                <h2>Using This Design System</h2>
+                <p>The WhaleLord Compass Design System is designed for:</p>
+                <ul style="margin-left: var(--spacing-lg); margin-top: var(--spacing-md); line-height: var(--line-height-relaxed);">
+                    <li><strong>Developers:</strong> Copy-paste ready code examples in HTML, React, and CSS variables</li>
+                    <li><strong>Designers:</strong> Figma-ready color tokens and typography scales</li>
+                    <li><strong>Product Teams:</strong> Clear usage guidelines and accessibility standards</li>
+                    <li><strong>AI Tools:</strong> Structured documentation for code generation</li>
+                </ul>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+</body>
+</html>

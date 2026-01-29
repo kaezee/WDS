@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typography - WhaleLord Design System</title>
+    
+    <!-- WhaleLord Design System -->
+    <link rel="stylesheet" href="whalelord-tokens.css">
+    <link rel="stylesheet" href="base-styles.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Typography specimens */
+        .type-specimen {
+            background: white;
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-2xl);
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        .specimen-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--color-border-default);
+        }
+        
+        .specimen-label {
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .specimen-details {
+            font-family: var(--font-mono);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+        }
+        
+        /* Font family sections */
+        .font-family-section {
+            background: white;
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-2xl);
+            margin-bottom: var(--spacing-3xl);
+        }
+        
+        .font-family-section h3 {
+            color: var(--color-waves-700);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .font-family-section .variable-label {
+            font-family: var(--font-mono);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .font-weights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .weight-sample {
+            text-align: center;
+            padding: var(--spacing-lg);
+            background: var(--color-shore-base);
+            border-radius: var(--radius-md);
+        }
+        
+        .weight-number {
+            font-family: var(--font-mono);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-top: var(--spacing-sm);
+        }
+        
+        /* Scale table */
+        .scale-table {
+            width: 100%;
+            margin-top: var(--spacing-lg);
+            border-collapse: collapse;
+        }
+        
+        .scale-table th {
+            text-align: left;
+            padding: var(--spacing-md);
+            background: var(--color-pearl-50);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-primary);
+            border-bottom: 2px solid var(--color-border-default);
+        }
+        
+        .scale-table td {
+            padding: var(--spacing-md);
+            border-bottom: 1px solid var(--color-border-default);
+            vertical-align: top;
+        }
+        
+        .scale-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .scale-table code {
+            font-size: var(--font-size-xs);
+            background: var(--color-pearl-100);
+            padding: 2px 6px;
+            border-radius: var(--radius-sm);
+        }
+        
+        /* Usage cards */
+        .usage-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .usage-card {
+            background: white;
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+        }
+        
+        .usage-card h4 {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-md);
+            color: var(--color-waves-700);
+        }
+        
+        .usage-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .usage-card li {
+            padding: var(--spacing-sm) 0;
+            font-size: var(--font-size-sm);
+            line-height: var(--line-height-relaxed);
+        }
+        
+        .usage-card li::before {
+            content: '→';
+            margin-right: var(--spacing-sm);
+            color: var(--color-waves-500);
+            font-weight: bold;
+        }
+        
+        /* Line height demos */
+        .line-height-demo {
+            background: white;
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-2xl);
+            margin-bottom: var(--spacing-2xl);
+        }
+        
+        .lh-sample {
+            margin-bottom: var(--spacing-2xl);
+            padding-bottom: var(--spacing-2xl);
+            border-bottom: 1px solid var(--color-border-default);
+        }
+        
+        .lh-sample:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .lh-label {
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .lh-value {
+            font-family: var(--font-mono);
+            font-size: var(--font-size-xs);
+            color: var(--color-text-secondary);
+        }
+        
+        /* Do's and Don'ts */
+        .dos-donts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .dos, .donts {
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            border: 2px solid;
+        }
+        
+        .dos {
+            background: rgba(72, 187, 120, 0.05);
+            border-color: var(--color-success-500);
+        }
+        
+        .donts {
+            background: rgba(194, 78, 58, 0.05);
+            border-color: var(--color-error-500);
+        }
+        
+        .dos h4 {
+            color: var(--color-success-700);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .donts h4 {
+            color: var(--color-error-700);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .dos ul, .donts ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .dos li, .donts li {
+            padding: var(--spacing-sm) 0;
+            line-height: var(--line-height-relaxed);
+        }
+        
+        @media (max-width: 768px) {
+            .dos-donts {
+                grid-template-columns: 1fr;
+            }
+            
+            .font-weights-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            
+            <!-- PAGE HEADER -->
+            <div class="page-header">
+                <h1 class="page-title">Typography</h1>
+                <p class="page-subtitle">A clear type system using DM Sans for content, Inter for data values, and Roboto Mono for technical elements.</p>
+            </div>
+
+            <!-- FONT FAMILIES -->
+            <section class="section">
+                <h2>Font Families</h2>
+                <p>Three carefully chosen typefaces serve distinct purposes in the WhaleLord interface.</p>
+
+                <!-- DM SANS -->
+                <div class="font-family-section">
+                    <h3>DM Sans</h3>
+                    <div class="variable-label">var(--font-heading)</div>
+                    <p style="margin-bottom: var(--spacing-lg);">
+                        Primary typeface for all content including headings, body text, buttons, and general UI. DM Sans provides excellent readability with a modern, 
+                        professional appearance. Use this for storytelling, articles, case studies, and general communication.
+                    </p>
+
+                    <div class="font-weights-grid">
+                        <div class="weight-sample">
+                            <div style="font-family: 'DM Sans', sans-serif; font-weight: 300; font-size: 32px;">Aa Bb Cc</div>
+                            <div class="weight-number">Light (300)</div>
+                        </div>
+                        <div class="weight-sample">
+                            <div style="font-family: 'DM Sans', sans-serif; font-weight: 400; font-size: 32px;">Aa Bb Cc</div>
+                            <div class="weight-number">Regular (400)</div>
+                        </div>
+                        <div class="weight-sample">
+                            <div style="font-family: 'DM Sans', sans-serif; font-weight: 500; font-size: 32px;">Aa Bb Cc</div>
+                            <div class="weight-number">Medium (500)</div>
+                        </div>
+                        <div class="weight-sample">
+                            <div style="font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 32px;">Aa Bb Cc</div>
+                            <div class="weight-number">Semibold (600)</div>
+                        </div>
+                        <div class="weight-sample">
+                            <div style="font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 32px;">Aa Bb Cc</div>
+                            <div class="weight-number">Bold (700)</div>
+                        </div>
+                        <div class="weight-sample">
+                            <div style="font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: 32px;">Aa Bb Cc</div>
+                            <div class="weight-number">Extrabold (800)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INTER -->
+                <div class="font-family-section">
+                    <h3>Inter</h3>
+                    <div class="variable-label">var(--font-body)</div>
+                    <p style="margin-bottom: var(--spacing-lg);">
+                        Reserved specifically for data values, pricing, metrics, and numerical information. Inter's precise letterforms and excellent tabular figures 
+                        make it ideal for displaying numbers, prices, statistics, and data-heavy interfaces. <strong>Do not use for general content.</strong>
+                    </p>
+
+                    <div class="font-weights-grid">
+                        <div class="weight-sample">
+                            <div style="font-family: 'Inter', sans-serif; font-weight: 400; font-size: 32px;">$12,345.67</div>
+                            <div class="weight-number">Regular (400)</div>
+                        </div>
+                        <div class="weight-sample">
+                            <div style="font-family: 'Inter', sans-serif; font-weight: 500; font-size: 32px;">$12,345.67</div>
+                            <div class="weight-number">Medium (500)</div>
+                        </div>
+                        <div class="weight-sample">
+                            <div style="font-family: 'Inter', sans-serif; font-weight: 600; font-size: 32px;">$12,345.67</div>
+                            <div class="weight-number">Semibold (600)</div>
+                        </div>
+                        <div class="weight-sample">
+                            <div style="font-family: 'Inter', sans-serif; font-weight: 700; font-size: 32px;">$12,345.67</div>
+                            <div class="weight-number">Bold (700)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ROBOTO MONO -->
+                <div class="font-family-section">
+                    <h3>Roboto Mono</h3>
+                    <div class="variable-label">var(--font-mono)</div>
+                    <p style="margin-bottom: var(--spacing-lg);">
+                        Monospace typeface for code snippets, transaction IDs, technical identifiers, and machine-readable text. Use when displaying system-generated IDs, 
+                        API responses, code examples, or any content where fixed-width characters are beneficial.
+                    </p>
+
+                    <div class="font-weights-grid">
+                        <div class="weight-sample">
+                            <div style="font-family: 'Roboto Mono', monospace; font-weight: 400; font-size: 24px;">TXN_12A4B</div>
+                            <div class="weight-number">Regular (400)</div>
+                        </div>
+                        <div class="weight-sample">
+                            <div style="font-family: 'Roboto Mono', monospace; font-weight: 500; font-size: 24px;">TXN_12A4B</div>
+                            <div class="weight-number">Medium (500)</div>
+                        </div>
+                        <div class="weight-sample">
+                            <div style="font-family: 'Roboto Mono', monospace; font-weight: 600; font-size: 24px;">TXN_12A4B</div>
+                            <div class="weight-number">Semibold (600)</div>
+                        </div>
+                        <div class="weight-sample">
+                            <div style="font-family: 'Roboto Mono', monospace; font-weight: 700; font-size: 24px;">TXN_12A4B</div>
+                            <div class="weight-number">Bold (700)</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TYPE SCALE -->
+            <section class="section">
+                <h2>Type Scale</h2>
+                <p>Systematic size progression from 12px to 60px for consistent hierarchy across the interface.</p>
+
+                <!-- Display XL -->
+                <div class="type-specimen">
+                    <div class="specimen-header">
+                        <span class="specimen-label">Display XL (H1)</span>
+                        <span class="specimen-details">60px / Bold / 125%</span>
+                    </div>
+                    <h1 style="font-size: 60px; font-weight: 700; line-height: 1.25; margin: 0;">The quick brown fox jumps</h1>
+                </div>
+
+                <!-- Display L -->
+                <div class="type-specimen">
+                    <div class="specimen-header">
+                        <span class="specimen-label">Display L (H2)</span>
+                        <span class="specimen-details">48px / Bold / 125%</span>
+                    </div>
+                    <h2 style="font-size: 48px; font-weight: 700; line-height: 1.25; margin: 0;">The quick brown fox jumps over</h2>
+                </div>
+
+                <!-- Display M -->
+                <div class="type-specimen">
+                    <div class="specimen-header">
+                        <span class="specimen-label">Display M (H3)</span>
+                        <span class="specimen-details">36px / Bold / 125%</span>
+                    </div>
+                    <h3 style="font-size: 36px; font-weight: 700; line-height: 1.25; margin: 0;">The quick brown fox jumps over the lazy dog</h3>
+                </div>
+
+                <!-- Display S -->
+                <div class="type-specimen">
+                    <div class="specimen-header">
+                        <span class="specimen-label">Display S (H4)</span>
+                        <span class="specimen-details">30px / Bold / 125%</span>
+                    </div>
+                    <h4 style="font-size: 30px; font-weight: 700; line-height: 1.25; margin: 0;">The quick brown fox jumps over the lazy dog and runs</h4>
+                </div>
+
+                <!-- Title L -->
+                <div class="type-specimen">
+                    <div class="specimen-header">
+                        <span class="specimen-label">Title L (H5)</span>
+                        <span class="specimen-details">24px / Bold / 125%</span>
+                    </div>
+                    <h5 style="font-size: 24px; font-weight: 700; line-height: 1.25; margin: 0;">The quick brown fox jumps over the lazy dog and runs through the field</h5>
+                </div>
+
+                <!-- Title M -->
+                <div class="type-specimen">
+                    <div class="specimen-header">
+                        <span class="specimen-label">Title M (H6)</span>
+                        <span class="specimen-details">20px / Bold / 125%</span>
+                    </div>
+                    <h6 style="font-size: 20px; font-weight: 700; line-height: 1.25; margin: 0;">The quick brown fox jumps over the lazy dog and runs through the field under the blue sky</h6>
+                </div>
+
+                <!-- Body Large -->
+                <div class="type-specimen">
+                    <div class="specimen-header">
+                        <span class="specimen-label">Body Large</span>
+                        <span class="specimen-details">18px / Regular / 175%</span>
+                    </div>
+                    <p style="font-size: 18px; font-weight: 400; line-height: 1.75; margin: 0;">The quick brown fox jumps over the lazy dog and runs through the field under the blue sky. It's a beautiful day for an adventure through nature.</p>
+                </div>
+
+                <!-- Body Base -->
+                <div class="type-specimen">
+                    <div class="specimen-header">
+                        <span class="specimen-label">Body Base (Default)</span>
+                        <span class="specimen-details">16px / Regular / 150%</span>
+                    </div>
+                    <p style="font-size: 16px; font-weight: 400; line-height: 1.5; margin: 0;">The quick brown fox jumps over the lazy dog and runs through the field under the blue sky. It's a beautiful day for an adventure through nature. This is the standard body text size used throughout the interface.</p>
+                </div>
+
+                <!-- Body Small -->
+                <div class="type-specimen">
+                    <div class="specimen-header">
+                        <span class="specimen-label">Body Small</span>
+                        <span class="specimen-details">14px / Regular / 150%</span>
+                    </div>
+                    <p style="font-size: 14px; font-weight: 400; line-height: 1.5; margin: 0;">The quick brown fox jumps over the lazy dog and runs through the field under the blue sky. It's a beautiful day for an adventure through nature. This size is ideal for secondary information and supporting text.</p>
+                </div>
+
+                <!-- Caption -->
+                <div class="type-specimen">
+                    <div class="specimen-header">
+                        <span class="specimen-label">Caption</span>
+                        <span class="specimen-details">12px / Regular / 150%</span>
+                    </div>
+                    <p style="font-size: 12px; font-weight: 400; line-height: 1.5; margin: 0;">The quick brown fox jumps over the lazy dog and runs through the field under the blue sky. It's a beautiful day for an adventure through nature. Use this size for captions, metadata, and fine print.</p>
+                </div>
+            </section>
+
+            <!-- SIZE REFERENCE TABLE -->
+            <section class="section">
+                <h2>Size Reference</h2>
+                <table class="scale-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Size</th>
+                            <th>CSS Variable</th>
+                            <th>Usage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>XS</strong></td>
+                            <td>12px</td>
+                            <td><code>var(--font-size-xs)</code></td>
+                            <td>Captions, metadata, fine print</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SM</strong></td>
+                            <td>14px</td>
+                            <td><code>var(--font-size-sm)</code></td>
+                            <td>Small labels, secondary text</td>
+                        </tr>
+                        <tr>
+                            <td><strong>BASE</strong></td>
+                            <td>16px</td>
+                            <td><code>var(--font-size-base)</code></td>
+                            <td>Body text, paragraphs (default)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>LG</strong></td>
+                            <td>18px</td>
+                            <td><code>var(--font-size-lg)</code></td>
+                            <td>Lead paragraphs, prominent body text</td>
+                        </tr>
+                        <tr>
+                            <td><strong>XL</strong></td>
+                            <td>20px</td>
+                            <td><code>var(--font-size-xl)</code></td>
+                            <td>Small headings (H6)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2XL</strong></td>
+                            <td>24px</td>
+                            <td><code>var(--font-size-2xl)</code></td>
+                            <td>Section headings (H5)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3XL</strong></td>
+                            <td>30px</td>
+                            <td><code>var(--font-size-3xl)</code></td>
+                            <td>Sub-headings (H4)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4XL</strong></td>
+                            <td>36px</td>
+                            <td><code>var(--font-size-4xl)</code></td>
+                            <td>Page headings (H3)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5XL</strong></td>
+                            <td>48px</td>
+                            <td><code>var(--font-size-5xl)</code></td>
+                            <td>Major headings (H2)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>6XL</strong></td>
+                            <td>60px</td>
+                            <td><code>var(--font-size-6xl)</code></td>
+                            <td>Hero headings (H1)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- LINE HEIGHTS -->
+            <section class="section">
+                <h2>Line Heights</h2>
+                <p>Four line height options for different content types.</p>
+
+                <div class="line-height-demo">
+                    <div class="lh-sample">
+                        <div class="lh-label">Tight (125%) - Headings & Titles <span class="lh-value">var(--line-height-tight)</span></div>
+                        <h3 style="line-height: 1.25; margin: 0;">The Future of Design Systems</h3>
+                        <p style="font-size: 14px; color: var(--color-text-secondary); margin-top: var(--spacing-sm);">Best for headings where vertical space is premium</p>
+                    </div>
+
+                    <div class="lh-sample">
+                        <div class="lh-label">Normal (150%) - Body Text & UI <span class="lh-value">var(--line-height-normal)</span></div>
+                        <p style="line-height: 1.5; margin: 0;">This is the standard line height for most UI elements and body text. It provides good readability while maintaining efficient use of space. Perfect for buttons, labels, cards, and general interface text.</p>
+                    </div>
+
+                    <div class="lh-sample">
+                        <div class="lh-label">Relaxed (175%) - Long-form Content <span class="lh-value">var(--line-height-relaxed)</span></div>
+                        <p style="line-height: 1.75; margin: 0;">Use this more spacious line height for articles, blog posts, documentation, and any long-form reading content. The extra breathing room significantly improves readability for extended reading sessions and reduces eye strain.</p>
+                    </div>
+
+                    <div class="lh-sample">
+                        <div class="lh-label">Loose (200%) - Emphasis & Quotes <span class="lh-value">var(--line-height-loose)</span></div>
+                        <p style="line-height: 2; margin: 0; font-style: italic;">"Design is not just what it looks like and feels like. Design is how it works. The extra space in this line height creates emphasis and allows text to breathe."</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- USAGE GUIDELINES -->
+            <section class="section">
+                <h2>Usage Guidelines</h2>
+
+                <div class="usage-cards">
+                    <div class="usage-card">
+                        <h4>🎨 DM Sans (Content)</h4>
+                        <ul>
+                            <li>All headings H1-H6</li>
+                            <li>Body paragraphs and articles</li>
+                            <li>Button labels and UI text</li>
+                            <li>Navigation and menus</li>
+                            <li>Case studies and storytelling</li>
+                            <li>General content everywhere</li>
+                        </ul>
+                    </div>
+
+                    <div class="usage-card">
+                        <h4>📊 Inter (Data Values)</h4>
+                        <ul>
+                            <li>Prices and currency amounts</li>
+                            <li>Statistics and metrics</li>
+                            <li>Percentages and ratios</li>
+                            <li>Data tables and charts</li>
+                            <li>Numerical dashboards</li>
+                            <li>Financial information only</li>
+                        </ul>
+                    </div>
+
+                    <div class="usage-card">
+                        <h4>⌨️ Roboto Mono (Technical)</h4>
+                        <ul>
+                            <li>Code snippets and examples</li>
+                            <li>Transaction IDs</li>
+                            <li>API endpoints and responses</li>
+                            <li>File names and paths</li>
+                            <li>System-generated identifiers</li>
+                            <li>Technical documentation</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- DO'S AND DON'TS -->
+            <section class="section">
+                <h2>Best Practices</h2>
+
+                <div class="dos-donts">
+                    <div class="dos">
+                        <h4>✅ Do</h4>
+                        <ul>
+                            <li>Use DM Sans for all content and storytelling</li>
+                            <li>Use Inter exclusively for numbers and prices</li>
+                            <li>Use Roboto Mono only for IDs and code</li>
+                            <li>Maintain minimum 16px for body text</li>
+                            <li>Use tight line-height (125%) for headings</li>
+                            <li>Use relaxed line-height (175%) for articles</li>
+                            <li>Ensure proper heading hierarchy (H1 → H6)</li>
+                            <li>Keep line length to 70-80 characters maximum</li>
+                        </ul>
+                    </div>
+
+                    <div class="donts">
+                        <h4>❌ Don't</h4>
+                        <ul>
+                            <li>Don't mix DM Sans and Inter in body paragraphs</li>
+                            <li>Don't use Inter for headings or general text</li>
+                            <li>Don't use Roboto Mono outside technical contexts</li>
+                            <li>Don't go below 14px for UI text (12px minimum)</li>
+                            <li>Don't use loose line-height for compact UI</li>
+                            <li>Don't override font weights arbitrarily</li>
+                            <li>Don't skip heading levels (H2 → H4)</li>
+                            <li>Don't use all caps for long text (reduces readability)</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ACCESSIBILITY -->
+            <section class="section">
+                <div style="background: var(--color-shore-ice); padding: var(--spacing-xl); border-radius: var(--radius-lg);">
+                    <h3>♿ Accessibility Guidelines</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: var(--spacing-sm) 0;">✅ <strong>Minimum Size:</strong> Never go below 14px for UI text; 16px is standard body text size</li>
+                        <li style="padding: var(--spacing-sm) 0;">✅ <strong>Line Length:</strong> Limit text to 70-80 characters per line for optimal readability</li>
+                        <li style="padding: var(--spacing-sm) 0;">✅ <strong>Contrast:</strong> All text meets WCAG AA standards with proper color combinations</li>
+                        <li style="padding: var(--spacing-sm) 0;">✅ <strong>Responsive:</strong> Font sizes scale appropriately on mobile devices (minimum 14px)</li>
+                        <li style="padding: var(--spacing-sm) 0;">✅ <strong>Hierarchy:</strong> Clear visual distinction between heading levels using size and weight</li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+</body>
+</html>

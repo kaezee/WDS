@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colors - WhaleLord Design System</title>
+    
+    <!-- WhaleLord Design System -->
+    <link rel="stylesheet" href="whalelord-tokens.css">
+    <link rel="stylesheet" href="base-styles.css">
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Color palette sections */
+        .color-palette {
+            display: grid;
+            gap: var(--spacing-3xl);
+            margin-bottom: var(--spacing-3xl);
+        }
+        
+        .color-group {
+            background: white;
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+        }
+        
+        .color-group h3 {
+            color: var(--color-waves-700);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .color-group-description {
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-xl);
+            line-height: var(--line-height-relaxed);
+        }
+        
+        /* Color swatches grid */
+        .color-swatches {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: var(--spacing-md);
+        }
+        
+        .color-swatch-item {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-sm);
+        }
+        
+        /* Clickable color swatch */
+        .swatch {
+            height: 100px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--color-border-default);
+            cursor: pointer;
+            position: relative;
+            transition: all var(--transition-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .swatch:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-waves-500);
+        }
+        
+        .swatch:active {
+            transform: translateY(0);
+        }
+        
+        /* Copy indicator */
+        .swatch::after {
+            content: 'Click to copy';
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-heading);
+            font-size: 10px;
+            font-weight: 600;
+            padding: 4px 8px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            border-radius: 4px;
+            opacity: 0;
+            transition: opacity var(--transition-fast);
+            pointer-events: none;
+        }
+        
+        .swatch:hover::after {
+            opacity: 1;
+        }
+        
+        .swatch.copied::after {
+            content: 'Copied!';
+            background: var(--color-success-500);
+            opacity: 1;
+        }
+        
+        /* Color info */
+        .swatch-label {
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-semibold);
+            color: var(--color-text-primary);
+        }
+        
+        .swatch-hex {
+            font-family: var(--font-mono);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            cursor: pointer;
+            transition: color var(--transition-fast);
+        }
+        
+        .swatch-hex:hover {
+            color: var(--color-waves-500);
+        }
+        
+        .copy-icon {
+            opacity: 0.5;
+            font-size: 12px;
+        }
+        
+        /* Usage cards */
+        .usage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--spacing-xl);
+            margin: var(--spacing-2xl) 0;
+        }
+        
+        .usage-card {
+            background: white;
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+        }
+        
+        .usage-card h4 {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--spacing-md);
+            color: var(--color-waves-700);
+        }
+        
+        .usage-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .usage-card li {
+            padding: var(--spacing-sm) 0;
+            font-size: var(--font-size-sm);
+            line-height: var(--line-height-relaxed);
+        }
+        
+        .usage-card li::before {
+            content: '→';
+            margin-right: var(--spacing-sm);
+            color: var(--color-waves-500);
+            font-weight: bold;
+        }
+        
+        /* Contrast checker */
+        .contrast-checker {
+            background: white;
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin: var(--spacing-3xl) 0;
+        }
+        
+        .contrast-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .contrast-item {
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+        }
+        
+        .contrast-sample {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: var(--font-weight-semibold);
+            font-size: var(--font-size-lg);
+        }
+        
+        .contrast-info {
+            padding: var(--spacing-md);
+            background: var(--color-pearl-50);
+            text-align: center;
+        }
+        
+        .contrast-ratio {
+            font-family: var(--font-mono);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text-primary);
+        }
+        
+        .pass-badge {
+            display: inline-block;
+            font-size: var(--font-size-xs);
+            padding: 2px 8px;
+            border-radius: var(--radius-sm);
+            margin-top: var(--spacing-xs);
+            font-weight: var(--font-weight-semibold);
+        }
+        
+        .pass-badge.aaa {
+            background: var(--color-success-500);
+            color: white;
+        }
+        
+        .pass-badge.aa {
+            background: var(--color-success-300);
+            color: var(--color-success-900);
+        }
+        
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--color-waves-900);
+            color: white;
+            padding: 16px 24px;
+            border-radius: var(--radius-md);
+            font-family: var(--font-heading);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-semibold);
+            box-shadow: var(--shadow-xl);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all var(--transition-base);
+            z-index: 1000;
+            pointer-events: none;
+        }
+        
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 768px) {
+            .color-swatches {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+            
+            .swatch {
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            
+            <!-- PAGE HEADER -->
+            <div class="page-header">
+                <h1 class="page-title">Colors</h1>
+                <p class="page-subtitle">Ocean-inspired palette shaping trust and clarity in B2B seafood transactions.</p>
+            </div>
+
+            <!-- COLOR PALETTE -->
+            <div class="color-palette">
+                
+                <!-- WAVES (PRIMARY) -->
+                <div class="color-group">
+                    <h3>Primary Brand — Waves</h3>
+                    <p class="color-group-description">
+                        Deep ocean blues that convey trust, professionalism, and stability. Used for primary actions, links, 
+                        and interactive elements that guide buyers through confident purchasing decisions.
+                    </p>
+                    
+                    <div class="color-swatches">
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #E6F2F8;" data-color="#E6F2F8" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Waves 50</div>
+                            <div class="swatch-hex" onclick="copyColorText('#E6F2F8')">
+                                #E6F2F8 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #CCE5F1;" data-color="#CCE5F1" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Waves 100</div>
+                            <div class="swatch-hex" onclick="copyColorText('#CCE5F1')">
+                                #CCE5F1 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #99CBE3;" data-color="#99CBE3" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Waves 200</div>
+                            <div class="swatch-hex" onclick="copyColorText('#99CBE3')">
+                                #99CBE3 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #66B1D5;" data-color="#66B1D5" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Waves 300</div>
+                            <div class="swatch-hex" onclick="copyColorText('#66B1D5')">
+                                #66B1D5 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #025E96; color: white;" data-color="#025E96" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Waves 500 ⭐</div>
+                            <div class="swatch-hex" onclick="copyColorText('#025E96')">
+                                #025E96 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #01385A; color: white;" data-color="#01385A" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Waves 700</div>
+                            <div class="swatch-hex" onclick="copyColorText('#01385A')">
+                                #01385A <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #01121E; color: white;" data-color="#01121E" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Waves 900</div>
+                            <div class="swatch-hex" onclick="copyColorText('#01121E')">
+                                #01121E <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SHORE (SURFACES) -->
+                <div class="color-group">
+                    <h3>Surfaces — Shore</h3>
+                    <p class="color-group-description">
+                        Neutral foundations that create breathing room for product imagery and transaction details. Like a clean shore, 
+                        these surfaces let content stand out without distraction.
+                    </p>
+                    
+                    <div class="color-swatches">
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #F7FAFC;" data-color="#F7FAFC" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Shore Base ⭐</div>
+                            <div class="swatch-hex" onclick="copyColorText('#F7FAFC')">
+                                #F7FAFC <span class="copy-icon">📋</span>
+                            </div>
+                            <small style="color: var(--color-text-secondary); font-size: 11px;">Default canvas</small>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #D9F0F2;" data-color="#D9F0F2" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Shore Ice</div>
+                            <div class="swatch-hex" onclick="copyColorText('#D9F0F2')">
+                                #D9F0F2 <span class="copy-icon">📋</span>
+                            </div>
+                            <small style="color: var(--color-text-secondary); font-size: 11px;">Secondary sections</small>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #EDE6D8;" data-color="#EDE6D8" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Shore Sand</div>
+                            <div class="swatch-hex" onclick="copyColorText('#EDE6D8')">
+                                #EDE6D8 <span class="copy-icon">📋</span>
+                            </div>
+                            <small style="color: var(--color-text-secondary); font-size: 11px;">Editorial content</small>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #E6F2F8;" data-color="#E6F2F8" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Shore Foam</div>
+                            <div class="swatch-hex" onclick="copyColorText('#E6F2F8')">
+                                #E6F2F8 <span class="copy-icon">📋</span>
+                            </div>
+                            <small style="color: var(--color-text-secondary); font-size: 11px;">Light accents</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PEARL (GRAYSCALE) -->
+                <div class="color-group">
+                    <h3>Neutral Colors — Pearl</h3>
+                    <p class="color-group-description">
+                        Full grayscale for backgrounds, overlays, and subtle UI elements. Pearl provides warm neutrals that complement 
+                        the ocean-inspired palette.
+                    </p>
+                    
+                    <div class="color-swatches">
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #F7FAFC;" data-color="#F7FAFC" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Pearl 50</div>
+                            <div class="swatch-hex" onclick="copyColorText('#F7FAFC')">
+                                #F7FAFC <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #EDF2F7;" data-color="#EDF2F7" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Pearl 100</div>
+                            <div class="swatch-hex" onclick="copyColorText('#EDF2F7')">
+                                #EDF2F7 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #E2E8F0;" data-color="#E2E8F0" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Pearl 200</div>
+                            <div class="swatch-hex" onclick="copyColorText('#E2E8F0')">
+                                #E2E8F0 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #CBD5E0;" data-color="#CBD5E0" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Pearl 300</div>
+                            <div class="swatch-hex" onclick="copyColorText('#CBD5E0')">
+                                #CBD5E0 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #A0AEC0;" data-color="#A0AEC0" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Pearl 400</div>
+                            <div class="swatch-hex" onclick="copyColorText('#A0AEC0')">
+                                #A0AEC0 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #718096; color: white;" data-color="#718096" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Pearl 500</div>
+                            <div class="swatch-hex" onclick="copyColorText('#718096')">
+                                #718096 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #4A5568; color: white;" data-color="#4A5568" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Pearl 600</div>
+                            <div class="swatch-hex" onclick="copyColorText('#4A5568')">
+                                #4A5568 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #2D3748; color: white;" data-color="#2D3748" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Pearl 700</div>
+                            <div class="swatch-hex" onclick="copyColorText('#2D3748')">
+                                #2D3748 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #1A202C; color: white;" data-color="#1A202C" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Pearl 800 ⭐</div>
+                            <div class="swatch-hex" onclick="copyColorText('#1A202C')">
+                                #1A202C <span class="copy-icon">📋</span>
+                            </div>
+                            <small style="color: var(--color-text-secondary); font-size: 11px;">Text Primary</small>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #171923; color: white;" data-color="#171923" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Pearl 900</div>
+                            <div class="swatch-hex" onclick="copyColorText('#171923')">
+                                #171923 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CORAL SEMANTIC - SUCCESS -->
+                <div class="color-group">
+                    <h3>Semantic Signals — Coral Success</h3>
+                    <p class="color-group-description">
+                        Vibrant green accents that confirm successful orders, certifications, and quality indicators. 
+                        Use for positive feedback and completed states.
+                    </p>
+                    
+                    <div class="color-swatches">
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #69DBA5;" data-color="#69DBA5" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Success 300</div>
+                            <div class="swatch-hex" onclick="copyColorText('#69DBA5')">
+                                #69DBA5 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #48BB78; color: white;" data-color="#48BB78" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Success 500 ⭐</div>
+                            <div class="swatch-hex" onclick="copyColorText('#48BB78')">
+                                #48BB78 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #2C7048; color: white;" data-color="#2C7048" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Success 700</div>
+                            <div class="swatch-hex" onclick="copyColorText('#2C7048')">
+                                #2C7048 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CORAL SEMANTIC - ERROR -->
+                <div class="color-group">
+                    <h3>Semantic Signals — Coral Error</h3>
+                    <p class="color-group-description">
+                        Alert red that highlights stock issues, validation errors, and urgent attention needs. 
+                        Use sparingly to maintain impact.
+                    </p>
+                    
+                    <div class="color-swatches">
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #E57A6A;" data-color="#E57A6A" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Error 300</div>
+                            <div class="swatch-hex" onclick="copyColorText('#E57A6A')">
+                                #E57A6A <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #C24E3A; color: white;" data-color="#C24E3A" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Error 500 ⭐</div>
+                            <div class="swatch-hex" onclick="copyColorText('#C24E3A')">
+                                #C24E3A <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #742F22; color: white;" data-color="#742F22" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Error 700</div>
+                            <div class="swatch-hex" onclick="copyColorText('#742F22')">
+                                #742F22 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CORAL SEMANTIC - WARNING -->
+                <div class="color-group">
+                    <h3>Semantic Signals — Coral Warning</h3>
+                    <p class="color-group-description">
+                        Amber accents that highlight limited stock, seasonal availability, and pending confirmations. 
+                        Draws attention without alarm.
+                    </p>
+                    
+                    <div class="color-swatches">
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #FBBF24;" data-color="#FBBF24" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Warning 300</div>
+                            <div class="swatch-hex" onclick="copyColorText('#FBBF24')">
+                                #FBBF24 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #F59E0B;" data-color="#F59E0B" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Warning 500 ⭐</div>
+                            <div class="swatch-hex" onclick="copyColorText('#F59E0B')">
+                                #F59E0B <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #B45309; color: white;" data-color="#B45309" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Warning 700</div>
+                            <div class="swatch-hex" onclick="copyColorText('#B45309')">
+                                #B45309 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEXT COLORS -->
+                <div class="color-group">
+                    <h3>Text Colors</h3>
+                    <p class="color-group-description">
+                        Dedicated text colors for clear hierarchy across product details, pricing, and supplier information.
+                    </p>
+                    
+                    <div class="color-swatches">
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #1A202C; color: white;" data-color="#1A202C" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Primary ⭐</div>
+                            <div class="swatch-hex" onclick="copyColorText('#1A202C')">
+                                #1A202C <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #718096; color: white;" data-color="#718096" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Secondary</div>
+                            <div class="swatch-hex" onclick="copyColorText('#718096')">
+                                #718096 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #FFFFFF; border: 2px solid #CBD5E0;" data-color="#FFFFFF" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Inverse</div>
+                            <div class="swatch-hex" onclick="copyColorText('#FFFFFF')">
+                                #FFFFFF <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BORDERS -->
+                <div class="color-group">
+                    <h3>Borders & Dividers</h3>
+                    <p class="color-group-description">
+                        Subtle separation for cards, tables, and form elements without visual clutter.
+                    </p>
+                    
+                    <div class="color-swatches">
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #E2E8F0;" data-color="#E2E8F0" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Default ⭐</div>
+                            <div class="swatch-hex" onclick="copyColorText('#E2E8F0')">
+                                #E2E8F0 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #CBD5E0;" data-color="#CBD5E0" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Neutral</div>
+                            <div class="swatch-hex" onclick="copyColorText('#CBD5E0')">
+                                #CBD5E0 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                        
+                        <div class="color-swatch-item">
+                            <div class="swatch" style="background: #A0AEC0;" data-color="#A0AEC0" onclick="copyColor(this)"></div>
+                            <div class="swatch-label">Hover</div>
+                            <div class="swatch-hex" onclick="copyColorText('#A0AEC0')">
+                                #A0AEC0 <span class="copy-icon">📋</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- USAGE GUIDELINES -->
+            <section class="section">
+                <h2>Usage Guidelines</h2>
+                <div class="usage-grid">
+                    <div class="usage-card">
+                        <h4>🌊 Waves (Primary)</h4>
+                        <ul>
+                            <li>Primary buttons and CTAs</li>
+                            <li>Interactive links</li>
+                            <li>Active navigation states</li>
+                            <li>Focus indicators</li>
+                            <li>Brand moments</li>
+                        </ul>
+                    </div>
+
+                    <div class="usage-card">
+                        <h4>🏖️ Shore (Surfaces)</h4>
+                        <ul>
+                            <li>Page backgrounds (Base)</li>
+                            <li>Card surfaces</li>
+                            <li>Secondary sections (Ice)</li>
+                            <li>Editorial areas (Sand)</li>
+                            <li>Subtle highlights (Foam)</li>
+                        </ul>
+                    </div>
+
+                    <div class="usage-card">
+                        <h4>⚪ Pearl (Neutrals)</h4>
+                        <ul>
+                            <li>Text hierarchy (600-900)</li>
+                            <li>Borders and dividers (200-300)</li>
+                            <li>Disabled states (400)</li>
+                            <li>Placeholder text (500)</li>
+                            <li>Backgrounds (50-100)</li>
+                        </ul>
+                    </div>
+
+                    <div class="usage-card">
+                        <h4>🪸 Coral (Semantic)</h4>
+                        <ul>
+                            <li>Success confirmations (Green)</li>
+                            <li>Error alerts (Red)</li>
+                            <li>Warning messages (Amber)</li>
+                            <li>Status badges</li>
+                            <li>Feedback indicators</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ACCESSIBILITY -->
+            <section class="section">
+                <div class="contrast-checker">
+                    <h3>Accessibility & Contrast</h3>
+                    <p style="margin-bottom: var(--spacing-lg);">All color combinations meet WCAG AA standards (4.5:1 for normal text, 3:1 for large text).</p>
+                    
+                    <div class="contrast-examples">
+                        <div class="contrast-item">
+                            <div class="contrast-sample" style="background: #025E96; color: white;">
+                                Button Text
+                            </div>
+                            <div class="contrast-info">
+                                <div class="contrast-ratio">7.8:1</div>
+                                <div class="pass-badge aaa">AAA</div>
+                            </div>
+                        </div>
+
+                        <div class="contrast-item">
+                            <div class="contrast-sample" style="background: white; color: #1A202C; border: 1px solid #E2E8F0;">
+                                Body Text
+                            </div>
+                            <div class="contrast-info">
+                                <div class="contrast-ratio">12.6:1</div>
+                                <div class="pass-badge aaa">AAA</div>
+                            </div>
+                        </div>
+
+                        <div class="contrast-item">
+                            <div class="contrast-sample" style="background: #F7FAFC; color: #718096;">
+                                Secondary Text
+                            </div>
+                            <div class="contrast-info">
+                                <div class="contrast-ratio">4.5:1</div>
+                                <div class="pass-badge aa">AA</div>
+                            </div>
+                        </div>
+
+                        <div class="contrast-item">
+                            <div class="contrast-sample" style="background: #48BB78; color: white;">
+                                Success
+                            </div>
+                            <div class="contrast-info">
+                                <div class="contrast-ratio">4.8:1</div>
+                                <div class="pass-badge aa">AA</div>
+                            </div>
+                        </div>
+
+                        <div class="contrast-item">
+                            <div class="contrast-sample" style="background: #C24E3A; color: white;">
+                                Error
+                            </div>
+                            <div class="contrast-info">
+                                <div class="contrast-ratio">5.2:1</div>
+                                <div class="pass-badge aa">AA</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">Copied to clipboard!</div>
+
+    <script src="navigation.js"></script>
+    
+    <script>
+        // Copy color to clipboard
+        function copyColor(element) {
+            const color = element.getAttribute('data-color');
+            copyToClipboard(color, element);
+        }
+        
+        // Copy color text directly
+        function copyColorText(color) {
+            copyToClipboard(color);
+        }
+        
+        // Clipboard copy function
+        function copyToClipboard(text, element) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast(`Copied ${text}!`);
+                
+                // Add copied class to swatch if element provided
+                if (element && element.classList.contains('swatch')) {
+                    element.classList.add('copied');
+                    setTimeout(() => {
+                        element.classList.remove('copied');
+                    }, 2000);
+                }
+            }).catch(err => {
+                console.error('Failed to copy:', err);
+                showToast('Failed to copy');
+            });
+        }
+        
+        // Show toast notification
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

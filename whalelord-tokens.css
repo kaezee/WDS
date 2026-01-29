@@ -1,0 +1,403 @@
+/**
+ * WhaleLord Design System - Design Tokens
+ * Version 1.0
+ * 
+ * USAGE:
+ * Import this file into any WhaleLord project:
+ * <link rel="stylesheet" href="whalelord-tokens.css">
+ * 
+ * All design decisions in one place. Use CSS variables directly:
+ * color: var(--color-waves-500);
+ * font-family: var(--font-heading);
+ * 
+ * or copy hex values for other frameworks.
+ */
+
+:root {
+  /* ============================================
+     TYPOGRAPHY - FONT FAMILIES
+     ============================================ */
+  
+  /**
+   * DM Sans - PRIMARY CONTENT FONT
+   * Use for: All headings, body text, UI elements, buttons, navigation
+   * Do NOT use for: Numerical data (use Inter instead)
+   */
+  --font-heading: 'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  
+  /**
+   * Inter - DATA VALUES ONLY
+   * Use for: Prices, metrics, statistics, percentages, numerical dashboards
+   * Do NOT use for: General content, headings, or UI text
+   */
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  
+  /**
+   * Roboto Mono - TECHNICAL/CODE
+   * Use for: Code snippets, transaction IDs, API responses, file paths
+   * Do NOT use for: General UI or content
+   */
+  --font-mono: 'Roboto Mono', 'SF Mono', Monaco, 'Cascadia Code', monospace;
+
+
+  /* ============================================
+     TYPOGRAPHY - FONT SIZES
+     ============================================ */
+  
+  --font-size-xs: 12px;      /* Captions, metadata, fine print */
+  --font-size-sm: 14px;      /* Small labels, secondary text, helper text */
+  --font-size-base: 16px;    /* Body text, paragraphs (DEFAULT) */
+  --font-size-lg: 18px;      /* Lead paragraphs, prominent body text */
+  --font-size-xl: 20px;      /* Small headings (H6) */
+  --font-size-2xl: 24px;     /* Section headings (H5) */
+  --font-size-3xl: 30px;     /* Sub-headings (H4) */
+  --font-size-4xl: 36px;     /* Page headings (H3) */
+  --font-size-5xl: 48px;     /* Major headings (H2) */
+  --font-size-6xl: 60px;     /* Hero headings (H1) */
+
+
+  /* ============================================
+     TYPOGRAPHY - FONT WEIGHTS
+     ============================================ */
+  
+  --font-weight-light: 300;      /* Rare use, decorative text */
+  --font-weight-regular: 400;    /* Body text, paragraphs */
+  --font-weight-medium: 500;     /* Labels, emphasized text */
+  --font-weight-semibold: 600;   /* Buttons, card titles, strong emphasis */
+  --font-weight-bold: 700;       /* Headings, important callouts */
+  --font-weight-extrabold: 800;  /* Hero headings, major impact */
+
+
+  /* ============================================
+     TYPOGRAPHY - LINE HEIGHTS
+     ============================================ */
+  
+  --line-height-tight: 1.25;    /* 125% - Headings, titles (compact) */
+  --line-height-normal: 1.5;    /* 150% - Body text, UI elements (default) */
+  --line-height-relaxed: 1.75;  /* 175% - Long-form content, articles */
+  --line-height-loose: 2;       /* 200% - Emphasis, quotes, breathing room */
+
+
+  /* ============================================
+     COLORS - WAVES (PRIMARY BRAND)
+     Deep ocean blues for trust, professionalism, stability
+     Use for: Primary buttons, links, active states, key actions
+     ============================================ */
+  
+  --color-waves-50: #E6F2F8;    /* Lightest - Backgrounds, hover states */
+  --color-waves-100: #CCE5F1;   /* Very light - Subtle backgrounds */
+  --color-waves-200: #99CBE3;   /* Light - Disabled states, borders */
+  --color-waves-300: #66B1D5;   /* Medium-light - Secondary elements */
+  --color-waves-500: #025E96;   /* PRIMARY - Main brand color, CTAs */
+  --color-waves-700: #01385A;   /* Dark - Hover states, text on light */
+  --color-waves-900: #01121E;   /* Darkest - Headers, footers, strong contrast */
+
+
+  /* ============================================
+     COLORS - SHORE (NEUTRAL SURFACES)
+     Warm neutrals creating breathing room for content
+     Use for: Page backgrounds, card surfaces, sections
+     ============================================ */
+  
+  --color-shore-base: #F7FAFC;  /* PRIMARY BACKGROUND - Default page canvas */
+  --color-shore-ice: #D9F0F2;   /* Secondary sections, data tables, hover states */
+  --color-shore-sand: #EDE6D8;  /* Editorial content, empty states, footers */
+  --color-shore-foam: #E6F2F8;  /* Light accents on dark backgrounds */
+
+
+  /* ============================================
+     COLORS - PEARL (GRAYSCALE)
+     Complete neutral scale for text, borders, backgrounds
+     Use for: Text hierarchy, borders, disabled states
+     ============================================ */
+  
+  --color-pearl-50: #F7FAFC;    /* Near white - Subtle backgrounds */
+  --color-pearl-100: #EDF2F7;   /* Very light gray - Card backgrounds */
+  --color-pearl-200: #E2E8F0;   /* Light gray - Borders, dividers */
+  --color-pearl-300: #CBD5E0;   /* Medium-light gray - Input borders */
+  --color-pearl-400: #A0AEC0;   /* Medium gray - Placeholder text */
+  --color-pearl-500: #718096;   /* Base gray - Secondary text, icons */
+  --color-pearl-600: #4A5568;   /* Medium-dark gray - Body text (accessible) */
+  --color-pearl-700: #2D3748;   /* Dark gray - Headings, emphasis */
+  --color-pearl-800: #1A202C;   /* Very dark - Primary text color */
+  --color-pearl-900: #171923;   /* Nearly black - Maximum contrast */
+
+
+  /* ============================================
+     COLORS - CORAL SUCCESS (SEMANTIC)
+     Coral green for positive feedback
+     Use for: Success messages, confirmations, certifications, completed states
+     ============================================ */
+  
+  --color-success-300: #69DBA5;  /* Light - Success backgrounds */
+  --color-success-500: #48BB78;  /* PRIMARY SUCCESS - Borders, icons */
+  --color-success-700: #2C7048;  /* Dark - Success text (high contrast) */
+
+
+  /* ============================================
+     COLORS - CORAL ERROR (SEMANTIC)
+     Coral red for alerts and errors
+     Use for: Error messages, validation, urgent attention, critical issues
+     ============================================ */
+  
+  --color-error-300: #E57A6A;    /* Light - Error backgrounds */
+  --color-error-500: #C24E3A;    /* PRIMARY ERROR - Borders, icons */
+  --color-error-700: #742F22;    /* Dark - Error text (high contrast) */
+
+
+  /* ============================================
+     COLORS - CORAL WARNING (SEMANTIC)
+     Coral amber for caution
+     Use for: Warnings, limited stock, pending states, attention needed
+     ============================================ */
+  
+  --color-warning-300: #FBBF24;  /* Light - Warning backgrounds */
+  --color-warning-500: #F59E0B;  /* PRIMARY WARNING - Borders, icons */
+  --color-warning-700: #B45309;  /* Dark - Warning text (high contrast) */
+
+
+  /* ============================================
+     COLORS - INFO (USES WAVES)
+     Informational messages use primary Waves colors
+     Use for: Tips, helpful information, non-critical updates
+     ============================================ */
+  
+  --color-info-300: #66B1D5;     /* Same as waves-300 */
+  --color-info-500: #025E96;     /* Same as waves-500 */
+  --color-info-700: #01385A;     /* Same as waves-700 */
+
+
+  /* ============================================
+     COLORS - TEXT (SEMANTIC)
+     Dedicated text colors for consistency
+     Always use these instead of pearl values for text
+     ============================================ */
+  
+  --color-text-primary: #1A202C;    /* Main text - Headings, body, emphasis */
+  --color-text-secondary: #718096;  /* Supporting text - Labels, captions, metadata */
+  --color-text-inverse: #FFFFFF;    /* Text on dark backgrounds */
+  --color-text-disabled: #A0AEC0;   /* Disabled state text */
+
+
+  /* ============================================
+     COLORS - BORDERS & DIVIDERS
+     Consistent border colors across components
+     ============================================ */
+  
+  --color-border-default: #E2E8F0;   /* Default borders - Inputs, cards, tables */
+  --color-border-neutral: #CBD5E0;   /* Slightly stronger borders */
+  --color-border-hover: #A0AEC0;     /* Border on hover/active states */
+  --color-border-focus: #025E96;     /* Focus state borders (waves-500) */
+
+
+  /* ============================================
+     SPACING SCALE
+     Consistent spacing for layouts and components
+     ============================================ */
+  
+  --spacing-xs: 4px;     /* Tiny gaps - Icon spacing, tight layouts */
+  --spacing-sm: 8px;     /* Small gaps - Button padding, form spacing */
+  --spacing-md: 16px;    /* Medium gaps - Card padding, section spacing */
+  --spacing-lg: 24px;    /* Large gaps - Component spacing */
+  --spacing-xl: 32px;    /* Extra large - Section breaks */
+  --spacing-2xl: 48px;   /* Huge - Major section spacing */
+  --spacing-3xl: 64px;   /* Massive - Hero sections, page divisions */
+
+
+  /* ============================================
+     BORDER RADIUS
+     Consistent rounding for UI elements
+     ============================================ */
+  
+  --radius-sm: 4px;      /* Subtle - Badges, tags, small elements */
+  --radius-md: 8px;      /* Default - Buttons, inputs, cards */
+  --radius-lg: 12px;     /* Pronounced - Large cards, modals */
+  --radius-xl: 16px;     /* Heavy - Feature cards, hero sections */
+  --radius-full: 9999px; /* Circular - Avatar, pills, circular buttons */
+
+
+  /* ============================================
+     SHADOWS
+     Elevation and depth system
+     ============================================ */
+  
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+
+  /* ============================================
+     TRANSITIONS
+     Consistent animation timing
+     ============================================ */
+  
+  --transition-fast: 150ms ease;        /* Quick interactions - Hovers, simple toggles */
+  --transition-base: 200ms ease;        /* Default - Most UI interactions */
+  --transition-slow: 300ms ease;        /* Deliberate - Modals, major state changes */
+  --transition-slower: 500ms ease;      /* Very slow - Page transitions, complex animations */
+
+
+  /* ============================================
+     Z-INDEX SCALE
+     Layering system for overlays and modals
+     ============================================ */
+  
+  --z-dropdown: 1000;    /* Dropdowns, tooltips */
+  --z-sticky: 1020;      /* Sticky headers, floating elements */
+  --z-fixed: 1030;       /* Fixed positioning elements */
+  --z-modal-backdrop: 1040;  /* Modal backdrops */
+  --z-modal: 1050;       /* Modal dialogs */
+  --z-popover: 1060;     /* Popovers above modals */
+  --z-tooltip: 1070;     /* Tooltips (highest layer) */
+
+
+  /* ============================================
+     BREAKPOINTS (Reference Only)
+     Use in media queries: @media (min-width: 768px)
+     ============================================ */
+  
+  --breakpoint-sm: 640px;   /* Small devices - Phones (landscape) */
+  --breakpoint-md: 768px;   /* Medium devices - Tablets */
+  --breakpoint-lg: 1024px;  /* Large devices - Laptops */
+  --breakpoint-xl: 1280px;  /* Extra large - Desktops */
+  --breakpoint-2xl: 1536px; /* Huge - Large monitors */
+}
+
+
+/* ============================================
+   COMPONENT-SPECIFIC TOKENS
+   Pre-defined component styles for common patterns
+   ============================================ */
+
+:root {
+  /* Input Fields */
+  --input-height-sm: 32px;
+  --input-height-md: 40px;
+  --input-height-lg: 48px;
+  --input-padding-sm: 0 12px;
+  --input-padding-md: 0 16px;
+  --input-padding-lg: 0 20px;
+  --input-border-width: 1px;
+  --input-border-radius: var(--radius-md);
+  --input-focus-ring-width: 3px;
+  --input-focus-ring-opacity: 0.1;
+  
+  /* Buttons */
+  --button-height-sm: 32px;
+  --button-height-md: 40px;
+  --button-height-lg: 48px;
+  --button-padding-sm: 0 16px;
+  --button-padding-md: 0 24px;
+  --button-padding-lg: 0 32px;
+  --button-border-radius: var(--radius-md);
+  
+  /* Cards */
+  --card-padding: var(--spacing-lg);
+  --card-border-radius: var(--radius-lg);
+  --card-border-width: 1px;
+  --card-border-color: var(--color-border-default);
+  --card-background: #FFFFFF;
+  --card-shadow: var(--shadow-sm);
+  --card-shadow-hover: var(--shadow-md);
+  
+  /* Navigation */
+  --nav-height: 64px;
+  --nav-padding: var(--spacing-md);
+  --nav-background: #FFFFFF;
+  --nav-border-color: var(--color-border-default);
+  
+  /* Modal */
+  --modal-padding: var(--spacing-xl);
+  --modal-border-radius: var(--radius-lg);
+  --modal-backdrop-opacity: 0.75;
+  --modal-max-width: 600px;
+}
+
+
+/* ============================================
+   DEVELOPER UTILITIES - QUICK REFERENCE
+   ============================================ */
+
+/**
+ * QUICK START EXAMPLES:
+ * 
+ * 1. PRIMARY BUTTON
+ * background: var(--color-waves-500);
+ * color: var(--color-text-inverse);
+ * padding: var(--button-padding-md);
+ * border-radius: var(--button-border-radius);
+ * 
+ * 2. INPUT FIELD
+ * height: var(--input-height-md);
+ * padding: var(--input-padding-md);
+ * border: var(--input-border-width) solid var(--color-border-default);
+ * border-radius: var(--input-border-radius);
+ * font-family: var(--font-heading);
+ * 
+ * 3. CARD
+ * padding: var(--card-padding);
+ * border-radius: var(--card-border-radius);
+ * background: var(--card-background);
+ * box-shadow: var(--card-shadow);
+ * 
+ * 4. BODY TEXT
+ * font-family: var(--font-heading);
+ * font-size: var(--font-size-base);
+ * line-height: var(--line-height-normal);
+ * color: var(--color-text-primary);
+ * 
+ * 5. HEADING
+ * font-family: var(--font-heading);
+ * font-size: var(--font-size-4xl);
+ * font-weight: var(--font-weight-bold);
+ * line-height: var(--line-height-tight);
+ * color: var(--color-text-primary);
+ * 
+ * 6. DATA VALUE (price, metric)
+ * font-family: var(--font-body); // Inter for numbers!
+ * font-weight: var(--font-weight-semibold);
+ * color: var(--color-text-primary);
+ */
+
+
+/* ============================================
+   COLOR REFERENCE - HEX VALUES
+   For copying into Figma, Tailwind config, etc.
+   ============================================ */
+
+/**
+ * WAVES (PRIMARY BLUE)
+ * 50:  #E6F2F8
+ * 100: #CCE5F1
+ * 200: #99CBE3
+ * 300: #66B1D5
+ * 500: #025E96  ← PRIMARY
+ * 700: #01385A
+ * 900: #01121E
+ * 
+ * SHORE (SURFACES)
+ * Base: #F7FAFC  ← MAIN BACKGROUND
+ * Ice:  #D9F0F2
+ * Sand: #EDE6D8
+ * Foam: #E6F2F8
+ * 
+ * PEARL (GRAYSCALE)
+ * 50:  #F7FAFC
+ * 100: #EDF2F7
+ * 200: #E2E8F0
+ * 300: #CBD5E0
+ * 400: #A0AEC0
+ * 500: #718096
+ * 600: #4A5568
+ * 700: #2D3748
+ * 800: #1A202C  ← TEXT PRIMARY
+ * 900: #171923
+ * 
+ * CORAL SEMANTIC
+ * Success: #48BB78 (green)
+ * Error:   #C24E3A (red)
+ * Warning: #F59E0B (amber)
+ */
