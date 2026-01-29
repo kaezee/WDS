@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Status Indicators - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="status-indicators.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Tab Navigation */
+        .tab-nav {
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid var(--color-pearl-200);
+            margin-bottom: var(--spacing-6);
+        }
+        
+        .tab-btn {
+            padding: var(--spacing-3) var(--spacing-5);
+            background: none;
+            border: none;
+            font-family: var(--font-heading);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-pearl-600);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+        
+        .tab-btn:hover {
+            color: var(--color-waves-500);
+        }
+        
+        .tab-btn.active {
+            color: var(--color-waves-500);
+            border-bottom-color: var(--color-waves-500);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Preview Box */
+        .preview-box {
+            background: white;
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-8);
+            margin-bottom: var(--spacing-6);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-4);
+            flex-wrap: wrap;
+        }
+        
+        /* Product Card Demo */
+        .product-card-demo {
+            position: relative;
+            background: white;
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-6);
+            width: 240px;
+            margin: var(--spacing-4);
+        }
+        
+        .product-image-placeholder {
+            width: 100%;
+            height: 160px;
+            background: var(--color-pearl-100);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-pearl-500);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--spacing-4);
+            position: relative;
+        }
+
+        /* Hero */
+        .hero-subtitle {
+            font-size: var(--font-size-lg);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-6);
+            line-height: var(--line-height-relaxed);
+        }
+
+        pre {
+            background: var(--color-pearl-800);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-4);
+            overflow-x: auto;
+            margin-bottom: var(--spacing-6);
+        }
+
+        code {
+            font-family: var(--font-mono);
+            font-size: var(--font-size-sm);
+            color: var(--color-pearl-50);
+            line-height: var(--line-height-relaxed);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header class="hero">
+                <h1>Status Indicators</h1>
+                <p class="hero-subtitle">Dynamic status displays for orders and inventory. Three styles: outlined order tracking, urgent overlays, and positive attribute badges.</p>
+            </header>
+
+            <!-- USAGE & PURPOSE -->
+            <section class="component-section" style="background: var(--color-shore-editorial); padding: var(--spacing-8); border-radius: var(--radius-lg); margin-bottom: var(--spacing-12);">
+                <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-4);">Three Types of Status Indicators</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-6);">
+                    <div>
+                        <h4 style="font-size: var(--font-size-base); font-weight: 600; margin-bottom: var(--spacing-2);">Order Status (Outlined)</h4>
+                        <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                            Order tracking states with colored borders. Use on order pages, dashboards, and order history. Examples: Delivered, Processing, Cancelled.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: var(--font-size-base); font-weight: 600; margin-bottom: var(--spacing-2);">Urgent Overlays</h4>
+                        <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                            High-contrast overlays on product cards. Small, bold, attention-grabbing. Examples: Limited Stock, New Arrival, Sale.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: var(--font-size-base); font-weight: 600; margin-bottom: var(--spacing-2);">Positive Badges</h4>
+                        <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                            Inline badges near product titles. Colored backgrounds with icons. Examples: Fresh Catch, Bestseller, Trending.
+                        </p>
+                    </div>
+                </div>
+                <div style="margin-top: var(--spacing-5); padding-top: var(--spacing-5); border-top: 1px solid var(--color-border-default);">
+                    <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                        <strong>Not Certification Badges:</strong> Status indicators are different from certification badges (Sustainable, MSC). They show temporary states, not permanent credentials.
+                    </p>
+                </div>
+            </section>
+
+            <!-- ORDER STATUS -->
+            <section class="component-section">
+                <h2>Order Status Indicators</h2>
+                <p>Outlined pills for order tracking. Use for Delivered, Processing, Cancelled, and other order states.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'order-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'order-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'order-jsx')">JSX</button>
+                </div>
+                
+                <div id="order-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <span class="order-status order-status-delivered">Delivered</span>
+                        <span class="order-status order-status-processing">Processing</span>
+                        <span class="order-status order-status-cancelled">Cancelled</span>
+                        <span class="order-status order-status-archived">Archived</span>
+                        <span class="order-status order-status-pending">Pending</span>
+                        <span class="order-status order-status-shipped">Shipped</span>
+                    </div>
+                </div>
+                
+                <div id="order-html" class="tab-content">
+                    <pre><code>&lt;span class="order-status order-status-delivered"&gt;Delivered&lt;/span&gt;
+&lt;span class="order-status order-status-processing"&gt;Processing&lt;/span&gt;
+&lt;span class="order-status order-status-cancelled"&gt;Cancelled&lt;/span&gt;
+&lt;span class="order-status order-status-archived"&gt;Archived&lt;/span&gt;</code></pre>
+                </div>
+                
+                <div id="order-jsx" class="tab-content">
+                    <pre><code>const OrderStatus = ({ status }) =&gt; {
+  const statusClass = `order-status order-status-${status.toLowerCase()}`;
+  return &lt;span className={statusClass}&gt;{status}&lt;/span&gt;;
+};
+
+// Usage
+&lt;OrderStatus status="Delivered" /&gt;
+&lt;OrderStatus status="Processing" /&gt;
+&lt;OrderStatus status="Cancelled" /&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- URGENT OVERLAYS -->
+            <section class="component-section">
+                <h2>Urgent Overlays (Product Cards)</h2>
+                <p>Small, high-contrast overlays positioned on product images. White text, solid backgrounds, uppercase.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'overlay-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'overlay-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'overlay-jsx')">JSX</button>
+                </div>
+                
+                <div id="overlay-preview" class="tab-content active">
+                    <div style="display: flex; gap: var(--spacing-4); flex-wrap: wrap;">
+                        <div class="product-card-demo">
+                            <div class="product-image-placeholder">
+                                <span class="status-overlay status-overlay-limited status-overlay-positioned">LIMITED</span>
+                                Product Image
+                            </div>
+                            <strong>Mediterranean Sea Bass</strong>
+                            <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm); margin: 4px 0;">Fresh Catch Ltd.</p>
+                            <p style="font-weight: 600;">$16.80 / kg</p>
+                        </div>
+                        
+                        <div class="product-card-demo">
+                            <div class="product-image-placeholder">
+                                <span class="status-overlay status-overlay-new status-overlay-positioned">NEW</span>
+                                Product Image
+                            </div>
+                            <strong>Wild Salmon</strong>
+                            <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm); margin: 4px 0;">Ocean Fresh Co.</p>
+                            <p style="font-weight: 600;">$22.50 / kg</p>
+                        </div>
+                        
+                        <div class="product-card-demo">
+                            <div class="product-image-placeholder">
+                                <span class="status-overlay status-overlay-sale status-overlay-positioned">SALE</span>
+                                Product Image
+                            </div>
+                            <strong>Tuna Steaks</strong>
+                            <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm); margin: 4px 0;">Pacific Traders</p>
+                            <p style="font-weight: 600;">$18.90 / kg</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="overlay-html" class="tab-content">
+                    <pre><code>&lt;div class="product-card" style="position: relative;"&gt;
+  &lt;div class="product-image"&gt;
+    &lt;span class="status-overlay status-overlay-limited status-overlay-positioned"&gt;
+      LIMITED
+    &lt;/span&gt;
+    &lt;img src="product.jpg" alt="Product"&gt;
+  &lt;/div&gt;
+  &lt;h3&gt;Mediterranean Sea Bass&lt;/h3&gt;
+  &lt;p&gt;$16.80 / kg&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                
+                <div id="overlay-jsx" class="tab-content">
+                    <pre><code>const ProductCard = ({ title, price, status, image }) =&gt; (
+  &lt;div className="product-card" style={{ position: 'relative' }}&gt;
+    &lt;div className="product-image"&gt;
+      {status && (
+        &lt;span className={`status-overlay status-overlay-${status} status-overlay-positioned`}&gt;
+          {status.toUpperCase()}
+        &lt;/span&gt;
+      )}
+      &lt;img src={image} alt={title} /&gt;
+    &lt;/div&gt;
+    &lt;h3&gt;{title}&lt;/h3&gt;
+    &lt;p&gt;{price}&lt;/p&gt;
+  &lt;/div&gt;
+);
+
+// Usage
+&lt;ProductCard title="Sea Bass" price="$16.80/kg" status="limited" /&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- POSITIVE BADGES -->
+            <section class="component-section">
+                <h2>Positive Attribute Badges</h2>
+                <p>Inline badges with colored backgrounds and optional icons. Use near product titles for quality indicators.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'badge-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'badge-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'badge-jsx')">JSX</button>
+                </div>
+                
+                <div id="badge-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <span class="status-badge status-badge-fresh">
+                            <span class="status-badge-icon"></span>
+                            Fresh Catch
+                        </span>
+                        <span class="status-badge status-badge-bestseller">
+                            <span class="status-badge-icon"></span>
+                            Bestseller
+                        </span>
+                        <span class="status-badge status-badge-trending">
+                            <span class="status-badge-icon"></span>
+                            Trending
+                        </span>
+                        <span class="status-badge status-badge-popular">
+                            <span class="status-badge-icon"></span>
+                            Popular
+                        </span>
+                    </div>
+                </div>
+                
+                <div id="badge-html" class="tab-content">
+                    <pre><code>&lt;span class="status-badge status-badge-fresh"&gt;
+  &lt;span class="status-badge-icon"&gt;&lt;/span&gt;
+  Fresh Catch
+&lt;/span&gt;
+
+&lt;!-- With actual icon --&gt;
+&lt;span class="status-badge status-badge-bestseller"&gt;
+  &lt;span class="status-badge-icon"&gt;
+    &lt;img src="/icons/star.svg" alt="" /&gt;
+  &lt;/span&gt;
+  Bestseller
+&lt;/span&gt;</code></pre>
+                </div>
+                
+                <div id="badge-jsx" class="tab-content">
+                    <pre><code>const StatusBadge = ({ type, children, icon }) =&gt; (
+  &lt;span className={`status-badge status-badge-${type}`}&gt;
+    {icon ? (
+      &lt;span className="status-badge-icon"&gt;
+        &lt;img src={icon} alt="" /&gt;
+      &lt;/span&gt;
+    ) : (
+      &lt;span className="status-badge-icon"&gt;&lt;/span&gt;
+    )}
+    {children}
+  &lt;/span&gt;
+);
+
+// Usage
+&lt;StatusBadge type="fresh"&gt;Fresh Catch&lt;/StatusBadge&gt;
+&lt;StatusBadge type="bestseller" icon="/icons/star.svg"&gt;Bestseller&lt;/StatusBadge&gt;</code></pre>
+                </div>
+            </section>
+
+            <!-- MINIMAL TEXT -->
+            <section class="component-section">
+                <h2>Minimal Text Labels</h2>
+                <p>Text-only labels with optional icons. No background, just colored text for supplementary info.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'text-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'text-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'text-jsx')">JSX</button>
+                </div>
+                
+                <div id="text-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <span class="status-text status-text-popular">⭐ Popular</span>
+                        <span class="status-text status-text-recommended">✓ Recommended</span>
+                        <span class="status-text status-text-featured">🔥 Featured</span>
+                    </div>
+                </div>
+                
+                <div id="text-html" class="tab-content">
+                    <pre><code>&lt;span class="status-text status-text-popular"&gt;⭐ Popular&lt;/span&gt;
+&lt;span class="status-text status-text-recommended"&gt;✓ Recommended&lt;/span&gt;</code></pre>
+                </div>
+                
+                <div id="text-jsx" class="tab-content">
+                    <pre><code>const StatusText = ({ type, icon, children }) =&gt; (
+  &lt;span className={`status-text status-text-${type}`}&gt;
+    {icon && &lt;span&gt;{icon}&lt;/span&gt;}
+    {children}
+  &lt;/span&gt;
+);
+
+// Usage
+&lt;StatusText type="popular" icon="⭐"&gt;Popular&lt;/StatusText&gt;</code></pre>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+    
+    <script>
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.component-section');
+            const tabButtons = section.querySelectorAll('.tab-btn');
+            const tabContents = section.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabContents.forEach(content => content.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+    </script>
+</body>
+</html>

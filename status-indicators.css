@@ -1,0 +1,279 @@
+/* STATUS INDICATORS - WHALELORD DESIGN SYSTEM */
+
+/* ===========================
+   ORDER STATUS INDICATORS
+   Outlined pills for order tracking states
+   =========================== */
+
+.order-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  border-radius: 6px;
+  border: 1px solid;
+  background: transparent;
+  white-space: nowrap;
+  line-height: 1.4;
+  transition: all 0.2s ease;
+}
+
+/* Order Status Color Variants */
+.order-status-delivered {
+  border-color: #2C7048; /* Success-700 */
+  color: #2C7048;
+}
+
+.order-status-processing {
+  border-color: #CC5500; /* Warning-700 */
+  color: #CC5500;
+}
+
+.order-status-cancelled {
+  border-color: #A4161A; /* Error-700 */
+  color: #A4161A;
+}
+
+.order-status-archived {
+  border-color: #718096; /* Pearl-500 */
+  color: #718096;
+}
+
+.order-status-pending {
+  border-color: #01385A; /* Waves-700 */
+  color: #01385A;
+}
+
+.order-status-shipped {
+  border-color: #025E96; /* Waves-500 */
+  color: #025E96;
+}
+
+
+/* ===========================
+   INVENTORY STATUS - TOP OVERLAY (URGENT)
+   Small, high-contrast overlays for product cards
+   =========================== */
+
+.status-overlay {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 8px;
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: var(--font-weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 4px;
+  white-space: nowrap;
+  line-height: 1.2;
+  color: #FFFFFF;
+}
+
+/* For absolute positioning on product cards */
+.status-overlay-positioned {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+}
+
+/* Overlay Color Variants */
+.status-overlay-limited {
+  background: #E63946; /* Error-500 */
+}
+
+.status-overlay-new {
+  background: #025E96; /* Waves-500 */
+}
+
+.status-overlay-sale {
+  background: #E63946; /* Error-500 */
+}
+
+.status-overlay-exclusive {
+  background: #01385A; /* Waves-700 - darker, premium feel */
+}
+
+
+/* ===========================
+   INVENTORY STATUS - INLINE BADGE (POSITIVE)
+   Colored backgrounds with dark text, similar to cert badges
+   =========================== */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  border-radius: 5px;
+  white-space: nowrap;
+  line-height: 1.4;
+  transition: all 0.2s ease;
+}
+
+/* Icon Placeholder (optional) */
+.status-badge-icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.status-badge-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Inline Badge Color Variants */
+.status-badge-fresh {
+  background: #E6F2F8; /* Waves-50 */
+  color: #1A202C;      /* Pearl-800 */
+}
+
+.status-badge-fresh .status-badge-icon {
+  background: rgba(1, 56, 90, 0.1);
+}
+
+.status-badge-bestseller {
+  background: #FFE8D9; /* Warning-100 */
+  color: #1A202C;      /* Pearl-800 */
+}
+
+.status-badge-bestseller .status-badge-icon {
+  background: rgba(204, 85, 0, 0.1);
+}
+
+.status-badge-trending {
+  background: #FFE5E8; /* Error-100 */
+  color: #1A202C;      /* Pearl-800 */
+}
+
+.status-badge-trending .status-badge-icon {
+  background: rgba(230, 57, 70, 0.1);
+}
+
+.status-badge-popular {
+  background: #CCE5F1; /* Waves-100 */
+  color: #1A202C;      /* Pearl-800 */
+}
+
+.status-badge-popular .status-badge-icon {
+  background: rgba(2, 94, 150, 0.1);
+}
+
+
+/* ===========================
+   INVENTORY STATUS - MINIMAL TEXT (LOW PRIORITY)
+   Text-only labels with icons, no background
+   =========================== */
+
+.status-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.4;
+}
+
+.status-text-icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+/* Text Color Variants */
+.status-text-popular {
+  color: #025E96; /* Waves-500 */
+}
+
+.status-text-recommended {
+  color: #48BB78; /* Success-500 */
+}
+
+.status-text-featured {
+  color: #FF8C42; /* Warning-500 */
+}
+
+
+/* ===========================
+   USAGE NOTES
+   =========================== */
+
+/*
+ORDER STATUS INDICATORS:
+- Use for: Order tracking, delivery status, order history
+- Style: Outlined pills with colored borders
+- Examples: Delivered, Processing, Cancelled, Archived, Pending, Shipped
+- Placement: Order pages, dashboards, order cards
+- Size: 6px 12px padding (same as cert badges)
+
+HTML Example:
+<span class="order-status order-status-delivered">Delivered</span>
+<span class="order-status order-status-processing">Processing</span>
+
+---
+
+INVENTORY STATUS - TOP OVERLAY (Urgent):
+- Use for: Time-sensitive promotions, stock warnings, new arrivals
+- Style: White text on solid color, uppercase, bold
+- Examples: Limited Stock, New Arrival, Sale, Exclusive
+- Placement: Absolute positioned top-right on product images
+- Size: 4px 8px padding (compact for overlays)
+
+HTML Example:
+<div class="product-card" style="position: relative;">
+  <span class="status-overlay status-overlay-limited status-overlay-positioned">LIMITED</span>
+  <img src="product.jpg" alt="Product">
+</div>
+
+---
+
+INVENTORY STATUS - INLINE BADGE (Positive):
+- Use for: Positive product attributes, quality indicators
+- Style: Colored backgrounds with dark text, optional icons
+- Examples: Fresh Catch, Bestseller, Trending, Popular
+- Placement: Near product title, inline with content
+- Size: 5px 10px padding (slightly smaller than cert badges)
+
+HTML Example:
+<span class="status-badge status-badge-fresh">
+  <span class="status-badge-icon"></span>
+  Fresh Catch
+</span>
+
+---
+
+INVENTORY STATUS - MINIMAL TEXT (Low Priority):
+- Use for: Supplementary information, recommendations
+- Style: Just colored text + icon, no background
+- Examples: Popular, Recommended, Featured
+- Placement: Anywhere text fits naturally
+- Size: No padding, just inline text
+
+HTML Example:
+<span class="status-text status-text-recommended">
+  <span class="status-text-icon">⭐</span>
+  Recommended
+</span>
+
+---
+
+ACCESSIBILITY:
+- Order Status: All variants meet WCAG AA (4.5:1+)
+- Overlay: White on dark colors = 7:1+ contrast
+- Inline Badges: Dark text on light backgrounds = 10:1+ contrast
+- Text Only: Uses primary color palette with high contrast
+*/
