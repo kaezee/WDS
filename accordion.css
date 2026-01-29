@@ -109,6 +109,7 @@
 
 .accordion-light .accordion-item {
   background: var(--color-bg-primary);
+  border: 1px solid var(--color-pearl-200);
 }
 
 .accordion-light .accordion-header {
@@ -116,11 +117,11 @@
 }
 
 .accordion-light .accordion-header:hover {
-  background: var(--color-shore-base);
+  background: var(--color-pearl-100);
 }
 
 .accordion-light .accordion-header:focus {
-  background: var(--color-shore-base);
+  background: var(--color-pearl-100);
 }
 
 .accordion-light .accordion-header-text {
