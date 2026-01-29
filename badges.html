@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certification Badges - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="badges.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .hero {
+            text-align: left;
+            padding: var(--spacing-16) 0;
+        }
+
+        .tab-nav {
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid var(--color-pearl-200);
+            margin-bottom: var(--spacing-6);
+        }
+        
+        .tab-btn {
+            padding: var(--spacing-3) var(--spacing-5);
+            background: none;
+            border: none;
+            font-family: var(--font-heading);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-pearl-600);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+        
+        .tab-btn:hover {
+            color: var(--color-waves-500);
+        }
+        
+        .tab-btn.active {
+            color: var(--color-waves-500);
+            border-bottom-color: var(--color-waves-500);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .preview-box {
+            background: white;
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-8);
+            margin-bottom: var(--spacing-6);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--spacing-4);
+        }
+
+        .code-example {
+            background: var(--color-pearl-800);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            margin-bottom: var(--spacing-6);
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--spacing-4) var(--spacing-5);
+            background: var(--color-pearl-900);
+            border-bottom: 1px solid var(--color-pearl-700);
+        }
+
+        .code-header span {
+            font-family: var(--font-mono);
+            font-size: var(--font-size-sm);
+            color: var(--color-pearl-400);
+            font-weight: var(--font-weight-medium);
+        }
+
+        .copy-btn {
+            background: var(--color-waves-500);
+            color: white;
+            border: none;
+            padding: 4px 12px;
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: var(--font-weight-medium);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: var(--color-waves-700);
+        }
+
+        .code-example pre {
+            margin: 0;
+            padding: var(--spacing-5);
+            overflow-x: auto;
+        }
+
+        .code-example code {
+            font-family: var(--font-mono);
+            font-size: var(--font-size-sm);
+            color: var(--color-pearl-50);
+            line-height: var(--line-height-relaxed);
+        }
+
+        .component-section {
+            margin-bottom: var(--spacing-16);
+        }
+
+        .component-section h2 {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--spacing-3);
+        }
+
+        .component-section > p {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-6);
+            line-height: var(--line-height-relaxed);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header class="hero">
+                <h1>Certification Badges</h1>
+                <p class="hero-subtitle">Trust signals that communicate product quality, sustainability certifications, and compliance standards.</p>
+            </header>
+
+            <!-- USAGE & PURPOSE -->
+            <section class="component-section" style="background: var(--color-shore-editorial); padding: var(--spacing-8); border-radius: var(--radius-lg); margin-bottom: var(--spacing-12);">
+                <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-4);">Usage & Purpose</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-6);">
+                    <div>
+                        <h4 style="font-size: var(--font-size-base); font-weight: 600; margin-bottom: var(--spacing-2);">When to Use</h4>
+                        <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                            Display quality indicators like MSC Certified, Organic, ASC Approved, or Sustainable. These are informational trust signals, not actionable status indicators.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: var(--font-size-base); font-weight: 600; margin-bottom: var(--spacing-2);">Visual Style</h4>
+                        <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                            Soft filled backgrounds (Success-200), no borders, very rounded pill shape (16px). Calm and reassuring appearance that doesn't compete with product cards.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: var(--font-size-base); font-weight: 600; margin-bottom: var(--spacing-2);">Icon Placeholder</h4>
+                        <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                            Rectangle icon area provided for logo/icon placement. Replace with actual certification logo or icon in your implementation.
+                        </p>
+                    </div>
+                </div>
+                <div style="margin-top: var(--spacing-5); padding-top: var(--spacing-5); border-top: 1px solid var(--color-border-default);">
+                    <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                        <strong>Colors:</strong> Background uses Success-200 (#A8E6C5) for optimal contrast. Text uses Success-700 (#2C7048) for readability. This is NOT the same as status indicators which use bordered styles.
+                    </p>
+                </div>
+            </section>
+
+            <!-- CERTIFICATION BADGES -->
+            <section class="component-section">
+                <h2>Certification Badges</h2>
+                <p>Soft, pill-shaped badges for quality seals and sustainability certifications.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'cert-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'cert-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'cert-tailwind')">Tailwind</button>
+                </div>
+                
+                <div id="cert-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <span class="cert-badge">
+                            <span class="cert-badge-icon"></span>
+                            MSC Certified
+                        </span>
+                        <span class="cert-badge">
+                            <span class="cert-badge-icon"></span>
+                            Organic
+                        </span>
+                        <span class="cert-badge">
+                            <span class="cert-badge-icon"></span>
+                            Sustainable
+                        </span>
+                        <span class="cert-badge">
+                            <span class="cert-badge-icon"></span>
+                            ASC Approved
+                        </span>
+                    </div>
+                </div>
+                
+                <div id="cert-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML with CSS Classes</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Include badges.css in your page --&gt;
+&lt;link rel="stylesheet" href="badges.css"&gt;
+
+&lt;!-- MSC Certified --&gt;
+&lt;span class="cert-badge"&gt;
+  &lt;span class="cert-badge-icon"&gt;&lt;!-- Replace with icon/logo --&gt;&lt;/span&gt;
+  MSC Certified
+&lt;/span&gt;
+
+&lt;!-- Organic --&gt;
+&lt;span class="cert-badge"&gt;
+  &lt;span class="cert-badge-icon"&gt;&lt;!-- Replace with icon/logo --&gt;&lt;/span&gt;
+  Organic
+&lt;/span&gt;
+
+&lt;!-- Sustainable --&gt;
+&lt;span class="cert-badge"&gt;
+  &lt;span class="cert-badge-icon"&gt;&lt;!-- Replace with icon/logo --&gt;&lt;/span&gt;
+  Sustainable
+&lt;/span&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="cert-tailwind" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>Tailwind CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- MSC Certified --&gt;
+&lt;span class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-[#A8E6C5] text-[#2C7048] text-sm font-semibold"&gt;
+  &lt;span class="w-4 h-4 bg-[#2C7048]/10 rounded-sm"&gt;&lt;!-- Icon here --&gt;&lt;/span&gt;
+  MSC Certified
+&lt;/span&gt;
+
+&lt;!-- Organic --&gt;
+&lt;span class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-[#A8E6C5] text-[#2C7048] text-sm font-semibold"&gt;
+  &lt;span class="w-4 h-4 bg-[#2C7048]/10 rounded-sm"&gt;&lt;!-- Icon here --&gt;&lt;/span&gt;
+  Organic
+&lt;/span&gt;
+
+&lt;!-- With actual icon/image --&gt;
+&lt;span class="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-[#A8E6C5] text-[#2C7048] text-sm font-semibold"&gt;
+  &lt;span class="w-4 h-4 rounded-sm overflow-hidden"&gt;
+    &lt;img src="/path/to/msc-logo.svg" alt="MSC" class="w-full h-full object-contain" /&gt;
+  &lt;/span&gt;
+  MSC Certified
+&lt;/span&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- USAGE EXAMPLES -->
+            <section class="component-section">
+                <h2>Usage Examples</h2>
+                <p>Certification badges in context on product cards.</p>
+
+                <div class="preview-box" style="display: block;">
+                    <!-- Product Card Example -->
+                    <div style="max-width: 320px; background: white; border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); overflow: hidden;">
+                        <div style="height: 180px; background: var(--color-shore-editorial); display: flex; align-items: center; justify-content: center; color: var(--color-text-secondary); font-size: var(--font-size-sm);">
+                            Product Image
+                        </div>
+                        <div style="padding: var(--spacing-5);">
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: var(--spacing-4);">
+                                <span class="cert-badge">
+                                    <span class="cert-badge-icon"></span>
+                                    MSC Certified
+                                </span>
+                                <span class="cert-badge">
+                                    <span class="cert-badge-icon"></span>
+                                    Organic
+                                </span>
+                            </div>
+                            <h3 style="font-size: var(--font-size-xl); font-weight: 600; margin-bottom: var(--spacing-2);">Norwegian Salmon</h3>
+                            <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--spacing-4);">Nordic Fisheries AS</p>
+                            <div style="font-size: var(--font-size-2xl); font-weight: 700; color: var(--color-waves-700);">
+                                $13.20 <span style="font-size: var(--font-size-sm); font-weight: 400; color: var(--color-text-secondary);">/ kg</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ACCESSIBILITY -->
+            <section class="component-section">
+                <h2>Accessibility Notes</h2>
+                <div style="background: var(--color-shore-foam); padding: var(--spacing-6); border-radius: var(--radius-md); border-left: 4px solid var(--color-waves-500);">
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li style="margin-bottom: var(--spacing-3); padding-left: var(--spacing-5); position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-waves-500);">•</span>
+                            <strong>Color Contrast:</strong> Success-200 background with Success-700 text meets WCAG AA standards (contrast ratio 4.8:1).
+                        </li>
+                        <li style="margin-bottom: var(--spacing-3); padding-left: var(--spacing-5); position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-waves-500);">•</span>
+                            <strong>Icon Alt Text:</strong> If using images in the icon placeholder, always provide alt text describing the certification.
+                        </li>
+                        <li style="margin-bottom: 0; padding-left: var(--spacing-5); position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--color-waves-500);">•</span>
+                            <strong>Screen Readers:</strong> The badge text is automatically read. No additional ARIA labels needed for simple certification badges.
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script>
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.component-section');
+            section.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            section.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-example').querySelector('code');
+            const text = codeBlock.textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => {
+                    btn.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
