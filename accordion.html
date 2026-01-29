@@ -129,32 +129,32 @@
                 <h3>Usage & Purpose</h3>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-6);">
                     <div>
-                        <h4 style="color: var(--color-waves-700); margin-bottom: var(--spacing-2);">Light Accordion</h4>
-                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Default style for main content areas, FAQ pages, and product details on light backgrounds.</p>
+                        <h4 style="color: var(--color-waves-700); margin-bottom: var(--spacing-2);">Dark Accordion (Default)</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Default dark style for main content areas, FAQ pages, and product details. Professional B2B aesthetic.</p>
                     </div>
                     <div>
-                        <h4 style="color: var(--color-waves-700); margin-bottom: var(--spacing-2);">Dark Accordion</h4>
-                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Alternative style for dark sections, modals, or sidebar navigation on dark backgrounds.</p>
+                        <h4 style="color: var(--color-waves-700); margin-bottom: var(--spacing-2);">Light Accordion</h4>
+                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Alternative light style for light backgrounds, secondary sections, or nested accordions.</p>
                     </div>
                     <div>
                         <h4 style="color: var(--color-waves-700); margin-bottom: var(--spacing-2);">With Badges</h4>
-                        <p style="color: var(--color-text-secondary); font-size: var(--font-size-sm);">Add count indicators, status badges, or category labels to provide additional context.</p>
+                        <p style="color: var(--color-text-secondary); font-size: var(--color-text-secondary); font-size: var(--font-size-sm);">Add count indicators, status badges, or category labels to provide additional context.</p>
                     </div>
                 </div>
             </section>
 
-            <!-- LIGHT ACCORDION (DEFAULT) -->
+            <!-- DARK ACCORDION (DEFAULT) -->
             <section class="component-section">
-                <h2>Light Accordion (Default)</h2>
-                <p>Standard accordion with white background for use in main content areas. Automatically responsive across all device sizes.</p>
+                <h2>Dark Accordion (Default)</h2>
+                <p>Professional dark accordion with Pearl-900 background. This is the primary style for WhaleLord's B2B marketplace interface.</p>
 
                 <div class="tab-nav">
-                    <button class="tab-btn active" onclick="switchTab(event, 'light-preview')">Preview</button>
-                    <button class="tab-btn" onclick="switchTab(event, 'light-html')">HTML</button>
-                    <button class="tab-btn" onclick="switchTab(event, 'light-jsx')">JSX</button>
+                    <button class="tab-btn active" onclick="switchTab(event, 'dark-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'dark-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'dark-jsx')">JSX</button>
                 </div>
 
-                <div id="light-preview" class="tab-content active">
+                <div id="dark-preview" class="tab-content active">
                     <div class="preview-box">
                         <div class="demo-container">
                             <div class="accordion">
@@ -218,8 +218,8 @@
                     </div>
                 </div>
 
-                <div id="light-html" class="tab-content">
-                    <pre><code>&lt;!-- Light Accordion (Default) --&gt;
+                <div id="dark-html" class="tab-content">
+                    <pre><code>&lt;!-- Dark Accordion (Default) --&gt;
 &lt;div class="accordion"&gt;
   &lt;div class="accordion-item active"&gt;
     &lt;button class="accordion-header" onclick="toggleAccordion(this)"&gt;
@@ -264,7 +264,7 @@ function toggleAccordion(button) {
 &lt;/script&gt;</code></pre>
                 </div>
 
-                <div id="light-jsx" class="tab-content">
+                <div id="dark-jsx" class="tab-content">
                     <pre><code>import { useState } from 'react';
 
 const Accordion = ({ items, allowMultiple = false }) =&gt; {
@@ -318,21 +318,21 @@ const Accordion = ({ items, allowMultiple = false }) =&gt; {
                 </div>
             </section>
 
-            <!-- DARK ACCORDION -->
+            <!-- LIGHT ACCORDION -->
             <section class="component-section">
-                <h2>Dark Accordion</h2>
-                <p>Alternative dark style for use in dark sections, modals, or sidebar navigation. Maintains readability with high contrast text and borders.</p>
+                <h2>Light Accordion</h2>
+                <p>Alternative light style for use on light backgrounds or as secondary accordions. Maintains readability with appropriate contrast.</p>
 
                 <div class="tab-nav">
-                    <button class="tab-btn active" onclick="switchTab(event, 'dark-preview')">Preview</button>
-                    <button class="tab-btn" onclick="switchTab(event, 'dark-html')">HTML</button>
-                    <button class="tab-btn" onclick="switchTab(event, 'dark-jsx')">JSX</button>
+                    <button class="tab-btn active" onclick="switchTab(event, 'light-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'light-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'light-jsx')">JSX</button>
                 </div>
 
-                <div id="dark-preview" class="tab-content active">
+                <div id="light-preview" class="tab-content active">
                     <div class="preview-box-dark">
                         <div class="demo-container">
-                            <div class="accordion accordion-dark">
+                            <div class="accordion accordion-light">
                                 <div class="accordion-item active">
                                     <button class="accordion-header" onclick="toggleAccordion(this)">
                                         <span class="accordion-header-text">Product Storage Requirements</span>
@@ -379,9 +379,9 @@ const Accordion = ({ items, allowMultiple = false }) =&gt; {
                     </div>
                 </div>
 
-                <div id="dark-html" class="tab-content">
-                    <pre><code>&lt;!-- Dark Accordion --&gt;
-&lt;div class="accordion accordion-dark"&gt;
+                <div id="light-html" class="tab-content">
+                    <pre><code>&lt;!-- Light Accordion --&gt;
+&lt;div class="accordion accordion-light"&gt;
   &lt;div class="accordion-item active"&gt;
     &lt;button class="accordion-header" onclick="toggleAccordion(this)"&gt;
       &lt;span class="accordion-header-text"&gt;Product Storage Requirements&lt;/span&gt;
@@ -398,22 +398,22 @@ const Accordion = ({ items, allowMultiple = false }) =&gt; {
 &lt;/div&gt;</code></pre>
                 </div>
 
-                <div id="dark-jsx" class="tab-content">
-                    <pre><code>// Simply add accordion-dark class
+                <div id="light-jsx" class="tab-content">
+                    <pre><code>// Simply add accordion-light class
 &lt;Accordion
-  className="accordion-dark"
-  items={darkItems}
+  className="accordion-light"
+  items={lightItems}
 /&gt;
 
 // Or with variant prop
-const Accordion = ({ variant = 'light', items }) =&gt; (
-  &lt;div className={`accordion ${variant === 'dark' ? 'accordion-dark' : ''}`}&gt;
+const Accordion = ({ variant = 'dark', items }) =&gt; (
+  &lt;div className={`accordion ${variant === 'light' ? 'accordion-light' : ''}`}&gt;
     {/* accordion items */}
   &lt;/div&gt;
 );
 
 // Usage
-&lt;Accordion variant="dark" items={items} /&gt;</code></pre>
+&lt;Accordion variant="light" items={items} /&gt;</code></pre>
                 </div>
             </section>
 

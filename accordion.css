@@ -1,19 +1,19 @@
 /* ACCORDION COMPONENT - COMPASS DESIGN SYSTEM */
 
 /* ===========================
-   BASE ACCORDION STRUCTURE
+   BASE ACCORDION STRUCTURE (DARK IS DEFAULT)
    =========================== */
 
 .accordion {
-  border: 1px solid var(--color-border-default);
+  border: 1px solid var(--color-pearl-700);
   border-radius: var(--radius-lg);
   overflow: hidden;
   width: 100%;
+  background: var(--color-pearl-900);
 }
 
 .accordion-item {
-  border-bottom: 1px solid var(--color-border-default);
-  background: transparent;
+  border-bottom: 1px solid var(--color-pearl-700);
 }
 
 .accordion-item:last-child {
@@ -27,13 +27,13 @@
 .accordion-header {
   width: 100%;
   padding: var(--spacing-5) var(--spacing-6);
-  background: var(--color-bg-primary);
+  background: transparent;
   border: none;
   text-align: left;
   font-family: var(--font-heading);
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-semibold);
-  color: var(--color-pearl-800);
+  color: var(--color-text-inverse);
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -43,13 +43,13 @@
 }
 
 .accordion-header:hover {
-  background: var(--color-shore-base);
+  background: var(--color-pearl-800);
 }
 
 .accordion-header:focus {
   outline: none;
-  background: var(--color-shore-base);
-  box-shadow: inset 0 0 0 2px var(--color-waves-500);
+  background: var(--color-pearl-800);
+  box-shadow: inset 0 0 0 2px var(--color-waves-300);
 }
 
 .accordion-header-text {
@@ -60,7 +60,7 @@
 .accordion-icon {
   width: 20px;
   height: 20px;
-  color: var(--color-text-secondary);
+  color: var(--color-pearl-400);
   flex-shrink: 0;
   transition: transform 0.3s ease;
 }
@@ -87,7 +87,7 @@
   padding: 0 var(--spacing-6) var(--spacing-5);
   font-family: var(--font-heading);
   font-size: var(--font-size-base);
-  color: var(--color-text-secondary);
+  color: var(--color-pearl-300);
   line-height: var(--line-height-relaxed);
 }
 
@@ -114,38 +114,38 @@
 }
 
 /* ===========================
-   DARK VARIANT
+   LIGHT VARIANT (FOR LIGHT BACKGROUNDS)
    =========================== */
 
-.accordion-dark {
-  border-color: var(--color-pearl-700);
-  background: var(--color-pearl-900);
+.accordion-light {
+  border-color: var(--color-border-default);
+  background: var(--color-bg-primary);
 }
 
-.accordion-dark .accordion-item {
-  border-bottom-color: var(--color-pearl-700);
+.accordion-light .accordion-item {
+  border-bottom-color: var(--color-border-default);
 }
 
-.accordion-dark .accordion-header {
-  background: var(--color-pearl-900);
-  color: var(--color-text-inverse);
+.accordion-light .accordion-header {
+  background: transparent;
+  color: var(--color-pearl-800);
 }
 
-.accordion-dark .accordion-header:hover {
-  background: var(--color-pearl-800);
+.accordion-light .accordion-header:hover {
+  background: var(--color-shore-base);
 }
 
-.accordion-dark .accordion-header:focus {
-  background: var(--color-pearl-800);
-  box-shadow: inset 0 0 0 2px var(--color-waves-300);
+.accordion-light .accordion-header:focus {
+  background: var(--color-shore-base);
+  box-shadow: inset 0 0 0 2px var(--color-waves-500);
 }
 
-.accordion-dark .accordion-icon {
-  color: var(--color-pearl-400);
+.accordion-light .accordion-icon {
+  color: var(--color-text-secondary);
 }
 
-.accordion-dark .accordion-body {
-  color: var(--color-pearl-300);
+.accordion-light .accordion-body {
+  color: var(--color-text-secondary);
 }
 
 /* ===========================
@@ -160,29 +160,29 @@
 
 .accordion-badge {
   padding: 4px 10px;
-  background: var(--color-waves-50);
-  color: var(--color-waves-700);
+  background: var(--color-waves-900);
+  color: var(--color-waves-200);
   border-radius: var(--radius-sm);
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
   flex-shrink: 0;
 }
 
-.accordion-dark .accordion-badge {
-  background: var(--color-waves-900);
-  color: var(--color-waves-200);
+.accordion-light .accordion-badge {
+  background: var(--color-waves-50);
+  color: var(--color-waves-700);
 }
 
 /* Icon on the left of header text */
 .accordion-header-icon {
   width: 20px;
   height: 20px;
-  color: var(--color-waves-500);
+  color: var(--color-waves-300);
   flex-shrink: 0;
 }
 
-.accordion-dark .accordion-header-icon {
-  color: var(--color-waves-300);
+.accordion-light .accordion-header-icon {
+  color: var(--color-waves-500);
 }
 
 /* ===========================
@@ -272,36 +272,36 @@
 
 /* For links inside accordion */
 .accordion-body a {
-  color: var(--color-waves-500);
+  color: var(--color-waves-300);
   text-decoration: underline;
   transition: color 0.2s;
 }
 
 .accordion-body a:hover {
-  color: var(--color-waves-700);
-}
-
-.accordion-dark .accordion-body a {
-  color: var(--color-waves-300);
-}
-
-.accordion-dark .accordion-body a:hover {
   color: var(--color-waves-100);
+}
+
+.accordion-light .accordion-body a {
+  color: var(--color-waves-500);
+}
+
+.accordion-light .accordion-body a:hover {
+  color: var(--color-waves-700);
 }
 
 /* For code blocks inside accordion */
 .accordion-body code {
   font-family: var(--font-mono);
   font-size: var(--font-size-sm);
-  background: var(--color-pearl-100);
+  background: var(--color-pearl-800);
   padding: 2px 6px;
   border-radius: var(--radius-sm);
-  color: var(--color-error-500);
+  color: var(--color-error-300);
 }
 
-.accordion-dark .accordion-body code {
-  background: var(--color-pearl-800);
-  color: var(--color-error-300);
+.accordion-light .accordion-body code {
+  background: var(--color-pearl-100);
+  color: var(--color-error-500);
 }
 
 /* ===========================
