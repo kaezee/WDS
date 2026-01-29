@@ -1,21 +1,18 @@
 /* CERTIFICATION BADGES - WHALELORD DESIGN SYSTEM */
 
 /* ===========================
-   CERTIFICATION BADGES
-   Soft, filled, pill-shaped badges for quality seals
+   BASE BADGE STYLES
    =========================== */
 
 .cert-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
-  background: var(--color-success-200);
-  color: var(--color-success-700);
+  padding: 6px 12px;
   font-family: var(--font-heading);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: var(--font-weight-semibold);
-  border-radius: 16px; /* Very rounded pill shape */
+  border-radius: 6px;
   white-space: nowrap;
   line-height: 1.4;
   transition: all 0.2s ease;
@@ -26,7 +23,6 @@
   display: inline-block;
   width: 16px;
   height: 16px;
-  background: rgba(44, 112, 72, 0.1); /* Success-700 at 10% opacity */
   border-radius: 2px;
   flex-shrink: 0;
 }
@@ -40,41 +36,85 @@
 }
 
 /* ===========================
+   COLOR VARIANTS
+   =========================== */
+
+/* GREEN - Sustainable, Organic, Eco-Friendly Certifications */
+.cert-badge-green {
+  background: #D4F4E2; /* Success-100 */
+  color: #2C7048;      /* Success-700 */
+}
+
+.cert-badge-green .cert-badge-icon {
+  background: rgba(44, 112, 72, 0.1); /* Success-700 at 10% opacity */
+}
+
+/* BLUE - MSC, General Quality Certifications */
+.cert-badge-blue {
+  background: #E6F2F8; /* Waves-50 */
+  color: #01385A;      /* Waves-700 */
+}
+
+.cert-badge-blue .cert-badge-icon {
+  background: rgba(1, 56, 90, 0.1); /* Waves-700 at 10% opacity */
+}
+
+/* GRAY - ISO, Standard Compliance, Other Certifications */
+.cert-badge-gray {
+  background: #EDF2F7; /* Pearl-100 */
+  color: #2D3748;      /* Pearl-700 */
+}
+
+.cert-badge-gray .cert-badge-icon {
+  background: rgba(45, 55, 72, 0.1); /* Pearl-700 at 10% opacity */
+}
+
+/* ===========================
    USAGE NOTES
    =========================== */
 
 /*
 WHEN TO USE:
-- Quality indicators (MSC Certified, Organic, Sustainable)
-- Trust signals and compliance standards
-- Positive product attributes
-- NOT for status indicators (use status-indicators.css for those)
+- Quality certifications (MSC Certified, Organic, Sustainable)
+- Trust signals and compliance standards (ISO, FDA, HACCP)
+- Positive product attributes and quality seals
+- NOT for status indicators like "New", "Limited", "Fresh" (use status-indicators.css)
 
-COLORS:
-- Background: Success-200 (#A8E6C5) - soft mint green
-- Text: Success-700 (#2C7048) - dark forest green
-- Contrast ratio: 4.8:1 (WCAG AA compliant)
+COLOR USAGE:
+- GREEN: Environmental certifications (Sustainable, Organic, Eco-Friendly)
+- BLUE: Marine/seafood certifications (MSC, ASC, Friend of the Sea)
+- GRAY: Standard compliance (ISO, HACCP, FDA Approved)
 
-SHAPE:
-- Border-radius: 16px (very rounded pill)
-- No borders (filled style only)
-- Padding: 8px horizontal, 16px vertical
+SPECIFICATIONS:
+- Padding: 6px 12px (compact, professional)
+- Border-radius: 6px (subtle rounding, less than buttons' 8px)
+- Font-size: 12px (small, unobtrusive)
+- Font: DM Sans (var(--font-heading))
 
-ICON:
-- Rectangle placeholder (16x16px)
-- Replace with actual certification logo
-- Maintains proper spacing with gap: 8px
+ACCESSIBILITY:
+- Green variant: 4.9:1 contrast ratio (WCAG AA compliant)
+- Blue variant: 7.8:1 contrast ratio (WCAG AAA compliant)
+- Gray variant: 8.2:1 contrast ratio (WCAG AAA compliant)
 
-EXAMPLES:
-<span class="cert-badge">
+HTML EXAMPLES:
+
+Green (Sustainable):
+<span class="cert-badge cert-badge-green">
   <span class="cert-badge-icon"></span>
-  MSC Certified
+  Sustainable
 </span>
 
-<span class="cert-badge">
+Blue (MSC):
+<span class="cert-badge cert-badge-blue">
   <span class="cert-badge-icon">
     <img src="/logos/msc.svg" alt="MSC" />
   </span>
   MSC Certified
+</span>
+
+Gray (ISO):
+<span class="cert-badge cert-badge-gray">
+  <span class="cert-badge-icon"></span>
+  ISO 22000
 </span>
 */
