@@ -3,18 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buttons - WhaleLord Design System</title>
-    
-    <!-- WhaleLord Design System -->
-    <link rel="stylesheet" href="whalelord-tokens.css">
-    <link rel="stylesheet" href="base-styles.css">
+    <title>Buttons - Compass Design System</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="buttons.css">
-    
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .hero {
+            text-align: left;
+            padding: var(--spacing-16) 0;
+        }
+
+        .tab-nav {
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid var(--color-pearl-200);
+            margin-bottom: var(--spacing-6);
+        }
+        
+        .tab-btn {
+            padding: var(--spacing-3) var(--spacing-5);
+            background: none;
+            border: none;
+            font-family: var(--font-heading);
+            font-size: var(--font-size-sm);
+            font-weight: var(--font-weight-medium);
+            color: var(--color-pearl-600);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+        
+        .tab-btn:hover {
+            color: var(--color-waves-500);
+        }
+        
+        .tab-btn.active {
+            color: var(--color-waves-500);
+            border-bottom-color: var(--color-waves-500);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .preview-box {
+            background: white;
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-8);
+            margin-bottom: var(--spacing-6);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-4);
+            flex-wrap: wrap;
+        }
+        
+        .preview-box.dark {
+            background: var(--color-waves-500);
+        }
+
+        .component-section {
+            margin-bottom: var(--spacing-16);
+        }
+
+        .component-section h2 {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--spacing-3);
+        }
+
+        .component-section > p {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-6);
+            line-height: var(--line-height-relaxed);
+        }
+
+        pre {
+            background: var(--color-pearl-800);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-4);
+            overflow-x: auto;
+            margin-bottom: var(--spacing-6);
+        }
+
+        code {
+            font-family: var(--font-mono);
+            font-size: var(--font-size-sm);
+            color: var(--color-pearl-50);
+            line-height: var(--line-height-relaxed);
+        }
+    </style>
 </head>
 <body>
     <nav class="nav">
@@ -29,320 +116,672 @@
         </div>
     </nav>
 
+    <div class="sidenav" id="sidenav"></div>
+
     <div class="main-content">
         <div class="container-with-sidenav">
-            
-            <!-- PAGE HEADER -->
-            <div class="page-header">
-                <h1 class="page-title">Buttons</h1>
-                <p class="page-subtitle">Action elements using DM Sans font with hover underline states for clear interaction feedback.</p>
-            </div>
+            <header class="hero">
+                <h1>Buttons</h1>
+                <p class="hero-subtitle">Action elements that guide buyers through discovery, quoting, and ordering flows.</p>
+            </header>
 
-            <!-- WHAT ARE BUTTONS -->
-            <div style="margin-bottom: var(--spacing-2xl); padding: var(--spacing-lg); background: #E6F2F8; border-left: 4px solid #025E96; border-radius: 8px;">
-                <h2 style="font-size: 24px; margin-bottom: 12px; color: #01385A;">What Are Buttons?</h2>
-                <p style="line-height: 1.75;">
-                    Buttons trigger actions when clicked. They guide users through workflows like placing orders, requesting quotes, and confirming transactions. All buttons use DM Sans font and include hover underline states for clear visual feedback.
-                </p>
-            </div>
+            <!-- USAGE & PURPOSE -->
+            <section class="component-section" style="background: var(--color-shore-editorial); padding: var(--spacing-8); border-radius: var(--radius-lg); margin-bottom: var(--spacing-12);">
+                <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-4);">Usage & Purpose</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--spacing-6);">
+                    <div>
+                        <h4 style="font-size: var(--font-size-base); font-weight: 600; margin-bottom: var(--spacing-2);">Primary Buttons</h4>
+                        <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                            Main call-to-action (Request Quote, Add to Cart, Submit Order). Use sparingly - one primary per screen section.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: var(--font-size-base); font-weight: 600; margin-bottom: var(--spacing-2);">Outline Buttons</h4>
+                        <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                            Secondary actions (View Details, Compare, Save for Later). Use alongside primary buttons or as standalone options.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 style="font-size: var(--font-size-base); font-weight: 600; margin-bottom: var(--spacing-2);">Neutral Buttons</h4>
+                        <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                            Tertiary actions (Cancel, Back, Close). Low emphasis for reversible or less important actions.
+                        </p>
+                    </div>
+                </div>
+                <div style="margin-top: var(--spacing-5); padding-top: var(--spacing-5); border-top: 1px solid var(--color-border-default);">
+                    <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed);">
+                        <strong>Hover States:</strong> All interactive buttons use Shore Hover (#D4EAF4) for light backgrounds. Borders are 1px for refined professional appearance.
+                    </p>
+                </div>
+            </section>
 
-            <!-- PRIMARY BUTTONS -->
-            <section class="section">
-                <h2>Primary Buttons</h2>
-                <p>Main call-to-action buttons with Waves-500 (#025E96) background. Hover shows Waves-700 (#01385A) with underline.</p>
+            <!-- BUTTON SIZES -->
+            <section class="component-section">
+                <h2>Button Sizes</h2>
+                <p>Three sizes optimized for desktop and mobile marketplace interfaces.</p>
                 
-                <div class="component-demo">
-                    <div class="demo-row">
-                        <button class="btn btn-primary btn-sm">Small (32px)</button>
-                        <button class="btn btn-primary btn-md">Medium (40px)</button>
-                        <button class="btn btn-primary btn-lg">Large (48px)</button>
-                        <button class="btn btn-primary btn-md" disabled>Disabled</button>
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'sizes-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'sizes-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'sizes-jsx')">JSX</button>
+                </div>
+                
+                <div id="sizes-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <button class="btn btn-sm btn-primary">Small (32px)</button>
+                        <button class="btn btn-md btn-primary">Medium (40px)</button>
+                        <button class="btn btn-lg btn-primary">Large (48px)</button>
                     </div>
                 </div>
-
-                <div class="code-example">
-                    <div class="code-header">
-                        <span>HTML</span>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                    </div>
-                    <pre><code>&lt;!-- Small (32px) --&gt;
-&lt;button class="btn btn-primary btn-sm"&gt;Small&lt;/button&gt;
-
-&lt;!-- Medium (40px) - Default --&gt;
-&lt;button class="btn btn-primary btn-md"&gt;Medium&lt;/button&gt;
-
-&lt;!-- Large (48px) --&gt;
-&lt;button class="btn btn-primary btn-lg"&gt;Large&lt;/button&gt;
-
-&lt;!-- Disabled --&gt;
-&lt;button class="btn btn-primary btn-md" disabled&gt;Disabled&lt;/button&gt;</code></pre>
+                
+                <div id="sizes-html" class="tab-content">
+                    <pre><code>&lt;button class="btn btn-sm btn-primary"&gt;Small&lt;/button&gt;
+&lt;button class="btn btn-md btn-primary"&gt;Medium&lt;/button&gt;
+&lt;button class="btn btn-lg btn-primary"&gt;Large&lt;/button&gt;</code></pre>
                 </div>
+                
+                <div id="sizes-jsx" class="tab-content">
+                    <pre><code>&lt;button className="bg-waves-500 hover:bg-waves-700 text-white px-4 h-8 rounded-lg font-medium"&gt;Small&lt;/button&gt;
+&lt;button className="bg-waves-500 hover:bg-waves-700 text-white px-6 h-10 rounded-lg font-medium"&gt;Medium&lt;/button&gt;
+&lt;button className="bg-waves-500 hover:bg-waves-700 text-white px-8 h-12 rounded-lg font-medium"&gt;Large&lt;/button&gt;</code></pre>
+                </div>
+            </section>
 
-                <div class="code-example">
-                    <div class="code-header">
-                        <span>React + JSX</span>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+            <!-- PRIMARY -->
+            <section class="component-section">
+                <h2>Primary</h2>
+                <p>Main call-to-action for critical marketplace actions: Request Quote, Place Order, Confirm Purchase. The Waves blue builds buyer confidence.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'primary-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'primary-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'primary-jsx')">JSX</button>
+                </div>
+                
+                <div id="primary-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <button class="btn btn-md btn-primary">Request Quote</button>
+                        <button class="btn btn-md btn-primary" disabled>Disabled</button>
                     </div>
-                    <pre><code>const PrimaryButton = ({ size = 'md', children, disabled, onClick }) =&gt; (
-  &lt;button
-    className={`btn btn-primary btn-${size}`}
+                </div>
+                
+                <div id="primary-html" class="tab-content">
+                    <pre><code>&lt;button class="btn btn-md btn-primary"&gt;Request Quote&lt;/button&gt;
+&lt;button class="btn btn-md btn-primary" disabled&gt;Disabled&lt;/button&gt;</code></pre>
+                </div>
+                
+                <div id="primary-jsx" class="tab-content">
+                    <pre><code>// Using your button classes
+&lt;button className="btn btn-md btn-primary"&gt;Request Quote&lt;/button&gt;
+&lt;button className="btn btn-md btn-primary" disabled&gt;Disabled&lt;/button&gt;
+
+// Component example
+const PrimaryButton = ({ children, disabled, onClick, size = 'md' }) =&gt; (
+  &lt;button 
+    className={`btn btn-${size} btn-primary`}
     disabled={disabled}
     onClick={onClick}
   &gt;
     {children}
   &lt;/button&gt;
-);
-
-// Usage
-&lt;PrimaryButton size="sm"&gt;Small&lt;/PrimaryButton&gt;
-&lt;PrimaryButton&gt;Medium (Default)&lt;/PrimaryButton&gt;
-&lt;PrimaryButton size="lg"&gt;Large&lt;/PrimaryButton&gt;
-&lt;PrimaryButton disabled&gt;Disabled&lt;/PrimaryButton&gt;</code></pre>
-                </div>
-
-                <div class="specs">
-                    <h4>CSS Variables Used</h4>
-                    <table class="spec-table">
-                        <thead>
-                            <tr>
-                                <th>Property</th>
-                                <th>Value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>font-family</code></td>
-                                <td><code>var(--font-heading)</code> → DM Sans</td>
-                            </tr>
-                            <tr>
-                                <td><code>background</code></td>
-                                <td><code>var(--color-waves-500)</code> → #025E96</td>
-                            </tr>
-                            <tr>
-                                <td><code>background (hover)</code></td>
-                                <td><code>var(--color-waves-700)</code> → #01385A</td>
-                            </tr>
-                            <tr>
-                                <td><code>text-decoration (hover)</code></td>
-                                <td><code>underline</code> with 4px offset</td>
-                            </tr>
-                        </tbody>
-                    </table>
+);</code></pre>
                 </div>
             </section>
 
-            <!-- LIGHT BUTTONS -->
-            <section class="section">
-                <h2>Light Buttons (For Dark Backgrounds)</h2>
-                <p>Use on dark backgrounds like Waves-500 (#025E96). Available in fill and outline variants.</p>
+            <!-- PRIMARY OUTLINE -->
+            <section class="component-section">
+                <h2>Primary Outline</h2>
+                <p>Secondary CTAs with Waves emphasis: Compare Products, View Details, Save to List. Hovers to Shore Ice for clear feedback.</p>
                 
-                <div class="demo-dark">
-                    <div class="demo-row">
-                        <button class="btn btn-light-fill btn-md">Light Fill</button>
-                        <button class="btn btn-light-outline btn-md">Light Outline</button>
-                        <button class="btn btn-light-fill btn-md" disabled>Disabled Fill</button>
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'outline-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'outline-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'outline-jsx')">JSX</button>
+                </div>
+                
+                <div id="outline-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <button class="btn btn-md btn-primary-outline">View Details</button>
+                        <button class="btn btn-md btn-primary-outline" disabled>Disabled</button>
                     </div>
                 </div>
-
-                <div class="code-example">
-                    <div class="code-header">
-                        <span>HTML</span>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                    </div>
-                    <pre><code>&lt;!-- On dark background --&gt;
-&lt;div style="background: #025E96; padding: 32px;"&gt;
-  &lt;button class="btn btn-light-fill btn-md"&gt;Light Fill&lt;/button&gt;
-  &lt;button class="btn btn-light-outline btn-md"&gt;Light Outline&lt;/button&gt;
-&lt;/div&gt;</code></pre>
+                
+                <div id="outline-html" class="tab-content">
+                    <pre><code>&lt;button class="btn btn-md btn-primary-outline"&gt;View Details&lt;/button&gt;
+&lt;button class="btn btn-md btn-primary-outline" disabled&gt;Disabled&lt;/button&gt;</code></pre>
                 </div>
+                
+                <div id="outline-jsx" class="tab-content">
+                    <pre><code>// Using your button classes
+&lt;button className="btn btn-md btn-primary-outline"&gt;View Details&lt;/button&gt;
+&lt;button className="btn btn-md btn-primary-outline" disabled&gt;Disabled&lt;/button&gt;
 
-                <div class="code-example">
-                    <div class="code-header">
-                        <span>React + JSX</span>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                    </div>
-                    <pre><code>const LightButton = ({ variant = 'fill', size = 'md', children, disabled, onClick }) =&gt; (
-  &lt;button
-    className={`btn btn-light-${variant} btn-${size}`}
+// Component example
+const PrimaryOutlineButton = ({ children, disabled, onClick, size = 'md' }) =&gt; (
+  &lt;button 
+    className={`btn btn-${size} btn-primary-outline`}
     disabled={disabled}
     onClick={onClick}
   &gt;
     {children}
   &lt;/button&gt;
-);
-
-// Usage
-&lt;LightButton variant="fill"&gt;Light Fill&lt;/LightButton&gt;
-&lt;LightButton variant="outline"&gt;Light Outline&lt;/LightButton&gt;</code></pre>
+);</code></pre>
                 </div>
             </section>
 
-            <!-- TERTIARY BUTTONS -->
-            <section class="section">
-                <h2>Tertiary Buttons (Stroke Outline)</h2>
-                <p>Secondary actions with stroke outline. Use anywhere for less prominent actions.</p>
+            <!-- SECONDARY OUTLINE -->
+            <section class="component-section">
+                <h2>Secondary Outline</h2>
+                <p>Tertiary actions with minimal emphasis: Cancel, Go Back, Skip Step. Neutral gray maintains focus on primary flows.</p>
                 
-                <div class="component-demo">
-                    <div class="demo-row">
-                        <button class="btn btn-tertiary btn-sm">Small</button>
-                        <button class="btn btn-tertiary btn-md">Medium</button>
-                        <button class="btn btn-tertiary btn-lg">Large</button>
-                        <button class="btn btn-tertiary btn-md" disabled>Disabled</button>
-                    </div>
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'secondary-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'secondary-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'secondary-jsx')">JSX</button>
                 </div>
-
-                <div class="code-example">
-                    <div class="code-header">
-                        <span>HTML</span>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                    </div>
-                    <pre><code>&lt;button class="btn btn-tertiary btn-md"&gt;Tertiary Button&lt;/button&gt;</code></pre>
-                </div>
-            </section>
-
-            <!-- BUTTON STATES -->
-            <section class="section">
-                <h2>Button States</h2>
-                <p>All buttons include default, hover (with underline), active, and disabled states.</p>
                 
-                <div class="states-grid">
-                    <div class="state-demo">
-                        <h4>Default</h4>
-                        <button class="btn btn-primary btn-md">Primary</button>
-                        <code>#025E96</code>
-                    </div>
-                    
-                    <div class="state-demo">
-                        <h4>Hover</h4>
-                        <button class="btn btn-primary btn-md" style="background: #01385A; text-decoration: underline; text-underline-offset: 4px;">Primary</button>
-                        <code>#01385A + underline</code>
-                    </div>
-                    
-                    <div class="state-demo">
-                        <h4>Active</h4>
-                        <button class="btn btn-primary btn-md" style="background: #01385A;">Primary</button>
-                        <code>#01385A</code>
-                    </div>
-                    
-                    <div class="state-demo">
-                        <h4>Disabled</h4>
-                        <button class="btn btn-primary btn-md" disabled>Primary</button>
-                        <code>not-allowed</code>
+                <div id="secondary-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <button class="btn btn-md btn-secondary-outline">Cancel</button>
+                        <button class="btn btn-md btn-secondary-outline" disabled>Disabled</button>
                     </div>
                 </div>
-            </section>
-
-            <!-- BEST PRACTICES -->
-            <section class="section">
-                <h2>Best Practices</h2>
                 
-                <div class="guidelines-grid">
-                    <div class="guideline do">
-                        <h4>✅ Do</h4>
-                        <ul>
-                            <li>Use clear, action-oriented labels ("Add to Cart", "Request Quote")</li>
-                            <li>Keep labels concise (2-4 words maximum)</li>
-                            <li>Use only ONE primary button per section</li>
-                            <li>The hover underline provides clear feedback</li>
-                            <li>Ensure 44x44px minimum touch targets</li>
-                            <li>Use sentence case ("Add to cart")</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="guideline dont">
-                        <h4>❌ Don't</h4>
-                        <ul>
-                            <li>Don't use vague labels ("Click here", "OK")</li>
-                            <li>Don't make buttons too small (32px minimum)</li>
-                            <li>Don't use multiple primary buttons</li>
-                            <li>Don't use all caps text</li>
-                            <li>Don't disable without explanation</li>
-                            <li>Don't place buttons too close (8px minimum gap)</li>
-                        </ul>
-                    </div>
+                <div id="secondary-html" class="tab-content">
+                    <pre><code>&lt;button class="btn btn-md btn-secondary-outline"&gt;Cancel&lt;/button&gt;
+&lt;button class="btn btn-md btn-secondary-outline" disabled&gt;Disabled&lt;/button&gt;</code></pre>
+                </div>
+                
+                <div id="secondary-jsx" class="tab-content">
+                    <pre><code>// Using your button classes
+&lt;button className="btn btn-md btn-secondary-outline"&gt;Cancel&lt;/button&gt;
+&lt;button className="btn btn-md btn-secondary-outline" disabled&gt;Disabled&lt;/button&gt;
+
+// Component example
+const SecondaryOutlineButton = ({ children, disabled, onClick, size = 'md' }) =&gt; (
+  &lt;button 
+    className={`btn btn-${size} btn-secondary-outline`}
+    disabled={disabled}
+    onClick={onClick}
+  &gt;
+    {children}
+  &lt;/button&gt;
+);</code></pre>
                 </div>
             </section>
 
-            <!-- CSS CLASSES REFERENCE -->
-            <section class="section">
-                <h2>CSS Classes Reference</h2>
-                <div class="specs">
-                    <table class="spec-table">
-                        <thead>
-                            <tr>
-                                <th>Class</th>
-                                <th>Purpose</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><code>.btn</code></td>
-                                <td>Base button styles - Required on all buttons</td>
-                            </tr>
-                            <tr>
-                                <td><code>.btn-primary</code></td>
-                                <td>Primary blue variant (Waves-500)</td>
-                            </tr>
-                            <tr>
-                                <td><code>.btn-light-fill</code></td>
-                                <td>Light fill for dark backgrounds</td>
-                            </tr>
-                            <tr>
-                                <td><code>.btn-light-outline</code></td>
-                                <td>Light outline for dark backgrounds</td>
-                            </tr>
-                            <tr>
-                                <td><code>.btn-tertiary</code></td>
-                                <td>Tertiary stroke outline</td>
-                            </tr>
-                            <tr>
-                                <td><code>.btn-sm</code></td>
-                                <td>Small size (32px height)</td>
-                            </tr>
-                            <tr>
-                                <td><code>.btn-md</code></td>
-                                <td>Medium size (40px height) - Default</td>
-                            </tr>
-                            <tr>
-                                <td><code>.btn-lg</code></td>
-                                <td>Large size (48px height)</td>
-                            </tr>
-                            <tr>
-                                <td><code>.btn-fluid</code></td>
-                                <td>Full width button</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <!-- NEUTRAL -->
+            <section class="component-section">
+                <h2>Neutral</h2>
+                <p>Minimal emphasis for supporting actions: Learn More, View FAQ, Download Spec Sheet.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'neutral-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'neutral-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'neutral-jsx')">JSX</button>
+                </div>
+                
+                <div id="neutral-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <button class="btn btn-md btn-neutral">Learn More</button>
+                        <button class="btn btn-md btn-neutral" disabled>Disabled</button>
+                    </div>
+                </div>
+                
+                <div id="neutral-html" class="tab-content">
+                    <pre><code>&lt;button class="btn btn-md btn-neutral"&gt;Learn More&lt;/button&gt;
+&lt;button class="btn btn-md btn-neutral" disabled&gt;Disabled&lt;/button&gt;</code></pre>
+                </div>
+                
+                <div id="neutral-jsx" class="tab-content">
+                    <pre><code>// Using your button classes
+&lt;button className="btn btn-md btn-neutral"&gt;Learn More&lt;/button&gt;
+&lt;button className="btn btn-md btn-neutral" disabled&gt;Disabled&lt;/button&gt;
+
+// Component example
+const NeutralButton = ({ children, disabled, onClick, size = 'md' }) =&gt; (
+  &lt;button 
+    className={`btn btn-${size} btn-neutral`}
+    disabled={disabled}
+    onClick={onClick}
+  &gt;
+    {children}
+  &lt;/button&gt;
+);</code></pre>
+                </div>
+            </section>
+
+            <!-- BUTTONS ON DARK BACKGROUNDS -->
+            <section class="component-section">
+                <h2>Buttons on Dark Backgrounds</h2>
+                <p>Light variants for dark hero sections, promotional banners, and Waves-colored cards.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'dark-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'dark-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'dark-jsx')">JSX</button>
+                </div>
+                
+                <div id="dark-preview" class="tab-content active">
+                    <div class="preview-box dark">
+                        <button class="btn btn-md btn-primary-light">Get Started</button>
+                        <button class="btn btn-md btn-primary-light-outline">Learn More</button>
+                        <button class="btn btn-md btn-tertiary-text">Skip</button>
+                    </div>
+                </div>
+                
+                <div id="dark-html" class="tab-content">
+                    <pre><code>&lt;button class="btn btn-md btn-primary-light"&gt;Get Started&lt;/button&gt;
+&lt;button class="btn btn-md btn-primary-light-outline"&gt;Learn More&lt;/button&gt;
+&lt;button class="btn btn-md btn-tertiary-text"&gt;Skip&lt;/button&gt;</code></pre>
+                </div>
+                
+                <div id="dark-jsx" class="tab-content">
+                    <pre><code>// Using your button classes for dark backgrounds
+&lt;button className="btn btn-md btn-primary-light"&gt;Get Started&lt;/button&gt;
+&lt;button className="btn btn-md btn-primary-light-outline"&gt;Learn More&lt;/button&gt;
+&lt;button className="btn btn-md btn-tertiary-text"&gt;Skip&lt;/button&gt;
+
+// Component example
+const LightButton = ({ children, variant = 'light', onClick, size = 'md' }) =&gt; (
+  &lt;button 
+    className={`btn btn-${size} btn-primary-${variant}`}
+    onClick={onClick}
+  &gt;
+    {children}
+  &lt;/button&gt;
+);</code></pre>
+                </div>
+            </section>
+
+            <!-- FLUID/RESPONSIVE BUTTONS -->
+            <section class="component-section">
+                <h2>Fluid / Responsive Buttons</h2>
+                <p>Full-width buttons for mobile checkout flows, form submissions, and stacked action layouts. Add <code>btn-fluid</code> class to any button variant.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'fluid-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'fluid-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'fluid-jsx')">JSX</button>
+                </div>
+                
+                <div id="fluid-preview" class="tab-content active">
+                    <div class="preview-box" style="flex-direction: column; align-items: stretch;">
+                        <button class="btn btn-md btn-primary btn-fluid">Complete Order</button>
+                        <button class="btn btn-md btn-primary-outline btn-fluid">Save for Later</button>
+                        <button class="btn btn-md btn-secondary-outline btn-fluid">Cancel</button>
+                    </div>
+                </div>
+                
+                <div id="fluid-html" class="tab-content">
+                    <pre><code>&lt;button class="btn btn-md btn-primary btn-fluid"&gt;Complete Order&lt;/button&gt;
+&lt;button class="btn btn-md btn-primary-outline btn-fluid"&gt;Save for Later&lt;/button&gt;
+&lt;button class="btn btn-md btn-secondary-outline btn-fluid"&gt;Cancel&lt;/button&gt;</code></pre>
+                </div>
+                
+                <div id="fluid-jsx" class="tab-content">
+                    <pre><code>// Using your button classes with btn-fluid
+&lt;button className="btn btn-md btn-primary btn-fluid"&gt;Complete Order&lt;/button&gt;
+&lt;button className="btn btn-md btn-primary-outline btn-fluid"&gt;Save for Later&lt;/button&gt;
+&lt;button className="btn btn-md btn-secondary-outline btn-fluid"&gt;Cancel&lt;/button&gt;
+
+// Component example
+const FluidButton = ({ children, variant = 'primary', onClick, size = 'md' }) =&gt; (
+  &lt;button 
+    className={`btn btn-${size} btn-${variant} btn-fluid`}
+    onClick={onClick}
+  &gt;
+    {children}
+  &lt;/button&gt;
+);</code></pre>
+                </div>
+            </section>
+
+            <!-- MICRO-INTERACTIONS -->
+            <section class="component-section">
+                <h2>Micro-Interactions</h2>
+                <p>Delightful animations that guide users through marketplace actions with clear feedback and engaging transitions.</p>
+                
+                <!-- Carousel Container -->
+                <div class="micro-carousel">
+                    <!-- Header -->
+                    <div class="micro-header">
+                        <p class="micro-counter" id="micro-counter">1 of 12</p>
+                        <h3 class="micro-title" id="micro-title">Add to Cart</h3>
+                        <p class="micro-description" id="micro-description">Arrow slides through with success/fail states</p>
+                    </div>
+
+                    <!-- Component Display Area -->
+                    <div class="micro-display">
+                        <div id="micro-component">
+                            <div style="padding: 2rem; background: var(--color-shore-base); border-radius: 12px; text-align: center;">
+                                <p style="font-family: var(--font-heading); color: var(--color-text-secondary);">
+                                    AddToCartButton component preview
+                                </p>
+                                <p style="font-family: var(--font-heading); font-size: 14px; color: var(--color-pearl-400); margin-top: 8px;">
+                                    (Component implementation pending)
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hint -->
+                    <p class="micro-hint" id="micro-hint">Shift+Click to force out of stock • Double-click to reset</p>
+
+                    <!-- Navigation -->
+                    <div class="micro-nav">
+                        <button class="micro-nav-btn" id="micro-prev" aria-label="Previous interaction">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"></polyline>
+                            </svg>
+                        </button>
+
+                        <!-- Dots -->
+                        <div class="micro-dots" id="micro-dots"></div>
+
+                        <button class="micro-nav-btn" id="micro-next" aria-label="Next interaction">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Instructions -->
+                    <div class="micro-instructions">
+                        <p>Use arrow buttons or dots to navigate between micro interactions</p>
+                    </div>
                 </div>
             </section>
 
         </div>
     </div>
 
-    <footer class="footer">
-        <p>&copy; 2026 Compass Design System v1.0</p>
-    </footer>
-
     <script src="navigation.js"></script>
-    
     <script>
-        function copyCode(button) {
-            const codeBlock = button.closest('.code-example').querySelector('code');
-            const code = codeBlock.textContent;
+        // Tab switching function
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.component-section');
+            const allTabs = section.querySelectorAll('.tab-content');
+            const allBtns = section.querySelectorAll('.tab-btn');
             
-            navigator.clipboard.writeText(code).then(() => {
-                const originalText = button.textContent;
-                button.textContent = 'Copied!';
-                button.style.background = '#48BB78';
-                
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.style.background = '';
-                }, 2000);
-            }).catch(err => {
-                console.error('Failed to copy:', err);
+            allTabs.forEach(tab => tab.classList.remove('active'));
+            allBtns.forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // Micro-interactions carousel
+        const microInteractions = [
+            {
+                id: 1,
+                title: "Add to Cart",
+                description: "Arrow slides through with success/fail states",
+                hint: "Shift+Click to force out of stock • Double-click to reset",
+                component: "AddToCartButton"
+            },
+            {
+                id: 2,
+                title: "Save for Later",
+                description: "Wishlist with sparkle burst effect",
+                hint: "Click to toggle save state",
+                component: "WishlistButton"
+            },
+            {
+                id: 3,
+                title: "Quick View",
+                description: "Expanding frame preview animation",
+                hint: "Auto-closes after 2 seconds",
+                component: "QuickViewButton"
+            },
+            {
+                id: 4,
+                title: "Freshness Filter",
+                description: "Cycle through Fresh, Chilled, Frozen",
+                hint: "Click to cycle between freshness levels",
+                component: "FreshnessButton"
+            },
+            {
+                id: 5,
+                title: "Reserve Item",
+                description: "Countdown timer with rotating arc",
+                hint: "Double-click to release reservation",
+                component: "ReserveButton"
+            },
+            {
+                id: 6,
+                title: "Track Delivery",
+                description: "Animated truck with GPS pin waves",
+                hint: "Double-click to stop tracking",
+                component: "TrackDeliveryButton"
+            },
+            {
+                id: 7,
+                title: "Quantity Selector",
+                description: "Animated counter with smooth transitions",
+                hint: "Click + or - to adjust weight",
+                component: "QuantityButton"
+            },
+            {
+                id: 8,
+                title: "Pre-Order",
+                description: "Calendar pages flip animation",
+                hint: "Double-click to cancel pre-order",
+                component: "PreOrderButton"
+            },
+            {
+                id: 9,
+                title: "Star Rating",
+                description: "Interactive star review with bounce",
+                hint: "Click stars to rate • Hover to preview",
+                component: "ReviewButton"
+            },
+            {
+                id: 10,
+                title: "Fresh Catch Tag",
+                description: "Wave animation for daily catch items",
+                hint: "Click to toggle fresh catch badge",
+                component: "FreshCatchButton"
+            },
+            {
+                id: 11,
+                title: "Sustainable Badge",
+                description: "Eco-friendly verification with leaf burst",
+                hint: "Click to verify eco certification",
+                component: "SustainableButton"
+            },
+            {
+                id: 12,
+                title: "Compare Prices",
+                description: "Balance scale with comparison arrows",
+                hint: "Click to toggle comparison mode",
+                component: "CompareButton"
+            }
+        ];
+
+        let currentIndex = 0;
+
+        function initMicroCarousel() {
+            const dotsContainer = document.getElementById('micro-dots');
+            microInteractions.forEach((_, index) => {
+                const dot = document.createElement('button');
+                dot.className = 'micro-dot';
+                if (index === 0) dot.classList.add('active');
+                dot.setAttribute('aria-label', `Go to interaction ${index + 1}`);
+                dot.addEventListener('click', () => goToIndex(index));
+                dotsContainer.appendChild(dot);
             });
+
+            document.getElementById('micro-prev').addEventListener('click', goToPrevious);
+            document.getElementById('micro-next').addEventListener('click', goToNext);
+
+            updateDisplay();
+        }
+
+        function goToPrevious() {
+            currentIndex = currentIndex === 0 ? microInteractions.length - 1 : currentIndex - 1;
+            updateDisplay();
+        }
+
+        function goToNext() {
+            currentIndex = currentIndex === microInteractions.length - 1 ? 0 : currentIndex + 1;
+            updateDisplay();
+        }
+
+        function goToIndex(index) {
+            currentIndex = index;
+            updateDisplay();
+        }
+
+        function updateDisplay() {
+            const current = microInteractions[currentIndex];
+            
+            document.getElementById('micro-counter').textContent = `${currentIndex + 1} of ${microInteractions.length}`;
+            document.getElementById('micro-title').textContent = current.title;
+            document.getElementById('micro-description').textContent = current.description;
+            document.getElementById('micro-hint').textContent = current.hint;
+            
+            document.querySelectorAll('.micro-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+            
+            document.getElementById('micro-component').innerHTML = `
+                <div style="padding: 2rem; background: var(--color-shore-base); border-radius: 12px; text-align: center;">
+                    <p style="font-family: var(--font-heading); color: var(--color-text-secondary);">
+                        ${current.component} component preview
+                    </p>
+                    <p style="font-family: var(--font-heading); font-size: 14px; color: var(--color-pearl-400); margin-top: 8px;">
+                        (Component implementation pending)
+                    </p>
+                </div>
+            `;
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initMicroCarousel);
+        } else {
+            initMicroCarousel();
         }
     </script>
+
+    <style>
+        /* Micro-Interactions Carousel Styles */
+        .micro-carousel {
+            background: white;
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-xl);
+            padding: var(--spacing-12);
+            margin-top: var(--spacing-8);
+        }
+
+        .micro-header {
+            text-align: center;
+            margin-bottom: var(--spacing-8);
+        }
+
+        .micro-counter {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .micro-title {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-2xl);
+            font-weight: var(--font-weight-bold);
+            color: var(--color-text-primary);
+            margin-bottom: var(--spacing-2);
+        }
+
+        .micro-description {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-base);
+            color: var(--color-text-secondary);
+            margin: 0;
+        }
+
+        .micro-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            padding: var(--spacing-8);
+            margin: var(--spacing-8) 0;
+        }
+
+        .micro-hint {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-sm);
+            color: var(--color-pearl-400);
+            text-align: center;
+            margin: var(--spacing-4) 0 var(--spacing-8) 0;
+        }
+
+        .micro-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--spacing-4);
+            margin-bottom: var(--spacing-6);
+        }
+
+        .micro-nav-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--color-shore-base);
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-md);
+            color: var(--color-text-primary);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .micro-nav-btn:hover {
+            background: var(--color-border-default);
+            border-color: var(--color-border-neutral);
+        }
+
+        .micro-dots {
+            display: flex;
+            gap: var(--spacing-2);
+        }
+
+        .micro-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--color-pearl-300);
+            border: none;
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .micro-dot:hover {
+            background: var(--color-pearl-400);
+        }
+
+        .micro-dot.active {
+            background: var(--color-waves-500);
+            width: 32px;
+        }
+
+        .micro-instructions {
+            background: var(--color-shore-ice);
+            padding: var(--spacing-5);
+            border-radius: var(--radius-md);
+            text-align: center;
+        }
+
+        .micro-instructions p {
+            font-family: var(--font-heading);
+            font-size: var(--font-size-sm);
+            color: var(--color-text-secondary);
+            margin: 0;
+        }
+    </style>
 </body>
 </html>
