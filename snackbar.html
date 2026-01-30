@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snackbar - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="snackbar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--color-pearl-200); margin-bottom: var(--spacing-6); }
+        .tab-btn { padding: var(--spacing-3) var(--spacing-5); background: none; border: none; font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-pearl-600); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+        .tab-btn:hover { color: var(--color-waves-500); }
+        .tab-btn.active { color: var(--color-waves-500); border-bottom-color: var(--color-waves-500); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .preview-box { background: var(--color-pearl-100); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); }
+        .snackbar-demo-container { display: flex; flex-direction: column; gap: var(--spacing-4); max-width: 600px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header>
+                <h1>Snackbar / Toast</h1>
+                <p class="hero-subtitle">Temporary notification messages that provide feedback on user actions without interrupting workflow.</p>
+            </header>
+
+            <div class="usage-box">
+                <h3>Usage & Purpose</h3>
+                <p><strong>Use snackbars when:</strong> You need to provide brief, non-critical feedback that auto-dismisses (order confirmations, save notifications, background process updates).</p>
+                <p><strong>Don't use snackbars for:</strong> Critical errors requiring immediate action (use modals instead), lengthy messages, or information users need to reference later.</p>
+            </div>
+
+            <!-- Basic Variants -->
+            <section class="section">
+                <h2>Snackbar Variants</h2>
+                <p>Five variants for different message types, using WhaleLord's darker, more sophisticated semantic colors.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'variants-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'variants-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'variants-jsx')">JSX</button>
+                </div>
+                
+                <div id="variants-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="snackbar-demo-container">
+                            
+                            <!-- Success - Darker Green -->
+                            <div class="snackbar snackbar-success" style="position: relative; bottom: auto; left: auto; transform: none;">
+                                <svg class="snackbar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Quote request sent successfully</span>
+                                <button class="snackbar-close">✕</button>
+                            </div>
+
+                            <!-- Error - Darker Red -->
+                            <div class="snackbar snackbar-error" style="position: relative; bottom: auto; left: auto; transform: none;">
+                                <svg class="snackbar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                                <span>Failed to process payment</span>
+                                <button class="snackbar-close">✕</button>
+                            </div>
+
+                            <!-- Warning - Darker Orange -->
+                            <div class="snackbar snackbar-warning" style="position: relative; bottom: auto; left: auto; transform: none;">
+                                <svg class="snackbar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                                </svg>
+                                <span>Stock running low for this product</span>
+                                <button class="snackbar-close">✕</button>
+                            </div>
+
+                            <!-- Info - Deep Ocean Blue -->
+                            <div class="snackbar snackbar-info" style="position: relative; bottom: auto; left: auto; transform: none;">
+                                <svg class="snackbar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>New suppliers added to marketplace</span>
+                                <button class="snackbar-close">✕</button>
+                            </div>
+
+                            <!-- Default - Neutral Pearl -->
+                            <div class="snackbar snackbar-default" style="position: relative; bottom: auto; left: auto; transform: none;">
+                                <span>Your changes have been saved</span>
+                                <button class="snackbar-close">✕</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="variants-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Success Snackbar --&gt;
+&lt;div class="snackbar snackbar-success"&gt;
+  &lt;svg class="snackbar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+    &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"&gt;&lt;/path&gt;
+  &lt;/svg&gt;
+  &lt;span&gt;Quote request sent successfully&lt;/span&gt;
+  &lt;button class="snackbar-close"&gt;✕&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Error Snackbar --&gt;
+&lt;div class="snackbar snackbar-error"&gt;
+  &lt;svg class="snackbar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+    &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"&gt;&lt;/path&gt;
+  &lt;/svg&gt;
+  &lt;span&gt;Failed to process payment&lt;/span&gt;
+  &lt;button class="snackbar-close"&gt;✕&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Warning Snackbar --&gt;
+&lt;div class="snackbar snackbar-warning"&gt;
+  &lt;svg class="snackbar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+    &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"&gt;&lt;/path&gt;
+  &lt;/svg&gt;
+  &lt;span&gt;Stock running low for this product&lt;/span&gt;
+  &lt;button class="snackbar-close"&gt;✕&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Info Snackbar --&gt;
+&lt;div class="snackbar snackbar-info"&gt;
+  &lt;svg class="snackbar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+    &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"&gt;&lt;/path&gt;
+  &lt;/svg&gt;
+  &lt;span&gt;New suppliers added to marketplace&lt;/span&gt;
+  &lt;button class="snackbar-close"&gt;✕&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Default Snackbar (No Icon) --&gt;
+&lt;div class="snackbar snackbar-default"&gt;
+  &lt;span&gt;Your changes have been saved&lt;/span&gt;
+  &lt;button class="snackbar-close"&gt;✕&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="variants-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const Snackbar = ({ variant = 'default', message, onClose, icon }) => {
+  return (
+    &lt;div className={`snackbar snackbar-${variant}`}&gt;
+      {icon && (
+        &lt;svg className="snackbar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+          {icon}
+        &lt;/svg&gt;
+      )}
+      &lt;span&gt;{message}&lt;/span&gt;
+      &lt;button className="snackbar-close" onClick={onClose}&gt;✕&lt;/button&gt;
+    &lt;/div&gt;
+  );
+};
+
+// Usage Examples
+&lt;Snackbar 
+  variant="success" 
+  message="Quote request sent successfully"
+  icon={&lt;path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /&gt;}
+  onClose={() => console.log('Dismissed')}
+/&gt;
+
+&lt;Snackbar 
+  variant="error" 
+  message="Failed to process payment"
+  icon={&lt;path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /&gt;}
+  onClose={() => console.log('Dismissed')}
+/&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- With Action Button -->
+            <section class="section">
+                <h2>With Action Button</h2>
+                <p>Optional action button for snackbars that require user interaction (undo, retry, view details).</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'action-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'action-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'action-jsx')">JSX</button>
+                </div>
+                
+                <div id="action-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="snackbar-demo-container">
+                            
+                            <!-- Success with Undo -->
+                            <div class="snackbar snackbar-success" style="position: relative; bottom: auto; left: auto; transform: none;">
+                                <svg class="snackbar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Item added to cart</span>
+                                <button class="snackbar-action">View Cart</button>
+                                <button class="snackbar-close">✕</button>
+                            </div>
+
+                            <!-- Error with Retry -->
+                            <div class="snackbar snackbar-error" style="position: relative; bottom: auto; left: auto; transform: none;">
+                                <svg class="snackbar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                                </svg>
+                                <span>Connection failed</span>
+                                <button class="snackbar-action">Retry</button>
+                                <button class="snackbar-close">✕</button>
+                            </div>
+
+                            <!-- Default with Undo -->
+                            <div class="snackbar snackbar-default" style="position: relative; bottom: auto; left: auto; transform: none;">
+                                <span>Product removed from list</span>
+                                <button class="snackbar-action">Undo</button>
+                                <button class="snackbar-close">✕</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="action-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Snackbar with Action Button --&gt;
+&lt;div class="snackbar snackbar-success"&gt;
+  &lt;svg class="snackbar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+    &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"&gt;&lt;/path&gt;
+  &lt;/svg&gt;
+  &lt;span&gt;Item added to cart&lt;/span&gt;
+  &lt;button class="snackbar-action"&gt;View Cart&lt;/button&gt;
+  &lt;button class="snackbar-close"&gt;✕&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="action-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const Snackbar = ({ 
+  variant = 'default', 
+  message, 
+  onClose, 
+  icon,
+  actionLabel,
+  onAction 
+}) => {
+  return (
+    &lt;div className={`snackbar snackbar-${variant}`}&gt;
+      {icon && (
+        &lt;svg className="snackbar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+          {icon}
+        &lt;/svg&gt;
+      )}
+      &lt;span&gt;{message}&lt;/span&gt;
+      {actionLabel && (
+        &lt;button className="snackbar-action" onClick={onAction}&gt;
+          {actionLabel}
+        &lt;/button&gt;
+      )}
+      &lt;button className="snackbar-close" onClick={onClose}&gt;✕&lt;/button&gt;
+    &lt;/div&gt;
+  );
+};
+
+// Usage
+&lt;Snackbar 
+  variant="success" 
+  message="Item added to cart"
+  icon={&lt;path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /&gt;}
+  actionLabel="View Cart"
+  onAction={() => navigate('/cart')}
+  onClose={() => console.log('Dismissed')}
+/&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Position Variants -->
+            <section class="section">
+                <h2>Position Variants</h2>
+                <p>Different positioning options: bottom center (default), top right, top center.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'position-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'position-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'position-jsx')">JSX</button>
+                </div>
+                
+                <div id="position-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div style="position: relative; height: 400px; border: 2px dashed var(--color-pearl-300); border-radius: var(--radius-lg); padding: var(--spacing-4);">
+                            <p style="text-align: center; color: var(--color-pearl-600); font-family: var(--font-heading); font-size: var(--font-size-sm);">Visual representation of positions</p>
+                            
+                            <!-- Bottom Center (Default) -->
+                            <div class="snackbar snackbar-info" style="position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);">
+                                <svg class="snackbar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span>Bottom Center (Default)</span>
+                                <button class="snackbar-close">✕</button>
+                            </div>
+
+                            <!-- Top Right -->
+                            <div class="snackbar snackbar-success snackbar-top-right" style="position: absolute; top: 24px; right: 24px; left: auto; transform: none;">
+                                <svg class="snackbar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                <span>Top Right</span>
+                                <button class="snackbar-close">✕</button>
+                            </div>
+
+                            <!-- Top Center -->
+                            <div class="snackbar snackbar-warning snackbar-top-center" style="position: absolute; top: 80px; left: 50%; transform: translateX(-50%);">
+                                <svg class="snackbar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+                                </svg>
+                                <span>Top Center</span>
+                                <button class="snackbar-close">✕</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="position-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Bottom Center (Default) --&gt;
+&lt;div class="snackbar snackbar-info"&gt;
+  &lt;span&gt;Bottom center position&lt;/span&gt;
+  &lt;button class="snackbar-close"&gt;✕&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Top Right --&gt;
+&lt;div class="snackbar snackbar-success snackbar-top-right"&gt;
+  &lt;span&gt;Top right position&lt;/span&gt;
+  &lt;button class="snackbar-close"&gt;✕&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Top Center --&gt;
+&lt;div class="snackbar snackbar-warning snackbar-top-center"&gt;
+  &lt;span&gt;Top center position&lt;/span&gt;
+  &lt;button class="snackbar-close"&gt;✕&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="position-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const Snackbar = ({ 
+  variant = 'default', 
+  position = 'bottom-center', // 'bottom-center' | 'top-right' | 'top-center'
+  message, 
+  onClose, 
+  icon 
+}) => {
+  const positionClass = position !== 'bottom-center' ? `snackbar-${position}` : '';
+  
+  return (
+    &lt;div className={`snackbar snackbar-${variant} ${positionClass}`.trim()}&gt;
+      {icon && (
+        &lt;svg className="snackbar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+          {icon}
+        &lt;/svg&gt;
+      )}
+      &lt;span&gt;{message}&lt;/span&gt;
+      &lt;button className="snackbar-close" onClick={onClose}&gt;✕&lt;/button&gt;
+    &lt;/div&gt;
+  );
+};
+
+// Usage
+&lt;Snackbar 
+  variant="info" 
+  position="top-right"
+  message="New notification"
+  onClose={() => console.log('Dismissed')}
+/&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script>
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.section');
+            section.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            section.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-example').querySelector('code');
+            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+    </script>
+</body>
+</html>

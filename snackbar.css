@@ -1,0 +1,221 @@
+/* ===================================
+   SNACKBAR / TOAST NOTIFICATIONS
+   WhaleLord Compass Design System
+   =================================== */
+
+/* Base Snackbar Styles */
+.snackbar {
+  position: fixed;
+  bottom: var(--spacing-6);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  
+  min-width: 320px;
+  max-width: 600px;
+  padding: var(--spacing-4) var(--spacing-5);
+  
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  
+  border-radius: var(--radius-lg); /* 12px */
+  box-shadow: 0 8px 24px rgba(1, 18, 30, 0.12), 
+              0 2px 8px rgba(1, 18, 30, 0.08);
+  
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: white;
+  
+  animation: snackbar-slide-up 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes snackbar-slide-up {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 16px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* Icon */
+.snackbar-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+}
+
+/* Message Text */
+.snackbar span {
+  flex: 1;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.5;
+}
+
+/* Close Button */
+.snackbar-close {
+  padding: var(--spacing-1);
+  background: none;
+  border: none;
+  color: white;
+  opacity: 0.7;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.snackbar-close:hover {
+  opacity: 1;
+}
+
+/* ===================================
+   VARIANTS - Darker, More Sophisticated
+   =================================== */
+
+/* Success - Darker Green */
+.snackbar-success {
+  background: var(--color-success-700); /* #2C7048 */
+}
+
+/* Error - Darker Red */
+.snackbar-error {
+  background: var(--color-error-700); /* #A4161A */
+}
+
+/* Warning - Darker Orange */
+.snackbar-warning {
+  background: var(--color-warning-700); /* #CC5500 */
+}
+
+/* Info - Primary Blue */
+.snackbar-info {
+  background: var(--color-waves-700); /* #01385A */
+}
+
+/* Default/Neutral - Pearl Dark */
+.snackbar-default {
+  background: var(--color-pearl-800); /* #1A202C */
+}
+
+/* ===================================
+   WITH ACTION BUTTON (Optional)
+   =================================== */
+
+.snackbar-action {
+  padding: var(--spacing-2) var(--spacing-4);
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: var(--radius-md);
+  color: white;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: background 0.2s ease;
+  white-space: nowrap;
+}
+
+.snackbar-action:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ===================================
+   POSITIONING VARIANTS
+   =================================== */
+
+/* Top Right Position */
+.snackbar-top-right {
+  top: var(--spacing-6);
+  bottom: auto;
+  left: auto;
+  right: var(--spacing-6);
+  transform: translateX(0);
+  animation: snackbar-slide-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes snackbar-slide-left {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Top Center Position */
+.snackbar-top-center {
+  top: var(--spacing-6);
+  bottom: auto;
+  animation: snackbar-slide-down 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes snackbar-slide-down {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -16px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* ===================================
+   STACKING (Multiple Snackbars)
+   =================================== */
+
+.snackbar-container {
+  position: fixed;
+  bottom: var(--spacing-6);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+  align-items: center;
+}
+
+.snackbar-container .snackbar {
+  position: relative;
+  bottom: auto;
+  left: auto;
+  transform: none;
+}
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+
+@media (max-width: 640px) {
+  .snackbar {
+    min-width: calc(100vw - 32px);
+    max-width: calc(100vw - 32px);
+    left: 16px;
+    right: 16px;
+    transform: translateX(0);
+  }
+  
+  .snackbar-top-right {
+    left: 16px;
+    right: 16px;
+  }
+  
+  .snackbar-top-center {
+    left: 16px;
+    transform: translateX(0);
+  }
+}
