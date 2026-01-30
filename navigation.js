@@ -31,16 +31,16 @@
         { name: 'Stepper', href: 'stepper.html' },
         { name: 'Snackbar', href: 'snackbar.html' },
         { name: 'Chips', href: 'chips.html' },
-       { 
-  name: 'Cards', 
-  href: 'cards.html',
-  children: [
-    { name: 'Product Cards', href: 'product-cards.html' },
-    { name: 'Supplier Cards', href: 'supplier-cards.html' },
-    { name: 'Checkout Cards', href: 'checkout-cards.html' },
-    { name: 'Blog Cards', href: 'blog-cards.html' }
-  ]
-}
+        { 
+          name: 'Cards', 
+          href: 'cards.html',
+          children: [
+            { name: 'Product Cards', href: 'product-cards.html' },
+            { name: 'Supplier Cards', href: 'supplier-cards.html' },
+            { name: 'Checkout Cards', href: 'checkout-cards.html' },
+            { name: 'Blog Cards', href: 'blog-cards.html' }
+          ]
+        }
       ]
     },
     {
@@ -56,7 +56,7 @@
   // ============================================================
   
   // Enable auto-detection of new pages?
-  const AUTO_DETECT_PAGES = true;
+  const AUTO_DETECT_PAGES = false; // Disabled for GitHub Pages
   
   // Pages to exclude from auto-detection
   const EXCLUDED_PAGES = [
@@ -87,6 +87,9 @@
     navigationItems.forEach(section => {
       section.items.forEach(item => {
         listedPages.add(item.href);
+        if (item.children) {
+          item.children.forEach(child => listedPages.add(child.href));
+        }
       });
     });
     
@@ -135,11 +138,40 @@
       
       section.items.forEach(item => {
         const isActive = currentPage === item.href ? 'active' : '';
-        navHTML += `
-          <a href="${item.href}" class="sidenav-item ${isActive}">
-            ${item.name}
-          </a>
-        `;
+        
+        // Check if item has children
+        if (item.children && item.children.length > 0) {
+          // Parent item with children
+          navHTML += `
+            <div class="sidenav-item-parent">
+              <a href="${item.href}" class="sidenav-item ${isActive}">
+                ${item.name}
+              </a>
+              <div class="sidenav-children">
+          `;
+          
+          // Add children
+          item.children.forEach(child => {
+            const childActive = currentPage === child.href ? 'active' : '';
+            navHTML += `
+              <a href="${child.href}" class="sidenav-item sidenav-child ${childActive}">
+                ${child.name}
+              </a>
+            `;
+          });
+          
+          navHTML += `
+              </div>
+            </div>
+          `;
+        } else {
+          // Regular item without children
+          navHTML += `
+            <a href="${item.href}" class="sidenav-item ${isActive}">
+              ${item.name}
+            </a>
+          `;
+        }
       });
       
       navHTML += '</div>';
@@ -184,20 +216,33 @@
       const navHTML = await generateNavigation();
       mainContent.insertAdjacentHTML('beforebegin', navHTML);
       
-      // Add styles for auto-detected badge
-      if (AUTO_DETECT_PAGES) {
-        addAutoDetectedStyles();
-      }
+      // Add styles for children and auto-detected badge
+      addNavigationStyles();
     }
   }
 
   // ============================================================
-  // STYLING FOR AUTO-DETECTED PAGES
+  // STYLING FOR CHILDREN AND AUTO-DETECTED PAGES
   // ============================================================
   
-  function addAutoDetectedStyles() {
+  function addNavigationStyles() {
     const style = document.createElement('style');
     style.textContent = `
+      .sidenav-item-parent {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .sidenav-children {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .sidenav-child {
+        padding-left: var(--spacing-8) !important;
+        font-size: 13px;
+      }
+      
       .auto-detected-badge {
         display: inline-block;
         margin-left: 8px;
