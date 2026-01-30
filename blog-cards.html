@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Cards - WhaleLord Design System</title>
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="status-indicators.css">
+  <link rel="stylesheet" href="cards.css">
+  <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+  <div class="demo-container">
+    <!-- Navigation will be injected here -->
+    <nav id="nav-placeholder"></nav>
+
+    <main class="demo-content">
+      <!-- Hero Section -->
+      <div class="component-hero">
+        <div>
+          <h1>Blog Cards</h1>
+          <p class="component-subtitle">Article preview cards with featured images, category tags, and reading metadata for content marketing and industry insights.</p>
+        </div>
+      </div>
+
+      <!-- Usage & Purpose -->
+      <div class="usage-box">
+        <h3>Usage & Purpose</h3>
+        <p><strong>Blog Cards</strong> display article previews in content sections, resource hubs, and related content modules. They feature 16:9 images for visual impact, category overlays for quick classification, and reading time metadata to set user expectations. Best used in 3-column grids for blog listings or 2-column layouts for featured content sections.</p>
+      </div>
+
+      <!-- Blog Cards Grid -->
+      <section class="demo-section">
+        <h2>Blog Cards - 3 Column Grid</h2>
+        
+        <div class="component-example">
+          <div class="tab-container">
+            <div class="tab-buttons">
+              <button class="tab-button active" data-tab="preview-blog-grid">Preview</button>
+              <button class="tab-button" data-tab="html-blog-grid">HTML</button>
+              <button class="tab-button" data-tab="jsx-blog-grid">JSX</button>
+            </div>
+
+            <!-- Preview Tab -->
+            <div id="preview-blog-grid" class="tab-content active">
+              <div class="blog-cards-grid">
+                <!-- Blog Card 1 - Industry News -->
+                <div class="card-blog">
+                  <div class="card-blog-image">
+                    <span class="status-overlay status-overlay-positioned status-overlay-new">Industry News</span>
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=450&fit=crop" alt="Sustainable fishing practices">
+                  </div>
+                  <div class="card-blog-content">
+                    <h3 class="card-blog-title">Sustainable Fishing Practices Reshape Global Seafood Supply Chains</h3>
+                    <p class="card-blog-excerpt">New regulations and consumer demand drive major changes in how seafood reaches markets, with certification requirements becoming standard across international trade.</p>
+                    <div class="card-blog-meta">
+                      <span class="card-blog-meta-item">
+                        <span class="card-blog-meta-icon"></span>
+                        <span class="card-blog-meta-text">5 min read</span>
+                      </span>
+                      <span class="card-blog-meta-item">
+                        <span class="card-blog-meta-icon"></span>
+                        <span class="card-blog-meta-text">Jan 28, 2026</span>
+                      </span>
+                    </div>
+                    <a href="/blog/sustainable-fishing" class="card-blog-link">Read more</a>
+                  </div>
+                </div>
+
+                <!-- Blog Card 2 - Market Insights -->
+                <div class="card-blog">
+                  <div class="card-blog-image">
+                    <span class="status-overlay status-overlay-positioned status-overlay-exclusive">Market Insights</span>
+                    <img src="https://images.unsplash.com/photo-1544943910-4c1dc44aab44?w=800&h=450&fit=crop" alt="Seafood market analysis">
+                  </div>
+                  <div class="card-blog-content">
+                    <h3 class="card-blog-title">Q1 2026 Seafood Market Report: Pricing Trends and Demand Forecasts</h3>
+                    <p class="card-blog-excerpt">Comprehensive analysis of current market conditions, seasonal pricing patterns, and emerging opportunities in premium seafood segments for B2B buyers.</p>
+                    <div class="card-blog-meta">
+                      <span class="card-blog-meta-item">
+                        <span class="card-blog-meta-icon"></span>
+                        <span class="card-blog-meta-text">8 min read</span>
+                      </span>
+                      <span class="card-blog-meta-item">
+                        <span class="card-blog-meta-icon"></span>
+                        <span class="card-blog-meta-text">Jan 25, 2026</span>
+                      </span>
+                    </div>
+                    <a href="/blog/q1-market-report" class="card-blog-link">Read more</a>
+                  </div>
+                </div>
+
+                <!-- Blog Card 3 - Best Practices -->
+                <div class="card-blog">
+                  <div class="card-blog-image">
+                    <span class="status-overlay status-overlay-positioned status-overlay-limited">Best Practices</span>
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=450&fit=crop" alt="Cold chain logistics">
+                  </div>
+                  <div class="card-blog-content">
+                    <h3 class="card-blog-title">Cold Chain Management: Essential Guidelines for Seafood Quality Preservation</h3>
+                    <p class="card-blog-excerpt">Expert recommendations for maintaining optimal temperature controls, documentation standards, and quality assurance throughout the distribution process.</p>
+                    <div class="card-blog-meta">
+                      <span class="card-blog-meta-item">
+                        <span class="card-blog-meta-icon"></span>
+                        <span class="card-blog-meta-text">12 min read</span>
+                      </span>
+                      <span class="card-blog-meta-item">
+                        <span class="card-blog-meta-icon"></span>
+                        <span class="card-blog-meta-text">Jan 22, 2026</span>
+                      </span>
+                    </div>
+                    <a href="/blog/cold-chain-management" class="card-blog-link">Read more</a>
+                  </div>
+                </div>
+
+                <!-- Blog Card 4 - Supplier Spotlight -->
+                <div class="card-blog">
+                  <div class="card-blog-image">
+                    <span class="status-overlay status-overlay-positioned status-overlay-sale">Supplier Spotlight</span>
+                    <img src="https://images.unsplash.com/photo-1535463731090-e34f4b5098c5?w=800&h=450&fit=crop" alt="Supplier facilities">
+                  </div>
+                  <div class="card-blog-content">
+                    <h3 class="card-blog-title">Norwegian Salmon Excellence: Inside Bergen Seafood's State-of-the-Art Facilities</h3>
+                    <p class="card-blog-excerpt">Tour one of Europe's leading salmon processors to understand their quality control measures, sustainability initiatives, and capacity for large-scale B2B orders.</p>
+                    <div class="card-blog-meta">
+                      <span class="card-blog-meta-item">
+                        <span class="card-blog-meta-icon"></span>
+                        <span class="card-blog-meta-text">6 min read</span>
+                      </span>
+                      <span class="card-blog-meta-item">
+                        <span class="card-blog-meta-icon"></span>
+                        <span class="card-blog-meta-text">Jan 20, 2026</span>
+                      </span>
+                    </div>
+                    <a href="/blog/bergen-seafood-spotlight" class="card-blog-link">Read more</a>
+                  </div>
+                </div>
+
+                <!-- Blog Card 5 - Regulatory Updates -->
+                <div class="card-blog">
+                  <div class="card-blog-image">
+                    <span class="status-overlay status-overlay-positioned status-overlay-new">Regulatory Updates</span>
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=450&fit=crop" alt="Regulatory documents">
+                  </div>
+                  <div class="card-blog-content">
+                    <h3 class="card-blog-title">EU Import Regulations 2026: What Seafood Buyers Need to Know</h3>
+                    <p class="card-blog-excerpt">Navigate recent changes to European Union seafood import requirements, including updated traceability standards and documentation protocols for international shipments.</p>
+                    <div class="card-blog-meta">
+                      <span class="card-blog-meta-item">
+                        <span class="card-blog-meta-icon"></span>
+                        <span class="card-blog-meta-text">10 min read</span>
+                      </span>
+                      <span class="card-blog-meta-item">
+                        <span class="card-blog-meta-icon"></span>
+                        <span class="card-blog-meta-text">Jan 18, 2026</span>
+                      </span>
+                    </div>
+                    <a href="/blog/eu-import-regulations" class="card-blog-link">Read more</a>
+                  </div>
+                </div>
+
+                <!-- Blog Card 6 - Case Study -->
+                <div class="card-blog">
+                  <div class="card-blog-image">
+                    <span class="status-overlay status-overlay-positioned status-overlay-exclusive">Case Study</span>
+                    <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=450&fit=crop" alt="Restaurant kitchen">
+                  </div>
+                  <div class="card-blog-content">
+                    <h3 class="card-blog-title">Restaurant Chain Success: How Premium Seafood Sourcing Transformed Customer Experience</h3>
+                    <p class="card-blog-excerpt">A detailed case study examining how strategic B2B partnerships and quality-first sourcing helped a European restaurant group achieve remarkable growth and customer satisfaction.</p>
+                    <div class="card-blog-meta">
+                      <span class="card-blog-meta-item">
+                        <span class="card-blog-meta-icon"></span>
+                        <span class="card-blog-meta-text">9 min read</span>
+                      </span>
+                      <span class="card-blog-meta-item">
+                        <span class="card-blog-meta-icon"></span>
+                        <span class="card-blog-meta-text">Jan 15, 2026</span>
+                      </span>
+                    </div>
+                    <a href="/blog/restaurant-chain-case-study" class="card-blog-link">Read more</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- HTML Tab -->
+            <div id="html-blog-grid" class="tab-content">
+              <pre><code class="language-html">&lt;div class="blog-cards-grid"&gt;
+  &lt;div class="card-blog"&gt;
+    &lt;div class="card-blog-image"&gt;
+      &lt;span class="status-overlay status-overlay-positioned status-overlay-new"&gt;Industry News&lt;/span&gt;
+      &lt;img src="featured-image.jpg" alt="Article preview"&gt;
+    &lt;/div&gt;
+    &lt;div class="card-blog-content"&gt;
+      &lt;h3 class="card-blog-title"&gt;Sustainable Fishing Practices Reshape Global Seafood Supply Chains&lt;/h3&gt;
+      &lt;p class="card-blog-excerpt"&gt;New regulations and consumer demand drive major changes in how seafood reaches markets, with certification requirements becoming standard across international trade.&lt;/p&gt;
+      &lt;div class="card-blog-meta"&gt;
+        &lt;span class="card-blog-meta-item"&gt;
+          &lt;span class="card-blog-meta-icon"&gt;&lt;/span&gt;
+          &lt;span class="card-blog-meta-text"&gt;5 min read&lt;/span&gt;
+        &lt;/span&gt;
+        &lt;span class="card-blog-meta-item"&gt;
+          &lt;span class="card-blog-meta-icon"&gt;&lt;/span&gt;
+          &lt;span class="card-blog-meta-text"&gt;Jan 28, 2026&lt;/span&gt;
+        &lt;/span&gt;
+      &lt;/div&gt;
+      &lt;a href="/blog/article-slug" class="card-blog-link"&gt;Read more&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <!-- JSX Tab -->
+            <div id="jsx-blog-grid" class="tab-content">
+              <pre><code class="language-jsx">const BlogCard = ({ category, image, title, excerpt, readTime, date, href }) =&gt; (
+  &lt;div className="card-blog"&gt;
+    &lt;div className="card-blog-image"&gt;
+      &lt;span className="status-overlay status-overlay-positioned status-overlay-new"&gt;
+        {category}
+      &lt;/span&gt;
+      &lt;img src={image} alt={title} /&gt;
+    &lt;/div&gt;
+    &lt;div className="card-blog-content"&gt;
+      &lt;h3 className="card-blog-title"&gt;{title}&lt;/h3&gt;
+      &lt;p className="card-blog-excerpt"&gt;{excerpt}&lt;/p&gt;
+      &lt;div className="card-blog-meta"&gt;
+        &lt;span className="card-blog-meta-item"&gt;
+          &lt;span className="card-blog-meta-icon"&gt;&lt;/span&gt;
+          &lt;span className="card-blog-meta-text"&gt;{readTime} min read&lt;/span&gt;
+        &lt;/span&gt;
+        &lt;span className="card-blog-meta-item"&gt;
+          &lt;span className="card-blog-meta-icon"&gt;&lt;/span&gt;
+          &lt;span className="card-blog-meta-text"&gt;{date}&lt;/span&gt;
+        &lt;/span&gt;
+      &lt;/div&gt;
+      &lt;a href={href} className="card-blog-link"&gt;Read more&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+);
+
+const BlogGrid = ({ articles }) =&gt; (
+  &lt;div className="blog-cards-grid"&gt;
+    {articles.map((article, index) =&gt; (
+      &lt;BlogCard key={index} {...article} /&gt;
+    ))}
+  &lt;/div&gt;
+);</code></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="tabs.js"></script>
+  <script src="navigation.js"></script>
+</body>
+</html>
