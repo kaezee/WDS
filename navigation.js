@@ -30,13 +30,13 @@
         { name: 'Accordion', href: 'accordion.html' },
         { name: 'Stepper', href: 'stepper.html' },
         { name: 'Snackbar', href: 'snackbar.html' },
-        { name: 'Chips', href: 'chips.html' }
+        { name: 'Chips', href: 'chips.html' },
+          { name: 'Cards', href: 'cards.html' }
       ]
     },
     {
       title: 'Patterns',
       items: [
-        { name: 'Product Cards', href: 'components.html' },
         { name: 'Examples', href: 'examples.html' }
       ]
     }
