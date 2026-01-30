@@ -47,7 +47,7 @@
   padding: var(--spacing-4);
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-3);
+  gap: var(--spacing-2);
   flex: 1;
 }
 
@@ -68,6 +68,14 @@
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   margin: 0;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.card-product-supplier:hover {
+  color: var(--color-waves-500);
 }
 
 /* Certification Badges Container */
@@ -75,6 +83,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--spacing-2);
+  margin-top: var(--spacing-1);
 }
 
 /* Positive Attributes */
@@ -82,6 +91,7 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  margin-top: var(--spacing-1);
 }
 
 .card-product-attribute {
@@ -99,7 +109,7 @@
   opacity: 0.6;
 }
 
-/* Popular - Yellow */
+/* Popular - Yellow/Amber */
 .card-product-attribute-popular {
   color: #F59E0B;
 }
@@ -109,9 +119,9 @@
   color: var(--color-success-500);
 }
 
-/* Featured - Orange */
+/* Featured - Yellow/Amber */
 .card-product-attribute-featured {
-  color: var(--color-warning-500);
+  color: #F59E0B;
 }
 
 /* Min Order */
@@ -120,6 +130,7 @@
   font-size: var(--font-size-sm);
   color: var(--color-text-secondary);
   margin: 0;
+  margin-top: var(--spacing-2);
 }
 
 /* CTA Button */
