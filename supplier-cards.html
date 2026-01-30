@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplier Cards - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="badges.css">
+    <link rel="stylesheet" href="buttons.css">
+    <link rel="stylesheet" href="cards.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--color-pearl-200); margin-bottom: var(--spacing-6); }
+        .tab-btn { padding: var(--spacing-3) var(--spacing-5); background: none; border: none; font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-pearl-600); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+        .tab-btn:hover { color: var(--color-waves-500); }
+        .tab-btn.active { color: var(--color-waves-500); border-bottom-color: var(--color-waves-500); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .preview-box { background: var(--color-shore-base); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); }
+        
+        /* Demo logo placeholder */
+        .demo-logo {
+            width: 100%;
+            height: 100%;
+            background: var(--color-pearl-300);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: var(--font-size-sm);
+            color: var(--color-pearl-600);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header>
+                <h1>Supplier Cards</h1>
+                <p class="hero-subtitle">Display supplier profiles with logos, locations, certifications, and contact actions.</p>
+            </header>
+
+            <div class="usage-box">
+                <h3>Usage & Purpose</h3>
+                <p><strong>Use supplier cards when:</strong> Displaying supplier directories, search results, recommended suppliers, or in supplier comparison views.</p>
+                <p><strong>Don't use supplier cards for:</strong> Individual product listings (use Product Cards instead) or detailed supplier profiles (use full page layout).</p>
+            </div>
+
+            <!-- Supplier Cards -->
+            <section class="section">
+                <h2>Supplier Card Variants</h2>
+                <p>Cards showing supplier information with logo, company name, location, and certifications.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'supplier-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'supplier-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'supplier-jsx')">JSX</button>
+                </div>
+                
+                <div id="supplier-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="card-grid">
+                            
+                            <!-- Supplier Card 1 - Multiple certifications -->
+                            <div class="card-supplier">
+                                <div class="card-supplier-header">
+                                    <div class="card-supplier-logo">
+                                        <span class="card-supplier-logo-placeholder"></span>
+                                    </div>
+                                </div>
+                                <div class="card-supplier-content">
+                                    <h3 class="card-supplier-name">Norwegian Seafoods Co.</h3>
+                                    <div class="card-supplier-location">
+                                        <span class="card-supplier-location-icon"></span>
+                                        Bergen, Norway
+                                    </div>
+                                    <div class="card-supplier-certifications">
+                                        <span class="cert-badge cert-badge-blue">
+                                            <span class="cert-badge-icon"></span>
+                                            MSC
+                                        </span>
+                                        <span class="cert-badge cert-badge-blue">
+                                            <span class="cert-badge-icon"></span>
+                                            ASC
+                                        </span>
+                                        <span class="cert-badge cert-badge-gray">
+                                            <span class="cert-badge-icon"></span>
+                                            HACCP
+                                        </span>
+                                    </div>
+                                    <button class="btn btn-md btn-secondary card-supplier-cta">View Profile</button>
+                                </div>
+                            </div>
+
+                            <!-- Supplier Card 2 - Fewer certifications -->
+                            <div class="card-supplier">
+                                <div class="card-supplier-header">
+                                    <div class="card-supplier-logo">
+                                        <span class="card-supplier-logo-placeholder"></span>
+                                    </div>
+                                </div>
+                                <div class="card-supplier-content">
+                                    <h3 class="card-supplier-name">Arctic Catch Iceland</h3>
+                                    <div class="card-supplier-location">
+                                        <span class="card-supplier-location-icon"></span>
+                                        Reykjavik, Iceland
+                                    </div>
+                                    <div class="card-supplier-certifications">
+                                        <span class="cert-badge cert-badge-blue">
+                                            <span class="cert-badge-icon"></span>
+                                            MSC
+                                        </span>
+                                        <span class="cert-badge cert-badge-gray">
+                                            <span class="cert-badge-icon"></span>
+                                            ISO 9001
+                                        </span>
+                                    </div>
+                                    <button class="btn btn-md btn-secondary card-supplier-cta">View Profile</button>
+                                </div>
+                            </div>
+
+                            <!-- Supplier Card 3 - Single certification -->
+                            <div class="card-supplier">
+                                <div class="card-supplier-header">
+                                    <div class="card-supplier-logo">
+                                        <span class="card-supplier-logo-placeholder"></span>
+                                    </div>
+                                </div>
+                                <div class="card-supplier-content">
+                                    <h3 class="card-supplier-name">Pacific Northwest Traders</h3>
+                                    <div class="card-supplier-location">
+                                        <span class="card-supplier-location-icon"></span>
+                                        Seattle, USA
+                                    </div>
+                                    <div class="card-supplier-certifications">
+                                        <span class="cert-badge cert-badge-green">
+                                            <span class="cert-badge-icon"></span>
+                                            Organic
+                                        </span>
+                                    </div>
+                                    <button class="btn btn-md btn-secondary card-supplier-cta">View Profile</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="supplier-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Supplier Card --&gt;
+&lt;div class="card-supplier"&gt;
+  &lt;div class="card-supplier-header"&gt;
+    &lt;div class="card-supplier-logo"&gt;
+      &lt;img src="logo.png" alt="Supplier Logo"&gt;
+      &lt;!-- Or use placeholder --&gt;
+      &lt;span class="card-supplier-logo-placeholder"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="card-supplier-content"&gt;
+    &lt;h3 class="card-supplier-name"&gt;Norwegian Seafoods Co.&lt;/h3&gt;
+    &lt;div class="card-supplier-location"&gt;
+      &lt;span class="card-supplier-location-icon"&gt;&lt;/span&gt;
+      Bergen, Norway
+    &lt;/div&gt;
+    &lt;div class="card-supplier-certifications"&gt;
+      &lt;span class="cert-badge cert-badge-blue"&gt;
+        &lt;span class="cert-badge-icon"&gt;&lt;/span&gt;
+        MSC
+      &lt;/span&gt;
+      &lt;span class="cert-badge cert-badge-blue"&gt;
+        &lt;span class="cert-badge-icon"&gt;&lt;/span&gt;
+        ASC
+      &lt;/span&gt;
+    &lt;/div&gt;
+    &lt;button class="btn btn-md btn-secondary card-supplier-cta"&gt;View Profile&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Supplier Grid (3 columns) --&gt;
+&lt;div class="card-grid"&gt;
+  &lt;!-- Cards here --&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="supplier-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const SupplierCard = ({ supplier }) => {
+  return (
+    &lt;div className="card-supplier"&gt;
+      &lt;div className="card-supplier-header"&gt;
+        &lt;div className="card-supplier-logo"&gt;
+          {supplier.logo ? (
+            &lt;img src={supplier.logo} alt={supplier.name} /&gt;
+          ) : (
+            &lt;span className="card-supplier-logo-placeholder"&gt;&lt;/span&gt;
+          )}
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div className="card-supplier-content"&gt;
+        &lt;h3 className="card-supplier-name"&gt;{supplier.name}&lt;/h3&gt;
+        &lt;div className="card-supplier-location"&gt;
+          &lt;span className="card-supplier-location-icon"&gt;&lt;/span&gt;
+          {supplier.location}
+        &lt;/div&gt;
+        {supplier.certifications && supplier.certifications.length &gt; 0 && (
+          &lt;div className="card-supplier-certifications"&gt;
+            {supplier.certifications.map(cert => (
+              &lt;span key={cert.name} className={`cert-badge cert-badge-${cert.color}`}&gt;
+                &lt;span className="cert-badge-icon"&gt;&lt;/span&gt;
+                {cert.name}
+              &lt;/span&gt;
+            ))}
+          &lt;/div&gt;
+        )}
+        &lt;button className="btn btn-md btn-secondary card-supplier-cta"&gt;
+          View Profile
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};
+
+// Usage
+&lt;SupplierCard 
+  supplier={{
+    name: "Norwegian Seafoods Co.",
+    location: "Bergen, Norway",
+    logo: "/logos/norwegian-seafoods.png",
+    certifications: [
+      { name: 'MSC', color: 'blue' },
+      { name: 'ASC', color: 'blue' },
+      { name: 'HACCP', color: 'gray' }
+    ]
+  }}
+/&gt;
+
+// Grid Layout
+&lt;div className="card-grid"&gt;
+  {suppliers.map(supplier => (
+    &lt;SupplierCard key={supplier.id} supplier={supplier} /&gt;
+  ))}
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script>
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.section');
+            section.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            section.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-example').querySelector('code');
+            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+    </script>
+</body>
+</html>
