@@ -397,6 +397,7 @@
 
 .card-blog:hover {
   border-color: var(--color-pearl-400);
+  background: var(--color-pearl-50); /* Evident surface color change */
 }
 
 .card-blog:hover .card-blog-title {

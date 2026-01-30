@@ -5,101 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Cards - Compass Design System</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="buttons.css">
     <link rel="stylesheet" href="cards.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        .hero {
-            text-align: left;
-            padding: var(--spacing-16) 0;
-        }
-
-        .tab-nav {
-            display: flex;
-            gap: 0;
-            border-bottom: 2px solid var(--color-pearl-200);
-            margin-bottom: var(--spacing-6);
-        }
+        .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--color-pearl-200); margin-bottom: var(--spacing-6); }
+        .tab-btn { padding: var(--spacing-3) var(--spacing-5); background: none; border: none; font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-pearl-600); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+        .tab-btn:hover { color: var(--color-waves-500); }
+        .tab-btn.active { color: var(--color-waves-500); border-bottom-color: var(--color-waves-500); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .preview-box { background: var(--color-shore-base); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); }
         
-        .tab-btn {
-            padding: var(--spacing-3) var(--spacing-5);
-            background: none;
-            border: none;
-            font-family: var(--font-heading);
-            font-size: var(--font-size-sm);
-            font-weight: var(--font-weight-medium);
-            color: var(--color-pearl-600);
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -2px;
-            transition: all 0.2s;
-        }
-        
-        .tab-btn:hover {
-            color: var(--color-waves-500);
-        }
-        
-        .tab-btn.active {
-            color: var(--color-waves-500);
-            border-bottom-color: var(--color-waves-500);
-        }
-        
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        .preview-box {
-            background: white;
-            border: 1px solid var(--color-border-default);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-8);
-            margin-bottom: var(--spacing-6);
-        }
-
-        .component-section {
-            margin-bottom: var(--spacing-16);
-        }
-
-        .component-section h2 {
-            font-family: var(--font-heading);
-            font-size: var(--font-size-3xl);
-            margin-bottom: var(--spacing-3);
-        }
-
-        .component-section > p {
-            font-family: var(--font-heading);
-            font-size: var(--font-size-base);
-            color: var(--color-text-secondary);
-            margin-bottom: var(--spacing-6);
-            line-height: var(--line-height-relaxed);
-        }
-
-        pre {
-            background: var(--color-pearl-800);
-            border-radius: var(--radius-md);
-            padding: var(--spacing-4);
-            overflow-x: auto;
-            margin-bottom: var(--spacing-6);
-        }
-
-        code {
-            font-family: var(--font-mono);
-            font-size: var(--font-size-sm);
-            color: var(--color-pearl-50);
-            line-height: var(--line-height-relaxed);
-        }
-
-        /* Blog Card Image Placeholder */
-        .card-blog-image-placeholder {
+        /* Demo image placeholder */
+        .demo-image {
             width: 100%;
-            aspect-ratio: 16 / 9;
-            background: var(--color-pearl-200);
-            border-radius: var(--radius-md);
+            height: 100%;
+            background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: var(--font-size-sm);
+            color: var(--color-pearl-500);
         }
     </style>
 </head>
@@ -120,23 +50,21 @@
 
     <div class="main-content">
         <div class="container-with-sidenav">
-            <header class="hero">
+            <header>
                 <h1>Blog Cards</h1>
-                <p class="hero-subtitle">Article preview cards with featured images, category tags, and reading metadata for content marketing and industry insights.</p>
+                <p class="hero-subtitle">Content marketing cards with featured images, category tags, and article metadata.</p>
             </header>
 
-            <!-- USAGE & PURPOSE -->
-            <section class="component-section" style="background: var(--color-shore-editorial); padding: var(--spacing-8); border-radius: var(--radius-lg); margin-bottom: var(--spacing-12);">
-                <h3 style="font-size: var(--font-size-xl); margin-bottom: var(--spacing-4);">Usage & Purpose</h3>
-                <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); line-height: var(--line-height-relaxed); margin-bottom: var(--spacing-6);">
-                    <strong>Blog Cards</strong> display article previews in content sections, resource hubs, and related content modules. They feature 16:9 images for visual impact, category overlays for quick classification, and reading time metadata to set user expectations. Best used in 3-column grids for blog listings or 2-column layouts for featured content sections.
-                </p>
-            </section>
+            <div class="usage-box">
+                <h3>Usage & Purpose</h3>
+                <p><strong>Use blog cards when:</strong> Displaying blog posts, articles, news items, case studies, or any content marketing materials in grid layouts.</p>
+                <p><strong>Don't use blog cards for:</strong> Product listings (use Product Cards), supplier profiles (use Supplier Cards), or non-content pages.</p>
+            </div>
 
-            <!-- BLOG CARDS - 3 COLUMN GRID -->
-            <section class="component-section">
-                <h2>Blog Cards - 3 Column Grid</h2>
-                <p>Display multiple article previews in a responsive grid layout with category tags, titles, excerpts, and metadata.</p>
+            <!-- Blog Cards -->
+            <section class="section">
+                <h2>Blog Card Variants</h2>
+                <p>Cards with 16:9 featured images, category overlays, titles, excerpts, and metadata. Hover changes background color.</p>
                 
                 <div class="tab-nav">
                     <button class="tab-btn active" onclick="switchTab(event, 'blog-preview')">Preview</button>
@@ -147,15 +75,16 @@
                 <div id="blog-preview" class="tab-content active">
                     <div class="preview-box">
                         <div class="card-grid-blog">
-                            <!-- Blog Card 1 -->
+                            
+                            <!-- Blog Card 1 - Sustainability -->
                             <div class="card-blog">
                                 <div class="card-blog-image">
-                                    <span class="card-blog-category">Industry News</span>
-                                    <div class="card-blog-image-placeholder"></div>
+                                    <span class="card-blog-category">Sustainability</span>
+                                    <div class="demo-image">Blog Image 16:9</div>
                                 </div>
                                 <div class="card-blog-content">
-                                    <h3 class="card-blog-title">Sustainable Fishing Practices Reshape Global Seafood Supply Chains</h3>
-                                    <p class="card-blog-excerpt">New regulations and consumer demand drive major changes in how seafood reaches markets, with certification requirements becoming standard across international trade.</p>
+                                    <h3 class="card-blog-title">The Future of Sustainable Seafood Sourcing</h3>
+                                    <p class="card-blog-excerpt">Discover how modern aquaculture practices are revolutionizing the seafood industry while protecting our oceans for future generations.</p>
                                     <div class="card-blog-meta">
                                         <span>5 min read</span>
                                         <span class="card-blog-meta-divider"></span>
@@ -165,15 +94,15 @@
                                 </div>
                             </div>
 
-                            <!-- Blog Card 2 -->
+                            <!-- Blog Card 2 - Industry News -->
                             <div class="card-blog">
                                 <div class="card-blog-image">
-                                    <span class="card-blog-category">Market Insights</span>
-                                    <div class="card-blog-image-placeholder"></div>
+                                    <span class="card-blog-category">Industry News</span>
+                                    <div class="demo-image">Blog Image 16:9</div>
                                 </div>
                                 <div class="card-blog-content">
-                                    <h3 class="card-blog-title">Q1 2026 Seafood Market Report: Pricing Trends and Demand Forecasts</h3>
-                                    <p class="card-blog-excerpt">Comprehensive analysis of current market conditions, seasonal pricing patterns, and emerging opportunities in premium seafood segments for B2B buyers.</p>
+                                    <h3 class="card-blog-title">B2B Marketplace Trends in 2026</h3>
+                                    <p class="card-blog-excerpt">Key insights into how digital transformation is reshaping wholesale seafood trade and supplier relationships across global markets.</p>
                                     <div class="card-blog-meta">
                                         <span>8 min read</span>
                                         <span class="card-blog-meta-divider"></span>
@@ -183,93 +112,188 @@
                                 </div>
                             </div>
 
-                            <!-- Blog Card 3 -->
+                            <!-- Blog Card 3 - Guide -->
                             <div class="card-blog">
                                 <div class="card-blog-image">
-                                    <span class="card-blog-category">Best Practices</span>
-                                    <div class="card-blog-image-placeholder"></div>
+                                    <span class="card-blog-category">Guide</span>
+                                    <div class="demo-image">Blog Image 16:9</div>
                                 </div>
                                 <div class="card-blog-content">
-                                    <h3 class="card-blog-title">Cold Chain Management: Essential Guidelines for Seafood Quality Preservation</h3>
-                                    <p class="card-blog-excerpt">Expert recommendations for maintaining optimal temperature controls, documentation standards, and quality assurance throughout the distribution process.</p>
+                                    <h3 class="card-blog-title">Understanding MSC Certification Standards</h3>
+                                    <p class="card-blog-excerpt">A comprehensive guide to Marine Stewardship Council standards and what they mean for your seafood business operations.</p>
                                     <div class="card-blog-meta">
                                         <span>12 min read</span>
                                         <span class="card-blog-meta-divider"></span>
-                                        <span>Jan 22, 2026</span>
+                                        <span>Jan 20, 2026</span>
                                     </div>
                                     <a href="#" class="card-blog-link">Read more</a>
                                 </div>
                             </div>
+
+                            <!-- Blog Card 4 - Case Study -->
+                            <div class="card-blog">
+                                <div class="card-blog-image">
+                                    <span class="card-blog-category">Case Study</span>
+                                    <div class="demo-image">Blog Image 16:9</div>
+                                </div>
+                                <div class="card-blog-content">
+                                    <h3 class="card-blog-title">How Norwegian Seafoods Scaled Operations</h3>
+                                    <p class="card-blog-excerpt">Learn how one of Europe's largest suppliers leveraged digital tools to expand their distribution network across three continents.</p>
+                                    <div class="card-blog-meta">
+                                        <span>6 min read</span>
+                                        <span class="card-blog-meta-divider"></span>
+                                        <span>Jan 18, 2026</span>
+                                    </div>
+                                    <a href="#" class="card-blog-link">Read more</a>
+                                </div>
+                            </div>
+
+                            <!-- Blog Card 5 - Technology -->
+                            <div class="card-blog">
+                                <div class="card-blog-image">
+                                    <span class="card-blog-category">Technology</span>
+                                    <div class="demo-image">Blog Image 16:9</div>
+                                </div>
+                                <div class="card-blog-content">
+                                    <h3 class="card-blog-title">Blockchain in Seafood Supply Chains</h3>
+                                    <p class="card-blog-excerpt">Exploring how blockchain technology is creating transparent, traceable supply chains from ocean to plate.</p>
+                                    <div class="card-blog-meta">
+                                        <span>10 min read</span>
+                                        <span class="card-blog-meta-divider"></span>
+                                        <span>Jan 15, 2026</span>
+                                    </div>
+                                    <a href="#" class="card-blog-link">Read more</a>
+                                </div>
+                            </div>
+
+                            <!-- Blog Card 6 - Best Practices -->
+                            <div class="card-blog">
+                                <div class="card-blog-image">
+                                    <span class="card-blog-category">Best Practices</span>
+                                    <div class="demo-image">Blog Image 16:9</div>
+                                </div>
+                                <div class="card-blog-content">
+                                    <h3 class="card-blog-title">Cold Chain Management Essentials</h3>
+                                    <p class="card-blog-excerpt">Master the fundamentals of maintaining product quality through proper temperature control and logistics management.</p>
+                                    <div class="card-blog-meta">
+                                        <span>7 min read</span>
+                                        <span class="card-blog-meta-divider"></span>
+                                        <span>Jan 12, 2026</span>
+                                    </div>
+                                    <a href="#" class="card-blog-link">Read more</a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
                 
                 <div id="blog-html" class="tab-content">
-                    <pre><code>&lt;div class="card-grid-blog"&gt;
-  &lt;div class="card-blog"&gt;
-    &lt;div class="card-blog-image"&gt;
-      &lt;span class="card-blog-category"&gt;Industry News&lt;/span&gt;
-      &lt;img src="featured-image.jpg" alt="Article preview"&gt;
-    &lt;/div&gt;
-    &lt;div class="card-blog-content"&gt;
-      &lt;h3 class="card-blog-title"&gt;Sustainable Fishing Practices&lt;/h3&gt;
-      &lt;p class="card-blog-excerpt"&gt;New regulations and consumer demand drive major changes...&lt;/p&gt;
-      &lt;div class="card-blog-meta"&gt;
-        &lt;span&gt;5 min read&lt;/span&gt;
-        &lt;span class="card-blog-meta-divider"&gt;&lt;/span&gt;
-        &lt;span&gt;Jan 28, 2026&lt;/span&gt;
-      &lt;/div&gt;
-      &lt;a href="/blog/article-slug" class="card-blog-link"&gt;Read more&lt;/a&gt;
-    &lt;/div&gt;
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Blog Card --&gt;
+&lt;div class="card-blog"&gt;
+  &lt;div class="card-blog-image"&gt;
+    &lt;span class="card-blog-category"&gt;Sustainability&lt;/span&gt;
+    &lt;img src="blog-image.jpg" alt="Blog post"&gt;
   &lt;/div&gt;
+  &lt;div class="card-blog-content"&gt;
+    &lt;h3 class="card-blog-title"&gt;The Future of Sustainable Seafood Sourcing&lt;/h3&gt;
+    &lt;p class="card-blog-excerpt"&gt;
+      Discover how modern aquaculture practices are revolutionizing the seafood industry...
+    &lt;/p&gt;
+    &lt;div class="card-blog-meta"&gt;
+      &lt;span&gt;5 min read&lt;/span&gt;
+      &lt;span class="card-blog-meta-divider"&gt;&lt;/span&gt;
+      &lt;span&gt;Jan 28, 2026&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;a href="/blog/sustainable-seafood" class="card-blog-link"&gt;Read more&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Blog Grid (3 columns, responsive) --&gt;
+&lt;div class="card-grid-blog"&gt;
+  &lt;!-- Cards here --&gt;
 &lt;/div&gt;</code></pre>
+                    </div>
                 </div>
                 
                 <div id="blog-jsx" class="tab-content">
-                    <pre><code>const BlogCard = ({ category, image, title, excerpt, readTime, date, href }) =&gt; (
-  &lt;div className="card-blog"&gt;
-    &lt;div className="card-blog-image"&gt;
-      &lt;span className="card-blog-category"&gt;{category}&lt;/span&gt;
-      &lt;img src={image} alt={title} /&gt;
-    &lt;/div&gt;
-    &lt;div className="card-blog-content"&gt;
-      &lt;h3 className="card-blog-title"&gt;{title}&lt;/h3&gt;
-      &lt;p className="card-blog-excerpt"&gt;{excerpt}&lt;/p&gt;
-      &lt;div className="card-blog-meta"&gt;
-        &lt;span&gt;{readTime} min read&lt;/span&gt;
-        &lt;span className="card-blog-meta-divider"&gt;&lt;/span&gt;
-        &lt;span&gt;{date}&lt;/span&gt;
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const BlogCard = ({ post }) => {
+  return (
+    &lt;div className="card-blog"&gt;
+      &lt;div className="card-blog-image"&gt;
+        &lt;span className="card-blog-category"&gt;{post.category}&lt;/span&gt;
+        &lt;img src={post.image} alt={post.title} /&gt;
       &lt;/div&gt;
-      &lt;a href={href} className="card-blog-link"&gt;Read more&lt;/a&gt;
+      &lt;div className="card-blog-content"&gt;
+        &lt;h3 className="card-blog-title"&gt;{post.title}&lt;/h3&gt;
+        &lt;p className="card-blog-excerpt"&gt;{post.excerpt}&lt;/p&gt;
+        &lt;div className="card-blog-meta"&gt;
+          &lt;span&gt;{post.readTime} min read&lt;/span&gt;
+          &lt;span className="card-blog-meta-divider"&gt;&lt;/span&gt;
+          &lt;span&gt;{post.date}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;a href={post.url} className="card-blog-link"&gt;Read more&lt;/a&gt;
+      &lt;/div&gt;
     &lt;/div&gt;
-  &lt;/div&gt;
-);
+  );
+};
 
-const BlogGrid = ({ articles }) =&gt; (
-  &lt;div className="card-grid-blog"&gt;
-    {articles.map((article, index) =&gt; (
-      &lt;BlogCard key={index} {...article} /&gt;
-    ))}
-  &lt;/div&gt;
-);</code></pre>
+// Usage
+&lt;BlogCard 
+  post={{
+    title: "The Future of Sustainable Seafood Sourcing",
+    category: "Sustainability",
+    excerpt: "Discover how modern aquaculture practices are revolutionizing...",
+    image: "/images/blog/sustainable-seafood.jpg",
+    readTime: 5,
+    date: "Jan 28, 2026",
+    url: "/blog/sustainable-seafood"
+  }}
+/&gt;
+
+// Grid Layout
+&lt;div className="card-grid-blog"&gt;
+  {posts.map(post => (
+    &lt;BlogCard key={post.id} post={post} /&gt;
+  ))}
+&lt;/div&gt;</code></pre>
+                    </div>
                 </div>
             </section>
 
         </div>
     </div>
 
-    <script src="sidenav.js"></script>
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
     <script>
         function switchTab(event, tabId) {
-            const section = event.target.closest('.component-section');
-            const tabButtons = section.querySelectorAll('.tab-btn');
-            const tabContents = section.querySelectorAll('.tab-content');
-            
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-            
-            event.target.classList.add('active');
+            const section = event.target.closest('.section');
+            section.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            section.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-example').querySelector('code');
+            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
         }
     </script>
 </body>
