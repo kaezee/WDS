@@ -31,7 +31,16 @@
         { name: 'Stepper', href: 'stepper.html' },
         { name: 'Snackbar', href: 'snackbar.html' },
         { name: 'Chips', href: 'chips.html' },
-        { name: 'Cards', href: 'cards.html' }
+       { 
+  name: 'Cards', 
+  href: 'cards.html',
+  children: [
+    { name: 'Product Cards', href: 'product-cards.html' },
+    { name: 'Supplier Cards', href: 'supplier-cards.html' },
+    { name: 'Checkout Cards', href: 'checkout-cards.html' },
+    { name: 'Blog Cards', href: 'blog-cards.html' }
+  ]
+}
       ]
     },
     {
