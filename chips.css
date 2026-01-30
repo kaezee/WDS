@@ -1,0 +1,259 @@
+/* ===================================
+   CHIPS & TAGS
+   WhaleLord Compass Design System
+   =================================== */
+
+/* ===================================
+   1. FILTER CHIPS (Removable)
+   Use: Active search/browse filters
+   =================================== */
+
+.chip-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  
+  background: var(--color-pearl-200);
+  border: 1px solid var(--color-pearl-400);
+  border-radius: 9999px; /* Full pill shape */
+  
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  
+  transition: all 0.2s ease;
+}
+
+.chip-filter:hover {
+  background: var(--color-pearl-300);
+  border-color: var(--color-pearl-500);
+}
+
+/* Remove Button inside Filter Chip */
+.chip-filter-remove {
+  padding: 0;
+  margin-left: var(--spacing-1);
+  background: none;
+  border: none;
+  color: var(--color-pearl-600);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease;
+  flex-shrink: 0;
+}
+
+.chip-filter-remove:hover {
+  color: var(--color-text-primary);
+}
+
+/* ===================================
+   2. PRODUCT TAGS (Non-removable)
+   Use: Quick product attributes
+   =================================== */
+
+.chip-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px var(--spacing-3);
+  
+  background: var(--color-pearl-300);
+  border-radius: 6px; /* Slightly rounded, not full pill */
+  
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Tag Variants */
+.chip-tag-featured {
+  background: var(--color-waves-100);
+  color: var(--color-waves-700);
+}
+
+.chip-tag-new {
+  background: var(--color-success-100);
+  color: var(--color-success-700);
+}
+
+.chip-tag-limited {
+  background: var(--color-warning-100);
+  color: var(--color-warning-700);
+}
+
+.chip-tag-seasonal {
+  background: var(--color-pearl-300);
+  color: var(--color-pearl-800);
+}
+
+/* ===================================
+   3. INTERACTIVE CHIPS (Selectable)
+   Use: Multi-select category browsing
+   =================================== */
+
+.chip-interactive {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2) var(--spacing-4);
+  
+  background: white;
+  border: 2px solid var(--color-pearl-300);
+  border-radius: 9999px;
+  
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.chip-interactive:hover {
+  background: var(--color-pearl-100);
+  border-color: var(--color-pearl-400);
+}
+
+/* Selected State */
+.chip-interactive.selected {
+  background: var(--color-waves-100);
+  border-color: var(--color-waves-500);
+  color: var(--color-waves-700);
+}
+
+.chip-interactive.selected:hover {
+  background: var(--color-waves-100);
+  border-color: var(--color-waves-700);
+}
+
+/* Optional Icon in Interactive Chip */
+.chip-interactive-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+}
+
+/* ===================================
+   4. COUNT BADGES
+   Use: Numerical indicators
+   =================================== */
+
+.chip-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  
+  background: var(--color-error-500);
+  border-radius: 9999px;
+  
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+  color: white;
+  line-height: 1;
+}
+
+/* Count Badge Variants */
+.chip-count-info {
+  background: var(--color-waves-500);
+}
+
+.chip-count-success {
+  background: var(--color-success-500);
+}
+
+.chip-count-warning {
+  background: var(--color-warning-500);
+}
+
+/* Large Count Badge */
+.chip-count-lg {
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+/* ===================================
+   SIZE VARIANTS (for Filter Chips)
+   =================================== */
+
+/* Small Filter Chip */
+.chip-filter-sm {
+  padding: 4px var(--spacing-3);
+  font-size: 12px;
+}
+
+.chip-filter-sm .chip-filter-remove {
+  font-size: 14px;
+}
+
+/* Large Filter Chip */
+.chip-filter-lg {
+  padding: var(--spacing-3) var(--spacing-5);
+  font-size: var(--font-size-base);
+}
+
+.chip-filter-lg .chip-filter-remove {
+  font-size: 18px;
+}
+
+/* ===================================
+   WITH ICON (Filter Chips)
+   =================================== */
+
+.chip-filter-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: none;
+}
+
+/* ===================================
+   CHIP GROUPS / CONTAINERS
+   =================================== */
+
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+  align-items: center;
+}
+
+/* Compact Group (tighter spacing) */
+.chip-group-compact {
+  gap: var(--spacing-2);
+}
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+
+@media (max-width: 640px) {
+  .chip-filter {
+    font-size: 13px;
+    padding: 6px var(--spacing-3);
+  }
+  
+  .chip-interactive {
+    font-size: 13px;
+    padding: 6px var(--spacing-3);
+  }
+  
+  .chip-group {
+    gap: var(--spacing-2);
+  }
+}

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chips & Tags - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chips.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--color-pearl-200); margin-bottom: var(--spacing-6); }
+        .tab-btn { padding: var(--spacing-3) var(--spacing-5); background: none; border: none; font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-pearl-600); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+        .tab-btn:hover { color: var(--color-waves-500); }
+        .tab-btn.active { color: var(--color-waves-500); border-bottom-color: var(--color-waves-500); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .preview-box { background: white; border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header>
+                <h1>Chips & Tags</h1>
+                <p class="hero-subtitle">Compact elements for filters, labels, selections, and counts in marketplace interfaces.</p>
+            </header>
+
+            <div class="usage-box">
+                <h3>Usage & Purpose</h3>
+                <p><strong>Use chips when:</strong> Displaying active filters that users can remove, showing product attributes, enabling multi-select categories, or indicating numerical counts.</p>
+                <p><strong>Don't use chips for:</strong> Certifications or compliance badges (use Badge component instead), primary actions (use buttons), or long text content.</p>
+            </div>
+
+            <!-- Filter Chips (Removable) -->
+            <section class="section">
+                <h2>Filter Chips (Removable)</h2>
+                <p>Display active search and browse filters with easy removal. Used in search results and filter panels.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'filter-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'filter-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'filter-jsx')">JSX</button>
+                </div>
+                
+                <div id="filter-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="chip-group">
+                            <span class="chip-filter">
+                                Price: $50-$100
+                                <button class="chip-filter-remove">✕</button>
+                            </span>
+                            
+                            <span class="chip-filter">
+                                Location: Norway
+                                <button class="chip-filter-remove">✕</button>
+                            </span>
+                            
+                            <span class="chip-filter">
+                                Min Order: 100kg+
+                                <button class="chip-filter-remove">✕</button>
+                            </span>
+                            
+                            <span class="chip-filter">
+                                Delivery: Express
+                                <button class="chip-filter-remove">✕</button>
+                            </span>
+                        </div>
+
+                        <div style="margin-top: var(--spacing-6);">
+                            <h4 style="font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-3);">With Icon</h4>
+                            <div class="chip-group">
+                                <span class="chip-filter">
+                                    <svg class="chip-filter-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    Iceland
+                                    <button class="chip-filter-remove">✕</button>
+                                </span>
+                                
+                                <span class="chip-filter">
+                                    <svg class="chip-filter-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    $0 - $50
+                                    <button class="chip-filter-remove">✕</button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: var(--spacing-6);">
+                            <h4 style="font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-3);">Size Variants</h4>
+                            <div class="chip-group">
+                                <span class="chip-filter chip-filter-sm">
+                                    Small Filter
+                                    <button class="chip-filter-remove">✕</button>
+                                </span>
+                                
+                                <span class="chip-filter">
+                                    Default Filter
+                                    <button class="chip-filter-remove">✕</button>
+                                </span>
+                                
+                                <span class="chip-filter chip-filter-lg">
+                                    Large Filter
+                                    <button class="chip-filter-remove">✕</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="filter-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Basic Filter Chip --&gt;
+&lt;span class="chip-filter"&gt;
+  Price: $50-$100
+  &lt;button class="chip-filter-remove"&gt;✕&lt;/button&gt;
+&lt;/span&gt;
+
+&lt;!-- With Icon --&gt;
+&lt;span class="chip-filter"&gt;
+  &lt;svg class="chip-filter-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+    &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"&gt;&lt;/path&gt;
+  &lt;/svg&gt;
+  Iceland
+  &lt;button class="chip-filter-remove"&gt;✕&lt;/button&gt;
+&lt;/span&gt;
+
+&lt;!-- Size Variants --&gt;
+&lt;span class="chip-filter chip-filter-sm"&gt;Small&lt;button class="chip-filter-remove"&gt;✕&lt;/button&gt;&lt;/span&gt;
+&lt;span class="chip-filter"&gt;Default&lt;button class="chip-filter-remove"&gt;✕&lt;/button&gt;&lt;/span&gt;
+&lt;span class="chip-filter chip-filter-lg"&gt;Large&lt;button class="chip-filter-remove"&gt;✕&lt;/button&gt;&lt;/span&gt;
+
+&lt;!-- Chip Group --&gt;
+&lt;div class="chip-group"&gt;
+  &lt;span class="chip-filter"&gt;Filter 1&lt;button class="chip-filter-remove"&gt;✕&lt;/button&gt;&lt;/span&gt;
+  &lt;span class="chip-filter"&gt;Filter 2&lt;button class="chip-filter-remove"&gt;✕&lt;/button&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="filter-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const FilterChip = ({ label, onRemove, icon, size = 'default' }) => {
+  const sizeClass = size !== 'default' ? `chip-filter-${size}` : '';
+  
+  return (
+    &lt;span className={`chip-filter ${sizeClass}`.trim()}&gt;
+      {icon && (
+        &lt;svg className="chip-filter-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+          {icon}
+        &lt;/svg&gt;
+      )}
+      {label}
+      &lt;button className="chip-filter-remove" onClick={onRemove}&gt;✕&lt;/button&gt;
+    &lt;/span&gt;
+  );
+};
+
+// Usage
+&lt;FilterChip 
+  label="Price: $50-$100" 
+  onRemove={() => console.log('Remove filter')} 
+/&gt;
+
+&lt;FilterChip 
+  label="Iceland"
+  icon={&lt;path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /&gt;}
+  onRemove={() => console.log('Remove location')} 
+/&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Product Tags (Non-removable) -->
+            <section class="section">
+                <h2>Product Tags (Non-removable)</h2>
+                <p>Informational labels for product attributes. Not interactive, just visual indicators.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'tags-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'tags-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'tags-jsx')">JSX</button>
+                </div>
+                
+                <div id="tags-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="chip-group">
+                            <span class="chip-tag chip-tag-featured">Featured</span>
+                            <span class="chip-tag chip-tag-new">New Arrival</span>
+                            <span class="chip-tag chip-tag-limited">Limited Stock</span>
+                            <span class="chip-tag chip-tag-seasonal">Seasonal</span>
+                            <span class="chip-tag">Best Seller</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="tags-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Product Tags --&gt;
+&lt;span class="chip-tag chip-tag-featured"&gt;Featured&lt;/span&gt;
+&lt;span class="chip-tag chip-tag-new"&gt;New Arrival&lt;/span&gt;
+&lt;span class="chip-tag chip-tag-limited"&gt;Limited Stock&lt;/span&gt;
+&lt;span class="chip-tag chip-tag-seasonal"&gt;Seasonal&lt;/span&gt;
+&lt;span class="chip-tag"&gt;Best Seller&lt;/span&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="tags-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const ProductTag = ({ label, variant = 'default' }) => {
+  const variantClass = variant !== 'default' ? `chip-tag-${variant}` : '';
+  
+  return (
+    &lt;span className={`chip-tag ${variantClass}`.trim()}&gt;
+      {label}
+    &lt;/span&gt;
+  );
+};
+
+// Usage
+&lt;ProductTag label="Featured" variant="featured" /&gt;
+&lt;ProductTag label="New Arrival" variant="new" /&gt;
+&lt;ProductTag label="Limited Stock" variant="limited" /&gt;
+&lt;ProductTag label="Best Seller" /&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Interactive Chips (Selectable) -->
+            <section class="section">
+                <h2>Interactive Chips (Selectable)</h2>
+                <p>Clickable chips for multi-select category browsing. Toggle on/off to filter results.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'interactive-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'interactive-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'interactive-jsx')">JSX</button>
+                </div>
+                
+                <div id="interactive-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <h4 style="font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-3);">Select Product Categories</h4>
+                        <div class="chip-group">
+                            <span class="chip-interactive selected">Salmon</span>
+                            <span class="chip-interactive">Tuna</span>
+                            <span class="chip-interactive selected">Cod</span>
+                            <span class="chip-interactive">Shellfish</span>
+                            <span class="chip-interactive">Lobster</span>
+                            <span class="chip-interactive">Crab</span>
+                        </div>
+
+                        <div style="margin-top: var(--spacing-6);">
+                            <h4 style="font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-3);">With Icons</h4>
+                            <div class="chip-group">
+                                <span class="chip-interactive selected">
+                                    <svg class="chip-interactive-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    Fresh
+                                </span>
+                                <span class="chip-interactive">
+                                    <svg class="chip-interactive-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    Frozen
+                                </span>
+                                <span class="chip-interactive selected">
+                                    <svg class="chip-interactive-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
+                                    Express
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="interactive-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Unselected --&gt;
+&lt;span class="chip-interactive"&gt;Tuna&lt;/span&gt;
+
+&lt;!-- Selected --&gt;
+&lt;span class="chip-interactive selected"&gt;Salmon&lt;/span&gt;
+
+&lt;!-- With Icon --&gt;
+&lt;span class="chip-interactive selected"&gt;
+  &lt;svg class="chip-interactive-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+    &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"&gt;&lt;/path&gt;
+  &lt;/svg&gt;
+  Fresh
+&lt;/span&gt;
+
+&lt;!-- JavaScript Toggle --&gt;
+&lt;script&gt;
+document.querySelectorAll('.chip-interactive').forEach(chip => {
+  chip.addEventListener('click', () => {
+    chip.classList.toggle('selected');
+  });
+});
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="interactive-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const InteractiveChip = ({ label, selected, onToggle, icon }) => {
+  return (
+    &lt;span 
+      className={`chip-interactive ${selected ? 'selected' : ''}`.trim()}
+      onClick={onToggle}
+    &gt;
+      {icon && (
+        &lt;svg className="chip-interactive-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
+          {icon}
+        &lt;/svg&gt;
+      )}
+      {label}
+    &lt;/span&gt;
+  );
+};
+
+// Usage with State
+const CategoryFilter = () => {
+  const [selected, setSelected] = useState(['Salmon', 'Cod']);
+  
+  const categories = ['Salmon', 'Tuna', 'Cod', 'Shellfish', 'Lobster', 'Crab'];
+  
+  const toggleCategory = (category) => {
+    setSelected(prev => 
+      prev.includes(category) 
+        ? prev.filter(c => c !== category)
+        : [...prev, category]
+    );
+  };
+  
+  return (
+    &lt;div className="chip-group"&gt;
+      {categories.map(cat => (
+        &lt;InteractiveChip
+          key={cat}
+          label={cat}
+          selected={selected.includes(cat)}
+          onToggle={() => toggleCategory(cat)}
+        /&gt;
+      ))}
+    &lt;/div&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Count Badges -->
+            <section class="section">
+                <h2>Count Badges</h2>
+                <p>Small numerical indicators for cart items, notifications, or filter counts.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'count-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'count-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'count-jsx')">JSX</button>
+                </div>
+                
+                <div id="count-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div style="display: flex; gap: var(--spacing-6); flex-wrap: wrap; align-items: center;">
+                            <div style="display: flex; align-items: center; gap: var(--spacing-2);">
+                                <span style="font-family: var(--font-heading); font-size: var(--font-size-base); color: var(--color-text-primary);">Cart</span>
+                                <span class="chip-count">3</span>
+                            </div>
+
+                            <div style="display: flex; align-items: center; gap: var(--spacing-2);">
+                                <span style="font-family: var(--font-heading); font-size: var(--font-size-base); color: var(--color-text-primary);">Notifications</span>
+                                <span class="chip-count">12</span>
+                            </div>
+
+                            <div style="display: flex; align-items: center; gap: var(--spacing-2);">
+                                <span style="font-family: var(--font-heading); font-size: var(--font-size-base); color: var(--color-text-primary);">Filters Applied</span>
+                                <span class="chip-count chip-count-info">5</span>
+                            </div>
+
+                            <div style="display: flex; align-items: center; gap: var(--spacing-2);">
+                                <span style="font-family: var(--font-heading); font-size: var(--font-size-base); color: var(--color-text-primary);">New Products</span>
+                                <span class="chip-count chip-count-success">8</span>
+                            </div>
+
+                            <div style="display: flex; align-items: center; gap: var(--spacing-2);">
+                                <span style="font-family: var(--font-heading); font-size: var(--font-size-base); color: var(--color-text-primary);">Alerts</span>
+                                <span class="chip-count chip-count-warning">2</span>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: var(--spacing-6);">
+                            <h4 style="font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-3);">Large Count Badges</h4>
+                            <div style="display: flex; gap: var(--spacing-4); flex-wrap: wrap; align-items: center;">
+                                <span class="chip-count chip-count-lg">24</span>
+                                <span class="chip-count chip-count-lg chip-count-info">156</span>
+                                <span class="chip-count chip-count-lg chip-count-success">99+</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="count-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Default (Red) --&gt;
+&lt;span class="chip-count"&gt;3&lt;/span&gt;
+
+&lt;!-- Variants --&gt;
+&lt;span class="chip-count chip-count-info"&gt;5&lt;/span&gt;
+&lt;span class="chip-count chip-count-success"&gt;8&lt;/span&gt;
+&lt;span class="chip-count chip-count-warning"&gt;2&lt;/span&gt;
+
+&lt;!-- Large --&gt;
+&lt;span class="chip-count chip-count-lg"&gt;24&lt;/span&gt;
+&lt;span class="chip-count chip-count-lg chip-count-info"&gt;99+&lt;/span&gt;
+
+&lt;!-- In Context --&gt;
+&lt;button&gt;
+  Cart
+  &lt;span class="chip-count"&gt;3&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="count-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const CountBadge = ({ count, variant = 'default', size = 'default' }) => {
+  const variantClass = variant !== 'default' ? `chip-count-${variant}` : '';
+  const sizeClass = size === 'lg' ? 'chip-count-lg' : '';
+  
+  // Format large numbers
+  const displayCount = count > 99 ? '99+' : count;
+  
+  return (
+    &lt;span className={`chip-count ${variantClass} ${sizeClass}`.trim()}&gt;
+      {displayCount}
+    &lt;/span&gt;
+  );
+};
+
+// Usage
+&lt;CountBadge count={3} /&gt;
+&lt;CountBadge count={12} variant="info" /&gt;
+&lt;CountBadge count={156} variant="success" size="lg" /&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script>
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.section');
+            section.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            section.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-example').querySelector('code');
+            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+
+        // Demo: Interactive chips
+        document.addEventListener('DOMContentLoaded', () => {
+            const interactiveChips = document.querySelectorAll('.chip-interactive');
+            interactiveChips.forEach(chip => {
+                chip.addEventListener('click', () => {
+                    chip.classList.toggle('selected');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
