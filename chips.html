@@ -43,8 +43,8 @@
 
             <div class="usage-box">
                 <h3>Usage & Purpose</h3>
-                <p><strong>Use chips when:</strong> Displaying active filters that users can remove, showing product attributes, enabling multi-select categories, or indicating numerical counts.</p>
-                <p><strong>Don't use chips for:</strong> Certifications or compliance badges (use Badge component instead), primary actions (use buttons), or long text content.</p>
+                <p><strong>Use chips when:</strong> Displaying active filters that users can remove, enabling multi-select category browsing, or indicating numerical counts.</p>
+                <p><strong>Don't use chips for:</strong> Product attributes or certifications (use Badge component instead), primary actions (use buttons), or long text content.</p>
             </div>
 
             <!-- Filter Chips (Removable) -->
@@ -86,18 +86,13 @@
                             <h4 style="font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-3);">With Icon</h4>
                             <div class="chip-group">
                                 <span class="chip-filter">
-                                    <svg class="chip-filter-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                                    </svg>
+                                    <span class="chip-filter-icon"></span>
                                     Iceland
                                     <button class="chip-filter-remove">✕</button>
                                 </span>
                                 
                                 <span class="chip-filter">
-                                    <svg class="chip-filter-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
+                                    <span class="chip-filter-icon"></span>
                                     $0 - $50
                                     <button class="chip-filter-remove">✕</button>
                                 </span>
@@ -140,9 +135,7 @@
 
 &lt;!-- With Icon --&gt;
 &lt;span class="chip-filter"&gt;
-  &lt;svg class="chip-filter-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
-    &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"&gt;&lt;/path&gt;
-  &lt;/svg&gt;
+  &lt;span class="chip-filter-icon"&gt;&lt;/span&gt;
   Iceland
   &lt;button class="chip-filter-remove"&gt;✕&lt;/button&gt;
 &lt;/span&gt;
@@ -166,16 +159,12 @@
                             <span>JSX</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code>const FilterChip = ({ label, onRemove, icon, size = 'default' }) => {
+                        <pre><code>const FilterChip = ({ label, onRemove, hasIcon, size = 'default' }) => {
   const sizeClass = size !== 'default' ? `chip-filter-${size}` : '';
   
   return (
     &lt;span className={`chip-filter ${sizeClass}`.trim()}&gt;
-      {icon && (
-        &lt;svg className="chip-filter-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
-          {icon}
-        &lt;/svg&gt;
-      )}
+      {hasIcon && &lt;span className="chip-filter-icon"&gt;&lt;/span&gt;}
       {label}
       &lt;button className="chip-filter-remove" onClick={onRemove}&gt;✕&lt;/button&gt;
     &lt;/span&gt;
@@ -190,72 +179,9 @@
 
 &lt;FilterChip 
   label="Iceland"
-  icon={&lt;path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /&gt;}
+  hasIcon={true}
   onRemove={() => console.log('Remove location')} 
 /&gt;</code></pre>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Product Tags (Non-removable) -->
-            <section class="section">
-                <h2>Product Tags (Non-removable)</h2>
-                <p>Informational labels for product attributes. Not interactive, just visual indicators.</p>
-                
-                <div class="tab-nav">
-                    <button class="tab-btn active" onclick="switchTab(event, 'tags-preview')">Preview</button>
-                    <button class="tab-btn" onclick="switchTab(event, 'tags-html')">HTML</button>
-                    <button class="tab-btn" onclick="switchTab(event, 'tags-jsx')">JSX</button>
-                </div>
-                
-                <div id="tags-preview" class="tab-content active">
-                    <div class="preview-box">
-                        <div class="chip-group">
-                            <span class="chip-tag chip-tag-featured">Featured</span>
-                            <span class="chip-tag chip-tag-new">New Arrival</span>
-                            <span class="chip-tag chip-tag-limited">Limited Stock</span>
-                            <span class="chip-tag chip-tag-seasonal">Seasonal</span>
-                            <span class="chip-tag">Best Seller</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div id="tags-html" class="tab-content">
-                    <div class="code-example">
-                        <div class="code-header">
-                            <span>HTML + CSS</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                        </div>
-                        <pre><code>&lt;!-- Product Tags --&gt;
-&lt;span class="chip-tag chip-tag-featured"&gt;Featured&lt;/span&gt;
-&lt;span class="chip-tag chip-tag-new"&gt;New Arrival&lt;/span&gt;
-&lt;span class="chip-tag chip-tag-limited"&gt;Limited Stock&lt;/span&gt;
-&lt;span class="chip-tag chip-tag-seasonal"&gt;Seasonal&lt;/span&gt;
-&lt;span class="chip-tag"&gt;Best Seller&lt;/span&gt;</code></pre>
-                    </div>
-                </div>
-                
-                <div id="tags-jsx" class="tab-content">
-                    <div class="code-example">
-                        <div class="code-header">
-                            <span>JSX</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                        </div>
-                        <pre><code>const ProductTag = ({ label, variant = 'default' }) => {
-  const variantClass = variant !== 'default' ? `chip-tag-${variant}` : '';
-  
-  return (
-    &lt;span className={`chip-tag ${variantClass}`.trim()}&gt;
-      {label}
-    &lt;/span&gt;
-  );
-};
-
-// Usage
-&lt;ProductTag label="Featured" variant="featured" /&gt;
-&lt;ProductTag label="New Arrival" variant="new" /&gt;
-&lt;ProductTag label="Limited Stock" variant="limited" /&gt;
-&lt;ProductTag label="Best Seller" /&gt;</code></pre>
                     </div>
                 </div>
             </section>
@@ -287,21 +213,15 @@
                             <h4 style="font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-3);">With Icons</h4>
                             <div class="chip-group">
                                 <span class="chip-interactive selected">
-                                    <svg class="chip-interactive-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
+                                    <span class="chip-interactive-icon"></span>
                                     Fresh
                                 </span>
                                 <span class="chip-interactive">
-                                    <svg class="chip-interactive-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                    </svg>
+                                    <span class="chip-interactive-icon"></span>
                                     Frozen
                                 </span>
                                 <span class="chip-interactive selected">
-                                    <svg class="chip-interactive-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                    </svg>
+                                    <span class="chip-interactive-icon"></span>
                                     Express
                                 </span>
                             </div>
@@ -323,9 +243,7 @@
 
 &lt;!-- With Icon --&gt;
 &lt;span class="chip-interactive selected"&gt;
-  &lt;svg class="chip-interactive-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
-    &lt;path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"&gt;&lt;/path&gt;
-  &lt;/svg&gt;
+  &lt;span class="chip-interactive-icon"&gt;&lt;/span&gt;
   Fresh
 &lt;/span&gt;
 
@@ -346,17 +264,13 @@ document.querySelectorAll('.chip-interactive').forEach(chip => {
                             <span>JSX</span>
                             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
                         </div>
-                        <pre><code>const InteractiveChip = ({ label, selected, onToggle, icon }) => {
+                        <pre><code>const InteractiveChip = ({ label, selected, onToggle, hasIcon }) => {
   return (
     &lt;span 
       className={`chip-interactive ${selected ? 'selected' : ''}`.trim()}
       onClick={onToggle}
     &gt;
-      {icon && (
-        &lt;svg className="chip-interactive-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"&gt;
-          {icon}
-        &lt;/svg&gt;
-      )}
+      {hasIcon && &lt;span className="chip-interactive-icon"&gt;&lt;/span&gt;}
       {label}
     &lt;/span&gt;
   );
