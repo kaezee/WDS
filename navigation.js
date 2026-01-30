@@ -31,7 +31,7 @@
         { name: 'Stepper', href: 'stepper.html' },
         { name: 'Snackbar', href: 'snackbar.html' },
         { name: 'Chips', href: 'chips.html' },
-          { name: 'Cards', href: 'cards.html' }
+        { name: 'Cards', href: 'cards.html' }
       ]
     },
     {
