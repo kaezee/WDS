@@ -85,7 +85,10 @@
                                     <div class="demo-image">Product Image</div>
                                 </div>
                                 <div class="card-product-content">
-                                    <h3 class="card-product-title">Atlantic Salmon Fillets</h3>
+                                    <div class="card-product-attributes">
+                                        <!-- No attributes for this card -->
+                                    </div>
+                                    <h3 class="card-product-title">Atlantic Salmon Fillets Min Order 50 kg</h3>
                                     <a href="#" class="card-product-supplier">Norwegian Seafoods Co.</a>
                                     
                                     <div class="card-product-certifications">
@@ -99,8 +102,6 @@
                                         </span>
                                     </div>
                                     
-                                    <p class="card-product-min-order">Min order: 50 kg</p>
-                                    
                                     <button class="btn btn-md btn-primary card-product-cta">Request Quote</button>
                                 </div>
                             </div>
@@ -112,7 +113,13 @@
                                     <div class="demo-image">Product Image</div>
                                 </div>
                                 <div class="card-product-content">
-                                    <h3 class="card-product-title">Japanese Octopus Seasonal</h3>
+                                    <div class="card-product-attributes">
+                                        <span class="status-text status-text-popular">
+                                            <span class="status-text-icon">⭐</span>
+                                            Popular
+                                        </span>
+                                    </div>
+                                    <h3 class="card-product-title">Japanese Octopus Seasonal Min Order 25 kg</h3>
                                     <a href="#" class="card-product-supplier">Kawaii Tentacles Ltd.</a>
                                     
                                     <div class="card-product-certifications">
@@ -121,15 +128,6 @@
                                             GLOBAL GAP
                                         </span>
                                     </div>
-                                    
-                                    <div class="card-product-attributes">
-                                        <span class="card-product-attribute card-product-attribute-popular">
-                                            <span class="card-product-attribute-icon"></span>
-                                            Popular
-                                        </span>
-                                    </div>
-                                    
-                                    <p class="card-product-min-order">Min order: 25 kg</p>
                                     
                                     <button class="btn btn-md btn-primary card-product-cta">Request Quote</button>
                                 </div>
@@ -142,7 +140,17 @@
                                     <div class="demo-image">Product Image</div>
                                 </div>
                                 <div class="card-product-content">
-                                    <h3 class="card-product-title">Icelandic Cod Premium</h3>
+                                    <div class="card-product-attributes">
+                                        <span class="status-text status-text-recommended">
+                                            <span class="status-text-icon">✓</span>
+                                            Recommended
+                                        </span>
+                                        <span class="status-text status-text-featured">
+                                            <span class="status-text-icon">🔥</span>
+                                            Featured
+                                        </span>
+                                    </div>
+                                    <h3 class="card-product-title">Icelandic Cod Premium Min Order 100 kg</h3>
                                     <a href="#" class="card-product-supplier">Arctic Catch Iceland</a>
                                     
                                     <div class="card-product-certifications">
@@ -151,19 +159,6 @@
                                             MSC
                                         </span>
                                     </div>
-                                    
-                                    <div class="card-product-attributes">
-                                        <span class="card-product-attribute card-product-attribute-recommended">
-                                            <span class="card-product-attribute-icon"></span>
-                                            Recommended
-                                        </span>
-                                        <span class="card-product-attribute card-product-attribute-featured">
-                                            <span class="card-product-attribute-icon"></span>
-                                            Featured
-                                        </span>
-                                    </div>
-                                    
-                                    <p class="card-product-min-order">Min order: 100 kg</p>
                                     
                                     <button class="btn btn-md btn-primary card-product-cta">Request Quote</button>
                                 </div>
@@ -176,10 +171,11 @@
                                     <div class="demo-image">Product Image</div>
                                 </div>
                                 <div class="card-product-content">
-                                    <h3 class="card-product-title">Wild Alaskan Halibut</h3>
+                                    <div class="card-product-attributes">
+                                        <!-- No attributes for this card -->
+                                    </div>
+                                    <h3 class="card-product-title">Wild Alaskan Halibut Min Order 75 kg</h3>
                                     <a href="#" class="card-product-supplier">Pacific Northwest Traders</a>
-                                    
-                                    <p class="card-product-min-order">Min order: 75 kg</p>
                                     
                                     <button class="btn btn-md btn-primary card-product-cta">Request Quote</button>
                                 </div>
@@ -202,7 +198,15 @@
     &lt;img src="product.jpg" alt="Product"&gt;
   &lt;/div&gt;
   &lt;div class="card-product-content"&gt;
-    &lt;h3 class="card-product-title"&gt;Atlantic Salmon Fillets&lt;/h3&gt;
+    &lt;!-- Optional: Positive Attributes ABOVE title --&gt;
+    &lt;div class="card-product-attributes"&gt;
+      &lt;span class="status-text status-text-popular"&gt;
+        &lt;span class="status-text-icon"&gt;⭐&lt;/span&gt;
+        Popular
+      &lt;/span&gt;
+    &lt;/div&gt;
+    
+    &lt;h3 class="card-product-title"&gt;Atlantic Salmon Fillets Min Order 50 kg&lt;/h3&gt;
     &lt;a href="/supplier/norwegian-seafoods" class="card-product-supplier"&gt;Norwegian Seafoods Co.&lt;/a&gt;
     
     &lt;!-- Certifications --&gt;
@@ -216,16 +220,6 @@
         ASC
       &lt;/span&gt;
     &lt;/div&gt;
-    
-    &lt;!-- Optional: Positive Attributes --&gt;
-    &lt;div class="card-product-attributes"&gt;
-      &lt;span class="card-product-attribute card-product-attribute-popular"&gt;
-        &lt;span class="card-product-attribute-icon"&gt;&lt;/span&gt;
-        Popular
-      &lt;/span&gt;
-    &lt;/div&gt;
-    
-    &lt;p class="card-product-min-order"&gt;Min order: 50 kg&lt;/p&gt;
     
     &lt;button class="btn btn-md btn-primary card-product-cta"&gt;Request Quote&lt;/button&gt;
   &lt;/div&gt;
@@ -261,7 +255,21 @@
         &lt;img src={product.image} alt={product.name} /&gt;
       &lt;/div&gt;
       &lt;div className="card-product-content"&gt;
-        &lt;h3 className="card-product-title"&gt;{product.name}&lt;/h3&gt;
+        {/* Positive Attributes ABOVE title */}
+        {attributes.length &gt; 0 && (
+          &lt;div className="card-product-attributes"&gt;
+            {attributes.map(attr => (
+              &lt;span key={attr.text} className={`status-text status-text-${attr.type}`}&gt;
+                &lt;span className="status-text-icon"&gt;{attr.icon}&lt;/span&gt;
+                {attr.text}
+              &lt;/span&gt;
+            ))}
+          &lt;/div&gt;
+        )}
+        
+        &lt;h3 className="card-product-title"&gt;
+          {product.name} Min Order {product.minOrder} kg
+        &lt;/h3&gt;
         &lt;a href={`/supplier/${product.supplierId}`} className="card-product-supplier"&gt;
           {product.supplier}
         &lt;/a&gt;
@@ -277,22 +285,6 @@
           &lt;/div&gt;
         )}
         
-        {attributes.length &gt; 0 && (
-          &lt;div className="card-product-attributes"&gt;
-            {attributes.map(attr => (
-              &lt;span 
-                key={attr.text}
-                className={`card-product-attribute card-product-attribute-${attr.type}`}
-              &gt;
-                &lt;span className="card-product-attribute-icon"&gt;&lt;/span&gt;
-                {attr.text}
-              &lt;/span&gt;
-            ))}
-          &lt;/div&gt;
-        )}
-        
-        &lt;p className="card-product-min-order"&gt;Min order: {product.minOrder} kg&lt;/p&gt;
-        
         &lt;button className="btn btn-md btn-primary card-product-cta"&gt;
           Request Quote
         &lt;/button&gt;
@@ -306,6 +298,7 @@
   product={{
     name: "Atlantic Salmon Fillets",
     supplier: "Norwegian Seafoods Co.",
+    supplierId: "norwegian-seafoods",
     image: "/images/salmon.jpg",
     minOrder: 50
   }}
@@ -315,7 +308,7 @@
     { name: 'ASC', color: 'blue' }
   ]}
   attributes={[
-    { type: 'popular', text: 'Popular' }
+    { type: 'popular', text: 'Popular', icon: '⭐' }
   ]}
 /&gt;</code></pre>
                     </div>
