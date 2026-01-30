@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cards - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cards.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--color-pearl-200); margin-bottom: var(--spacing-6); }
+        .tab-btn { padding: var(--spacing-3) var(--spacing-5); background: none; border: none; font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-pearl-600); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+        .tab-btn:hover { color: var(--color-waves-500); }
+        .tab-btn.active { color: var(--color-waves-500); border-bottom-color: var(--color-waves-500); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .preview-box { background: var(--color-shore-base); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); }
+        
+        /* Demo image placeholder */
+        .demo-image {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E0 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-size: var(--font-size-sm);
+            color: var(--color-pearl-500);
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header>
+                <h1>Cards</h1>
+                <p class="hero-subtitle">Container components for marketplace listings, content, and information display.</p>
+            </header>
+
+            <div class="usage-box">
+                <h3>Usage & Purpose</h3>
+                <p><strong>Use cards when:</strong> Displaying products in marketplace grids, showing supplier profiles, organizing content like blog posts, or presenting structured information in dashboards.</p>
+                <p><strong>Don't use cards for:</strong> Single pieces of information that don't need visual separation, or when a simple list would be clearer.</p>
+            </div>
+
+            <!-- Product Cards -->
+            <section class="section">
+                <h2>Product Cards</h2>
+                <p>Main marketplace listing cards with 4:3 images, no public pricing, and request quote CTAs. Display product details, supplier info, certifications, and attributes.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'product-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'product-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'product-jsx')">JSX</button>
+                </div>
+                
+                <div id="product-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="card-grid-products">
+                            
+                            <!-- Product Card 1 - With certifications -->
+                            <div class="card-product">
+                                <div class="card-product-image">
+                                    <span class="card-product-label card-product-label-new">New</span>
+                                    <div class="demo-image">Product Image</div>
+                                </div>
+                                <div class="card-product-content">
+                                    <h3 class="card-product-title">Atlantic Salmon Fillets</h3>
+                                    <p class="card-product-supplier">Norwegian Seafoods Co.</p>
+                                    
+                                    <div class="card-product-certifications">
+                                        <span class="badge badge-cert-msc">MSC</span>
+                                        <span class="badge badge-cert-asc">ASC</span>
+                                    </div>
+                                    
+                                    <p class="card-product-min-order">Min order: 50 kg</p>
+                                    
+                                    <button class="btn btn-primary btn-md card-product-cta">Request Quote</button>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 2 - With positive attributes -->
+                            <div class="card-product">
+                                <div class="card-product-image">
+                                    <span class="card-product-label card-product-label-limited">Limited</span>
+                                    <div class="demo-image">Product Image</div>
+                                </div>
+                                <div class="card-product-content">
+                                    <h3 class="card-product-title">Japanese Octopus Seasonal</h3>
+                                    <p class="card-product-supplier">Kawaii Tentacles Ltd.</p>
+                                    
+                                    <div class="card-product-certifications">
+                                        <span class="badge badge-cert-global-gap">GLOBAL GAP</span>
+                                    </div>
+                                    
+                                    <div class="card-product-attributes">
+                                        <span class="card-product-attribute card-product-attribute-popular">
+                                            <span class="card-product-attribute-icon"></span>
+                                            Popular
+                                        </span>
+                                    </div>
+                                    
+                                    <p class="card-product-min-order">Min order: 25 kg</p>
+                                    
+                                    <button class="btn btn-primary btn-md card-product-cta">Request Quote</button>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 3 - With minimal labels -->
+                            <div class="card-product">
+                                <div class="card-product-image">
+                                    <span class="card-product-label card-product-label-featured">Featured</span>
+                                    <div class="demo-image">Product Image</div>
+                                </div>
+                                <div class="card-product-content">
+                                    <h3 class="card-product-title">Icelandic Cod Premium</h3>
+                                    <p class="card-product-supplier">Arctic Catch Iceland</p>
+                                    
+                                    <div class="card-product-certifications">
+                                        <span class="badge badge-cert-msc">MSC</span>
+                                    </div>
+                                    
+                                    <div class="card-product-attributes">
+                                        <span class="card-product-attribute card-product-attribute-recommended">
+                                            <span class="card-product-attribute-icon"></span>
+                                            Recommended
+                                        </span>
+                                        <span class="card-product-attribute card-product-attribute-featured">
+                                            <span class="card-product-attribute-icon"></span>
+                                            Featured
+                                        </span>
+                                    </div>
+                                    
+                                    <p class="card-product-min-order">Min order: 100 kg</p>
+                                    
+                                    <button class="btn btn-primary btn-md card-product-cta">Request Quote</button>
+                                </div>
+                            </div>
+
+                            <!-- Product Card 4 - Minimal info -->
+                            <div class="card-product">
+                                <div class="card-product-image">
+                                    <span class="card-product-label card-product-label-new">New</span>
+                                    <div class="demo-image">Product Image</div>
+                                </div>
+                                <div class="card-product-content">
+                                    <h3 class="card-product-title">Wild Alaskan Halibut</h3>
+                                    <p class="card-product-supplier">Pacific Northwest Traders</p>
+                                    
+                                    <p class="card-product-min-order">Min order: 75 kg</p>
+                                    
+                                    <button class="btn btn-primary btn-md card-product-cta">Request Quote</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="product-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Product Card --&gt;
+&lt;div class="card-product"&gt;
+  &lt;div class="card-product-image"&gt;
+    &lt;span class="card-product-label card-product-label-new"&gt;New&lt;/span&gt;
+    &lt;img src="product.jpg" alt="Product"&gt;
+  &lt;/div&gt;
+  &lt;div class="card-product-content"&gt;
+    &lt;h3 class="card-product-title"&gt;Atlantic Salmon Fillets&lt;/h3&gt;
+    &lt;p class="card-product-supplier"&gt;Norwegian Seafoods Co.&lt;/p&gt;
+    
+    &lt;!-- Certifications --&gt;
+    &lt;div class="card-product-certifications"&gt;
+      &lt;span class="badge badge-cert-msc"&gt;MSC&lt;/span&gt;
+      &lt;span class="badge badge-cert-asc"&gt;ASC&lt;/span&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- Optional: Positive Attributes --&gt;
+    &lt;div class="card-product-attributes"&gt;
+      &lt;span class="card-product-attribute card-product-attribute-popular"&gt;
+        &lt;span class="card-product-attribute-icon"&gt;&lt;/span&gt;
+        Popular
+      &lt;/span&gt;
+    &lt;/div&gt;
+    
+    &lt;p class="card-product-min-order"&gt;Min order: 50 kg&lt;/p&gt;
+    
+    &lt;button class="btn btn-primary btn-md card-product-cta"&gt;Request Quote&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Product Grid --&gt;
+&lt;div class="card-grid-products"&gt;
+  &lt;!-- Cards here --&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="product-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const ProductCard = ({ 
+  product, 
+  label, 
+  certifications = [], 
+  attributes = [] 
+}) => {
+  return (
+    &lt;div className="card-product"&gt;
+      &lt;div className="card-product-image"&gt;
+        {label && (
+          &lt;span className={`card-product-label card-product-label-${label.type}`}&gt;
+            {label.text}
+          &lt;/span&gt;
+        )}
+        &lt;img src={product.image} alt={product.name} /&gt;
+      &lt;/div&gt;
+      &lt;div className="card-product-content"&gt;
+        &lt;h3 className="card-product-title"&gt;{product.name}&lt;/h3&gt;
+        &lt;p className="card-product-supplier"&gt;{product.supplier}&lt;/p&gt;
+        
+        {certifications.length &gt; 0 && (
+          &lt;div className="card-product-certifications"&gt;
+            {certifications.map(cert => (
+              &lt;span key={cert} className={`badge badge-cert-${cert.toLowerCase()}`}&gt;
+                {cert}
+              &lt;/span&gt;
+            ))}
+          &lt;/div&gt;
+        )}
+        
+        {attributes.length &gt; 0 && (
+          &lt;div className="card-product-attributes"&gt;
+            {attributes.map(attr => (
+              &lt;span 
+                key={attr.text}
+                className={`card-product-attribute card-product-attribute-${attr.type}`}
+              &gt;
+                &lt;span className="card-product-attribute-icon"&gt;&lt;/span&gt;
+                {attr.text}
+              &lt;/span&gt;
+            ))}
+          &lt;/div&gt;
+        )}
+        
+        &lt;p className="card-product-min-order"&gt;Min order: {product.minOrder} kg&lt;/p&gt;
+        
+        &lt;button className="btn btn-primary btn-md card-product-cta"&gt;
+          Request Quote
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};
+
+// Usage
+&lt;ProductCard 
+  product={{
+    name: "Atlantic Salmon Fillets",
+    supplier: "Norwegian Seafoods Co.",
+    image: "/images/salmon.jpg",
+    minOrder: 50
+  }}
+  label={{ type: 'new', text: 'New' }}
+  certifications={['MSC', 'ASC']}
+  attributes={[
+    { type: 'popular', text: 'Popular' }
+  ]}
+/&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Category Cards -->
+            <section class="section">
+                <h2>Category Cards</h2>
+                <p>Browse product categories with icons and product counts. Used for navigation and category browsing.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'category-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'category-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'category-jsx')">JSX</button>
+                </div>
+                
+                <div id="category-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="card-grid-categories">
+                            
+                            <div class="card-category">
+                                <div class="card-category-icon">
+                                    <span class="card-category-icon-placeholder"></span>
+                                </div>
+                                <h3 class="card-category-title">Fresh Seafood</h3>
+                                <p class="card-category-count">142 products</p>
+                            </div>
+
+                            <div class="card-category">
+                                <div class="card-category-icon">
+                                    <span class="card-category-icon-placeholder"></span>
+                                </div>
+                                <h3 class="card-category-title">Frozen Fish</h3>
+                                <p class="card-category-count">89 products</p>
+                            </div>
+
+                            <div class="card-category">
+                                <div class="card-category-icon">
+                                    <span class="card-category-icon-placeholder"></span>
+                                </div>
+                                <h3 class="card-category-title">Shellfish</h3>
+                                <p class="card-category-count">56 products</p>
+                            </div>
+
+                            <div class="card-category">
+                                <div class="card-category-icon">
+                                    <span class="card-category-icon-placeholder"></span>
+                                </div>
+                                <h3 class="card-category-title">Premium Cuts</h3>
+                                <p class="card-category-count">34 products</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="category-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Category Card --&gt;
+&lt;div class="card-category"&gt;
+  &lt;div class="card-category-icon"&gt;
+    &lt;img src="icon.svg" alt="Category"&gt;
+    &lt;!-- Or use placeholder --&gt;
+    &lt;span class="card-category-icon-placeholder"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;h3 class="card-category-title"&gt;Fresh Seafood&lt;/h3&gt;
+  &lt;p class="card-category-count"&gt;142 products&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Category Grid --&gt;
+&lt;div class="card-grid-categories"&gt;
+  &lt;!-- Cards here --&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="category-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const CategoryCard = ({ category }) => {
+  return (
+    &lt;div className="card-category"&gt;
+      &lt;div className="card-category-icon"&gt;
+        {category.icon ? (
+          &lt;img src={category.icon} alt={category.name} /&gt;
+        ) : (
+          &lt;span className="card-category-icon-placeholder"&gt;&lt;/span&gt;
+        )}
+      &lt;/div&gt;
+      &lt;h3 className="card-category-title"&gt;{category.name}&lt;/h3&gt;
+      &lt;p className="card-category-count"&gt;{category.count} products&lt;/p&gt;
+    &lt;/div&gt;
+  );
+};
+
+// Usage
+&lt;CategoryCard 
+  category={{
+    name: "Fresh Seafood",
+    count: 142,
+    icon: "/icons/fish.svg"
+  }}
+/&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Supplier Cards -->
+            <section class="section">
+                <h2>Supplier Cards</h2>
+                <p>Supplier profile cards with logo, company info, location, and certifications.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'supplier-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'supplier-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'supplier-jsx')">JSX</button>
+                </div>
+                
+                <div id="supplier-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="card-grid">
+                            
+                            <div class="card-supplier">
+                                <div class="card-supplier-header">
+                                    <div class="card-supplier-logo">
+                                        <span class="card-supplier-logo-placeholder"></span>
+                                    </div>
+                                </div>
+                                <div class="card-supplier-content">
+                                    <h3 class="card-supplier-name">Norwegian Seafoods Co.</h3>
+                                    <div class="card-supplier-location">
+                                        <span class="card-supplier-location-icon"></span>
+                                        Bergen, Norway
+                                    </div>
+                                    <div class="card-supplier-certifications">
+                                        <span class="badge badge-cert-msc">MSC</span>
+                                        <span class="badge badge-cert-asc">ASC</span>
+                                        <span class="badge badge-cert-haccp">HACCP</span>
+                                    </div>
+                                    <button class="btn btn-secondary btn-md card-supplier-cta">View Profile</button>
+                                </div>
+                            </div>
+
+                            <div class="card-supplier">
+                                <div class="card-supplier-header">
+                                    <div class="card-supplier-logo">
+                                        <span class="card-supplier-logo-placeholder"></span>
+                                    </div>
+                                </div>
+                                <div class="card-supplier-content">
+                                    <h3 class="card-supplier-name">Arctic Catch Iceland</h3>
+                                    <div class="card-supplier-location">
+                                        <span class="card-supplier-location-icon"></span>
+                                        Reykjavik, Iceland
+                                    </div>
+                                    <div class="card-supplier-certifications">
+                                        <span class="badge badge-cert-msc">MSC</span>
+                                        <span class="badge badge-cert-iso">ISO 9001</span>
+                                    </div>
+                                    <button class="btn btn-secondary btn-md card-supplier-cta">View Profile</button>
+                                </div>
+                            </div>
+
+                            <div class="card-supplier">
+                                <div class="card-supplier-header">
+                                    <div class="card-supplier-logo">
+                                        <span class="card-supplier-logo-placeholder"></span>
+                                    </div>
+                                </div>
+                                <div class="card-supplier-content">
+                                    <h3 class="card-supplier-name">Pacific Northwest Traders</h3>
+                                    <div class="card-supplier-location">
+                                        <span class="card-supplier-location-icon"></span>
+                                        Seattle, USA
+                                    </div>
+                                    <div class="card-supplier-certifications">
+                                        <span class="badge badge-cert-organic">Organic</span>
+                                    </div>
+                                    <button class="btn btn-secondary btn-md card-supplier-cta">View Profile</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="supplier-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Supplier Card --&gt;
+&lt;div class="card-supplier"&gt;
+  &lt;div class="card-supplier-header"&gt;
+    &lt;div class="card-supplier-logo"&gt;
+      &lt;img src="logo.png" alt="Supplier Logo"&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="card-supplier-content"&gt;
+    &lt;h3 class="card-supplier-name"&gt;Norwegian Seafoods Co.&lt;/h3&gt;
+    &lt;div class="card-supplier-location"&gt;
+      &lt;span class="card-supplier-location-icon"&gt;&lt;/span&gt;
+      Bergen, Norway
+    &lt;/div&gt;
+    &lt;div class="card-supplier-certifications"&gt;
+      &lt;span class="badge badge-cert-msc"&gt;MSC&lt;/span&gt;
+      &lt;span class="badge badge-cert-asc"&gt;ASC&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;button class="btn btn-secondary btn-md card-supplier-cta"&gt;View Profile&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="supplier-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const SupplierCard = ({ supplier }) => {
+  return (
+    &lt;div className="card-supplier"&gt;
+      &lt;div className="card-supplier-header"&gt;
+        &lt;div className="card-supplier-logo"&gt;
+          {supplier.logo ? (
+            &lt;img src={supplier.logo} alt={supplier.name} /&gt;
+          ) : (
+            &lt;span className="card-supplier-logo-placeholder"&gt;&lt;/span&gt;
+          )}
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div className="card-supplier-content"&gt;
+        &lt;h3 className="card-supplier-name"&gt;{supplier.name}&lt;/h3&gt;
+        &lt;div className="card-supplier-location"&gt;
+          &lt;span className="card-supplier-location-icon"&gt;&lt;/span&gt;
+          {supplier.location}
+        &lt;/div&gt;
+        &lt;div className="card-supplier-certifications"&gt;
+          {supplier.certifications.map(cert => (
+            &lt;span key={cert} className={`badge badge-cert-${cert.toLowerCase()}`}&gt;
+              {cert}
+            &lt;/span&gt;
+          ))}
+        &lt;/div&gt;
+        &lt;button className="btn btn-secondary btn-md card-supplier-cta"&gt;
+          View Profile
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Order Summary Cards -->
+            <section class="section">
+                <h2>Order Summary Cards</h2>
+                <p>Checkout and dashboard cards displaying order details, line items, and totals.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'order-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'order-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'order-jsx')">JSX</button>
+                </div>
+                
+                <div id="order-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div style="max-width: 500px;">
+                            
+                            <div class="card-order">
+                                <div class="card-order-header">
+                                    <div>
+                                        <h3 class="card-order-number">Order #WHD-2846</h3>
+                                        <p class="card-order-date">January 28, 2026</p>
+                                    </div>
+                                    <span class="badge badge-status-processing">Processing</span>
+                                </div>
+                                
+                                <div class="card-order-items">
+                                    <div class="card-order-item">
+                                        <span class="card-order-item-name">Atlantic Salmon Fillets</span>
+                                        <span class="card-order-item-quantity">150 kg</span>
+                                    </div>
+                                    <div class="card-order-item">
+                                        <span class="card-order-item-name">Norwegian Cod Premium</span>
+                                        <span class="card-order-item-quantity">200 kg</span>
+                                    </div>
+                                    <div class="card-order-item">
+                                        <span class="card-order-item-name">Icelandic Halibut</span>
+                                        <span class="card-order-item-quantity">75 kg</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-order-total">
+                                    <span class="card-order-total-label">Total Weight</span>
+                                    <span class="card-order-total-amount">425 kg</span>
+                                </div>
+                                
+                                <div class="card-order-actions">
+                                    <button class="btn btn-primary btn-md" style="flex: 1;">View Details</button>
+                                    <button class="btn btn-secondary btn-md" style="flex: 1;">Download Invoice</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="order-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Order Summary Card --&gt;
+&lt;div class="card-order"&gt;
+  &lt;div class="card-order-header"&gt;
+    &lt;div&gt;
+      &lt;h3 class="card-order-number"&gt;Order #WHD-2846&lt;/h3&gt;
+      &lt;p class="card-order-date"&gt;January 28, 2026&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;span class="badge badge-status-processing"&gt;Processing&lt;/span&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="card-order-items"&gt;
+    &lt;div class="card-order-item"&gt;
+      &lt;span class="card-order-item-name"&gt;Atlantic Salmon Fillets&lt;/span&gt;
+      &lt;span class="card-order-item-quantity"&gt;150 kg&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;!-- More items --&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="card-order-total"&gt;
+    &lt;span class="card-order-total-label"&gt;Total Weight&lt;/span&gt;
+    &lt;span class="card-order-total-amount"&gt;425 kg&lt;/span&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="card-order-actions"&gt;
+    &lt;button class="btn btn-primary btn-md"&gt;View Details&lt;/button&gt;
+    &lt;button class="btn btn-secondary btn-md"&gt;Download Invoice&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="order-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const OrderSummaryCard = ({ order }) => {
+  return (
+    &lt;div className="card-order"&gt;
+      &lt;div className="card-order-header"&gt;
+        &lt;div&gt;
+          &lt;h3 className="card-order-number"&gt;Order #{order.number}&lt;/h3&gt;
+          &lt;p className="card-order-date"&gt;{order.date}&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;span className={`badge badge-status-${order.status.toLowerCase()}`}&gt;
+          {order.status}
+        &lt;/span&gt;
+      &lt;/div&gt;
+      
+      &lt;div className="card-order-items"&gt;
+        {order.items.map(item => (
+          &lt;div key={item.id} className="card-order-item"&gt;
+            &lt;span className="card-order-item-name"&gt;{item.name}&lt;/span&gt;
+            &lt;span className="card-order-item-quantity"&gt;{item.quantity} kg&lt;/span&gt;
+          &lt;/div&gt;
+        ))}
+      &lt;/div&gt;
+      
+      &lt;div className="card-order-total"&gt;
+        &lt;span className="card-order-total-label"&gt;Total Weight&lt;/span&gt;
+        &lt;span className="card-order-total-amount"&gt;{order.totalWeight} kg&lt;/span&gt;
+      &lt;/div&gt;
+      
+      &lt;div className="card-order-actions"&gt;
+        &lt;button className="btn btn-primary btn-md"&gt;View Details&lt;/button&gt;
+        &lt;button className="btn btn-secondary btn-md"&gt;Download Invoice&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Blog Cards -->
+            <section class="section">
+                <h2>Blog / Content Cards</h2>
+                <p>Content marketing cards with featured images, category tags, and excerpts.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'blog-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'blog-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'blog-jsx')">JSX</button>
+                </div>
+                
+                <div id="blog-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="card-grid-blog">
+                            
+                            <div class="card-blog">
+                                <div class="card-blog-image">
+                                    <span class="card-blog-category">Sustainability</span>
+                                    <div class="demo-image">Blog Image</div>
+                                </div>
+                                <div class="card-blog-content">
+                                    <h3 class="card-blog-title">The Future of Sustainable Seafood Sourcing</h3>
+                                    <p class="card-blog-excerpt">Discover how modern aquaculture practices are revolutionizing the seafood industry while protecting our oceans for future generations.</p>
+                                    <div class="card-blog-meta">
+                                        <span>5 min read</span>
+                                        <span class="card-blog-meta-divider"></span>
+                                        <span>Jan 28, 2026</span>
+                                    </div>
+                                    <a href="#" class="card-blog-link">Read more</a>
+                                </div>
+                            </div>
+
+                            <div class="card-blog">
+                                <div class="card-blog-image">
+                                    <span class="card-blog-category">Industry News</span>
+                                    <div class="demo-image">Blog Image</div>
+                                </div>
+                                <div class="card-blog-content">
+                                    <h3 class="card-blog-title">B2B Marketplace Trends in 2026</h3>
+                                    <p class="card-blog-excerpt">Key insights into how digital transformation is reshaping wholesale seafood trade and supplier relationships.</p>
+                                    <div class="card-blog-meta">
+                                        <span>8 min read</span>
+                                        <span class="card-blog-meta-divider"></span>
+                                        <span>Jan 25, 2026</span>
+                                    </div>
+                                    <a href="#" class="card-blog-link">Read more</a>
+                                </div>
+                            </div>
+
+                            <div class="card-blog">
+                                <div class="card-blog-image">
+                                    <span class="card-blog-category">Guide</span>
+                                    <div class="demo-image">Blog Image</div>
+                                </div>
+                                <div class="card-blog-content">
+                                    <h3 class="card-blog-title">Understanding MSC Certification</h3>
+                                    <p class="card-blog-excerpt">A comprehensive guide to Marine Stewardship Council standards and what they mean for your business.</p>
+                                    <div class="card-blog-meta">
+                                        <span>12 min read</span>
+                                        <span class="card-blog-meta-divider"></span>
+                                        <span>Jan 20, 2026</span>
+                                    </div>
+                                    <a href="#" class="card-blog-link">Read more</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="blog-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Blog Card --&gt;
+&lt;div class="card-blog"&gt;
+  &lt;div class="card-blog-image"&gt;
+    &lt;span class="card-blog-category"&gt;Sustainability&lt;/span&gt;
+    &lt;img src="blog-image.jpg" alt="Blog post"&gt;
+  &lt;/div&gt;
+  &lt;div class="card-blog-content"&gt;
+    &lt;h3 class="card-blog-title"&gt;The Future of Sustainable Seafood Sourcing&lt;/h3&gt;
+    &lt;p class="card-blog-excerpt"&gt;Discover how modern aquaculture practices...&lt;/p&gt;
+    &lt;div class="card-blog-meta"&gt;
+      &lt;span&gt;5 min read&lt;/span&gt;
+      &lt;span class="card-blog-meta-divider"&gt;&lt;/span&gt;
+      &lt;span&gt;Jan 28, 2026&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;a href="#" class="card-blog-link"&gt;Read more&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Blog Grid --&gt;
+&lt;div class="card-grid-blog"&gt;
+  &lt;!-- Cards here --&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="blog-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const BlogCard = ({ post }) => {
+  return (
+    &lt;div className="card-blog"&gt;
+      &lt;div className="card-blog-image"&gt;
+        &lt;span className="card-blog-category"&gt;{post.category}&lt;/span&gt;
+        &lt;img src={post.image} alt={post.title} /&gt;
+      &lt;/div&gt;
+      &lt;div className="card-blog-content"&gt;
+        &lt;h3 className="card-blog-title"&gt;{post.title}&lt;/h3&gt;
+        &lt;p className="card-blog-excerpt"&gt;{post.excerpt}&lt;/p&gt;
+        &lt;div className="card-blog-meta"&gt;
+          &lt;span&gt;{post.readTime} min read&lt;/span&gt;
+          &lt;span className="card-blog-meta-divider"&gt;&lt;/span&gt;
+          &lt;span&gt;{post.date}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;a href={post.url} className="card-blog-link"&gt;Read more&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Cards -->
+            <section class="section">
+                <h2>Info Cards</h2>
+                <p>Static informational cards with icons, headings, and descriptions.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'info-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'info-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'info-jsx')">JSX</button>
+                </div>
+                
+                <div id="info-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="card-grid">
+                            
+                            <div class="card-info">
+                                <div class="card-info-icon">
+                                    <span class="card-info-icon-placeholder"></span>
+                                </div>
+                                <h3 class="card-info-title">Verified Suppliers</h3>
+                                <p class="card-info-description">All suppliers undergo rigorous verification and certification checks to ensure quality and compliance.</p>
+                            </div>
+
+                            <div class="card-info">
+                                <div class="card-info-icon">
+                                    <span class="card-info-icon-placeholder"></span>
+                                </div>
+                                <h3 class="card-info-title">Secure Transactions</h3>
+                                <p class="card-info-description">Your transactions are protected with enterprise-grade security and encrypted payment processing.</p>
+                            </div>
+
+                            <div class="card-info">
+                                <div class="card-info-icon">
+                                    <span class="card-info-icon-placeholder"></span>
+                                </div>
+                                <h3 class="card-info-title">Global Logistics</h3>
+                                <p class="card-info-description">Access worldwide shipping networks with real-time tracking and temperature-controlled delivery.</p>
+                                <button class="btn btn-secondary btn-sm card-info-cta">Learn More</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="info-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Info Card --&gt;
+&lt;div class="card-info"&gt;
+  &lt;div class="card-info-icon"&gt;
+    &lt;span class="card-info-icon-placeholder"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;h3 class="card-info-title"&gt;Verified Suppliers&lt;/h3&gt;
+  &lt;p class="card-info-description"&gt;
+    All suppliers undergo rigorous verification and certification checks.
+  &lt;/p&gt;
+  &lt;!-- Optional CTA --&gt;
+  &lt;button class="btn btn-secondary btn-sm card-info-cta"&gt;Learn More&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="info-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const InfoCard = ({ info, showCta = false }) => {
+  return (
+    &lt;div className="card-info"&gt;
+      &lt;div className="card-info-icon"&gt;
+        &lt;span className="card-info-icon-placeholder"&gt;&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;h3 className="card-info-title"&gt;{info.title}&lt;/h3&gt;
+      &lt;p className="card-info-description"&gt;{info.description}&lt;/p&gt;
+      {showCta && (
+        &lt;button className="btn btn-secondary btn-sm card-info-cta"&gt;
+          Learn More
+        &lt;/button&gt;
+      )}
+    &lt;/div&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script>
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.section');
+            section.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            section.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-example').querySelector('code');
+            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+    </script>
+</body>
+</html>
