@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="status-indicators.css">
+    <link rel="stylesheet" href="table.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--color-pearl-200); margin-bottom: var(--spacing-6); }
+        .tab-btn { padding: var(--spacing-3) var(--spacing-5); background: none; border: none; font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-pearl-600); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+        .tab-btn:hover { color: var(--color-waves-500); }
+        .tab-btn.active { color: var(--color-waves-500); border-bottom-color: var(--color-waves-500); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .preview-box { background: var(--color-shore-base); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header>
+                <h1>Table</h1>
+                <p class="hero-subtitle">Display structured data in rows and columns for inventory, orders, and listings.</p>
+            </header>
+
+            <div class="usage-box">
+                <h3>Usage & Purpose</h3>
+                <p><strong>Use tables when:</strong> Displaying structured data that needs to be scanned, compared, or sorted, like order history, inventory lists, or supplier comparisons.</p>
+                <p><strong>Don't use tables for:</strong> Layout purposes (use CSS Grid), small datasets better suited for cards, or content that doesn't need row/column structure.</p>
+            </div>
+
+            <!-- Basic Table -->
+            <section class="section">
+                <h2>Basic Table</h2>
+                <p>Standard data table with headers and rows.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'basic-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'basic-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'basic-jsx')">JSX</button>
+                </div>
+                
+                <div id="basic-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Supplier</th>
+                                        <th class="numeric">Quantity</th>
+                                        <th class="numeric">Price</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="primary">Atlantic Salmon Fillets</td>
+                                        <td>Norwegian Seafoods Co.</td>
+                                        <td class="numeric">150 kg</td>
+                                        <td class="numeric">$2,250</td>
+                                        <td class="status">
+                                            <span class="order-status order-status-delivered">Delivered</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="primary">Icelandic Cod Premium</td>
+                                        <td>Arctic Catch Iceland</td>
+                                        <td class="numeric">200 kg</td>
+                                        <td class="numeric">$3,400</td>
+                                        <td class="status">
+                                            <span class="order-status order-status-processing">Processing</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="primary">Wild Alaskan Halibut</td>
+                                        <td>Pacific Northwest Traders</td>
+                                        <td class="numeric">100 kg</td>
+                                        <td class="numeric">$1,800</td>
+                                        <td class="status">
+                                            <span class="order-status order-status-shipped">Shipped</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="primary">Japanese Octopus</td>
+                                        <td>Kawaii Tentacles Ltd.</td>
+                                        <td class="numeric">50 kg</td>
+                                        <td class="numeric">$950</td>
+                                        <td class="status">
+                                            <span class="order-status order-status-pending">Pending</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="basic-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="table-container"&gt;
+  &lt;table class="table"&gt;
+    &lt;thead&gt;
+      &lt;tr&gt;
+        &lt;th&gt;Product&lt;/th&gt;
+        &lt;th&gt;Supplier&lt;/th&gt;
+        &lt;th class="numeric"&gt;Quantity&lt;/th&gt;
+        &lt;th class="numeric"&gt;Price&lt;/th&gt;
+        &lt;th&gt;Status&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td class="primary"&gt;Atlantic Salmon Fillets&lt;/td&gt;
+        &lt;td&gt;Norwegian Seafoods Co.&lt;/td&gt;
+        &lt;td class="numeric"&gt;150 kg&lt;/td&gt;
+        &lt;td class="numeric"&gt;$2,250&lt;/td&gt;
+        &lt;td class="status"&gt;
+          &lt;span class="order-status order-status-delivered"&gt;Delivered&lt;/span&gt;
+        &lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;!-- More rows --&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="basic-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const Table = ({ data }) => {
+  return (
+    &lt;div className="table-container"&gt;
+      &lt;table className="table"&gt;
+        &lt;thead&gt;
+          &lt;tr&gt;
+            &lt;th&gt;Product&lt;/th&gt;
+            &lt;th&gt;Supplier&lt;/th&gt;
+            &lt;th className="numeric"&gt;Quantity&lt;/th&gt;
+            &lt;th className="numeric"&gt;Price&lt;/th&gt;
+            &lt;th&gt;Status&lt;/th&gt;
+          &lt;/tr&gt;
+        &lt;/thead&gt;
+        &lt;tbody&gt;
+          {data.map((row, index) => (
+            &lt;tr key={index}&gt;
+              &lt;td className="primary"&gt;{row.product}&lt;/td&gt;
+              &lt;td&gt;{row.supplier}&lt;/td&gt;
+              &lt;td className="numeric"&gt;{row.quantity} kg&lt;/td&gt;
+              &lt;td className="numeric"&gt;${row.price.toLocaleString()}&lt;/td&gt;
+              &lt;td className="status"&gt;
+                &lt;span className={`order-status order-status-${row.status.toLowerCase()}`}&gt;
+                  {row.status}
+                &lt;/span&gt;
+              &lt;/td&gt;
+            &lt;/tr&gt;
+          ))}
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sortable Table -->
+            <section class="section">
+                <h2>Sortable Table</h2>
+                <p>Table with sortable column headers (click to sort).</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'sortable-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'sortable-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'sortable-jsx')">JSX</button>
+                </div>
+                
+                <div id="sortable-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th class="sortable" onclick="sortTable(this)">Order ID</th>
+                                        <th class="sortable" onclick="sortTable(this)">Customer</th>
+                                        <th class="sortable numeric" onclick="sortTable(this)">Amount</th>
+                                        <th class="sortable" onclick="sortTable(this)">Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="primary">#WHD-2846</td>
+                                        <td>John Smith</td>
+                                        <td class="numeric">$2,450</td>
+                                        <td>Jan 28, 2026</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="primary">#WHD-2845</td>
+                                        <td>Sarah Johnson</td>
+                                        <td class="numeric">$1,850</td>
+                                        <td>Jan 27, 2026</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="primary">#WHD-2844</td>
+                                        <td>Michael Chen</td>
+                                        <td class="numeric">$3,200</td>
+                                        <td>Jan 26, 2026</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="sortable-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;th class="sortable" onclick="sortTable(this)"&gt;Order ID&lt;/th&gt;
+&lt;th class="sortable numeric" onclick="sortTable(this)"&gt;Amount&lt;/th&gt;
+
+&lt;!-- Add sort-asc or sort-desc to show direction --&gt;
+&lt;th class="sortable sort-asc"&gt;Product&lt;/th&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="sortable-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const [sortConfig, setSortConfig] = useState({ key: null, direction: null });
+
+const handleSort = (key) => {
+  let direction = 'asc';
+  if (sortConfig.key === key && sortConfig.direction === 'asc') {
+    direction = 'desc';
+  }
+  setSortConfig({ key, direction });
+};
+
+const getSortClass = (key) => {
+  if (sortConfig.key !== key) return 'sortable';
+  return `sortable sort-${sortConfig.direction}`;
+};
+
+&lt;th 
+  className={getSortClass('amount')} 
+  onClick={() => handleSort('amount')}
+&gt;
+  Amount
+&lt;/th&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Striped & Compact -->
+            <section class="section">
+                <h2>Striped & Compact</h2>
+                <p>Variant combinations for different use cases.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'variants-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'variants-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'variants-jsx')">JSX</button>
+                </div>
+                
+                <div id="variants-preview" class="tab-content active">
+                    <div class="preview-box" style="flex-direction: column; align-items: stretch;">
+                        <h3 style="margin-bottom: var(--spacing-4); font-size: var(--font-size-base);">Striped</h3>
+                        <div class="table-container" style="margin-bottom: var(--spacing-8);">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>SKU</th>
+                                        <th>Product</th>
+                                        <th class="numeric">Stock</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="primary">SKU-001</td>
+                                        <td>Atlantic Salmon</td>
+                                        <td class="numeric">850 kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="primary">SKU-002</td>
+                                        <td>Norwegian Cod</td>
+                                        <td class="numeric">620 kg</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="primary">SKU-003</td>
+                                        <td>Wild Halibut</td>
+                                        <td class="numeric">340 kg</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <h3 style="margin-bottom: var(--spacing-4); font-size: var(--font-size-base);">Compact</h3>
+                        <div class="table-container">
+                            <table class="table table-compact">
+                                <thead>
+                                    <tr>
+                                        <th>Cert</th>
+                                        <th>Type</th>
+                                        <th>Valid Until</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="primary">MSC</td>
+                                        <td>Marine Stewardship</td>
+                                        <td>Dec 2027</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="primary">ASC</td>
+                                        <td>Aquaculture Standard</td>
+                                        <td>Mar 2028</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="variants-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Striped --&gt;
+&lt;table class="table table-striped"&gt;&lt;/table&gt;
+
+&lt;!-- Compact --&gt;
+&lt;table class="table table-compact"&gt;&lt;/table&gt;
+
+&lt;!-- Bordered --&gt;
+&lt;table class="table table-bordered"&gt;&lt;/table&gt;
+
+&lt;!-- Combinations --&gt;
+&lt;table class="table table-striped table-compact"&gt;&lt;/table&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="variants-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;table className="table table-striped"&gt;&lt;/table&gt;
+&lt;table className="table table-compact"&gt;&lt;/table&gt;
+&lt;table className="table table-striped table-compact"&gt;&lt;/table&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script>
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.section');
+            section.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            section.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-example').querySelector('code');
+            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+
+        function sortTable(th) {
+            if (th.classList.contains('sort-asc')) {
+                th.classList.remove('sort-asc');
+                th.classList.add('sort-desc');
+            } else {
+                th.closest('tr').querySelectorAll('th').forEach(h => {
+                    h.classList.remove('sort-asc', 'sort-desc');
+                });
+                th.classList.add('sort-asc');
+            }
+        }
+    </script>
+</body>
+</html>

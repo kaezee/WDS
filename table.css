@@ -1,0 +1,364 @@
+/* ===================================
+   TABLE
+   WhaleLord Compass Design System
+   =================================== */
+
+/* ===================================
+   TABLE CONTAINER
+   =================================== */
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background: white;
+}
+
+/* ===================================
+   BASE TABLE
+   =================================== */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+}
+
+/* ===================================
+   TABLE HEADER
+   =================================== */
+
+.table thead {
+  background: var(--color-pearl-100);
+  border-bottom: 2px solid var(--color-border-default);
+}
+
+.table th {
+  padding: var(--spacing-4) var(--spacing-5);
+  text-align: left;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* Sortable column headers */
+.table th.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s ease;
+}
+
+.table th.sortable:hover {
+  background: var(--color-pearl-200);
+}
+
+.table th.sortable::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-left: var(--spacing-2);
+  border-right: 2px solid var(--color-pearl-500);
+  border-bottom: 2px solid var(--color-pearl-500);
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.table th.sortable:hover::after {
+  opacity: 0.4;
+}
+
+.table th.sort-asc::after,
+.table th.sort-desc::after {
+  opacity: 1;
+  border-color: var(--color-waves-500);
+}
+
+.table th.sort-asc::after {
+  transform: rotate(-135deg);
+}
+
+.table th.sort-desc::after {
+  transform: rotate(45deg);
+}
+
+/* ===================================
+   TABLE BODY
+   =================================== */
+
+.table tbody tr {
+  border-bottom: 1px solid var(--color-border-default);
+  transition: background 0.2s ease;
+}
+
+.table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: var(--color-pearl-50);
+}
+
+.table td {
+  padding: var(--spacing-4) var(--spacing-5);
+  color: var(--color-text-secondary);
+  vertical-align: middle;
+}
+
+/* ===================================
+   TABLE CELL TYPES
+   =================================== */
+
+/* Numerical data - use Inter font */
+.table td.numeric,
+.table th.numeric {
+  font-family: var(--font-body);
+  text-align: right;
+}
+
+/* Emphasized/Primary column */
+.table td.primary {
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+/* Actions column */
+.table td.actions {
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* Status cell */
+.table td.status {
+  white-space: nowrap;
+}
+
+/* ===================================
+   STRIPED VARIANT
+   =================================== */
+
+.table-striped tbody tr:nth-child(even) {
+  background: var(--color-pearl-50);
+}
+
+.table-striped tbody tr:nth-child(even):hover {
+  background: var(--color-pearl-100);
+}
+
+/* ===================================
+   COMPACT VARIANT
+   =================================== */
+
+.table-compact th,
+.table-compact td {
+  padding: var(--spacing-3) var(--spacing-4);
+}
+
+/* ===================================
+   BORDERED VARIANT
+   =================================== */
+
+.table-bordered th,
+.table-bordered td {
+  border-right: 1px solid var(--color-border-default);
+}
+
+.table-bordered th:last-child,
+.table-bordered td:last-child {
+  border-right: none;
+}
+
+/* ===================================
+   SELECTABLE ROWS
+   =================================== */
+
+.table-selectable tbody tr {
+  cursor: pointer;
+}
+
+.table-selectable tbody tr.selected {
+  background: var(--color-waves-50);
+}
+
+.table-selectable tbody tr.selected:hover {
+  background: var(--color-waves-100);
+}
+
+/* Checkbox column */
+.table td.checkbox,
+.table th.checkbox {
+  width: 48px;
+  padding-left: var(--spacing-5);
+  padding-right: var(--spacing-3);
+}
+
+/* ===================================
+   TABLE FOOTER
+   =================================== */
+
+.table tfoot {
+  background: var(--color-pearl-50);
+  border-top: 2px solid var(--color-border-default);
+}
+
+.table tfoot td {
+  padding: var(--spacing-4) var(--spacing-5);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+/* ===================================
+   EMPTY STATE
+   =================================== */
+
+.table-empty {
+  padding: var(--spacing-12) var(--spacing-6);
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+.table-empty-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto var(--spacing-4);
+  background: var(--color-pearl-200);
+  border-radius: 50%;
+}
+
+.table-empty-title {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-2);
+}
+
+.table-empty-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ===================================
+   LOADING STATE
+   =================================== */
+
+.table-loading {
+  position: relative;
+  min-height: 200px;
+}
+
+.table-loading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===================================
+   TABLE ACTIONS BAR
+   =================================== */
+
+.table-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-4) var(--spacing-5);
+  border-bottom: 1px solid var(--color-border-default);
+  background: var(--color-pearl-50);
+}
+
+.table-actions-left,
+.table-actions-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.table-actions-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ===================================
+   TABLE PAGINATION
+   =================================== */
+
+.table-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-4) var(--spacing-5);
+  border-top: 1px solid var(--color-border-default);
+  background: var(--color-pearl-50);
+}
+
+.table-pagination-info {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+
+@media (max-width: 640px) {
+  .table th,
+  .table td {
+    padding: var(--spacing-3) var(--spacing-4);
+    font-size: var(--font-size-xs);
+  }
+  
+  /* Hide less important columns on mobile */
+  .table th.hide-mobile,
+  .table td.hide-mobile {
+    display: none;
+  }
+  
+  .table-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-3);
+  }
+  
+  .table-pagination {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-3);
+  }
+}
+
+/* ===================================
+   STICKY HEADER
+   =================================== */
+
+.table-sticky thead th {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--color-pearl-100);
+}
+
+/* ===================================
+   FIXED LAYOUT
+   =================================== */
+
+.table-fixed {
+  table-layout: fixed;
+}
+
+.table-fixed td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
