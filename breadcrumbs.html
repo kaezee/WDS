@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breadcrumbs - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="breadcrumbs.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--color-pearl-200); margin-bottom: var(--spacing-6); }
+        .tab-btn { padding: var(--spacing-3) var(--spacing-5); background: none; border: none; font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-pearl-600); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+        .tab-btn:hover { color: var(--color-waves-500); }
+        .tab-btn.active { color: var(--color-waves-500); border-bottom-color: var(--color-waves-500); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .preview-box { background: var(--color-shore-base); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header>
+                <h1>Breadcrumbs</h1>
+                <p class="hero-subtitle">Show navigation hierarchy and help users understand their current location.</p>
+            </header>
+
+            <div class="usage-box">
+                <h3>Usage & Purpose</h3>
+                <p><strong>Use breadcrumbs when:</strong> Navigation has multiple levels (3+), users need to backtrack easily, or showing the current page's context within the site hierarchy.</p>
+                <p><strong>Don't use breadcrumbs for:</strong> Single-level navigation, linear processes (use stepper), or when the path is obvious from the page content.</p>
+            </div>
+
+            <!-- Basic Breadcrumbs -->
+            <section class="section">
+                <h2>Basic Breadcrumbs</h2>
+                <p>Standard breadcrumb navigation with chevron separators.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'basic-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'basic-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'basic-jsx')">JSX</button>
+                </div>
+                
+                <div id="basic-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <nav class="breadcrumbs" aria-label="Breadcrumb">
+                            <div class="breadcrumb-item">
+                                <a href="#" class="breadcrumb-link">Home</a>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-item">
+                                <a href="#" class="breadcrumb-link">Products</a>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-item">
+                                <a href="#" class="breadcrumb-link">Seafood</a>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-item">
+                                <span class="breadcrumb-current">Atlantic Salmon</span>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                
+                <div id="basic-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;nav class="breadcrumbs" aria-label="Breadcrumb"&gt;
+  &lt;div class="breadcrumb-item"&gt;
+    &lt;a href="/" class="breadcrumb-link"&gt;Home&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;span class="breadcrumb-separator"&gt;&lt;/span&gt;
+  
+  &lt;div class="breadcrumb-item"&gt;
+    &lt;a href="/products" class="breadcrumb-link"&gt;Products&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;span class="breadcrumb-separator"&gt;&lt;/span&gt;
+  
+  &lt;div class="breadcrumb-item"&gt;
+    &lt;a href="/products/seafood" class="breadcrumb-link"&gt;Seafood&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;span class="breadcrumb-separator"&gt;&lt;/span&gt;
+  
+  &lt;div class="breadcrumb-item"&gt;
+    &lt;span class="breadcrumb-current"&gt;Atlantic Salmon&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="basic-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const Breadcrumbs = ({ items }) => {
+  return (
+    &lt;nav className="breadcrumbs" aria-label="Breadcrumb"&gt;
+      {items.map((item, index) => (
+        &lt;React.Fragment key={index}&gt;
+          {index > 0 && &lt;span className="breadcrumb-separator"&gt;&lt;/span&gt;}
+          &lt;div className="breadcrumb-item"&gt;
+            {index === items.length - 1 ? (
+              &lt;span className="breadcrumb-current"&gt;{item.label}&lt;/span&gt;
+            ) : (
+              &lt;a href={item.href} className="breadcrumb-link"&gt;
+                {item.label}
+              &lt;/a&gt;
+            )}
+          &lt;/div&gt;
+        &lt;/React.Fragment&gt;
+      ))}
+    &lt;/nav&gt;
+  );
+};
+
+// Usage
+&lt;Breadcrumbs 
+  items={[
+    { label: 'Home', href: '/' },
+    { label: 'Products', href: '/products' },
+    { label: 'Seafood', href: '/products/seafood' },
+    { label: 'Atlantic Salmon', href: '/products/seafood/salmon' }
+  ]} 
+/&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- With Icons -->
+            <section class="section">
+                <h2>With Icons</h2>
+                <p>Breadcrumbs with home icon.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'icons-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'icons-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'icons-jsx')">JSX</button>
+                </div>
+                
+                <div id="icons-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <nav class="breadcrumbs" aria-label="Breadcrumb">
+                            <div class="breadcrumb-item">
+                                <a href="#" class="breadcrumb-link" style="display: flex; align-items: center; gap: var(--spacing-2);">
+                                    <span class="breadcrumb-icon"></span>
+                                    Home
+                                </a>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-item">
+                                <a href="#" class="breadcrumb-link">Orders</a>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-item">
+                                <span class="breadcrumb-current">Order #WHD-2846</span>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                
+                <div id="icons-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;nav class="breadcrumbs" aria-label="Breadcrumb"&gt;
+  &lt;div class="breadcrumb-item"&gt;
+    &lt;a href="/" class="breadcrumb-link"&gt;
+      &lt;span class="breadcrumb-icon"&gt;&lt;/span&gt;
+      Home
+    &lt;/a&gt;
+  &lt;/div&gt;
+  &lt;span class="breadcrumb-separator"&gt;&lt;/span&gt;
+  &lt;!-- More items --&gt;
+&lt;/nav&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="icons-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;a href="/" className="breadcrumb-link"&gt;
+  &lt;span className="breadcrumb-icon"&gt;&lt;/span&gt;
+  Home
+&lt;/a&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- With Background -->
+            <section class="section">
+                <h2>With Background</h2>
+                <p>Breadcrumbs in a subtle background container.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'bg-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'bg-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'bg-jsx')">JSX</button>
+                </div>
+                
+                <div id="bg-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <nav class="breadcrumbs breadcrumbs-bg" aria-label="Breadcrumb">
+                            <div class="breadcrumb-item">
+                                <a href="#" class="breadcrumb-link">Dashboard</a>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-item">
+                                <a href="#" class="breadcrumb-link">Suppliers</a>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-item">
+                                <span class="breadcrumb-current">Norwegian Seafoods Co.</span>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                
+                <div id="bg-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;nav class="breadcrumbs breadcrumbs-bg" aria-label="Breadcrumb"&gt;
+  &lt;!-- breadcrumb items --&gt;
+&lt;/nav&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="bg-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;Breadcrumbs className="breadcrumbs-bg" items={items} /&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Collapsed/Truncated -->
+            <section class="section">
+                <h2>Collapsed (Long Paths)</h2>
+                <p>Breadcrumbs with ellipsis for long navigation paths.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'collapsed-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'collapsed-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'collapsed-jsx')">JSX</button>
+                </div>
+                
+                <div id="collapsed-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <nav class="breadcrumbs breadcrumbs-collapsed" aria-label="Breadcrumb">
+                            <div class="breadcrumb-item">
+                                <a href="#" class="breadcrumb-link">Home</a>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-item">
+                                <a href="#" class="breadcrumb-link">Products</a>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-item">
+                                <a href="#" class="breadcrumb-link">Seafood</a>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-item">
+                                <a href="#" class="breadcrumb-link">Fresh Fish</a>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-ellipsis">
+                                <span>...</span>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-item">
+                                <a href="#" class="breadcrumb-link">Salmon</a>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-item">
+                                <span class="breadcrumb-current">Atlantic Salmon Fillet</span>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                
+                <div id="collapsed-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;nav class="breadcrumbs breadcrumbs-collapsed" aria-label="Breadcrumb"&gt;
+  &lt;div class="breadcrumb-item"&gt;
+    &lt;a href="/" class="breadcrumb-link"&gt;Home&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;span class="breadcrumb-separator"&gt;&lt;/span&gt;
+  
+  &lt;!-- Middle items (hidden by CSS) --&gt;
+  &lt;div class="breadcrumb-item"&gt;
+    &lt;a href="/products" class="breadcrumb-link"&gt;Products&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;span class="breadcrumb-separator"&gt;&lt;/span&gt;
+  
+  &lt;div class="breadcrumb-ellipsis"&gt;
+    &lt;span&gt;...&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;span class="breadcrumb-separator"&gt;&lt;/span&gt;
+  
+  &lt;!-- Last two items always shown --&gt;
+  &lt;div class="breadcrumb-item"&gt;
+    &lt;a href="/salmon" class="breadcrumb-link"&gt;Salmon&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;span class="breadcrumb-separator"&gt;&lt;/span&gt;
+  
+  &lt;div class="breadcrumb-item"&gt;
+    &lt;span class="breadcrumb-current"&gt;Atlantic Salmon Fillet&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="collapsed-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const CollapsedBreadcrumbs = ({ items }) => {
+  const showEllipsis = items.length > 4;
+  
+  return (
+    &lt;nav className="breadcrumbs" aria-label="Breadcrumb"&gt;
+      {/* First item */}
+      &lt;div className="breadcrumb-item"&gt;
+        &lt;a href={items[0].href} className="breadcrumb-link"&gt;
+          {items[0].label}
+        &lt;/a&gt;
+      &lt;/div&gt;
+      &lt;span className="breadcrumb-separator"&gt;&lt;/span&gt;
+      
+      {showEllipsis && (
+        &lt;&gt;
+          &lt;div className="breadcrumb-ellipsis"&gt;...&lt;/div&gt;
+          &lt;span className="breadcrumb-separator"&gt;&lt;/span&gt;
+        &lt;/&gt;
+      )}
+      
+      {/* Last two items */}
+      {items.slice(-2).map((item, index) => (
+        &lt;React.Fragment key={index}&gt;
+          &lt;div className="breadcrumb-item"&gt;
+            {index === 1 ? (
+              &lt;span className="breadcrumb-current"&gt;{item.label}&lt;/span&gt;
+            ) : (
+              &lt;a href={item.href} className="breadcrumb-link"&gt;{item.label}&lt;/a&gt;
+            )}
+          &lt;/div&gt;
+          {index === 0 && &lt;span className="breadcrumb-separator"&gt;&lt;/span&gt;}
+        &lt;/React.Fragment&gt;
+      ))}
+    &lt;/nav&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sizes -->
+            <section class="section">
+                <h2>Sizes</h2>
+                <p>Small, default, and large breadcrumbs.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'sizes-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'sizes-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'sizes-jsx')">JSX</button>
+                </div>
+                
+                <div id="sizes-preview" class="tab-content active">
+                    <div class="preview-box" style="flex-direction: column; align-items: flex-start;">
+                        <p style="margin-bottom: var(--spacing-2); font-size: var(--font-size-sm); color: var(--color-text-secondary);">Small</p>
+                        <nav class="breadcrumbs breadcrumbs-sm" aria-label="Breadcrumb">
+                            <div class="breadcrumb-item">
+                                <a href="#" class="breadcrumb-link">Home</a>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-item">
+                                <a href="#" class="breadcrumb-link">Products</a>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-item">
+                                <span class="breadcrumb-current">Atlantic Salmon</span>
+                            </div>
+                        </nav>
+                        
+                        <p style="margin-top: var(--spacing-6); margin-bottom: var(--spacing-2); font-size: var(--font-size-sm); color: var(--color-text-secondary);">Default</p>
+                        <nav class="breadcrumbs" aria-label="Breadcrumb">
+                            <div class="breadcrumb-item">
+                                <a href="#" class="breadcrumb-link">Home</a>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-item">
+                                <a href="#" class="breadcrumb-link">Products</a>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-item">
+                                <span class="breadcrumb-current">Atlantic Salmon</span>
+                            </div>
+                        </nav>
+                        
+                        <p style="margin-top: var(--spacing-6); margin-bottom: var(--spacing-2); font-size: var(--font-size-sm); color: var(--color-text-secondary);">Large</p>
+                        <nav class="breadcrumbs breadcrumbs-lg" aria-label="Breadcrumb">
+                            <div class="breadcrumb-item">
+                                <a href="#" class="breadcrumb-link">Home</a>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-item">
+                                <a href="#" class="breadcrumb-link">Products</a>
+                            </div>
+                            <span class="breadcrumb-separator"></span>
+                            <div class="breadcrumb-item">
+                                <span class="breadcrumb-current">Atlantic Salmon</span>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+                
+                <div id="sizes-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Small --&gt;
+&lt;nav class="breadcrumbs breadcrumbs-sm"&gt;...&lt;/nav&gt;
+
+&lt;!-- Default --&gt;
+&lt;nav class="breadcrumbs"&gt;...&lt;/nav&gt;
+
+&lt;!-- Large --&gt;
+&lt;nav class="breadcrumbs breadcrumbs-lg"&gt;...&lt;/nav&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="sizes-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;Breadcrumbs size="sm" items={items} /&gt;
+&lt;Breadcrumbs size="md" items={items} /&gt;
+&lt;Breadcrumbs size="lg" items={items} /&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script>
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.section');
+            section.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            section.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-example').querySelector('code');
+            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+    </script>
+</body>
+</html>

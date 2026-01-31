@@ -1,0 +1,221 @@
+/* ===================================
+   BREADCRUMBS
+   WhaleLord Compass Design System
+   =================================== */
+
+/* ===================================
+   BREADCRUMB CONTAINER
+   =================================== */
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-2);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-3) 0;
+}
+
+/* ===================================
+   BREADCRUMB ITEMS
+   =================================== */
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.breadcrumb-link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb-link:hover {
+  color: var(--color-waves-500);
+  text-decoration: underline;
+}
+
+/* Current/Active page */
+.breadcrumb-current {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ===================================
+   BREADCRUMB SEPARATOR
+   =================================== */
+
+.breadcrumb-separator {
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid var(--color-pearl-400);
+  border-bottom: 2px solid var(--color-pearl-400);
+  transform: rotate(-45deg);
+  opacity: 0.6;
+}
+
+/* ===================================
+   WITH ICONS
+   =================================== */
+
+.breadcrumb-icon {
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+/* ===================================
+   SIZES
+   =================================== */
+
+/* Small */
+.breadcrumbs-sm {
+  font-size: var(--font-size-xs);
+  gap: var(--spacing-1);
+}
+
+.breadcrumbs-sm .breadcrumb-separator {
+  width: 6px;
+  height: 6px;
+}
+
+.breadcrumbs-sm .breadcrumb-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Large */
+.breadcrumbs-lg {
+  font-size: var(--font-size-base);
+  gap: var(--spacing-3);
+}
+
+.breadcrumbs-lg .breadcrumb-separator {
+  width: 10px;
+  height: 10px;
+}
+
+.breadcrumbs-lg .breadcrumb-icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ===================================
+   COLLAPSED VARIANT
+   =================================== */
+
+.breadcrumbs-collapsed .breadcrumb-item:not(:first-child):not(:last-child):not(:nth-last-child(2)) {
+  display: none;
+}
+
+.breadcrumbs-collapsed .breadcrumb-ellipsis {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  color: var(--color-text-secondary);
+}
+
+/* ===================================
+   WITH BACKGROUND
+   =================================== */
+
+.breadcrumbs-bg {
+  background: var(--color-pearl-50);
+  padding: var(--spacing-3) var(--spacing-5);
+  border-radius: var(--radius-md);
+}
+
+/* ===================================
+   DROPDOWN FOR COLLAPSED
+   =================================== */
+
+.breadcrumb-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.breadcrumb-dropdown-trigger {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: var(--spacing-1) var(--spacing-2);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  font-family: var(--font-heading);
+  font-size: inherit;
+}
+
+.breadcrumb-dropdown-trigger:hover {
+  background: var(--color-pearl-100);
+  color: var(--color-waves-500);
+}
+
+.breadcrumb-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  background: white;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: 
+    0 10px 15px -3px rgba(1, 18, 30, 0.1),
+    0 4px 6px -2px rgba(1, 18, 30, 0.05);
+  min-width: 200px;
+  padding: var(--spacing-2) 0;
+  z-index: 1000;
+  display: none;
+}
+
+.breadcrumb-dropdown.open .breadcrumb-dropdown-menu {
+  display: block;
+}
+
+.breadcrumb-dropdown-item {
+  display: block;
+  padding: var(--spacing-3) var(--spacing-4);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: background 0.2s ease;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+}
+
+.breadcrumb-dropdown-item:hover {
+  background: var(--color-pearl-50);
+  color: var(--color-waves-500);
+}
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+
+@media (max-width: 640px) {
+  .breadcrumbs {
+    font-size: var(--font-size-xs);
+  }
+  
+  /* Auto-collapse on mobile */
+  .breadcrumbs:not(.breadcrumbs-no-collapse) .breadcrumb-item:not(:first-child):not(:last-child) {
+    display: none;
+  }
+  
+  .breadcrumbs:not(.breadcrumbs-no-collapse) .breadcrumb-ellipsis {
+    display: flex;
+  }
+}
+
+/* ===================================
+   ACCESSIBILITY
+   =================================== */
+
+.breadcrumb-link:focus-visible,
+.breadcrumb-dropdown-trigger:focus-visible {
+  outline: 2px solid var(--color-waves-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
