@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Menu - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dropdown.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--color-pearl-200); margin-bottom: var(--spacing-6); }
+        .tab-btn { padding: var(--spacing-3) var(--spacing-5); background: none; border: none; font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-pearl-600); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+        .tab-btn:hover { color: var(--color-waves-500); }
+        .tab-btn.active { color: var(--color-waves-500); border-bottom-color: var(--color-waves-500); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .preview-box { background: var(--color-shore-base); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); display: flex; flex-wrap: wrap; gap: var(--spacing-4); }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header>
+                <h1>Dropdown Menu</h1>
+                <p class="hero-subtitle">Contextual menus for actions, navigation, and user account management.</p>
+            </header>
+
+            <div class="usage-box">
+                <h3>Usage & Purpose</h3>
+                <p><strong>Use dropdown menus when:</strong> Providing contextual actions, displaying user account options, showing navigation choices, or presenting a list of related actions.</p>
+                <p><strong>Don't use dropdown menus for:</strong> Primary navigation (use tabs or sidebar), form selections (use select element), or more than 10-12 items (use modal with search).</p>
+            </div>
+
+            <!-- Basic Dropdown -->
+            <section class="section">
+                <h2>Basic Dropdown</h2>
+                <p>Standard dropdown menu for actions and navigation.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'basic-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'basic-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'basic-jsx')">JSX</button>
+                </div>
+                
+                <div id="basic-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="dropdown" id="dropdown-basic">
+                            <button class="dropdown-trigger" onclick="toggleDropdown('dropdown-basic')">
+                                Actions
+                                <span class="dropdown-trigger-icon"></span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <button class="dropdown-item">
+                                    <span class="dropdown-item-icon"></span>
+                                    Edit
+                                </button>
+                                <button class="dropdown-item">
+                                    <span class="dropdown-item-icon"></span>
+                                    Duplicate
+                                </button>
+                                <button class="dropdown-item">
+                                    <span class="dropdown-item-icon"></span>
+                                    Archive
+                                </button>
+                                <div class="dropdown-divider"></div>
+                                <button class="dropdown-item dropdown-item-danger">
+                                    <span class="dropdown-item-icon"></span>
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="basic-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="dropdown" id="my-dropdown"&gt;
+  &lt;button class="dropdown-trigger" onclick="toggleDropdown('my-dropdown')"&gt;
+    Actions
+    &lt;span class="dropdown-trigger-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  
+  &lt;div class="dropdown-menu"&gt;
+    &lt;button class="dropdown-item"&gt;
+      &lt;span class="dropdown-item-icon"&gt;&lt;/span&gt;
+      Edit
+    &lt;/button&gt;
+    &lt;button class="dropdown-item"&gt;
+      &lt;span class="dropdown-item-icon"&gt;&lt;/span&gt;
+      Duplicate
+    &lt;/button&gt;
+    &lt;div class="dropdown-divider"&gt;&lt;/div&gt;
+    &lt;button class="dropdown-item dropdown-item-danger"&gt;
+      &lt;span class="dropdown-item-icon"&gt;&lt;/span&gt;
+      Delete
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script&gt;
+function toggleDropdown(id) {
+  const dropdown = document.getElementById(id);
+  dropdown.classList.toggle('open');
+}
+
+// Close on click outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.dropdown')) {
+    document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+  }
+});
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="basic-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const Dropdown = ({ trigger, items }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
+  return (
+    &lt;div className={`dropdown ${isOpen ? 'open' : ''}`} ref={dropdownRef}&gt;
+      &lt;button className="dropdown-trigger" onClick={() => setIsOpen(!isOpen)}&gt;
+        {trigger}
+        &lt;span className="dropdown-trigger-icon"&gt;&lt;/span&gt;
+      &lt;/button&gt;
+      
+      &lt;div className="dropdown-menu"&gt;
+        {items.map((item, index) => (
+          item.divider ? (
+            &lt;div key={index} className="dropdown-divider"&gt;&lt;/div&gt;
+          ) : (
+            &lt;button
+              key={index}
+              className={`dropdown-item ${item.danger ? 'dropdown-item-danger' : ''}`}
+              onClick={item.onClick}
+            &gt;
+              &lt;span className="dropdown-item-icon"&gt;&lt;/span&gt;
+              {item.label}
+            &lt;/button&gt;
+          )
+        ))}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};
+
+// Usage
+&lt;Dropdown
+  trigger="Actions"
+  items={[
+    { label: 'Edit', onClick: () => console.log('Edit') },
+    { label: 'Duplicate', onClick: () => console.log('Duplicate') },
+    { divider: true },
+    { label: 'Delete', danger: true, onClick: () => console.log('Delete') }
+  ]}
+/&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- User Menu -->
+            <section class="section">
+                <h2>User Menu</h2>
+                <p>Account menu with avatar, name, and email.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'user-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'user-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'user-jsx')">JSX</button>
+                </div>
+                
+                <div id="user-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="dropdown" id="dropdown-user">
+                            <button class="dropdown-user-trigger" onclick="toggleDropdown('dropdown-user')">
+                                <div class="dropdown-user-avatar">JD</div>
+                                <div class="dropdown-user-info">
+                                    <span class="dropdown-user-name">John Doe</span>
+                                    <span class="dropdown-user-email">john@example.com</span>
+                                </div>
+                                <span class="dropdown-trigger-icon"></span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <div class="dropdown-header">Account</div>
+                                <button class="dropdown-item">
+                                    <span class="dropdown-item-icon"></span>
+                                    Profile
+                                </button>
+                                <button class="dropdown-item">
+                                    <span class="dropdown-item-icon"></span>
+                                    Settings
+                                </button>
+                                <button class="dropdown-item">
+                                    <span class="dropdown-item-icon"></span>
+                                    Billing
+                                </button>
+                                <div class="dropdown-divider"></div>
+                                <button class="dropdown-item">
+                                    <span class="dropdown-item-icon"></span>
+                                    Sign Out
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="user-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="dropdown" id="user-menu"&gt;
+  &lt;button class="dropdown-user-trigger"&gt;
+    &lt;div class="dropdown-user-avatar"&gt;JD&lt;/div&gt;
+    &lt;div class="dropdown-user-info"&gt;
+      &lt;span class="dropdown-user-name"&gt;John Doe&lt;/span&gt;
+      &lt;span class="dropdown-user-email"&gt;john@example.com&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;span class="dropdown-trigger-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  
+  &lt;div class="dropdown-menu dropdown-menu-right"&gt;
+    &lt;div class="dropdown-header"&gt;Account&lt;/div&gt;
+    &lt;button class="dropdown-item"&gt;
+      &lt;span class="dropdown-item-icon"&gt;&lt;/span&gt;
+      Profile
+    &lt;/button&gt;
+    &lt;button class="dropdown-item"&gt;
+      &lt;span class="dropdown-item-icon"&gt;&lt;/span&gt;
+      Settings
+    &lt;/button&gt;
+    &lt;div class="dropdown-divider"&gt;&lt;/div&gt;
+    &lt;button class="dropdown-item"&gt;
+      &lt;span class="dropdown-item-icon"&gt;&lt;/span&gt;
+      Sign Out
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="user-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const UserMenu = ({ user }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    &lt;div className={`dropdown ${isOpen ? 'open' : ''}`}&gt;
+      &lt;button className="dropdown-user-trigger" onClick={() => setIsOpen(!isOpen)}&gt;
+        &lt;div className="dropdown-user-avatar"&gt;
+          {user.initials}
+        &lt;/div&gt;
+        &lt;div className="dropdown-user-info"&gt;
+          &lt;span className="dropdown-user-name"&gt;{user.name}&lt;/span&gt;
+          &lt;span className="dropdown-user-email"&gt;{user.email}&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;span className="dropdown-trigger-icon"&gt;&lt;/span&gt;
+      &lt;/button&gt;
+      
+      &lt;div className="dropdown-menu dropdown-menu-right"&gt;
+        &lt;div className="dropdown-header"&gt;Account&lt;/div&gt;
+        &lt;button className="dropdown-item" onClick={() => navigate('/profile')}&gt;
+          &lt;span className="dropdown-item-icon"&gt;&lt;/span&gt;
+          Profile
+        &lt;/button&gt;
+        &lt;button className="dropdown-item" onClick={() => navigate('/settings')}&gt;
+          &lt;span className="dropdown-item-icon"&gt;&lt;/span&gt;
+          Settings
+        &lt;/button&gt;
+        &lt;div className="dropdown-divider"&gt;&lt;/div&gt;
+        &lt;button className="dropdown-item" onClick={handleSignOut}&gt;
+          &lt;span className="dropdown-item-icon"&gt;&lt;/span&gt;
+          Sign Out
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- With Sections -->
+            <section class="section">
+                <h2>With Sections</h2>
+                <p>Dropdown with multiple sections and headers.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'sections-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'sections-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'sections-jsx')">JSX</button>
+                </div>
+                
+                <div id="sections-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="dropdown" id="dropdown-sections">
+                            <button class="dropdown-trigger" onclick="toggleDropdown('dropdown-sections')">
+                                More Options
+                                <span class="dropdown-trigger-icon"></span>
+                            </button>
+                            <div class="dropdown-menu">
+                                <div class="dropdown-header">Organization</div>
+                                <button class="dropdown-item">
+                                    <span class="dropdown-item-icon"></span>
+                                    View Orders
+                                </button>
+                                <button class="dropdown-item">
+                                    <span class="dropdown-item-icon"></span>
+                                    Manage Suppliers
+                                </button>
+                                <div class="dropdown-divider"></div>
+                                <div class="dropdown-header">Support</div>
+                                <button class="dropdown-item">
+                                    <span class="dropdown-item-icon"></span>
+                                    Help Center
+                                </button>
+                                <button class="dropdown-item">
+                                    <span class="dropdown-item-icon"></span>
+                                    Contact Support
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="sections-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="dropdown-menu"&gt;
+  &lt;div class="dropdown-header"&gt;Organization&lt;/div&gt;
+  &lt;button class="dropdown-item"&gt;
+    &lt;span class="dropdown-item-icon"&gt;&lt;/span&gt;
+    View Orders
+  &lt;/button&gt;
+  &lt;button class="dropdown-item"&gt;
+    &lt;span class="dropdown-item-icon"&gt;&lt;/span&gt;
+    Manage Suppliers
+  &lt;/button&gt;
+  
+  &lt;div class="dropdown-divider"&gt;&lt;/div&gt;
+  
+  &lt;div class="dropdown-header"&gt;Support&lt;/div&gt;
+  &lt;button class="dropdown-item"&gt;
+    &lt;span class="dropdown-item-icon"&gt;&lt;/span&gt;
+    Help Center
+  &lt;/button&gt;
+  &lt;button class="dropdown-item"&gt;
+    &lt;span class="dropdown-item-icon"&gt;&lt;/span&gt;
+    Contact Support
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="sections-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const sections = [
+  {
+    header: 'Organization',
+    items: [
+      { label: 'View Orders', onClick: () => {} },
+      { label: 'Manage Suppliers', onClick: () => {} }
+    ]
+  },
+  {
+    header: 'Support',
+    items: [
+      { label: 'Help Center', onClick: () => {} },
+      { label: 'Contact Support', onClick: () => {} }
+    ]
+  }
+];
+
+&lt;div className="dropdown-menu"&gt;
+  {sections.map((section, idx) => (
+    &lt;Fragment key={idx}&gt;
+      {idx > 0 && &lt;div className="dropdown-divider"&gt;&lt;/div&gt;}
+      &lt;div className="dropdown-header"&gt;{section.header}&lt;/div&gt;
+      {section.items.map((item, i) => (
+        &lt;button key={i} className="dropdown-item" onClick={item.onClick}&gt;
+          &lt;span className="dropdown-item-icon"&gt;&lt;/span&gt;
+          {item.label}
+        &lt;/button&gt;
+      ))}
+    &lt;/Fragment&gt;
+  ))}
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script>
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.section');
+            section.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            section.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-example').querySelector('code');
+            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+
+        function toggleDropdown(id) {
+            const dropdown = document.getElementById(id);
+            const wasOpen = dropdown.classList.contains('open');
+            
+            // Close all dropdowns
+            document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+            
+            // Toggle current dropdown
+            if (!wasOpen) {
+                dropdown.classList.add('open');
+            }
+        }
+
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+            }
+        });
+    </script>
+</body>
+</html>
