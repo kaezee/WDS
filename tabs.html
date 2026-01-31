@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabs - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="tabs.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .component-tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--color-pearl-200); margin-bottom: var(--spacing-6); }
+        .component-tab-btn { padding: var(--spacing-3) var(--spacing-5); background: none; border: none; font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-pearl-600); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+        .component-tab-btn:hover { color: var(--color-waves-500); }
+        .component-tab-btn.active { color: var(--color-waves-500); border-bottom-color: var(--color-waves-500); }
+        .component-tab-content { display: none; }
+        .component-tab-content.active { display: block; }
+        .preview-box { background: var(--color-shore-base); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); }
+        .demo-content { padding: var(--spacing-6); background: white; border: 1px solid var(--color-border-default); border-radius: var(--radius-md); font-family: var(--font-heading); color: var(--color-text-secondary); }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header>
+                <h1>Tabs</h1>
+                <p class="hero-subtitle">Organize content into separate views with tabbed navigation.</p>
+            </header>
+
+            <div class="usage-box">
+                <h3>Usage & Purpose</h3>
+                <p><strong>Use tabs when:</strong> Organizing related content into separate sections, displaying product details with different categories, or showing settings panels.</p>
+                <p><strong>Don't use tabs for:</strong> Sequential processes (use stepper), navigation between pages (use breadcrumbs), or more than 7-8 tabs (use dropdown or sidebar).</p>
+            </div>
+
+            <!-- Default Tabs -->
+            <section class="section">
+                <h2>Default Tabs</h2>
+                <p>Standard underline tabs for content organization.</p>
+                
+                <div class="component-tab-nav">
+                    <button class="component-tab-btn active" onclick="switchComponentTab(event, 'default-preview')">Preview</button>
+                    <button class="component-tab-btn" onclick="switchComponentTab(event, 'default-html')">HTML</button>
+                    <button class="component-tab-btn" onclick="switchComponentTab(event, 'default-jsx')">JSX</button>
+                </div>
+                
+                <div id="default-preview" class="component-tab-content active">
+                    <div class="preview-box">
+                        <div class="tabs" id="demo-tabs-1">
+                            <div class="tabs-list" role="tablist">
+                                <button class="tab active" onclick="switchDemoTab('demo-tabs-1', 0)">Overview</button>
+                                <button class="tab" onclick="switchDemoTab('demo-tabs-1', 1)">Specifications</button>
+                                <button class="tab" onclick="switchDemoTab('demo-tabs-1', 2)">Certifications</button>
+                                <button class="tab" onclick="switchDemoTab('demo-tabs-1', 3)">Reviews</button>
+                            </div>
+                            <div class="tab-panels">
+                                <div class="tab-panel active">
+                                    <div class="demo-content">
+                                        <p>Product overview content goes here. This tab shows general information about the product.</p>
+                                    </div>
+                                </div>
+                                <div class="tab-panel">
+                                    <div class="demo-content">
+                                        <p>Technical specifications and product details are displayed in this tab.</p>
+                                    </div>
+                                </div>
+                                <div class="tab-panel">
+                                    <div class="demo-content">
+                                        <p>Certification information including MSC, ASC, and other quality standards.</p>
+                                    </div>
+                                </div>
+                                <div class="tab-panel">
+                                    <div class="demo-content">
+                                        <p>Customer reviews and ratings are shown here.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="default-html" class="component-tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="tabs" id="my-tabs"&gt;
+  &lt;div class="tabs-list" role="tablist"&gt;
+    &lt;button class="tab active" onclick="switchTab('my-tabs', 0)"&gt;
+      Overview
+    &lt;/button&gt;
+    &lt;button class="tab" onclick="switchTab('my-tabs', 1)"&gt;
+      Specifications
+    &lt;/button&gt;
+    &lt;button class="tab" onclick="switchTab('my-tabs', 2)"&gt;
+      Certifications
+    &lt;/button&gt;
+    &lt;button class="tab" onclick="switchTab('my-tabs', 3)"&gt;
+      Reviews
+    &lt;/button&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="tab-panels"&gt;
+    &lt;div class="tab-panel active"&gt;
+      &lt;!-- Overview content --&gt;
+    &lt;/div&gt;
+    &lt;div class="tab-panel"&gt;
+      &lt;!-- Specifications content --&gt;
+    &lt;/div&gt;
+    &lt;div class="tab-panel"&gt;
+      &lt;!-- Certifications content --&gt;
+    &lt;/div&gt;
+    &lt;div class="tab-panel"&gt;
+      &lt;!-- Reviews content --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function switchTab(containerId, index) {
+  const container = document.getElementById(containerId);
+  const tabs = container.querySelectorAll('.tab');
+  const panels = container.querySelectorAll('.tab-panel');
+  
+  tabs.forEach((tab, i) => {
+    tab.classList.toggle('active', i === index);
+  });
+  
+  panels.forEach((panel, i) => {
+    panel.classList.toggle('active', i === index);
+  });
+}
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="default-jsx" class="component-tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const Tabs = ({ tabs, children }) => {
+  const [activeTab, setActiveTab] = useState(0);
+
+  return (
+    &lt;div className="tabs"&gt;
+      &lt;div className="tabs-list" role="tablist"&gt;
+        {tabs.map((tab, index) => (
+          &lt;button
+            key={index}
+            className={`tab ${activeTab === index ? 'active' : ''}`}
+            onClick={() => setActiveTab(index)}
+          &gt;
+            {tab}
+          &lt;/button&gt;
+        ))}
+      &lt;/div&gt;
+      
+      &lt;div className="tab-panels"&gt;
+        {React.Children.map(children, (child, index) => (
+          &lt;div className={`tab-panel ${activeTab === index ? 'active' : ''}`}&gt;
+            {child}
+          &lt;/div&gt;
+        ))}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};
+
+// Usage
+&lt;Tabs tabs={['Overview', 'Specifications', 'Certifications', 'Reviews']}&gt;
+  &lt;div&gt;Overview content&lt;/div&gt;
+  &lt;div&gt;Specifications content&lt;/div&gt;
+  &lt;div&gt;Certifications content&lt;/div&gt;
+  &lt;div&gt;Reviews content&lt;/div&gt;
+&lt;/Tabs&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- With Count Badges -->
+            <section class="section">
+                <h2>With Count Badges</h2>
+                <p>Tabs with numerical indicators.</p>
+                
+                <div class="component-tab-nav">
+                    <button class="component-tab-btn active" onclick="switchComponentTab(event, 'count-preview')">Preview</button>
+                    <button class="component-tab-btn" onclick="switchComponentTab(event, 'count-html')">HTML</button>
+                    <button class="component-tab-btn" onclick="switchComponentTab(event, 'count-jsx')">JSX</button>
+                </div>
+                
+                <div id="count-preview" class="component-tab-content active">
+                    <div class="preview-box">
+                        <div class="tabs" id="demo-tabs-2">
+                            <div class="tabs-list" role="tablist">
+                                <button class="tab active" onclick="switchDemoTab('demo-tabs-2', 0)">
+                                    All Orders
+                                    <span class="tab-count">24</span>
+                                </button>
+                                <button class="tab" onclick="switchDemoTab('demo-tabs-2', 1)">
+                                    Processing
+                                    <span class="tab-count">8</span>
+                                </button>
+                                <button class="tab" onclick="switchDemoTab('demo-tabs-2', 2)">
+                                    Shipped
+                                    <span class="tab-count">12</span>
+                                </button>
+                                <button class="tab" onclick="switchDemoTab('demo-tabs-2', 3)">
+                                    Delivered
+                                    <span class="tab-count">4</span>
+                                </button>
+                            </div>
+                            <div class="tab-panels">
+                                <div class="tab-panel active">
+                                    <div class="demo-content">
+                                        <p>All orders (24 total)</p>
+                                    </div>
+                                </div>
+                                <div class="tab-panel">
+                                    <div class="demo-content">
+                                        <p>Processing orders (8 total)</p>
+                                    </div>
+                                </div>
+                                <div class="tab-panel">
+                                    <div class="demo-content">
+                                        <p>Shipped orders (12 total)</p>
+                                    </div>
+                                </div>
+                                <div class="tab-panel">
+                                    <div class="demo-content">
+                                        <p>Delivered orders (4 total)</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="count-html" class="component-tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;button class="tab active"&gt;
+  All Orders
+  &lt;span class="tab-count"&gt;24&lt;/span&gt;
+&lt;/button&gt;
+&lt;button class="tab"&gt;
+  Processing
+  &lt;span class="tab-count"&gt;8&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="count-jsx" class="component-tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const tabs = [
+  { label: 'All Orders', count: 24 },
+  { label: 'Processing', count: 8 },
+  { label: 'Shipped', count: 12 },
+  { label: 'Delivered', count: 4 }
+];
+
+&lt;button className="tab active"&gt;
+  {tab.label}
+  &lt;span className="tab-count"&gt;{tab.count}&lt;/span&gt;
+&lt;/button&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pill Variant -->
+            <section class="section">
+                <h2>Pill Variant</h2>
+                <p>Filled button-style tabs.</p>
+                
+                <div class="component-tab-nav">
+                    <button class="component-tab-btn active" onclick="switchComponentTab(event, 'pill-preview')">Preview</button>
+                    <button class="component-tab-btn" onclick="switchComponentTab(event, 'pill-html')">HTML</button>
+                    <button class="component-tab-btn" onclick="switchComponentTab(event, 'pill-jsx')">JSX</button>
+                </div>
+                
+                <div id="pill-preview" class="component-tab-content active">
+                    <div class="preview-box">
+                        <div class="tabs tabs-pills" id="demo-tabs-3">
+                            <div class="tabs-list" role="tablist">
+                                <button class="tab active" onclick="switchDemoTab('demo-tabs-3', 0)">Products</button>
+                                <button class="tab" onclick="switchDemoTab('demo-tabs-3', 1)">Suppliers</button>
+                                <button class="tab" onclick="switchDemoTab('demo-tabs-3', 2)">Orders</button>
+                            </div>
+                            <div class="tab-panels">
+                                <div class="tab-panel active">
+                                    <div class="demo-content">
+                                        <p>Product listings and information.</p>
+                                    </div>
+                                </div>
+                                <div class="tab-panel">
+                                    <div class="demo-content">
+                                        <p>Supplier directory and profiles.</p>
+                                    </div>
+                                </div>
+                                <div class="tab-panel">
+                                    <div class="demo-content">
+                                        <p>Order history and tracking.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="pill-html" class="component-tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="tabs tabs-pills"&gt;
+  &lt;div class="tabs-list" role="tablist"&gt;
+    &lt;button class="tab active"&gt;Products&lt;/button&gt;
+    &lt;button class="tab"&gt;Suppliers&lt;/button&gt;
+    &lt;button class="tab"&gt;Orders&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;!-- panels --&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="pill-jsx" class="component-tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;Tabs variant="pills" tabs={['Products', 'Suppliers', 'Orders']}&gt;
+  {/* content */}
+&lt;/Tabs&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Boxed Variant -->
+            <section class="section">
+                <h2>Boxed Variant</h2>
+                <p>Tabs in a segmented control style.</p>
+                
+                <div class="component-tab-nav">
+                    <button class="component-tab-btn active" onclick="switchComponentTab(event, 'boxed-preview')">Preview</button>
+                    <button class="component-tab-btn" onclick="switchComponentTab(event, 'boxed-html')">HTML</button>
+                    <button class="component-tab-btn" onclick="switchComponentTab(event, 'boxed-jsx')">JSX</button>
+                </div>
+                
+                <div id="boxed-preview" class="component-tab-content active">
+                    <div class="preview-box">
+                        <div class="tabs tabs-boxed" id="demo-tabs-4">
+                            <div class="tabs-list" role="tablist">
+                                <button class="tab active" onclick="switchDemoTab('demo-tabs-4', 0)">Monthly</button>
+                                <button class="tab" onclick="switchDemoTab('demo-tabs-4', 1)">Quarterly</button>
+                                <button class="tab" onclick="switchDemoTab('demo-tabs-4', 2)">Yearly</button>
+                            </div>
+                            <div class="tab-panels">
+                                <div class="tab-panel active">
+                                    <div class="demo-content">
+                                        <p>Monthly analytics and reports.</p>
+                                    </div>
+                                </div>
+                                <div class="tab-panel">
+                                    <div class="demo-content">
+                                        <p>Quarterly performance overview.</p>
+                                    </div>
+                                </div>
+                                <div class="tab-panel">
+                                    <div class="demo-content">
+                                        <p>Annual summary and trends.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="boxed-html" class="component-tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="tabs tabs-boxed"&gt;
+  &lt;div class="tabs-list" role="tablist"&gt;
+    &lt;button class="tab active"&gt;Monthly&lt;/button&gt;
+    &lt;button class="tab"&gt;Quarterly&lt;/button&gt;
+    &lt;button class="tab"&gt;Yearly&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;!-- panels --&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="boxed-jsx" class="component-tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;Tabs variant="boxed" tabs={['Monthly', 'Quarterly', 'Yearly']}&gt;
+  {/* content */}
+&lt;/Tabs&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Vertical Tabs -->
+            <section class="section">
+                <h2>Vertical Tabs</h2>
+                <p>Side navigation style tabs.</p>
+                
+                <div class="component-tab-nav">
+                    <button class="component-tab-btn active" onclick="switchComponentTab(event, 'vertical-preview')">Preview</button>
+                    <button class="component-tab-btn" onclick="switchComponentTab(event, 'vertical-html')">HTML</button>
+                    <button class="component-tab-btn" onclick="switchComponentTab(event, 'vertical-jsx')">JSX</button>
+                </div>
+                
+                <div id="vertical-preview" class="component-tab-content active">
+                    <div class="preview-box">
+                        <div class="tabs tabs-vertical" id="demo-tabs-5">
+                            <div class="tabs-list" role="tablist">
+                                <button class="tab active" onclick="switchDemoTab('demo-tabs-5', 0)">Account</button>
+                                <button class="tab" onclick="switchDemoTab('demo-tabs-5', 1)">Security</button>
+                                <button class="tab" onclick="switchDemoTab('demo-tabs-5', 2)">Notifications</button>
+                                <button class="tab" onclick="switchDemoTab('demo-tabs-5', 3)">Billing</button>
+                            </div>
+                            <div class="tab-panels">
+                                <div class="tab-panel active">
+                                    <div class="demo-content">
+                                        <p>Account settings and profile information.</p>
+                                    </div>
+                                </div>
+                                <div class="tab-panel">
+                                    <div class="demo-content">
+                                        <p>Password and two-factor authentication settings.</p>
+                                    </div>
+                                </div>
+                                <div class="tab-panel">
+                                    <div class="demo-content">
+                                        <p>Email and notification preferences.</p>
+                                    </div>
+                                </div>
+                                <div class="tab-panel">
+                                    <div class="demo-content">
+                                        <p>Payment methods and billing history.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="vertical-html" class="component-tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="tabs tabs-vertical"&gt;
+  &lt;div class="tabs-list" role="tablist"&gt;
+    &lt;button class="tab active"&gt;Account&lt;/button&gt;
+    &lt;button class="tab"&gt;Security&lt;/button&gt;
+    &lt;button class="tab"&gt;Notifications&lt;/button&gt;
+    &lt;button class="tab"&gt;Billing&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;!-- panels --&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="vertical-jsx" class="component-tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;Tabs 
+  variant="vertical" 
+  tabs={['Account', 'Security', 'Notifications', 'Billing']}
+&gt;
+  {/* content */}
+&lt;/Tabs&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script>
+        function switchComponentTab(event, tabId) {
+            const section = event.target.closest('.section');
+            section.querySelectorAll('.component-tab-content').forEach(content => content.classList.remove('active'));
+            section.querySelectorAll('.component-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-example').querySelector('code');
+            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+
+        function switchDemoTab(containerId, index) {
+            const container = document.getElementById(containerId);
+            const tabs = container.querySelectorAll('.tab');
+            const panels = container.querySelectorAll('.tab-panel');
+            
+            tabs.forEach((tab, i) => {
+                tab.classList.toggle('active', i === index);
+            });
+            
+            panels.forEach((panel, i) => {
+                panel.classList.toggle('active', i === index);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,309 @@
+/* ===================================
+   TABS
+   WhaleLord Compass Design System
+   =================================== */
+
+/* ===================================
+   TABS CONTAINER
+   =================================== */
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* ===================================
+   TAB LIST (Horizontal Navigation)
+   =================================== */
+
+.tabs-list {
+  display: flex;
+  gap: 0;
+  border-bottom: 2px solid var(--color-pearl-200);
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.tabs-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===================================
+   TAB BUTTONS
+   =================================== */
+
+.tab {
+  padding: var(--spacing-3) var(--spacing-5);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  margin-bottom: -2px;
+  position: relative;
+}
+
+.tab:hover:not(.active) {
+  color: var(--color-waves-500);
+  background: var(--color-pearl-50);
+}
+
+.tab.active {
+  color: var(--color-waves-500);
+  border-bottom-color: var(--color-waves-500);
+}
+
+.tab:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.tab:disabled:hover {
+  color: var(--color-text-secondary);
+  background: none;
+}
+
+/* Tab with icon */
+.tab-icon {
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+  opacity: 0.6;
+  display: inline-block;
+  margin-right: var(--spacing-2);
+  vertical-align: middle;
+}
+
+/* Tab with count badge */
+.tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 var(--spacing-2);
+  margin-left: var(--spacing-2);
+  background: var(--color-pearl-200);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  border-radius: 10px;
+  transition: all 0.2s ease;
+}
+
+.tab.active .tab-count {
+  background: var(--color-waves-100);
+  color: var(--color-waves-700);
+}
+
+/* ===================================
+   TAB PANELS
+   =================================== */
+
+.tab-panels {
+  margin-top: var(--spacing-6);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+  animation: tab-fade-in 0.2s ease;
+}
+
+@keyframes tab-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================
+   PILL VARIANT
+   =================================== */
+
+.tabs-pills .tabs-list {
+  border-bottom: none;
+  gap: var(--spacing-2);
+}
+
+.tabs-pills .tab {
+  border-bottom: none;
+  border-radius: var(--radius-md);
+  margin-bottom: 0;
+}
+
+.tabs-pills .tab.active {
+  background: var(--color-waves-500);
+  color: white;
+}
+
+.tabs-pills .tab.active .tab-count {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+/* ===================================
+   BOXED VARIANT
+   =================================== */
+
+.tabs-boxed .tabs-list {
+  background: var(--color-pearl-100);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-1);
+  border-bottom: none;
+  gap: var(--spacing-1);
+}
+
+.tabs-boxed .tab {
+  border-bottom: none;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-2) var(--spacing-4);
+  margin-bottom: 0;
+}
+
+.tabs-boxed .tab.active {
+  background: white;
+  color: var(--color-text-primary);
+  box-shadow: 0 1px 3px rgba(1, 18, 30, 0.1);
+}
+
+/* ===================================
+   VERTICAL VARIANT
+   =================================== */
+
+.tabs-vertical {
+  flex-direction: row;
+  gap: var(--spacing-6);
+}
+
+.tabs-vertical .tabs-list {
+  flex-direction: column;
+  border-bottom: none;
+  border-right: 2px solid var(--color-pearl-200);
+  min-width: 200px;
+  overflow-x: visible;
+  overflow-y: auto;
+}
+
+.tabs-vertical .tab {
+  text-align: left;
+  border-bottom: none;
+  border-right: 2px solid transparent;
+  margin-bottom: 0;
+  margin-right: -2px;
+  padding: var(--spacing-3) var(--spacing-4);
+}
+
+.tabs-vertical .tab.active {
+  border-right-color: var(--color-waves-500);
+  border-bottom-color: transparent;
+}
+
+.tabs-vertical .tab-panels {
+  flex: 1;
+  margin-top: 0;
+}
+
+/* ===================================
+   SIZES
+   =================================== */
+
+/* Small */
+.tabs-sm .tab {
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: var(--font-size-xs);
+}
+
+.tabs-sm .tab-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.tabs-sm .tab-count {
+  min-width: 18px;
+  height: 18px;
+  font-size: 11px;
+}
+
+/* Large */
+.tabs-lg .tab {
+  padding: var(--spacing-4) var(--spacing-6);
+  font-size: var(--font-size-base);
+}
+
+.tabs-lg .tab-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.tabs-lg .tab-count {
+  min-width: 24px;
+  height: 24px;
+}
+
+/* ===================================
+   FULL WIDTH VARIANT
+   =================================== */
+
+.tabs-fullwidth .tabs-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+
+.tabs-fullwidth .tab {
+  text-align: center;
+}
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+
+@media (max-width: 640px) {
+  .tab {
+    padding: var(--spacing-2) var(--spacing-4);
+    font-size: var(--font-size-xs);
+  }
+  
+  .tabs-vertical {
+    flex-direction: column;
+  }
+  
+  .tabs-vertical .tabs-list {
+    flex-direction: row;
+    border-right: none;
+    border-bottom: 2px solid var(--color-pearl-200);
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .tabs-vertical .tab {
+    border-right: none;
+    border-bottom: 2px solid transparent;
+    margin-right: 0;
+    margin-bottom: -2px;
+  }
+  
+  .tabs-vertical .tab.active {
+    border-right-color: transparent;
+    border-bottom-color: var(--color-waves-500);
+  }
+  
+  .tabs-vertical .tab-panels {
+    margin-top: var(--spacing-6);
+  }
+}
