@@ -1,0 +1,222 @@
+/* ===================================
+   PAGINATION
+   WhaleLord Compass Design System
+   =================================== */
+
+/* ===================================
+   PAGINATION CONTAINER
+   =================================== */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-heading);
+}
+
+/* ===================================
+   PAGINATION ITEMS
+   =================================== */
+
+.pagination-item {
+  min-width: 40px;
+  height: 40px;
+  padding: 0 var(--spacing-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  background: white;
+  border: 1px solid var(--color-border-default);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.pagination-item:hover:not(.active):not(:disabled) {
+  background: var(--color-pearl-50);
+  border-color: var(--color-pearl-400);
+}
+
+/* Active state */
+.pagination-item.active {
+  background: var(--color-waves-500);
+  color: white;
+  border-color: var(--color-waves-500);
+  cursor: default;
+}
+
+/* Disabled state */
+.pagination-item:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination-item:disabled:hover {
+  background: white;
+  border-color: var(--color-border-default);
+}
+
+/* ===================================
+   PAGINATION ARROWS
+   =================================== */
+
+.pagination-prev,
+.pagination-next {
+  min-width: 40px;
+}
+
+.pagination-icon {
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+}
+
+.pagination-prev .pagination-icon {
+  transform: rotate(135deg);
+}
+
+.pagination-next .pagination-icon {
+  transform: rotate(-45deg);
+}
+
+/* ===================================
+   PAGINATION ELLIPSIS
+   =================================== */
+
+.pagination-ellipsis {
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  cursor: default;
+}
+
+/* ===================================
+   PAGINATION WITH INFO
+   =================================== */
+
+.pagination-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+  flex-wrap: wrap;
+}
+
+.pagination-info {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ===================================
+   PAGINATION SIZES
+   =================================== */
+
+/* Small */
+.pagination-sm .pagination-item,
+.pagination-sm .pagination-prev,
+.pagination-sm .pagination-next,
+.pagination-sm .pagination-ellipsis {
+  min-width: 32px;
+  height: 32px;
+  font-size: var(--font-size-xs);
+}
+
+.pagination-sm .pagination-icon {
+  width: 10px;
+  height: 10px;
+}
+
+/* Large */
+.pagination-lg .pagination-item,
+.pagination-lg .pagination-prev,
+.pagination-lg .pagination-next,
+.pagination-lg .pagination-ellipsis {
+  min-width: 48px;
+  height: 48px;
+  font-size: var(--font-size-base);
+}
+
+.pagination-lg .pagination-icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* ===================================
+   SIMPLE PAGINATION (Prev/Next Only)
+   =================================== */
+
+.pagination-simple {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.pagination-simple .pagination-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-3) var(--spacing-4);
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+  background: white;
+  border: 1px solid var(--color-border-default);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination-simple .pagination-btn:hover:not(:disabled) {
+  background: var(--color-pearl-50);
+  border-color: var(--color-pearl-400);
+}
+
+.pagination-simple .pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pagination-simple .pagination-current {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  padding: 0 var(--spacing-2);
+}
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+
+@media (max-width: 640px) {
+  .pagination {
+    gap: var(--spacing-1);
+  }
+  
+  .pagination-item {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 var(--spacing-2);
+    font-size: var(--font-size-xs);
+  }
+  
+  .pagination-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  /* Hide middle page numbers on mobile, keep first, last, and current */
+  .pagination-item:not(.active):not(.pagination-prev):not(.pagination-next):not(:first-of-type):not(:last-of-type) {
+    display: none;
+  }
+}

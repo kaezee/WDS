@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagination - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pagination.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--color-pearl-200); margin-bottom: var(--spacing-6); }
+        .tab-btn { padding: var(--spacing-3) var(--spacing-5); background: none; border: none; font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-pearl-600); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+        .tab-btn:hover { color: var(--color-waves-500); }
+        .tab-btn.active { color: var(--color-waves-500); border-bottom-color: var(--color-waves-500); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .preview-box { background: var(--color-shore-base); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header>
+                <h1>Pagination</h1>
+                <p class="hero-subtitle">Navigate through multi-page content like product listings, search results, and order history.</p>
+            </header>
+
+            <div class="usage-box">
+                <h3>Usage & Purpose</h3>
+                <p><strong>Use pagination when:</strong> Displaying large datasets across multiple pages, showing product listings, search results, or any content that needs to be split into manageable chunks.</p>
+                <p><strong>Don't use pagination for:</strong> Infinite scroll scenarios, single-page content, or when showing all items at once is feasible (less than 20 items).</p>
+            </div>
+
+            <!-- Standard Pagination -->
+            <section class="section">
+                <h2>Standard Pagination</h2>
+                <p>Default pagination with numbered pages, previous and next buttons.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'standard-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'standard-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'standard-jsx')">JSX</button>
+                </div>
+                
+                <div id="standard-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <nav class="pagination" aria-label="Pagination">
+                            <button class="pagination-item pagination-prev" disabled>
+                                <span class="pagination-icon"></span>
+                            </button>
+                            <button class="pagination-item active">1</button>
+                            <button class="pagination-item">2</button>
+                            <button class="pagination-item">3</button>
+                            <button class="pagination-item">4</button>
+                            <button class="pagination-item">5</button>
+                            <button class="pagination-item pagination-next">
+                                <span class="pagination-icon"></span>
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+                
+                <div id="standard-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;nav class="pagination" aria-label="Pagination"&gt;
+  &lt;button class="pagination-item pagination-prev" disabled&gt;
+    &lt;span class="pagination-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  
+  &lt;button class="pagination-item active"&gt;1&lt;/button&gt;
+  &lt;button class="pagination-item"&gt;2&lt;/button&gt;
+  &lt;button class="pagination-item"&gt;3&lt;/button&gt;
+  &lt;button class="pagination-item"&gt;4&lt;/button&gt;
+  &lt;button class="pagination-item"&gt;5&lt;/button&gt;
+  
+  &lt;button class="pagination-item pagination-next"&gt;
+    &lt;span class="pagination-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/nav&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="standard-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  return (
+    &lt;nav className="pagination" aria-label="Pagination"&gt;
+      &lt;button 
+        className="pagination-item pagination-prev"
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+      &gt;
+        &lt;span className="pagination-icon"&gt;&lt;/span&gt;
+      &lt;/button&gt;
+      
+      {pages.map(page => (
+        &lt;button
+          key={page}
+          className={`pagination-item ${page === currentPage ? 'active' : ''}`}
+          onClick={() => onPageChange(page)}
+        &gt;
+          {page}
+        &lt;/button&gt;
+      ))}
+      
+      &lt;button 
+        className="pagination-item pagination-next"
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+      &gt;
+        &lt;span className="pagination-icon"&gt;&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/nav&gt;
+  );
+};
+
+// Usage
+&lt;Pagination 
+  currentPage={1} 
+  totalPages={5} 
+  onPageChange={(page) => console.log(page)} 
+/&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- With Ellipsis -->
+            <section class="section">
+                <h2>With Ellipsis</h2>
+                <p>Pagination with ellipsis for large page counts.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'ellipsis-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'ellipsis-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'ellipsis-jsx')">JSX</button>
+                </div>
+                
+                <div id="ellipsis-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <nav class="pagination" aria-label="Pagination">
+                            <button class="pagination-item pagination-prev">
+                                <span class="pagination-icon"></span>
+                            </button>
+                            <button class="pagination-item">1</button>
+                            <button class="pagination-item">2</button>
+                            <button class="pagination-item">3</button>
+                            <button class="pagination-item active">4</button>
+                            <button class="pagination-item">5</button>
+                            <span class="pagination-ellipsis">...</span>
+                            <button class="pagination-item">42</button>
+                            <button class="pagination-item pagination-next">
+                                <span class="pagination-icon"></span>
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+                
+                <div id="ellipsis-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;nav class="pagination" aria-label="Pagination"&gt;
+  &lt;button class="pagination-item pagination-prev"&gt;
+    &lt;span class="pagination-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+  
+  &lt;button class="pagination-item"&gt;1&lt;/button&gt;
+  &lt;button class="pagination-item"&gt;2&lt;/button&gt;
+  &lt;button class="pagination-item"&gt;3&lt;/button&gt;
+  &lt;button class="pagination-item active"&gt;4&lt;/button&gt;
+  &lt;button class="pagination-item"&gt;5&lt;/button&gt;
+  
+  &lt;span class="pagination-ellipsis"&gt;...&lt;/span&gt;
+  
+  &lt;button class="pagination-item"&gt;42&lt;/button&gt;
+  
+  &lt;button class="pagination-item pagination-next"&gt;
+    &lt;span class="pagination-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/nav&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="ellipsis-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const PaginationWithEllipsis = ({ currentPage, totalPages, onPageChange }) => {
+  const getPageNumbers = () => {
+    const pages = [];
+    const showEllipsis = totalPages > 7;
+    
+    if (!showEllipsis) {
+      return Array.from({ length: totalPages }, (_, i) => i + 1);
+    }
+    
+    // Always show first page
+    pages.push(1);
+    
+    if (currentPage > 3) {
+      pages.push('ellipsis-start');
+    }
+    
+    // Show pages around current
+    for (let i = Math.max(2, currentPage - 1); i <= Math.min(currentPage + 1, totalPages - 1); i++) {
+      pages.push(i);
+    }
+    
+    if (currentPage < totalPages - 2) {
+      pages.push('ellipsis-end');
+    }
+    
+    // Always show last page
+    if (totalPages > 1) {
+      pages.push(totalPages);
+    }
+    
+    return pages;
+  };
+
+  return (
+    &lt;nav className="pagination" aria-label="Pagination"&gt;
+      &lt;button 
+        className="pagination-item pagination-prev"
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+      &gt;
+        &lt;span className="pagination-icon"&gt;&lt;/span&gt;
+      &lt;/button&gt;
+      
+      {getPageNumbers().map((page, idx) => {
+        if (typeof page === 'string') {
+          return &lt;span key={page} className="pagination-ellipsis"&gt;...&lt;/span&gt;;
+        }
+        return (
+          &lt;button
+            key={page}
+            className={`pagination-item ${page === currentPage ? 'active' : ''}`}
+            onClick={() => onPageChange(page)}
+          &gt;
+            {page}
+          &lt;/button&gt;
+        );
+      })}
+      
+      &lt;button 
+        className="pagination-item pagination-next"
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+      &gt;
+        &lt;span className="pagination-icon"&gt;&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/nav&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- With Info -->
+            <section class="section">
+                <h2>With Info Text</h2>
+                <p>Pagination with result count information.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'info-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'info-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'info-jsx')">JSX</button>
+                </div>
+                
+                <div id="info-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="pagination-wrapper">
+                            <span class="pagination-info">Showing 21-40 of 156 results</span>
+                            <nav class="pagination" aria-label="Pagination">
+                                <button class="pagination-item pagination-prev">
+                                    <span class="pagination-icon"></span>
+                                </button>
+                                <button class="pagination-item">1</button>
+                                <button class="pagination-item active">2</button>
+                                <button class="pagination-item">3</button>
+                                <span class="pagination-ellipsis">...</span>
+                                <button class="pagination-item">8</button>
+                                <button class="pagination-item pagination-next">
+                                    <span class="pagination-icon"></span>
+                                </button>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="info-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="pagination-wrapper"&gt;
+  &lt;span class="pagination-info"&gt;Showing 21-40 of 156 results&lt;/span&gt;
+  
+  &lt;nav class="pagination" aria-label="Pagination"&gt;
+    &lt;button class="pagination-item pagination-prev"&gt;
+      &lt;span class="pagination-icon"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;button class="pagination-item"&gt;1&lt;/button&gt;
+    &lt;button class="pagination-item active"&gt;2&lt;/button&gt;
+    &lt;button class="pagination-item"&gt;3&lt;/button&gt;
+    &lt;span class="pagination-ellipsis"&gt;...&lt;/span&gt;
+    &lt;button class="pagination-item"&gt;8&lt;/button&gt;
+    &lt;button class="pagination-item pagination-next"&gt;
+      &lt;span class="pagination-icon"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+  &lt;/nav&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="info-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const PaginationWithInfo = ({ currentPage, totalPages, itemsPerPage, totalItems, onPageChange }) => {
+  const startItem = (currentPage - 1) * itemsPerPage + 1;
+  const endItem = Math.min(currentPage * itemsPerPage, totalItems);
+
+  return (
+    &lt;div className="pagination-wrapper"&gt;
+      &lt;span className="pagination-info"&gt;
+        Showing {startItem}-{endItem} of {totalItems} results
+      &lt;/span&gt;
+      
+      &lt;nav className="pagination" aria-label="Pagination"&gt;
+        {/* Pagination items here */}
+      &lt;/nav&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Simple Pagination -->
+            <section class="section">
+                <h2>Simple Pagination</h2>
+                <p>Minimal pagination with only previous and next buttons.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'simple-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'simple-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'simple-jsx')">JSX</button>
+                </div>
+                
+                <div id="simple-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <nav class="pagination-simple" aria-label="Pagination">
+                            <button class="pagination-btn">
+                                <span class="pagination-icon" style="transform: rotate(135deg);"></span>
+                                Previous
+                            </button>
+                            <span class="pagination-current">Page 2 of 8</span>
+                            <button class="pagination-btn">
+                                Next
+                                <span class="pagination-icon" style="transform: rotate(-45deg);"></span>
+                            </button>
+                        </nav>
+                    </div>
+                </div>
+                
+                <div id="simple-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;nav class="pagination-simple" aria-label="Pagination"&gt;
+  &lt;button class="pagination-btn"&gt;
+    &lt;span class="pagination-icon"&gt;&lt;/span&gt;
+    Previous
+  &lt;/button&gt;
+  
+  &lt;span class="pagination-current"&gt;Page 2 of 8&lt;/span&gt;
+  
+  &lt;button class="pagination-btn"&gt;
+    Next
+    &lt;span class="pagination-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/nav&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="simple-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const SimplePagination = ({ currentPage, totalPages, onPageChange }) => {
+  return (
+    &lt;nav className="pagination-simple" aria-label="Pagination"&gt;
+      &lt;button 
+        className="pagination-btn"
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+      &gt;
+        &lt;span className="pagination-icon"&gt;&lt;/span&gt;
+        Previous
+      &lt;/button&gt;
+      
+      &lt;span className="pagination-current"&gt;
+        Page {currentPage} of {totalPages}
+      &lt;/span&gt;
+      
+      &lt;button 
+        className="pagination-btn"
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+      &gt;
+        Next
+        &lt;span className="pagination-icon"&gt;&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/nav&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sizes -->
+            <section class="section">
+                <h2>Sizes</h2>
+                <p>Small, default, and large pagination sizes.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'sizes-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'sizes-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'sizes-jsx')">JSX</button>
+                </div>
+                
+                <div id="sizes-preview" class="tab-content active">
+                    <div class="preview-box" style="flex-direction: column; align-items: flex-start;">
+                        <!-- Small -->
+                        <div>
+                            <p style="margin-bottom: var(--spacing-2); font-size: var(--font-size-sm); color: var(--color-text-secondary);">Small</p>
+                            <nav class="pagination pagination-sm" aria-label="Pagination">
+                                <button class="pagination-item pagination-prev" disabled>
+                                    <span class="pagination-icon"></span>
+                                </button>
+                                <button class="pagination-item active">1</button>
+                                <button class="pagination-item">2</button>
+                                <button class="pagination-item">3</button>
+                                <button class="pagination-item pagination-next">
+                                    <span class="pagination-icon"></span>
+                                </button>
+                            </nav>
+                        </div>
+                        
+                        <!-- Default -->
+                        <div style="margin-top: var(--spacing-6);">
+                            <p style="margin-bottom: var(--spacing-2); font-size: var(--font-size-sm); color: var(--color-text-secondary);">Default</p>
+                            <nav class="pagination" aria-label="Pagination">
+                                <button class="pagination-item pagination-prev" disabled>
+                                    <span class="pagination-icon"></span>
+                                </button>
+                                <button class="pagination-item active">1</button>
+                                <button class="pagination-item">2</button>
+                                <button class="pagination-item">3</button>
+                                <button class="pagination-item pagination-next">
+                                    <span class="pagination-icon"></span>
+                                </button>
+                            </nav>
+                        </div>
+                        
+                        <!-- Large -->
+                        <div style="margin-top: var(--spacing-6);">
+                            <p style="margin-bottom: var(--spacing-2); font-size: var(--font-size-sm); color: var(--color-text-secondary);">Large</p>
+                            <nav class="pagination pagination-lg" aria-label="Pagination">
+                                <button class="pagination-item pagination-prev" disabled>
+                                    <span class="pagination-icon"></span>
+                                </button>
+                                <button class="pagination-item active">1</button>
+                                <button class="pagination-item">2</button>
+                                <button class="pagination-item">3</button>
+                                <button class="pagination-item pagination-next">
+                                    <span class="pagination-icon"></span>
+                                </button>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="sizes-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Small --&gt;
+&lt;nav class="pagination pagination-sm"&gt;...&lt;/nav&gt;
+
+&lt;!-- Default --&gt;
+&lt;nav class="pagination"&gt;...&lt;/nav&gt;
+
+&lt;!-- Large --&gt;
+&lt;nav class="pagination pagination-lg"&gt;...&lt;/nav&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="sizes-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;Pagination size="sm" /&gt;
+&lt;Pagination size="md" /&gt;
+&lt;Pagination size="lg" /&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script>
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.section');
+            section.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            section.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-example').querySelector('code');
+            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+    </script>
+</body>
+</html>
