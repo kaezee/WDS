@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="buttons.css">
+    <link rel="stylesheet" href="modal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--color-pearl-200); margin-bottom: var(--spacing-6); }
+        .tab-btn { padding: var(--spacing-3) var(--spacing-5); background: none; border: none; font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-pearl-600); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+        .tab-btn:hover { color: var(--color-waves-500); }
+        .tab-btn.active { color: var(--color-waves-500); border-bottom-color: var(--color-waves-500); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .preview-box { background: var(--color-shore-base); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); display: flex; flex-wrap: wrap; gap: var(--spacing-4); }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header>
+                <h1>Modal</h1>
+                <p class="hero-subtitle">Overlay dialogs for confirmations, warnings, forms, and critical user decisions.</p>
+            </header>
+
+            <div class="usage-box">
+                <h3>Usage & Purpose</h3>
+                <p><strong>Use modals when:</strong> Requiring user confirmation, displaying critical warnings, collecting focused input, or showing content that needs full attention without navigation.</p>
+                <p><strong>Don't use modals for:</strong> Non-critical information (use snackbar), complex forms (use full page), or frequent interruptions that disrupt workflow.</p>
+            </div>
+
+            <!-- Default Modal -->
+            <section class="section">
+                <h2>Default Modal</h2>
+                <p>Standard modal for general purpose dialogs, forms, and content display.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'default-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'default-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'default-jsx')">JSX</button>
+                </div>
+                
+                <div id="default-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <button class="btn btn-md btn-primary" onclick="openModal('modal-default')">Open Default Modal</button>
+                    </div>
+                </div>
+                
+                <div id="default-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Modal Overlay --&gt;
+&lt;div class="modal-overlay hidden" id="my-modal"&gt;
+  &lt;div class="modal modal-md"&gt;
+    &lt;!-- Header --&gt;
+    &lt;div class="modal-header"&gt;
+      &lt;h2 class="modal-title"&gt;Update Order Status&lt;/h2&gt;
+      &lt;button class="modal-close" onclick="closeModal('my-modal')"&gt;
+        &lt;span class="modal-close-icon"&gt;&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- Body --&gt;
+    &lt;div class="modal-body"&gt;
+      &lt;p&gt;Are you sure you want to mark this order as shipped? This will notify the buyer and update the tracking information.&lt;/p&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- Footer --&gt;
+    &lt;div class="modal-footer"&gt;
+      &lt;button class="btn btn-md btn-secondary-outline" onclick="closeModal('my-modal')"&gt;Cancel&lt;/button&gt;
+      &lt;button class="btn btn-md btn-primary"&gt;Confirm&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script&gt;
+function openModal(id) {
+  document.getElementById(id).classList.remove('hidden');
+  document.body.classList.add('modal-open');
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.add('hidden');
+  document.body.classList.remove('modal-open');
+}
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="default-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const Modal = ({ isOpen, onClose, title, children, onConfirm, size = 'md' }) => {
+  if (!isOpen) return null;
+
+  return (
+    &lt;div className="modal-overlay" onClick={onClose}&gt;
+      &lt;div className={`modal modal-${size}`} onClick={(e) => e.stopPropagation()}&gt;
+        &lt;div className="modal-header"&gt;
+          &lt;h2 className="modal-title"&gt;{title}&lt;/h2&gt;
+          &lt;button className="modal-close" onClick={onClose}&gt;
+            &lt;span className="modal-close-icon"&gt;&lt;/span&gt;
+          &lt;/button&gt;
+        &lt;/div&gt;
+        
+        &lt;div className="modal-body"&gt;
+          {children}
+        &lt;/div&gt;
+        
+        &lt;div className="modal-footer"&gt;
+          &lt;button className="btn btn-md btn-secondary-outline" onClick={onClose}&gt;
+            Cancel
+          &lt;/button&gt;
+          &lt;button className="btn btn-md btn-primary" onClick={onConfirm}&gt;
+            Confirm
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};
+
+// Usage
+&lt;Modal
+  isOpen={isModalOpen}
+  onClose={() => setIsModalOpen(false)}
+  onConfirm={handleConfirm}
+  title="Update Order Status"
+  size="md"
+&gt;
+  &lt;p&gt;Are you sure you want to mark this order as shipped?&lt;/p&gt;
+&lt;/Modal&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Confirmation Modal -->
+            <section class="section">
+                <h2>Confirmation Modal</h2>
+                <p>Blue header variant for confirmations and informational dialogs.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'confirmation-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'confirmation-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'confirmation-jsx')">JSX</button>
+                </div>
+                
+                <div id="confirmation-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <button class="btn btn-md btn-primary" onclick="openModal('modal-confirmation')">Open Confirmation Modal</button>
+                    </div>
+                </div>
+                
+                <div id="confirmation-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="modal-overlay hidden" id="confirmation-modal"&gt;
+  &lt;div class="modal modal-md modal-confirmation"&gt;
+    &lt;div class="modal-header"&gt;
+      &lt;h2 class="modal-title"&gt;Confirm Quote Request&lt;/h2&gt;
+      &lt;button class="modal-close" onclick="closeModal('confirmation-modal')"&gt;
+        &lt;span class="modal-close-icon"&gt;&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-body"&gt;
+      &lt;p&gt;Your quote request will be sent to Norwegian Seafoods Co. They typically respond within 24 hours.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-footer"&gt;
+      &lt;button class="btn btn-md btn-secondary-outline"&gt;Cancel&lt;/button&gt;
+      &lt;button class="btn btn-md btn-primary"&gt;Send Request&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="confirmation-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const ConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
+  if (!isOpen) return null;
+
+  return (
+    &lt;div className="modal-overlay" onClick={onClose}&gt;
+      &lt;div className="modal modal-md modal-confirmation" onClick={(e) => e.stopPropagation()}&gt;
+        &lt;div className="modal-header"&gt;
+          &lt;h2 className="modal-title"&gt;Confirm Quote Request&lt;/h2&gt;
+          &lt;button className="modal-close" onClick={onClose}&gt;
+            &lt;span className="modal-close-icon"&gt;&lt;/span&gt;
+          &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div className="modal-body"&gt;
+          &lt;p&gt;Your quote request will be sent to Norwegian Seafoods Co.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div className="modal-footer"&gt;
+          &lt;button className="btn btn-md btn-secondary-outline" onClick={onClose}&gt;
+            Cancel
+          &lt;/button&gt;
+          &lt;button className="btn btn-md btn-primary" onClick={onConfirm}&gt;
+            Send Request
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Warning Modal -->
+            <section class="section">
+                <h2>Warning Modal</h2>
+                <p>Orange header variant for warnings and important notices.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'warning-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'warning-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'warning-jsx')">JSX</button>
+                </div>
+                
+                <div id="warning-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <button class="btn btn-md btn-primary" onclick="openModal('modal-warning')">Open Warning Modal</button>
+                    </div>
+                </div>
+                
+                <div id="warning-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="modal-overlay hidden" id="warning-modal"&gt;
+  &lt;div class="modal modal-md modal-warning"&gt;
+    &lt;div class="modal-header"&gt;
+      &lt;h2 class="modal-title"&gt;Unsaved Changes&lt;/h2&gt;
+      &lt;button class="modal-close"&gt;
+        &lt;span class="modal-close-icon"&gt;&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-body"&gt;
+      &lt;p&gt;You have unsaved changes to your order. If you leave now, your changes will be lost.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-footer"&gt;
+      &lt;button class="btn btn-md btn-secondary-outline"&gt;Stay&lt;/button&gt;
+      &lt;button class="btn btn-md btn-primary"&gt;Leave Anyway&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="warning-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const WarningModal = ({ isOpen, onClose, onConfirm }) => {
+  if (!isOpen) return null;
+
+  return (
+    &lt;div className="modal-overlay" onClick={onClose}&gt;
+      &lt;div className="modal modal-md modal-warning" onClick={(e) => e.stopPropagation()}&gt;
+        &lt;div className="modal-header"&gt;
+          &lt;h2 className="modal-title"&gt;Unsaved Changes&lt;/h2&gt;
+          &lt;button className="modal-close" onClick={onClose}&gt;
+            &lt;span className="modal-close-icon"&gt;&lt;/span&gt;
+          &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div className="modal-body"&gt;
+          &lt;p&gt;You have unsaved changes. If you leave now, they will be lost.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div className="modal-footer"&gt;
+          &lt;button className="btn btn-md btn-secondary-outline" onClick={onClose}&gt;
+            Stay
+          &lt;/button&gt;
+          &lt;button className="btn btn-md btn-primary" onClick={onConfirm}&gt;
+            Leave Anyway
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Danger Modal -->
+            <section class="section">
+                <h2>Danger Modal</h2>
+                <p>Red header variant for destructive actions like deletions.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'danger-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'danger-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'danger-jsx')">JSX</button>
+                </div>
+                
+                <div id="danger-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <button class="btn btn-md btn-primary" onclick="openModal('modal-danger')">Open Danger Modal</button>
+                    </div>
+                </div>
+                
+                <div id="danger-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="modal-overlay hidden" id="danger-modal"&gt;
+  &lt;div class="modal modal-md modal-danger"&gt;
+    &lt;div class="modal-header"&gt;
+      &lt;h2 class="modal-title"&gt;Delete Order&lt;/h2&gt;
+      &lt;button class="modal-close"&gt;
+        &lt;span class="modal-close-icon"&gt;&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-body"&gt;
+      &lt;p&gt;Are you sure you want to delete this order? This action cannot be undone and all order data will be permanently removed.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-footer"&gt;
+      &lt;button class="btn btn-md btn-secondary-outline"&gt;Cancel&lt;/button&gt;
+      &lt;button class="btn btn-md btn-primary"&gt;Delete Order&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="danger-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const DangerModal = ({ isOpen, onClose, onConfirm }) => {
+  if (!isOpen) return null;
+
+  return (
+    &lt;div className="modal-overlay" onClick={onClose}&gt;
+      &lt;div className="modal modal-md modal-danger" onClick={(e) => e.stopPropagation()}&gt;
+        &lt;div className="modal-header"&gt;
+          &lt;h2 className="modal-title"&gt;Delete Order&lt;/h2&gt;
+          &lt;button className="modal-close" onClick={onClose}&gt;
+            &lt;span className="modal-close-icon"&gt;&lt;/span&gt;
+          &lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div className="modal-body"&gt;
+          &lt;p&gt;Are you sure you want to delete this order? This action cannot be undone.&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div className="modal-footer"&gt;
+          &lt;button className="btn btn-md btn-secondary-outline" onClick={onClose}&gt;
+            Cancel
+          &lt;/button&gt;
+          &lt;button className="btn btn-md btn-primary" onClick={onConfirm}&gt;
+            Delete Order
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Modal Sizes -->
+            <section class="section">
+                <h2>Modal Sizes</h2>
+                <p>Three size variants for different content needs.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'sizes-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'sizes-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'sizes-jsx')">JSX</button>
+                </div>
+                
+                <div id="sizes-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <button class="btn btn-md btn-primary" onclick="openModal('modal-sm')">Small Modal (400px)</button>
+                        <button class="btn btn-md btn-primary" onclick="openModal('modal-md')">Medium Modal (500px)</button>
+                        <button class="btn btn-md btn-primary" onclick="openModal('modal-lg')">Large Modal (700px)</button>
+                    </div>
+                </div>
+                
+                <div id="sizes-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Small Modal --&gt;
+&lt;div class="modal modal-sm"&gt;...&lt;/div&gt;
+
+&lt;!-- Medium Modal (Default) --&gt;
+&lt;div class="modal modal-md"&gt;...&lt;/div&gt;
+
+&lt;!-- Large Modal --&gt;
+&lt;div class="modal modal-lg"&gt;...&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="sizes-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;Modal size="sm"&gt;...&lt;/Modal&gt;
+&lt;Modal size="md"&gt;...&lt;/Modal&gt;
+&lt;Modal size="lg"&gt;...&lt;/Modal&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <!-- Demo Modals -->
+    <div class="modal-overlay hidden" id="modal-default">
+        <div class="modal modal-md">
+            <div class="modal-header">
+                <h2 class="modal-title">Update Order Status</h2>
+                <button class="modal-close" onclick="closeModal('modal-default')">
+                    <span class="modal-close-icon"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to mark this order as shipped? This will notify the buyer and update the tracking information.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-md btn-secondary-outline" onclick="closeModal('modal-default')">Cancel</button>
+                <button class="btn btn-md btn-primary" onclick="closeModal('modal-default')">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="modal-confirmation">
+        <div class="modal modal-md modal-confirmation">
+            <div class="modal-header">
+                <h2 class="modal-title">Confirm Quote Request</h2>
+                <button class="modal-close" onclick="closeModal('modal-confirmation')">
+                    <span class="modal-close-icon"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Your quote request will be sent to Norwegian Seafoods Co. They typically respond within 24 hours.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-md btn-secondary-outline" onclick="closeModal('modal-confirmation')">Cancel</button>
+                <button class="btn btn-md btn-primary" onclick="closeModal('modal-confirmation')">Send Request</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="modal-warning">
+        <div class="modal modal-md modal-warning">
+            <div class="modal-header">
+                <h2 class="modal-title">Unsaved Changes</h2>
+                <button class="modal-close" onclick="closeModal('modal-warning')">
+                    <span class="modal-close-icon"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>You have unsaved changes to your order. If you leave now, your changes will be lost.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-md btn-secondary-outline" onclick="closeModal('modal-warning')">Stay</button>
+                <button class="btn btn-md btn-primary" onclick="closeModal('modal-warning')">Leave Anyway</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="modal-danger">
+        <div class="modal modal-md modal-danger">
+            <div class="modal-header">
+                <h2 class="modal-title">Delete Order</h2>
+                <button class="modal-close" onclick="closeModal('modal-danger')">
+                    <span class="modal-close-icon"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this order? This action cannot be undone and all order data will be permanently removed.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-md btn-secondary-outline" onclick="closeModal('modal-danger')">Cancel</button>
+                <button class="btn btn-md btn-primary" onclick="closeModal('modal-danger')">Delete Order</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="modal-sm">
+        <div class="modal modal-sm">
+            <div class="modal-header">
+                <h2 class="modal-title">Small Modal</h2>
+                <button class="modal-close" onclick="closeModal('modal-sm')">
+                    <span class="modal-close-icon"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>This is a small modal (max-width: 400px) for simple confirmations.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-md btn-secondary-outline" onclick="closeModal('modal-sm')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="modal-md">
+        <div class="modal modal-md">
+            <div class="modal-header">
+                <h2 class="modal-title">Medium Modal</h2>
+                <button class="modal-close" onclick="closeModal('modal-md')">
+                    <span class="modal-close-icon"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>This is a medium modal (max-width: 500px) for standard dialogs and forms.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-md btn-secondary-outline" onclick="closeModal('modal-md')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="modal-lg">
+        <div class="modal modal-lg">
+            <div class="modal-header">
+                <h2 class="modal-title">Large Modal</h2>
+                <button class="modal-close" onclick="closeModal('modal-lg')">
+                    <span class="modal-close-icon"></span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>This is a large modal (max-width: 700px) for content-heavy dialogs or complex forms that need more space.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-md btn-secondary-outline" onclick="closeModal('modal-lg')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="navigation.js"></script>
+    <script>
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.section');
+            section.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            section.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-example').querySelector('code');
+            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+            document.body.classList.remove('modal-open');
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.add('hidden');
+                    document.body.classList.remove('modal-open');
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay:not(.hidden)').forEach(overlay => {
+                    overlay.classList.add('hidden');
+                });
+                document.body.classList.remove('modal-open');
+            }
+        });
+    </script>
+</body>
+</html>

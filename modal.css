@@ -1,0 +1,225 @@
+/* ===================================
+   MODAL / DIALOG
+   WhaleLord Compass Design System
+   =================================== */
+
+/* ===================================
+   OVERLAY
+   =================================== */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(1, 18, 30, 0.6); /* Waves-900 at 60% opacity */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var(--spacing-4);
+  animation: modal-overlay-fade-in 0.2s ease;
+}
+
+@keyframes modal-overlay-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===================================
+   MODAL CONTAINER
+   =================================== */
+
+.modal {
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: 
+    0 20px 25px -5px rgba(1, 18, 30, 0.1),
+    0 10px 10px -5px rgba(1, 18, 30, 0.04);
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: modal-slide-up 0.2s ease;
+}
+
+@keyframes modal-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Size Variants */
+.modal-sm {
+  max-width: 400px;
+}
+
+.modal-md {
+  max-width: 500px;
+}
+
+.modal-lg {
+  max-width: 700px;
+}
+
+/* ===================================
+   MODAL HEADER
+   =================================== */
+
+.modal-header {
+  padding: var(--spacing-5) var(--spacing-6);
+  border-bottom: 1px solid var(--color-border-default);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-4);
+}
+
+.modal-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+.modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-md);
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.modal-close:hover {
+  background: var(--color-pearl-100);
+  color: var(--color-text-primary);
+}
+
+.modal-close-icon {
+  width: 20px;
+  height: 20px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+/* ===================================
+   MODAL BODY
+   =================================== */
+
+.modal-body {
+  padding: var(--spacing-6);
+  overflow-y: auto;
+  flex: 1;
+}
+
+.modal-body p {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ===================================
+   MODAL FOOTER
+   =================================== */
+
+.modal-footer {
+  padding: var(--spacing-5) var(--spacing-6);
+  border-top: 1px solid var(--color-border-default);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--spacing-3);
+}
+
+/* ===================================
+   MODAL VARIANTS
+   =================================== */
+
+/* Confirmation Modal */
+.modal-confirmation .modal-header {
+  background: var(--color-waves-50);
+  border-bottom-color: var(--color-waves-200);
+}
+
+.modal-confirmation .modal-title {
+  color: var(--color-waves-700);
+}
+
+/* Warning Modal */
+.modal-warning .modal-header {
+  background: var(--color-warning-50);
+  border-bottom-color: var(--color-warning-200);
+}
+
+.modal-warning .modal-title {
+  color: var(--color-warning-700);
+}
+
+/* Danger Modal */
+.modal-danger .modal-header {
+  background: var(--color-error-50);
+  border-bottom-color: var(--color-error-200);
+}
+
+.modal-danger .modal-title {
+  color: var(--color-error-700);
+}
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+
+@media (max-width: 640px) {
+  .modal {
+    max-width: 100%;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+  
+  .modal-overlay {
+    padding: 0;
+  }
+  
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding-left: var(--spacing-4);
+    padding-right: var(--spacing-4);
+  }
+}
+
+/* ===================================
+   UTILITY CLASSES
+   =================================== */
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Hide modal by default */
+.modal-overlay.hidden {
+  display: none;
+}
