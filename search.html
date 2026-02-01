@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Bar - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="search.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--color-pearl-200); margin-bottom: var(--spacing-6); }
+        .tab-btn { padding: var(--spacing-3) var(--spacing-5); background: none; border: none; font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-pearl-600); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+        .tab-btn:hover { color: var(--color-waves-500); }
+        .tab-btn.active { color: var(--color-waves-500); border-bottom-color: var(--color-waves-500); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .preview-box { background: var(--color-shore-base); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); display: flex; justify-content: center; }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header>
+                <h1>Search Bar</h1>
+                <p class="hero-subtitle">Help users find products, suppliers, and content quickly.</p>
+            </header>
+
+            <div class="usage-box">
+                <h3>Usage & Purpose</h3>
+                <p><strong>Use search bars when:</strong> Users need to find specific items in large datasets, navigate product catalogs, or locate suppliers and orders.</p>
+                <p><strong>Don't use search bars for:</strong> Filtering within small lists (use dropdown), navigation (use menu), or when all options can be displayed at once.</p>
+            </div>
+
+            <!-- Basic Search -->
+            <section class="section">
+                <h2>Basic Search</h2>
+                <p>Standard search input with icon and clear button.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'basic-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'basic-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'basic-jsx')">JSX</button>
+                </div>
+                
+                <div id="basic-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="search" id="search-basic">
+                            <span class="search-icon"></span>
+                            <input 
+                                type="text" 
+                                class="search-input" 
+                                placeholder="Search products..."
+                                oninput="toggleClear('search-basic')"
+                            >
+                            <button class="search-clear" onclick="clearSearch('search-basic')">
+                                <span class="search-clear-icon"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="basic-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="search" id="search-1"&gt;
+  &lt;span class="search-icon"&gt;&lt;/span&gt;
+  &lt;input 
+    type="text" 
+    class="search-input" 
+    placeholder="Search products..."
+    oninput="toggleClear('search-1')"
+  &gt;
+  &lt;button class="search-clear" onclick="clearSearch('search-1')"&gt;
+    &lt;span class="search-clear-icon"&gt;&lt;/span&gt;
+  &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function toggleClear(id) {
+  const search = document.getElementById(id);
+  const input = search.querySelector('.search-input');
+  if (input.value.length > 0) {
+    search.classList.add('has-value');
+  } else {
+    search.classList.remove('has-value');
+  }
+}
+
+function clearSearch(id) {
+  const search = document.getElementById(id);
+  const input = search.querySelector('.search-input');
+  input.value = '';
+  search.classList.remove('has-value');
+  input.focus();
+}
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="basic-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const SearchBar = ({ placeholder, onSearch }) => {
+  const [value, setValue] = useState('');
+
+  const handleClear = () => {
+    setValue('');
+  };
+
+  return (
+    &lt;div className={`search ${value ? 'has-value' : ''}`}&gt;
+      &lt;span className="search-icon"&gt;&lt;/span&gt;
+      &lt;input
+        type="text"
+        className="search-input"
+        placeholder={placeholder}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      /&gt;
+      &lt;button className="search-clear" onClick={handleClear}&gt;
+        &lt;span className="search-clear-icon"&gt;&lt;/span&gt;
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- With Search Button -->
+            <section class="section">
+                <h2>With Search Button</h2>
+                <p>Search bar with submit button.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'button-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'button-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'button-jsx')">JSX</button>
+                </div>
+                
+                <div id="button-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="search search-with-button">
+                            <span class="search-icon"></span>
+                            <input 
+                                type="text" 
+                                class="search-input" 
+                                placeholder="Search suppliers..."
+                            >
+                            <button class="search-button">Search</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="button-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="search search-with-button"&gt;
+  &lt;span class="search-icon"&gt;&lt;/span&gt;
+  &lt;input 
+    type="text" 
+    class="search-input" 
+    placeholder="Search suppliers..."
+  &gt;
+  &lt;button class="search-button"&gt;Search&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="button-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div className="search search-with-button"&gt;
+  &lt;span className="search-icon"&gt;&lt;/span&gt;
+  &lt;input
+    type="text"
+    className="search-input"
+    placeholder="Search suppliers..."
+    value={query}
+    onChange={(e) => setQuery(e.target.value)}
+  /&gt;
+  &lt;button className="search-button" onClick={handleSearch}&gt;
+    Search
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- With Suggestions -->
+            <section class="section">
+                <h2>With Suggestions</h2>
+                <p>Search with autocomplete suggestions dropdown.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'suggest-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'suggest-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'suggest-jsx')">JSX</button>
+                </div>
+                
+                <div id="suggest-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="search open" id="search-suggest">
+                            <span class="search-icon"></span>
+                            <input 
+                                type="text" 
+                                class="search-input" 
+                                placeholder="Search products..."
+                                value="salmon"
+                                readonly
+                            >
+                            <div class="search-suggestions">
+                                <div class="search-suggestion-group">
+                                    <div class="search-suggestion-title">Products</div>
+                                    <a href="#" class="search-suggestion-item active">
+                                        <span class="search-suggestion-icon"></span>
+                                        <span class="search-suggestion-text">Atlantic Salmon Fillets</span>
+                                        <span class="search-suggestion-meta">150 kg</span>
+                                    </a>
+                                    <a href="#" class="search-suggestion-item">
+                                        <span class="search-suggestion-icon"></span>
+                                        <span class="search-suggestion-text">Norwegian Salmon Premium</span>
+                                        <span class="search-suggestion-meta">200 kg</span>
+                                    </a>
+                                    <a href="#" class="search-suggestion-item">
+                                        <span class="search-suggestion-icon"></span>
+                                        <span class="search-suggestion-text">Wild Alaskan Salmon</span>
+                                        <span class="search-suggestion-meta">85 kg</span>
+                                    </a>
+                                </div>
+                                <div class="search-suggestion-group">
+                                    <div class="search-suggestion-title">Suppliers</div>
+                                    <a href="#" class="search-suggestion-item">
+                                        <span class="search-suggestion-icon"></span>
+                                        <span class="search-suggestion-text">Norwegian Seafoods Co.</span>
+                                        <span class="search-suggestion-meta">Supplier</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="suggest-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="search" id="search-suggest"&gt;
+  &lt;span class="search-icon"&gt;&lt;/span&gt;
+  &lt;input 
+    type="text" 
+    class="search-input" 
+    placeholder="Search products..."
+  &gt;
+  
+  &lt;div class="search-suggestions"&gt;
+    &lt;div class="search-suggestion-group"&gt;
+      &lt;div class="search-suggestion-title"&gt;Products&lt;/div&gt;
+      &lt;a href="#" class="search-suggestion-item"&gt;
+        &lt;span class="search-suggestion-icon"&gt;&lt;/span&gt;
+        &lt;span class="search-suggestion-text"&gt;Atlantic Salmon Fillets&lt;/span&gt;
+        &lt;span class="search-suggestion-meta"&gt;150 kg&lt;/span&gt;
+      &lt;/a&gt;
+      &lt;!-- More items --&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="search-suggestion-group"&gt;
+      &lt;div class="search-suggestion-title"&gt;Suppliers&lt;/div&gt;
+      &lt;a href="#" class="search-suggestion-item"&gt;
+        &lt;span class="search-suggestion-icon"&gt;&lt;/span&gt;
+        &lt;span class="search-suggestion-text"&gt;Norwegian Seafoods Co.&lt;/span&gt;
+        &lt;span class="search-suggestion-meta"&gt;Supplier&lt;/span&gt;
+      &lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Add 'open' class to show suggestions --&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="suggest-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const SearchWithSuggestions = ({ suggestions }) => {
+  const [query, setQuery] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    &lt;div className={`search ${isOpen ? 'open' : ''}`}&gt;
+      &lt;span className="search-icon"&gt;&lt;/span&gt;
+      &lt;input
+        type="text"
+        className="search-input"
+        placeholder="Search products..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onFocus={() => setIsOpen(true)}
+        onBlur={() => setTimeout(() => setIsOpen(false), 200)}
+      /&gt;
+      
+      &lt;div className="search-suggestions"&gt;
+        {suggestions.map((group, idx) => (
+          &lt;div key={idx} className="search-suggestion-group"&gt;
+            &lt;div className="search-suggestion-title"&gt;{group.title}&lt;/div&gt;
+            {group.items.map((item, i) => (
+              &lt;a key={i} href={item.href} className="search-suggestion-item"&gt;
+                &lt;span className="search-suggestion-icon"&gt;&lt;/span&gt;
+                &lt;span className="search-suggestion-text"&gt;{item.text}&lt;/span&gt;
+                &lt;span className="search-suggestion-meta"&gt;{item.meta}&lt;/span&gt;
+              &lt;/a&gt;
+            ))}
+          &lt;/div&gt;
+        ))}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Variants -->
+            <section class="section">
+                <h2>Variants</h2>
+                <p>Different search bar styles.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'variants-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'variants-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'variants-jsx')">JSX</button>
+                </div>
+                
+                <div id="variants-preview" class="tab-content active">
+                    <div class="preview-box" style="flex-direction: column; align-items: stretch; gap: var(--spacing-6);">
+                        <div>
+                            <p style="margin-bottom: var(--spacing-2); font-size: var(--font-size-sm); color: var(--color-text-secondary);">Filled Background</p>
+                            <div class="search search-filled">
+                                <span class="search-icon"></span>
+                                <input type="text" class="search-input" placeholder="Search...">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <p style="margin-bottom: var(--spacing-2); font-size: var(--font-size-sm); color: var(--color-text-secondary);">Borderless</p>
+                            <div class="search search-borderless">
+                                <span class="search-icon"></span>
+                                <input type="text" class="search-input" placeholder="Search...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="variants-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Filled Background --&gt;
+&lt;div class="search search-filled"&gt;...&lt;/div&gt;
+
+&lt;!-- Borderless --&gt;
+&lt;div class="search search-borderless"&gt;...&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="variants-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;SearchBar variant="filled" /&gt;
+&lt;SearchBar variant="borderless" /&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sizes -->
+            <section class="section">
+                <h2>Sizes</h2>
+                <p>Small, default, and large search bars.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'sizes-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'sizes-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'sizes-jsx')">JSX</button>
+                </div>
+                
+                <div id="sizes-preview" class="tab-content active">
+                    <div class="preview-box" style="flex-direction: column; align-items: stretch; gap: var(--spacing-6);">
+                        <div>
+                            <p style="margin-bottom: var(--spacing-2); font-size: var(--font-size-sm); color: var(--color-text-secondary);">Small</p>
+                            <div class="search search-sm">
+                                <span class="search-icon"></span>
+                                <input type="text" class="search-input" placeholder="Search products...">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <p style="margin-bottom: var(--spacing-2); font-size: var(--font-size-sm); color: var(--color-text-secondary);">Default</p>
+                            <div class="search">
+                                <span class="search-icon"></span>
+                                <input type="text" class="search-input" placeholder="Search products...">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <p style="margin-bottom: var(--spacing-2); font-size: var(--font-size-sm); color: var(--color-text-secondary);">Large</p>
+                            <div class="search search-lg">
+                                <span class="search-icon"></span>
+                                <input type="text" class="search-input" placeholder="Search products...">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="sizes-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Small --&gt;
+&lt;div class="search search-sm"&gt;...&lt;/div&gt;
+
+&lt;!-- Default --&gt;
+&lt;div class="search"&gt;...&lt;/div&gt;
+
+&lt;!-- Large --&gt;
+&lt;div class="search search-lg"&gt;...&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="sizes-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;SearchBar size="sm" /&gt;
+&lt;SearchBar size="md" /&gt;
+&lt;SearchBar size="lg" /&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script>
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.section');
+            section.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            section.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-example').querySelector('code');
+            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+
+        function toggleClear(id) {
+            const search = document.getElementById(id);
+            const input = search.querySelector('.search-input');
+            if (input.value.length > 0) {
+                search.classList.add('has-value');
+            } else {
+                search.classList.remove('has-value');
+            }
+        }
+
+        function clearSearch(id) {
+            const search = document.getElementById(id);
+            const input = search.querySelector('.search-input');
+            input.value = '';
+            search.classList.remove('has-value');
+            input.focus();
+        }
+    </script>
+</body>
+</html>
