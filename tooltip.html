@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltip - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="tooltip.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--color-pearl-200); margin-bottom: var(--spacing-6); }
+        .tab-btn { padding: var(--spacing-3) var(--spacing-5); background: none; border: none; font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-pearl-600); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+        .tab-btn:hover { color: var(--color-waves-500); }
+        .tab-btn.active { color: var(--color-waves-500); border-bottom-color: var(--color-waves-500); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .preview-box { background: var(--color-shore-base); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-16) var(--spacing-8); margin-bottom: var(--spacing-6); display: flex; justify-content: center; align-items: center; min-height: 200px; }
+        .demo-text { font-family: var(--font-heading); color: var(--color-text-secondary); }
+        .demo-word { text-decoration: underline; text-decoration-style: dotted; cursor: help; }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header>
+                <h1>Tooltip</h1>
+                <p class="hero-subtitle">Provide contextual help and additional information on hover.</p>
+            </header>
+
+            <div class="usage-box">
+                <h3>Usage & Purpose</h3>
+                <p><strong>Use tooltips when:</strong> Providing brief explanations for icons, abbreviations, or truncated text, showing additional context without cluttering the interface.</p>
+                <p><strong>Don't use tooltips for:</strong> Critical information users must see, long explanations (use modal), interactive content, or mobile-primary interfaces (tooltips don't work well on touch).</p>
+            </div>
+
+            <!-- Basic Tooltip -->
+            <section class="section">
+                <h2>Basic Tooltip</h2>
+                <p>Default dark tooltip on hover.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'basic-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'basic-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'basic-jsx')">JSX</button>
+                </div>
+                
+                <div id="basic-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <p class="demo-text">
+                            Hover over 
+                            <span class="tooltip tooltip-top tooltip-visible">
+                                <span class="demo-word">MSC Certified</span>
+                                <span class="tooltip-content">
+                                    Marine Stewardship Council
+                                    <span class="tooltip-arrow"></span>
+                                </span>
+                            </span>
+                            for more info
+                        </p>
+                    </div>
+                </div>
+                
+                <div id="basic-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;span class="tooltip tooltip-top"&gt;
+  &lt;span&gt;MSC Certified&lt;/span&gt;
+  &lt;span class="tooltip-content"&gt;
+    Marine Stewardship Council
+    &lt;span class="tooltip-arrow"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/span&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="basic-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const Tooltip = ({ children, content, position = 'top' }) => {
+  return (
+    &lt;span className={`tooltip tooltip-${position}`}&gt;
+      {children}
+      &lt;span className="tooltip-content"&gt;
+        {content}
+        &lt;span className="tooltip-arrow"&gt;&lt;/span&gt;
+      &lt;/span&gt;
+    &lt;/span&gt;
+  );
+};
+
+// Usage
+&lt;Tooltip content="Marine Stewardship Council" position="top"&gt;
+  &lt;span&gt;MSC Certified&lt;/span&gt;
+&lt;/Tooltip&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Positions -->
+            <section class="section">
+                <h2>Positions</h2>
+                <p>Top, right, bottom, and left placement.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'positions-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'positions-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'positions-jsx')">JSX</button>
+                </div>
+                
+                <div id="positions-preview" class="tab-content active">
+                    <div class="preview-box" style="gap: var(--spacing-8);">
+                        <span class="tooltip tooltip-top tooltip-visible">
+                            <button class="btn btn-md btn-secondary-outline">Top</button>
+                            <span class="tooltip-content">
+                                Tooltip on top
+                                <span class="tooltip-arrow"></span>
+                            </span>
+                        </span>
+                        
+                        <span class="tooltip tooltip-right tooltip-visible">
+                            <button class="btn btn-md btn-secondary-outline">Right</button>
+                            <span class="tooltip-content">
+                                Tooltip on right
+                                <span class="tooltip-arrow"></span>
+                            </span>
+                        </span>
+                        
+                        <span class="tooltip tooltip-bottom tooltip-visible">
+                            <button class="btn btn-md btn-secondary-outline">Bottom</button>
+                            <span class="tooltip-content">
+                                Tooltip on bottom
+                                <span class="tooltip-arrow"></span>
+                            </span>
+                        </span>
+                        
+                        <span class="tooltip tooltip-left tooltip-visible">
+                            <button class="btn btn-md btn-secondary-outline">Left</button>
+                            <span class="tooltip-content">
+                                Tooltip on left
+                                <span class="tooltip-arrow"></span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div id="positions-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Top --&gt;
+&lt;span class="tooltip tooltip-top"&gt;...&lt;/span&gt;
+
+&lt;!-- Right --&gt;
+&lt;span class="tooltip tooltip-right"&gt;...&lt;/span&gt;
+
+&lt;!-- Bottom --&gt;
+&lt;span class="tooltip tooltip-bottom"&gt;...&lt;/span&gt;
+
+&lt;!-- Left --&gt;
+&lt;span class="tooltip tooltip-left"&gt;...&lt;/span&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="positions-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;Tooltip content="Tooltip text" position="top"&gt;...&lt;/Tooltip&gt;
+&lt;Tooltip content="Tooltip text" position="right"&gt;...&lt;/Tooltip&gt;
+&lt;Tooltip content="Tooltip text" position="bottom"&gt;...&lt;/Tooltip&gt;
+&lt;Tooltip content="Tooltip text" position="left"&gt;...&lt;/Tooltip&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Variants -->
+            <section class="section">
+                <h2>Variants</h2>
+                <p>Light, error, success, and warning tooltips.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'variants-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'variants-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'variants-jsx')">JSX</button>
+                </div>
+                
+                <div id="variants-preview" class="tab-content active">
+                    <div class="preview-box" style="gap: var(--spacing-6); flex-wrap: wrap;">
+                        <span class="tooltip tooltip-top tooltip-visible">
+                            <button class="btn btn-md btn-secondary-outline">Dark</button>
+                            <span class="tooltip-content">
+                                Default dark tooltip
+                                <span class="tooltip-arrow"></span>
+                            </span>
+                        </span>
+                        
+                        <span class="tooltip tooltip-light tooltip-top tooltip-visible">
+                            <button class="btn btn-md btn-secondary-outline">Light</button>
+                            <span class="tooltip-content">
+                                Light background tooltip
+                                <span class="tooltip-arrow"></span>
+                            </span>
+                        </span>
+                        
+                        <span class="tooltip tooltip-error tooltip-top tooltip-visible">
+                            <button class="btn btn-md btn-secondary-outline">Error</button>
+                            <span class="tooltip-content">
+                                Error message tooltip
+                                <span class="tooltip-arrow"></span>
+                            </span>
+                        </span>
+                        
+                        <span class="tooltip tooltip-success tooltip-top tooltip-visible">
+                            <button class="btn btn-md btn-secondary-outline">Success</button>
+                            <span class="tooltip-content">
+                                Success message tooltip
+                                <span class="tooltip-arrow"></span>
+                            </span>
+                        </span>
+                        
+                        <span class="tooltip tooltip-warning tooltip-top tooltip-visible">
+                            <button class="btn btn-md btn-secondary-outline">Warning</button>
+                            <span class="tooltip-content">
+                                Warning message tooltip
+                                <span class="tooltip-arrow"></span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div id="variants-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Dark (default) --&gt;
+&lt;span class="tooltip tooltip-top"&gt;...&lt;/span&gt;
+
+&lt;!-- Light --&gt;
+&lt;span class="tooltip tooltip-light tooltip-top"&gt;...&lt;/span&gt;
+
+&lt;!-- Error --&gt;
+&lt;span class="tooltip tooltip-error tooltip-top"&gt;...&lt;/span&gt;
+
+&lt;!-- Success --&gt;
+&lt;span class="tooltip tooltip-success tooltip-top"&gt;...&lt;/span&gt;
+
+&lt;!-- Warning --&gt;
+&lt;span class="tooltip tooltip-warning tooltip-top"&gt;...&lt;/span&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="variants-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;Tooltip variant="dark"&gt;...&lt;/Tooltip&gt;
+&lt;Tooltip variant="light"&gt;...&lt;/Tooltip&gt;
+&lt;Tooltip variant="error"&gt;...&lt;/Tooltip&gt;
+&lt;Tooltip variant="success"&gt;...&lt;/Tooltip&gt;
+&lt;Tooltip variant="warning"&gt;...&lt;/Tooltip&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- With Icon -->
+            <section class="section">
+                <h2>With Help Icon</h2>
+                <p>Tooltip attached to a help icon indicator.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'icon-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'icon-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'icon-jsx')">JSX</button>
+                </div>
+                
+                <div id="icon-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <p class="demo-text" style="display: flex; align-items: center; gap: var(--spacing-2);">
+                            Product Origin
+                            <span class="tooltip tooltip-top">
+                                <span class="tooltip-icon">?</span>
+                                <span class="tooltip-content">
+                                    Country where the seafood was caught or farmed
+                                    <span class="tooltip-arrow"></span>
+                                </span>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                
+                <div id="icon-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;span class="tooltip tooltip-top"&gt;
+  &lt;span class="tooltip-icon"&gt;?&lt;/span&gt;
+  &lt;span class="tooltip-content"&gt;
+    Country where the seafood was caught or farmed
+    &lt;span class="tooltip-arrow"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/span&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="icon-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;Tooltip content="Country where the seafood was caught or farmed"&gt;
+  &lt;span className="tooltip-icon"&gt;?&lt;/span&gt;
+&lt;/Tooltip&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Multiline -->
+            <section class="section">
+                <h2>Multiline Tooltip</h2>
+                <p>Tooltip with longer content that wraps to multiple lines.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'multiline-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'multiline-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'multiline-jsx')">JSX</button>
+                </div>
+                
+                <div id="multiline-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <span class="tooltip tooltip-multiline tooltip-top tooltip-visible">
+                            <button class="btn btn-md btn-secondary-outline">Hover for details</button>
+                            <span class="tooltip-content">
+                                This tooltip contains multiple lines of text to provide more detailed information when needed.
+                                <span class="tooltip-arrow"></span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div id="multiline-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;span class="tooltip tooltip-multiline tooltip-top"&gt;
+  &lt;button&gt;Hover for details&lt;/button&gt;
+  &lt;span class="tooltip-content"&gt;
+    This tooltip contains multiple lines of text to provide 
+    more detailed information when needed.
+    &lt;span class="tooltip-arrow"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+&lt;/span&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="multiline-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;Tooltip 
+  multiline 
+  content="This tooltip contains multiple lines of text to provide more detailed information when needed."
+&gt;
+  &lt;button&gt;Hover for details&lt;/button&gt;
+&lt;/Tooltip&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script>
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.section');
+            section.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            section.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-example').querySelector('code');
+            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+    </script>
+</body>
+</html>
