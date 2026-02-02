@@ -28,8 +28,7 @@
         { name: 'Chips', href: 'chips.html' },
         { name: 'Accordion', href: 'accordion.html' },
         { 
-          name: 'Cards', 
-          href: 'cards.html',
+          name: 'Cards',
           hasChildren: true,
           children: [
             { name: 'Product Cards', href: 'product-cards.html' },
@@ -39,8 +38,7 @@
           ]
         },
         { 
-          name: 'Form Components', 
-          href: 'form-components.html',
+          name: 'Form Components',
           hasChildren: true,
           children: [
             { name: 'Input Fields & Forms', href: 'forms.html' },
@@ -49,8 +47,7 @@
           ]
         },
         { 
-          name: 'Feedback & Notifications', 
-          href: 'feedback.html',
+          name: 'Feedback & Notifications',
           hasChildren: true,
           children: [
             { name: 'Snackbar', href: 'snackbar.html' },
@@ -59,8 +56,7 @@
           ]
         },
         { 
-          name: 'Navigation & Layout', 
-          href: 'navigation-layout.html',
+          name: 'Navigation & Layout',
           hasChildren: true,
           children: [
             { name: 'Breadcrumbs', href: 'breadcrumbs.html' },
@@ -70,8 +66,7 @@
           ]
         },
         { 
-          name: 'Data Display', 
-          href: 'data-display.html',
+          name: 'Data Display',
           hasChildren: true,
           children: [
             { name: 'Table', href: 'table.html' },
@@ -226,16 +221,16 @@
         
         // Check if item has children (nested navigation)
         if (item.hasChildren && item.children && item.children.length > 0) {
-          // Determine if parent or any child is active
+          // Determine if any child is active
           const isChildActive = item.children.some(child => currentPage === child.href);
-          const isExpanded = isActive || isChildActive;
+          const isExpanded = isChildActive;
           
           navHTML += `
             <div class="sidenav-item-parent ${isExpanded ? 'expanded' : ''}">
               <div class="sidenav-item-header">
-                <a href="${item.href}" class="sidenav-item ${isActive}">
+                <span class="sidenav-item-label">
                   ${item.name}
-                </a>
+                </span>
                 <button class="sidenav-toggle" aria-label="Toggle ${item.name}">
                   <span class="sidenav-chevron"></span>
                 </button>
@@ -336,6 +331,17 @@
         gap: var(--spacing-2);
       }
       
+      /* Non-clickable parent label */
+      .sidenav-item-label {
+        flex: 1;
+        padding: var(--spacing-2) var(--spacing-4);
+        font-family: var(--font-heading);
+        font-size: 14px;
+        font-weight: var(--font-weight-medium);
+        color: var(--color-text-primary);
+        cursor: default;
+      }
+      
       .sidenav-item-header .sidenav-item {
         flex: 1;
       }
@@ -420,10 +426,10 @@
   function attachToggleHandlers() {
     // Wait a tick for DOM to be ready
     setTimeout(() => {
-      document.querySelectorAll('.sidenav-toggle').forEach(toggle => {
-        toggle.addEventListener('click', function(e) {
+      // Make entire header clickable
+      document.querySelectorAll('.sidenav-item-header').forEach(header => {
+        header.addEventListener('click', function(e) {
           e.preventDefault();
-          e.stopPropagation();
           
           const parent = this.closest('.sidenav-item-parent');
           const children = parent.querySelector('.sidenav-children');
@@ -432,6 +438,9 @@
           parent.classList.toggle('expanded');
           children.classList.toggle('expanded');
         });
+        
+        // Add cursor pointer
+        header.style.cursor = 'pointer';
       });
     }, 100);
   }
