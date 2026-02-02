@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empty States - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="buttons.css">
+    <link rel="stylesheet" href="empty-states.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--color-pearl-200); margin-bottom: var(--spacing-6); }
+        .tab-btn { padding: var(--spacing-3) var(--spacing-5); background: none; border: none; font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-pearl-600); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+        .tab-btn:hover { color: var(--color-waves-500); }
+        .tab-btn.active { color: var(--color-waves-500); border-bottom-color: var(--color-waves-500); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .preview-box { background: var(--color-shore-base); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header>
+                <h1>Empty States</h1>
+                <p class="hero-subtitle">Guide users when no content is available and provide clear next actions.</p>
+            </header>
+
+            <div class="usage-box">
+                <h3>Usage & Purpose</h3>
+                <p><strong>Use empty states when:</strong> No data exists yet, search returns no results, filters remove all items, or an error prevents content display.</p>
+                <p><strong>Don't use empty states for:</strong> Loading states (use skeleton or spinner), temporary network issues (use error message), or when content is intentionally hidden.</p>
+            </div>
+
+            <!-- No Orders -->
+            <section class="section">
+                <h2>No Orders</h2>
+                <p>Empty state when user has no orders yet.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'orders-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'orders-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'orders-jsx')">JSX</button>
+                </div>
+                
+                <div id="orders-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">
+                                <span class="empty-state-icon-inner"></span>
+                            </div>
+                            <h3 class="empty-state-title">No orders yet</h3>
+                            <p class="empty-state-description">
+                                You haven't placed any orders. Start browsing our catalog to find quality seafood products.
+                            </p>
+                            <div class="empty-state-actions">
+                                <button class="btn btn-md btn-primary">Browse Products</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="orders-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="empty-state"&gt;
+  &lt;div class="empty-state-icon"&gt;
+    &lt;span class="empty-state-icon-inner"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;h3 class="empty-state-title"&gt;No orders yet&lt;/h3&gt;
+  &lt;p class="empty-state-description"&gt;
+    You haven't placed any orders. Start browsing our catalog 
+    to find quality seafood products.
+  &lt;/p&gt;
+  &lt;div class="empty-state-actions"&gt;
+    &lt;button class="btn btn-md btn-primary"&gt;Browse Products&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="orders-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const EmptyState = ({ title, description, action, onAction }) => {
+  return (
+    &lt;div className="empty-state"&gt;
+      &lt;div className="empty-state-icon"&gt;
+        &lt;span className="empty-state-icon-inner"&gt;&lt;/span&gt;
+      &lt;/div&gt;
+      &lt;h3 className="empty-state-title"&gt;{title}&lt;/h3&gt;
+      &lt;p className="empty-state-description"&gt;{description}&lt;/p&gt;
+      &lt;div className="empty-state-actions"&gt;
+        &lt;button className="btn btn-md btn-primary" onClick={onAction}&gt;
+          {action}
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+};
+
+// Usage
+&lt;EmptyState
+  title="No orders yet"
+  description="You haven't placed any orders. Start browsing our catalog to find quality seafood products."
+  action="Browse Products"
+  onAction={() => navigate('/products')}
+/&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- No Search Results -->
+            <section class="section">
+                <h2>No Search Results</h2>
+                <p>Empty state when search returns no results.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'search-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'search-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'search-jsx')">JSX</button>
+                </div>
+                
+                <div id="search-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="empty-state empty-state-search">
+                            <div class="empty-state-icon">
+                                <span class="empty-state-icon-inner"></span>
+                            </div>
+                            <h3 class="empty-state-title">No results found</h3>
+                            <p class="empty-state-description">
+                                We couldn't find any products matching "lobster tails". Try adjusting your search or browse our categories.
+                            </p>
+                            <div class="empty-state-actions">
+                                <button class="btn btn-md btn-primary-outline">Clear Search</button>
+                                <button class="btn btn-md btn-secondary-outline">Browse Categories</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="search-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="empty-state empty-state-search"&gt;
+  &lt;div class="empty-state-icon"&gt;
+    &lt;span class="empty-state-icon-inner"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;h3 class="empty-state-title"&gt;No results found&lt;/h3&gt;
+  &lt;p class="empty-state-description"&gt;
+    We couldn't find any products matching "lobster tails". 
+    Try adjusting your search or browse our categories.
+  &lt;/p&gt;
+  &lt;div class="empty-state-actions"&gt;
+    &lt;button class="btn btn-md btn-primary-outline"&gt;Clear Search&lt;/button&gt;
+    &lt;button class="btn btn-md btn-secondary-outline"&gt;Browse Categories&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="search-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;EmptyState
+  variant="search"
+  title="No results found"
+  description={`We couldn't find any products matching "${query}". Try adjusting your search or browse our categories.`}
+  actions={[
+    { label: 'Clear Search', onClick: handleClear, variant: 'primary-outline' },
+    { label: 'Browse Categories', onClick: handleBrowse, variant: 'secondary-outline' }
+  ]}
+/&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Error State -->
+            <section class="section">
+                <h2>Error State</h2>
+                <p>Empty state for errors or failed operations.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'error-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'error-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'error-jsx')">JSX</button>
+                </div>
+                
+                <div id="error-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="empty-state empty-state-error">
+                            <div class="empty-state-icon">
+                                <span class="empty-state-icon-inner"></span>
+                            </div>
+                            <h3 class="empty-state-title">Failed to load orders</h3>
+                            <p class="empty-state-description">
+                                We couldn't retrieve your orders. Please check your connection and try again.
+                            </p>
+                            <div class="empty-state-actions">
+                                <button class="btn btn-md btn-primary">Retry</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="error-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="empty-state empty-state-error"&gt;
+  &lt;div class="empty-state-icon"&gt;
+    &lt;span class="empty-state-icon-inner"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;h3 class="empty-state-title"&gt;Failed to load orders&lt;/h3&gt;
+  &lt;p class="empty-state-description"&gt;
+    We couldn't retrieve your orders. Please check your 
+    connection and try again.
+  &lt;/p&gt;
+  &lt;div class="empty-state-actions"&gt;
+    &lt;button class="btn btn-md btn-primary"&gt;Retry&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="error-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;EmptyState
+  variant="error"
+  title="Failed to load orders"
+  description="We couldn't retrieve your orders. Please check your connection and try again."
+  action="Retry"
+  onAction={handleRetry}
+/&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Compact Variant -->
+            <section class="section">
+                <h2>Compact Variant</h2>
+                <p>Smaller empty state for tight spaces.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'compact-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'compact-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'compact-jsx')">JSX</button>
+                </div>
+                
+                <div id="compact-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="empty-state empty-state-compact">
+                            <div class="empty-state-icon">
+                                <span class="empty-state-icon-inner"></span>
+                            </div>
+                            <h3 class="empty-state-title">No suppliers found</h3>
+                            <p class="empty-state-description">
+                                Add suppliers to start managing your network.
+                            </p>
+                            <div class="empty-state-actions">
+                                <button class="btn btn-md btn-primary">Add Supplier</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="compact-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="empty-state empty-state-compact"&gt;
+  &lt;div class="empty-state-icon"&gt;
+    &lt;span class="empty-state-icon-inner"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;h3 class="empty-state-title"&gt;No suppliers found&lt;/h3&gt;
+  &lt;p class="empty-state-description"&gt;
+    Add suppliers to start managing your network.
+  &lt;/p&gt;
+  &lt;div class="empty-state-actions"&gt;
+    &lt;button class="btn btn-md btn-primary"&gt;Add Supplier&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="compact-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;EmptyState
+  compact
+  title="No suppliers found"
+  description="Add suppliers to start managing your network."
+  action="Add Supplier"
+  onAction={handleAdd}
+/&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Inline Variant -->
+            <section class="section">
+                <h2>Inline Variant</h2>
+                <p>Horizontal layout for tables or lists.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'inline-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'inline-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'inline-jsx')">JSX</button>
+                </div>
+                
+                <div id="inline-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="empty-state empty-state-inline">
+                            <div class="empty-state-icon">
+                                <span class="empty-state-icon-inner"></span>
+                            </div>
+                            <div class="empty-state-content">
+                                <h3 class="empty-state-title">No items in your cart</h3>
+                                <p class="empty-state-description">
+                                    Your shopping cart is empty. Browse products to get started.
+                                </p>
+                                <div class="empty-state-actions">
+                                    <button class="btn btn-md btn-primary-outline">Browse Products</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="inline-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="empty-state empty-state-inline"&gt;
+  &lt;div class="empty-state-icon"&gt;
+    &lt;span class="empty-state-icon-inner"&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="empty-state-content"&gt;
+    &lt;h3 class="empty-state-title"&gt;No items in your cart&lt;/h3&gt;
+    &lt;p class="empty-state-description"&gt;
+      Your shopping cart is empty. Browse products to get started.
+    &lt;/p&gt;
+    &lt;div class="empty-state-actions"&gt;
+      &lt;button class="btn btn-md btn-primary-outline"&gt;Browse Products&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="inline-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;EmptyState
+  inline
+  title="No items in your cart"
+  description="Your shopping cart is empty. Browse products to get started."
+  action="Browse Products"
+  onAction={handleBrowse}
+/&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script>
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.section');
+            section.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            section.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-example').querySelector('code');
+            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+    </script>
+</body>
+</html>

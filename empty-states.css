@@ -1,0 +1,261 @@
+/* ===================================
+   EMPTY STATES
+   WhaleLord Compass Design System
+   =================================== */
+
+/* ===================================
+   EMPTY STATE CONTAINER
+   =================================== */
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-12) var(--spacing-6);
+  min-height: 400px;
+}
+
+/* ===================================
+   EMPTY STATE ICON
+   =================================== */
+
+.empty-state-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: var(--spacing-6);
+  background: var(--color-pearl-100);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.empty-state-icon-inner {
+  width: 48px;
+  height: 48px;
+  background: var(--color-pearl-300);
+}
+
+/* ===================================
+   EMPTY STATE TEXT
+   =================================== */
+
+.empty-state-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--spacing-3);
+}
+
+.empty-state-description {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  max-width: 400px;
+  margin-bottom: var(--spacing-6);
+  line-height: 1.6;
+}
+
+/* ===================================
+   EMPTY STATE ACTIONS
+   =================================== */
+
+.empty-state-actions {
+  display: flex;
+  gap: var(--spacing-3);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ===================================
+   EMPTY STATE ILLUSTRATION
+   =================================== */
+
+.empty-state-illustration {
+  width: 200px;
+  height: 160px;
+  margin-bottom: var(--spacing-6);
+  background: var(--color-pearl-100);
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.empty-state-illustration-shape {
+  width: 120px;
+  height: 120px;
+  background: var(--color-pearl-200);
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+/* ===================================
+   COMPACT VARIANT
+   =================================== */
+
+.empty-state-compact {
+  min-height: 300px;
+  padding: var(--spacing-8) var(--spacing-6);
+}
+
+.empty-state-compact .empty-state-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: var(--spacing-4);
+}
+
+.empty-state-compact .empty-state-icon-inner {
+  width: 36px;
+  height: 36px;
+}
+
+.empty-state-compact .empty-state-title {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-2);
+}
+
+.empty-state-compact .empty-state-description {
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-4);
+}
+
+/* ===================================
+   INLINE VARIANT
+   =================================== */
+
+.empty-state-inline {
+  flex-direction: row;
+  text-align: left;
+  padding: var(--spacing-6);
+  min-height: auto;
+  background: var(--color-pearl-50);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+}
+
+.empty-state-inline .empty-state-icon {
+  margin-bottom: 0;
+  margin-right: var(--spacing-4);
+  flex-shrink: 0;
+}
+
+.empty-state-inline .empty-state-content {
+  flex: 1;
+}
+
+.empty-state-inline .empty-state-title {
+  font-size: var(--font-size-base);
+}
+
+.empty-state-inline .empty-state-description {
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-3);
+}
+
+.empty-state-inline .empty-state-actions {
+  justify-content: flex-start;
+}
+
+/* ===================================
+   SEARCH EMPTY STATE
+   =================================== */
+
+.empty-state-search .empty-state-icon {
+  background: var(--color-pearl-100);
+}
+
+.empty-state-search .empty-state-icon-inner {
+  background: var(--color-pearl-400);
+}
+
+/* ===================================
+   ERROR EMPTY STATE
+   =================================== */
+
+.empty-state-error .empty-state-icon {
+  background: var(--color-error-50);
+}
+
+.empty-state-error .empty-state-icon-inner {
+  background: var(--color-error-200);
+}
+
+.empty-state-error .empty-state-title {
+  color: var(--color-error-700);
+}
+
+/* ===================================
+   BORDERED VARIANT
+   =================================== */
+
+.empty-state-bordered {
+  border: 2px dashed var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--color-pearl-50);
+}
+
+/* ===================================
+   WITH SEARCH BAR
+   =================================== */
+
+.empty-state-search-input {
+  width: 100%;
+  max-width: 400px;
+  margin-top: var(--spacing-4);
+}
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+
+@media (max-width: 640px) {
+  .empty-state {
+    padding: var(--spacing-8) var(--spacing-4);
+    min-height: 300px;
+  }
+  
+  .empty-state-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: var(--spacing-4);
+  }
+  
+  .empty-state-icon-inner {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .empty-state-title {
+    font-size: var(--font-size-lg);
+  }
+  
+  .empty-state-description {
+    font-size: var(--font-size-sm);
+  }
+  
+  .empty-state-illustration {
+    width: 160px;
+    height: 120px;
+  }
+  
+  .empty-state-inline {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .empty-state-inline .empty-state-icon {
+    margin-right: 0;
+    margin-bottom: var(--spacing-4);
+  }
+  
+  .empty-state-inline .empty-state-actions {
+    justify-content: center;
+  }
+}
