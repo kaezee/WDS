@@ -76,12 +76,6 @@
           ]
         }
       ]
-    },
-    {
-      title: 'Patterns',
-      items: [
-        { name: 'Examples', href: 'examples.html' }
-      ]
     }
   ];
 
