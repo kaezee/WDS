@@ -336,7 +336,7 @@
         flex: 1;
         padding: var(--spacing-3) var(--spacing-4);
         font-family: var(--font-heading);
-        font-size: 14px;
+        font-size: 16px;
         font-weight: var(--font-weight-medium);
         color: var(--color-text-primary);
         cursor: default;
