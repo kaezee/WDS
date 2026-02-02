@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading States - Compass Design System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="loading-states.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--color-pearl-200); margin-bottom: var(--spacing-6); }
+        .tab-btn { padding: var(--spacing-3) var(--spacing-5); background: none; border: none; font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-pearl-600); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
+        .tab-btn:hover { color: var(--color-waves-500); }
+        .tab-btn.active { color: var(--color-waves-500); border-bottom-color: var(--color-waves-500); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .preview-box { background: var(--color-shore-base); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="Logo.svg" alt="Whalelord" width="40" height="40">
+                <div class="nav-logo-text">
+                    <div class="nav-logo-brand">WHALELORD</div>
+                    <div class="nav-logo-subtitle">Compass Design System</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidenav" id="sidenav"></div>
+
+    <div class="main-content">
+        <div class="container-with-sidenav">
+            <header>
+                <h1>Loading States</h1>
+                <p class="hero-subtitle">Indicate progress and keep users informed during data fetching or processing.</p>
+            </header>
+
+            <div class="usage-box">
+                <h3>Usage & Purpose</h3>
+                <p><strong>Use loading states when:</strong> Fetching data from the server, processing large operations, or waiting for content to become available.</p>
+                <p><strong>Don't use loading states for:</strong> Instant operations, when content is intentionally empty (use empty state), or for very short delays under 300ms.</p>
+            </div>
+
+            <!-- Spinner -->
+            <section class="section">
+                <h2>Spinner</h2>
+                <p>Rotating circular loader for indeterminate waits.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'spinner-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'spinner-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'spinner-jsx')">JSX</button>
+                </div>
+                
+                <div id="spinner-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="loading-container">
+                            <div class="spinner"></div>
+                            <p class="loading-text">Loading products...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="spinner-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="loading-container"&gt;
+  &lt;div class="spinner"&gt;&lt;/div&gt;
+  &lt;p class="loading-text"&gt;Loading products...&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Sizes --&gt;
+&lt;div class="spinner spinner-sm"&gt;&lt;/div&gt;
+&lt;div class="spinner"&gt;&lt;/div&gt;
+&lt;div class="spinner spinner-lg"&gt;&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="spinner-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const Spinner = ({ size = 'md', text }) => {
+  return (
+    &lt;div className="loading-container"&gt;
+      &lt;div className={`spinner ${size !== 'md' ? `spinner-${size}` : ''}`}&gt;&lt;/div&gt;
+      {text && &lt;p className="loading-text"&gt;{text}&lt;/p&gt;}
+    &lt;/div&gt;
+  );
+};
+
+// Usage
+&lt;Spinner text="Loading products..." /&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skeleton Card -->
+            <section class="section">
+                <h2>Skeleton Card</h2>
+                <p>Placeholder for product cards while loading.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'skeleton-card-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'skeleton-card-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'skeleton-card-jsx')">JSX</button>
+                </div>
+                
+                <div id="skeleton-card-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div style="max-width: 300px;">
+                            <div class="skeleton-card">
+                                <div class="skeleton skeleton-card-image"></div>
+                                <div class="skeleton skeleton-card-title"></div>
+                                <div class="skeleton skeleton-card-text"></div>
+                                <div class="skeleton skeleton-card-text"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="skeleton-card-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="skeleton-card"&gt;
+  &lt;div class="skeleton skeleton-card-image"&gt;&lt;/div&gt;
+  &lt;div class="skeleton skeleton-card-title"&gt;&lt;/div&gt;
+  &lt;div class="skeleton skeleton-card-text"&gt;&lt;/div&gt;
+  &lt;div class="skeleton skeleton-card-text"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="skeleton-card-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const SkeletonCard = () => {
+  return (
+    &lt;div className="skeleton-card"&gt;
+      &lt;div className="skeleton skeleton-card-image"&gt;&lt;/div&gt;
+      &lt;div className="skeleton skeleton-card-title"&gt;&lt;/div&gt;
+      &lt;div className="skeleton skeleton-card-text"&gt;&lt;/div&gt;
+      &lt;div className="skeleton skeleton-card-text"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skeleton Table -->
+            <section class="section">
+                <h2>Skeleton Table</h2>
+                <p>Placeholder for data tables while loading.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'skeleton-table-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'skeleton-table-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'skeleton-table-jsx')">JSX</button>
+                </div>
+                
+                <div id="skeleton-table-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="skeleton-table">
+                            <div class="skeleton-table-header">
+                                <div class="skeleton skeleton-table-header-item"></div>
+                                <div class="skeleton skeleton-table-header-item"></div>
+                                <div class="skeleton skeleton-table-header-item"></div>
+                                <div class="skeleton skeleton-table-header-item"></div>
+                            </div>
+                            <div class="skeleton-table-row">
+                                <div class="skeleton skeleton-table-cell"></div>
+                                <div class="skeleton skeleton-table-cell"></div>
+                                <div class="skeleton skeleton-table-cell"></div>
+                                <div class="skeleton skeleton-table-cell"></div>
+                            </div>
+                            <div class="skeleton-table-row">
+                                <div class="skeleton skeleton-table-cell"></div>
+                                <div class="skeleton skeleton-table-cell"></div>
+                                <div class="skeleton skeleton-table-cell"></div>
+                                <div class="skeleton skeleton-table-cell"></div>
+                            </div>
+                            <div class="skeleton-table-row">
+                                <div class="skeleton skeleton-table-cell"></div>
+                                <div class="skeleton skeleton-table-cell"></div>
+                                <div class="skeleton skeleton-table-cell"></div>
+                                <div class="skeleton skeleton-table-cell"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="skeleton-table-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="skeleton-table"&gt;
+  &lt;div class="skeleton-table-header"&gt;
+    &lt;div class="skeleton skeleton-table-header-item"&gt;&lt;/div&gt;
+    &lt;div class="skeleton skeleton-table-header-item"&gt;&lt;/div&gt;
+    &lt;div class="skeleton skeleton-table-header-item"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;div class="skeleton-table-row"&gt;
+    &lt;div class="skeleton skeleton-table-cell"&gt;&lt;/div&gt;
+    &lt;div class="skeleton skeleton-table-cell"&gt;&lt;/div&gt;
+    &lt;div class="skeleton skeleton-table-cell"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- More rows --&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="skeleton-table-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const SkeletonTable = ({ rows = 3, columns = 4 }) => {
+  return (
+    &lt;div className="skeleton-table"&gt;
+      &lt;div className="skeleton-table-header"&gt;
+        {Array(columns).fill(0).map((_, i) => (
+          &lt;div key={i} className="skeleton skeleton-table-header-item"&gt;&lt;/div&gt;
+        ))}
+      &lt;/div&gt;
+      
+      {Array(rows).fill(0).map((_, i) => (
+        &lt;div key={i} className="skeleton-table-row"&gt;
+          {Array(columns).fill(0).map((_, j) => (
+            &lt;div key={j} className="skeleton skeleton-table-cell"&gt;&lt;/div&gt;
+          ))}
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skeleton List -->
+            <section class="section">
+                <h2>Skeleton List</h2>
+                <p>Placeholder for list items with avatars.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'skeleton-list-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'skeleton-list-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'skeleton-list-jsx')">JSX</button>
+                </div>
+                
+                <div id="skeleton-list-preview" class="tab-content active">
+                    <div class="preview-box">
+                        <div class="skeleton-list">
+                            <div class="skeleton-list-item">
+                                <div class="skeleton skeleton-avatar"></div>
+                                <div class="skeleton-list-content">
+                                    <div class="skeleton skeleton-list-title"></div>
+                                    <div class="skeleton skeleton-list-subtitle"></div>
+                                </div>
+                            </div>
+                            <div class="skeleton-list-item">
+                                <div class="skeleton skeleton-avatar"></div>
+                                <div class="skeleton-list-content">
+                                    <div class="skeleton skeleton-list-title"></div>
+                                    <div class="skeleton skeleton-list-subtitle"></div>
+                                </div>
+                            </div>
+                            <div class="skeleton-list-item">
+                                <div class="skeleton skeleton-avatar"></div>
+                                <div class="skeleton-list-content">
+                                    <div class="skeleton skeleton-list-title"></div>
+                                    <div class="skeleton skeleton-list-subtitle"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="skeleton-list-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;div class="skeleton-list"&gt;
+  &lt;div class="skeleton-list-item"&gt;
+    &lt;div class="skeleton skeleton-avatar"&gt;&lt;/div&gt;
+    &lt;div class="skeleton-list-content"&gt;
+      &lt;div class="skeleton skeleton-list-title"&gt;&lt;/div&gt;
+      &lt;div class="skeleton skeleton-list-subtitle"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- More items --&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="skeleton-list-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>const SkeletonList = ({ items = 3 }) => {
+  return (
+    &lt;div className="skeleton-list"&gt;
+      {Array(items).fill(0).map((_, i) => (
+        &lt;div key={i} className="skeleton-list-item"&gt;
+          &lt;div className="skeleton skeleton-avatar"&gt;&lt;/div&gt;
+          &lt;div className="skeleton-list-content"&gt;
+            &lt;div className="skeleton skeleton-list-title"&gt;&lt;/div&gt;
+            &lt;div className="skeleton skeleton-list-subtitle"&gt;&lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+};</code></pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Other Loaders -->
+            <section class="section">
+                <h2>Other Loaders</h2>
+                <p>Alternative loading indicators.</p>
+                
+                <div class="tab-nav">
+                    <button class="tab-btn active" onclick="switchTab(event, 'loaders-preview')">Preview</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'loaders-html')">HTML</button>
+                    <button class="tab-btn" onclick="switchTab(event, 'loaders-jsx')">JSX</button>
+                </div>
+                
+                <div id="loaders-preview" class="tab-content active">
+                    <div class="preview-box" style="flex-direction: column; gap: var(--spacing-8);">
+                        <div>
+                            <p style="margin-bottom: var(--spacing-3); font-size: var(--font-size-sm); color: var(--color-text-secondary);">Dots Loader</p>
+                            <div class="dots-loader">
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <p style="margin-bottom: var(--spacing-3); font-size: var(--font-size-sm); color: var(--color-text-secondary);">Pulse Loader</p>
+                            <div class="pulse-loader"></div>
+                        </div>
+                        
+                        <div style="width: 100%;">
+                            <p style="margin-bottom: var(--spacing-3); font-size: var(--font-size-sm); color: var(--color-text-secondary);">Progress Bar</p>
+                            <div class="progress-bar">
+                                <div class="progress-bar-fill" style="width: 65%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div style="width: 100%;">
+                            <p style="margin-bottom: var(--spacing-3); font-size: var(--font-size-sm); color: var(--color-text-secondary);">Indeterminate Progress</p>
+                            <div class="progress-bar progress-bar-indeterminate">
+                                <div class="progress-bar-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="loaders-html" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>HTML + CSS</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;!-- Dots --&gt;
+&lt;div class="dots-loader"&gt;
+  &lt;div class="dot"&gt;&lt;/div&gt;
+  &lt;div class="dot"&gt;&lt;/div&gt;
+  &lt;div class="dot"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Pulse --&gt;
+&lt;div class="pulse-loader"&gt;&lt;/div&gt;
+
+&lt;!-- Progress --&gt;
+&lt;div class="progress-bar"&gt;
+  &lt;div class="progress-bar-fill" style="width: 65%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Indeterminate --&gt;
+&lt;div class="progress-bar progress-bar-indeterminate"&gt;
+  &lt;div class="progress-bar-fill"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                </div>
+                
+                <div id="loaders-jsx" class="tab-content">
+                    <div class="code-example">
+                        <div class="code-header">
+                            <span>JSX</span>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                        <pre><code>&lt;DotsLoader /&gt;
+&lt;PulseLoader /&gt;
+&lt;ProgressBar value={65} /&gt;
+&lt;ProgressBar indeterminate /&gt;</code></pre>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Compass Design System v1.0</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script>
+        function switchTab(event, tabId) {
+            const section = event.target.closest('.section');
+            section.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            section.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+        
+        function copyCode(btn) {
+            const codeBlock = btn.closest('.code-example').querySelector('code');
+            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
+                btn.textContent = 'Copied!';
+                setTimeout(() => btn.textContent = 'Copy', 2000);
+            });
+        }
+    </script>
+</body>
+</html>

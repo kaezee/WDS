@@ -1,0 +1,336 @@
+/* ===================================
+   LOADING STATES
+   WhaleLord Compass Design System
+   =================================== */
+
+/* ===================================
+   SPINNER
+   =================================== */
+
+.spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-pearl-200);
+  border-top-color: var(--color-waves-500);
+  border-radius: 50%;
+  animation: spinner-rotate 0.8s linear infinite;
+}
+
+@keyframes spinner-rotate {
+  to { transform: rotate(360deg); }
+}
+
+/* Spinner sizes */
+.spinner-sm {
+  width: 24px;
+  height: 24px;
+  border-width: 2px;
+}
+
+.spinner-lg {
+  width: 56px;
+  height: 56px;
+  border-width: 4px;
+}
+
+/* ===================================
+   LOADING CONTAINER
+   =================================== */
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-12) var(--spacing-6);
+  min-height: 400px;
+}
+
+.loading-text {
+  margin-top: var(--spacing-4);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+/* ===================================
+   SKELETON
+   =================================== */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-pearl-100) 0%,
+    var(--color-pearl-200) 50%,
+    var(--color-pearl-100) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s ease-in-out infinite;
+  border-radius: var(--radius-md);
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ===================================
+   SKELETON CARD
+   =================================== */
+
+.skeleton-card {
+  background: white;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-5);
+}
+
+.skeleton-card-image {
+  width: 100%;
+  height: 200px;
+  margin-bottom: var(--spacing-4);
+}
+
+.skeleton-card-title {
+  width: 70%;
+  height: 20px;
+  margin-bottom: var(--spacing-3);
+}
+
+.skeleton-card-text {
+  width: 100%;
+  height: 14px;
+  margin-bottom: var(--spacing-2);
+}
+
+.skeleton-card-text:last-child {
+  width: 85%;
+  margin-bottom: 0;
+}
+
+/* ===================================
+   SKELETON TABLE
+   =================================== */
+
+.skeleton-table {
+  width: 100%;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: white;
+}
+
+.skeleton-table-header {
+  display: flex;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4) var(--spacing-5);
+  background: var(--color-pearl-100);
+  border-bottom: 2px solid var(--color-border-default);
+}
+
+.skeleton-table-header-item {
+  height: 16px;
+  flex: 1;
+}
+
+.skeleton-table-row {
+  display: flex;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4) var(--spacing-5);
+  border-bottom: 1px solid var(--color-border-default);
+}
+
+.skeleton-table-row:last-child {
+  border-bottom: none;
+}
+
+.skeleton-table-cell {
+  height: 16px;
+  flex: 1;
+}
+
+/* ===================================
+   SKELETON LIST
+   =================================== */
+
+.skeleton-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-3);
+}
+
+.skeleton-list-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background: white;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-md);
+}
+
+.skeleton-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.skeleton-list-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.skeleton-list-title {
+  width: 60%;
+  height: 16px;
+}
+
+.skeleton-list-subtitle {
+  width: 40%;
+  height: 12px;
+}
+
+/* ===================================
+   DOTS LOADER
+   =================================== */
+
+.dots-loader {
+  display: flex;
+  gap: var(--spacing-2);
+  align-items: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: var(--color-waves-500);
+  border-radius: 50%;
+  animation: dot-bounce 1.4s ease-in-out infinite both;
+}
+
+.dot:nth-child(1) {
+  animation-delay: -0.32s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: -0.16s;
+}
+
+@keyframes dot-bounce {
+  0%, 80%, 100% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  40% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===================================
+   PROGRESS BAR
+   =================================== */
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: var(--color-pearl-100);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--color-waves-500);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+/* Indeterminate */
+.progress-bar-indeterminate .progress-bar-fill {
+  width: 30%;
+  animation: progress-slide 1.5s ease-in-out infinite;
+}
+
+@keyframes progress-slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(400%); }
+}
+
+/* ===================================
+   PULSE LOADER
+   =================================== */
+
+.pulse-loader {
+  width: 40px;
+  height: 40px;
+  background: var(--color-waves-500);
+  border-radius: 50%;
+  animation: pulse-scale 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse-scale {
+  0%, 100% {
+    transform: scale(0.8);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===================================
+   INLINE LOADING
+   =================================== */
+
+.loading-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-heading);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.loading-inline .spinner {
+  width: 16px;
+  height: 16px;
+  border-width: 2px;
+}
+
+/* ===================================
+   OVERLAY
+   =================================== */
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+
+@media (max-width: 640px) {
+  .loading-container {
+    min-height: 300px;
+    padding: var(--spacing-8) var(--spacing-4);
+  }
+  
+  .skeleton-card-image {
+    height: 160px;
+  }
+}
