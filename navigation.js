@@ -334,7 +334,7 @@
       /* Non-clickable parent label */
       .sidenav-item-label {
         flex: 1;
-        padding: var(--spacing-2) var(--spacing-4);
+        padding: var(--spacing-3) var(--spacing-4);
         font-family: var(--font-heading);
         font-size: 14px;
         font-weight: var(--font-weight-medium);
