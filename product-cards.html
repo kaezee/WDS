@@ -34,6 +34,7 @@
             color: var(--color-pearl-500);
         }
     </style>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
     <nav class="nav">
@@ -52,7 +53,7 @@
 
     <div class="main-content">
         <div class="container-with-sidenav">
-            <header>
+            <header class="hero">
                 <h1>Cards</h1>
                 <p class="hero-subtitle">Container components for marketplace listings, content, and information display.</p>
             </header>
@@ -115,7 +116,7 @@
                                 <div class="card-product-content">
                                     <div class="card-product-attributes">
                                         <span class="status-text status-text-popular">
-                                            <span class="status-text-icon">⭐</span>
+                                            <i data-lucide="star" class="icon-sm status-text-icon"></i>
                                             Popular
                                         </span>
                                     </div>
@@ -142,11 +143,11 @@
                                 <div class="card-product-content">
                                     <div class="card-product-attributes">
                                         <span class="status-text status-text-recommended">
-                                            <span class="status-text-icon">✓</span>
+                                            <i data-lucide="check" class="icon-sm icon-check status-text-icon"></i>
                                             Recommended
                                         </span>
                                         <span class="status-text status-text-featured">
-                                            <span class="status-text-icon">🔥</span>
+                                            <i data-lucide="flame" class="icon-sm status-text-icon"></i>
                                             Featured
                                         </span>
                                     </div>
@@ -344,5 +345,6 @@
             });
         }
     </script>
+    <script>if(window.lucide) lucide.createIcons();</script>
 </body>
 </html>

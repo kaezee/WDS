@@ -19,6 +19,7 @@
         .preview-box { background: var(--color-pearl-100); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); }
         .snackbar-demo-container { display: flex; flex-direction: column; gap: var(--spacing-4); max-width: 600px; margin: 0 auto; }
     </style>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
     <nav class="nav">
@@ -37,7 +38,7 @@
 
     <div class="main-content">
         <div class="container-with-sidenav">
-            <header>
+            <header class="hero">
                 <h1>Snackbar / Toast</h1>
                 <p class="hero-subtitle">Temporary notification messages that provide feedback on user actions without interrupting workflow.</p>
             </header>
@@ -69,7 +70,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                 </svg>
                                 <span>Quote request sent successfully</span>
-                                <button class="snackbar-close">✕</button>
+                                <button class="snackbar-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
                             </div>
 
                             <!-- Error - Darker Red -->
@@ -78,7 +79,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                                 </svg>
                                 <span>Failed to process payment</span>
-                                <button class="snackbar-close">✕</button>
+                                <button class="snackbar-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
                             </div>
 
                             <!-- Warning - Darker Orange -->
@@ -87,7 +88,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
                                 </svg>
                                 <span>Stock running low for this product</span>
-                                <button class="snackbar-close">✕</button>
+                                <button class="snackbar-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
                             </div>
 
                             <!-- Info - Deep Ocean Blue -->
@@ -96,13 +97,13 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                                 <span>New suppliers added to marketplace</span>
-                                <button class="snackbar-close">✕</button>
+                                <button class="snackbar-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
                             </div>
 
                             <!-- Default - Neutral Pearl -->
                             <div class="snackbar snackbar-default" style="position: relative; bottom: auto; left: auto; transform: none;">
                                 <span>Your changes have been saved</span>
-                                <button class="snackbar-close">✕</button>
+                                <button class="snackbar-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
                             </div>
                         </div>
                     </div>
@@ -218,7 +219,7 @@
                                 </svg>
                                 <span>Item added to cart</span>
                                 <button class="snackbar-action">View Cart</button>
-                                <button class="snackbar-close">✕</button>
+                                <button class="snackbar-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
                             </div>
 
                             <!-- Error with Retry -->
@@ -228,14 +229,14 @@
                                 </svg>
                                 <span>Connection failed</span>
                                 <button class="snackbar-action">Retry</button>
-                                <button class="snackbar-close">✕</button>
+                                <button class="snackbar-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
                             </div>
 
                             <!-- Default with Undo -->
                             <div class="snackbar snackbar-default" style="position: relative; bottom: auto; left: auto; transform: none;">
                                 <span>Product removed from list</span>
                                 <button class="snackbar-action">Undo</button>
-                                <button class="snackbar-close">✕</button>
+                                <button class="snackbar-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
                             </div>
                         </div>
                     </div>
@@ -326,7 +327,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                 </svg>
                                 <span>Bottom Center (Default)</span>
-                                <button class="snackbar-close">✕</button>
+                                <button class="snackbar-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
                             </div>
 
                             <!-- Top Right -->
@@ -335,7 +336,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                 </svg>
                                 <span>Top Right</span>
-                                <button class="snackbar-close">✕</button>
+                                <button class="snackbar-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
                             </div>
 
                             <!-- Top Center -->
@@ -344,7 +345,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
                                 </svg>
                                 <span>Top Center</span>
-                                <button class="snackbar-close">✕</button>
+                                <button class="snackbar-close"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
                             </div>
                         </div>
                     </div>
@@ -440,5 +441,6 @@
             });
         }
     </script>
+    <script>if(window.lucide) lucide.createIcons();</script>
 </body>
 </html>

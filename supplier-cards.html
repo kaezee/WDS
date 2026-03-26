@@ -33,6 +33,7 @@
             color: var(--color-pearl-600);
         }
     </style>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
     <nav class="nav">
@@ -51,7 +52,7 @@
 
     <div class="main-content">
         <div class="container-with-sidenav">
-            <header>
+            <header class="hero">
                 <h1>Supplier Cards</h1>
                 <p class="hero-subtitle">Display supplier profiles with logos, locations, certifications, and contact actions.</p>
             </header>
@@ -295,5 +296,6 @@
             });
         }
     </script>
+    <script>if(window.lucide) lucide.createIcons();</script>
 </body>
 </html>

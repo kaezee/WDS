@@ -83,6 +83,7 @@
             font-family: var(--font-mono);
         }
     </style>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
     <nav class="nav">
@@ -149,7 +150,7 @@
                         <div style="max-width: 800px; width: 100%;">
                             <div class="stepper">
                                 <div class="stepper-step completed">
-                                    <div class="stepper-circle">✓</div>
+                                    <div class="stepper-circle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                                     <span class="stepper-label">Product Details</span>
                                 </div>
                                 <div class="stepper-line completed"></div>
@@ -256,14 +257,14 @@ const checkoutSteps = [
                         <div style="max-width: 500px; width: 100%;">
                             <div class="stepper stepper-vertical">
                                 <div class="stepper-step completed">
-                                    <div class="stepper-circle">✓</div>
+                                    <div class="stepper-circle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                                     <div>
                                         <span class="stepper-label">Company Information</span>
                                     </div>
                                     <div class="stepper-line completed"></div>
                                 </div>
                                 <div class="stepper-step completed">
-                                    <div class="stepper-circle">✓</div>
+                                    <div class="stepper-circle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                                     <div>
                                         <span class="stepper-label">Product Selection</span>
                                     </div>
@@ -359,7 +360,7 @@ const checkoutSteps = [
                                 <h4 style="margin-bottom: var(--spacing-4); color: var(--color-pearl-800);">Horizontal</h4>
                                 <div class="stepper stepper-compact">
                                     <div class="stepper-step completed">
-                                        <div class="stepper-circle">✓</div>
+                                        <div class="stepper-circle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                                         <span class="stepper-label">Setup</span>
                                     </div>
                                     <div class="stepper-line completed"></div>
@@ -380,7 +381,7 @@ const checkoutSteps = [
                                 <h4 style="margin-bottom: var(--spacing-4); color: var(--color-pearl-800);">Vertical</h4>
                                 <div class="stepper stepper-vertical stepper-compact">
                                     <div class="stepper-step completed">
-                                        <div class="stepper-circle">✓</div>
+                                        <div class="stepper-circle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                                         <div><span class="stepper-label">Setup</span></div>
                                         <div class="stepper-line completed"></div>
                                     </div>
@@ -573,7 +574,7 @@ const orderSteps = [
                         <div style="max-width: 600px; width: 100%;">
                             <div class="stepper stepper-vertical">
                                 <div class="stepper-step completed">
-                                    <div class="stepper-circle">✓</div>
+                                    <div class="stepper-circle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
                                     <div>
                                         <span class="stepper-label">Business Details</span>
                                         <span class="stepper-description">Company name, tax ID, and registration</span>
@@ -693,5 +694,6 @@ const onboardingSteps = [
             document.getElementById(tabId).classList.add('active');
         }
     </script>
+    <script>if(window.lucide) lucide.createIcons();</script>
 </body>
 </html>

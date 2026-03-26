@@ -268,6 +268,7 @@
             }
         }
     </style>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
     <!-- Fixed Top Navigation -->
@@ -311,17 +312,17 @@
                 <h3>When to Use</h3>
                 <p>Use [component name] when:</p>
                 <ul>
-                    <li>✅ The user needs to trigger an immediate action (e.g., submit a form, add to cart)</li>
-                    <li>✅ You want to draw attention to a primary call-to-action</li>
-                    <li>✅ The action will navigate the user to another part of the system</li>
+                    <li><i data-lucide="check" class="icon-sm icon-check"></i>The user needs to trigger an immediate action (e.g., submit a form, add to cart)</li>
+                    <li><i data-lucide="check" class="icon-sm icon-check"></i>You want to draw attention to a primary call-to-action</li>
+                    <li><i data-lucide="check" class="icon-sm icon-check"></i>The action will navigate the user to another part of the system</li>
                 </ul>
                 
                 <h3>When NOT to Use</h3>
                 <p>Avoid using [component name] when:</p>
                 <ul>
-                    <li>❌ Simple navigation between pages is needed (use links instead)</li>
-                    <li>❌ Toggling an interface state (use toggle switches or checkboxes)</li>
-                    <li>❌ Selecting multiple options from a list (use checkboxes)</li>
+                    <li><i data-lucide="x" class="icon-sm icon-x"></i>Simple navigation between pages is needed (use links instead)</li>
+                    <li><i data-lucide="x" class="icon-sm icon-x"></i>Toggling an interface state (use toggle switches or checkboxes)</li>
+                    <li><i data-lucide="x" class="icon-sm icon-x"></i>Selecting multiple options from a list (use checkboxes)</li>
                 </ul>
             </div>
 
@@ -445,7 +446,7 @@
                 
                 <div class="dos-donts">
                     <div class="dos">
-                        <h4>✅ Do</h4>
+                        <h4><i data-lucide="check-circle" class="icon-md icon-check"></i> Do</h4>
                         <ul>
                             <li>Use clear, action-oriented labels ("Add to Cart", "Submit Order")</li>
                             <li>Keep labels concise (2-4 words maximum)</li>
@@ -456,7 +457,7 @@
                     </div>
                     
                     <div class="donts">
-                        <h4>❌ Don't</h4>
+                        <h4><i data-lucide="x-circle" class="icon-md icon-x"></i> Don't</h4>
                         <ul>
                             <li>Don't use vague labels like "Click here" or "Submit"</li>
                             <li>Don't make buttons too small (minimum 32px height for touch)</li>
@@ -471,14 +472,14 @@
             <!-- ACCESSIBILITY -->
             <section class="section" id="accessibility">
                 <div class="accessibility-section">
-                    <h3>♿ Accessibility Guidelines</h3>
+                    <h3><i data-lucide="accessibility" class="icon-md"></i> Accessibility Guidelines</h3>
                     <ul>
-                        <li>✅ <strong>Minimum size:</strong> 44x44px touch target (WCAG 2.5.5)</li>
-                        <li>✅ <strong>Color contrast:</strong> 4.5:1 minimum for text, AAA compliant</li>
-                        <li>✅ <strong>Keyboard navigation:</strong> Focusable via Tab, activatable with Enter/Space</li>
-                        <li>✅ <strong>Screen readers:</strong> Use descriptive aria-labels when needed</li>
-                        <li>✅ <strong>Focus indicator:</strong> Visible 3px outline on focus</li>
-                        <li>✅ <strong>States:</strong> Clear visual feedback for hover, active, disabled states</li>
+                        <li><i data-lucide="check" class="icon-sm icon-check"></i> <strong>Minimum size:</strong> 44x44px touch target (WCAG 2.5.5)</li>
+                        <li><i data-lucide="check" class="icon-sm icon-check"></i> <strong>Color contrast:</strong> 4.5:1 minimum for text, AAA compliant</li>
+                        <li><i data-lucide="check" class="icon-sm icon-check"></i> <strong>Keyboard navigation:</strong> Focusable via Tab, activatable with Enter/Space</li>
+                        <li><i data-lucide="check" class="icon-sm icon-check"></i> <strong>Screen readers:</strong> Use descriptive aria-labels when needed</li>
+                        <li><i data-lucide="check" class="icon-sm icon-check"></i> <strong>Focus indicator:</strong> Visible 3px outline on focus</li>
+                        <li><i data-lucide="check" class="icon-sm icon-check"></i> <strong>States:</strong> Clear visual feedback for hover, active, disabled states</li>
                     </ul>
                 </div>
             </section>
@@ -546,5 +547,6 @@
             });
         }
     </script>
+    <script>if(window.lucide) lucide.createIcons();</script>
 </body>
 </html>

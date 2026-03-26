@@ -20,6 +20,7 @@
         .demo-text { font-family: var(--font-heading); color: var(--color-text-secondary); }
         .demo-word { text-decoration: underline; text-decoration-style: dotted; cursor: help; }
     </style>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
     <nav class="nav">
@@ -38,7 +39,7 @@
 
     <div class="main-content">
         <div class="container-with-sidenav">
-            <header>
+            <header class="hero">
                 <h1>Tooltip</h1>
                 <p class="hero-subtitle">Provide contextual help and additional information on hover.</p>
             </header>
@@ -428,5 +429,6 @@
             });
         }
     </script>
+    <script>if(window.lucide) lucide.createIcons();</script>
 </body>
 </html>

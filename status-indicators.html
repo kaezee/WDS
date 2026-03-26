@@ -110,6 +110,7 @@
             line-height: var(--line-height-relaxed);
         }
     </style>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
     <nav class="nav">
@@ -364,9 +365,9 @@
                 
                 <div id="text-preview" class="tab-content active">
                     <div class="preview-box">
-                        <span class="status-text status-text-popular">⭐ Popular</span>
-                        <span class="status-text status-text-recommended">✓ Recommended</span>
-                        <span class="status-text status-text-featured">🔥 Featured</span>
+                        <span class="status-text status-text-popular"><i data-lucide="star" class="icon-sm"></i> Popular</span>
+                        <span class="status-text status-text-recommended"><i data-lucide="check" class="icon-sm icon-check"></i> Recommended</span>
+                        <span class="status-text status-text-featured"><i data-lucide="flame" class="icon-sm"></i> Featured</span>
                     </div>
                 </div>
                 
@@ -410,5 +411,6 @@
             document.getElementById(tabId).classList.add('active');
         }
     </script>
+    <script>if(window.lucide) lucide.createIcons();</script>
 </body>
 </html>

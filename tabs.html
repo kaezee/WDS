@@ -19,6 +19,7 @@
         .preview-box { background: var(--color-shore-base); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); }
         .demo-content { padding: var(--spacing-6); background: white; border: 1px solid var(--color-border-default); border-radius: var(--radius-md); font-family: var(--font-heading); color: var(--color-text-secondary); }
     </style>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
     <nav class="nav">
@@ -37,7 +38,7 @@
 
     <div class="main-content">
         <div class="container-with-sidenav">
-            <header>
+            <header class="hero">
                 <h1>Tabs</h1>
                 <p class="hero-subtitle">Organize content into separate views with tabbed navigation.</p>
             </header>
@@ -550,5 +551,6 @@ function switchTab(containerId, index) {
             });
         }
     </script>
+    <script>if(window.lucide) lucide.createIcons();</script>
 </body>
 </html>

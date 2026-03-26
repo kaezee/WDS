@@ -29,25 +29,6 @@
         /* Hero Section */
         .hero {
             text-align: left;
-            max-width: 900px;
-            margin: 0 0 var(--spacing-3xl) 0;
-            padding: var(--spacing-3xl) var(--spacing-lg);
-        }
-        
-        .hero h1 {
-            font-size: var(--font-size-6xl);
-            font-weight: var(--font-weight-extrabold);
-            color: var(--color-waves-500);
-            margin-bottom: var(--spacing-md);
-            line-height: var(--line-height-tight);
-        }
-        
-        .hero-subtitle {
-            font-size: var(--font-size-lg);
-            line-height: var(--line-height-relaxed);
-            color: var(--color-text-secondary);
-            max-width: 700px;
-            margin: 0;
         }
         
         /* Principles Grid */
@@ -243,6 +224,7 @@
             }
         }
     </style>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
     <nav class="nav">
@@ -271,7 +253,7 @@
 
             <!-- QUICK START -->
             <div class="quick-start">
-                <h3>🚀 Quick Start for Developers</h3>
+                <h3><i data-lucide="rocket" class="icon-md"></i> Quick Start for Developers</h3>
                 <p>Import the WhaleLord design tokens to get started:</p>
                 <code>&lt;link rel="stylesheet" href="whalelord-tokens.css"&gt;</code>
                 <code>&lt;link rel="stylesheet" href="base-styles.css"&gt;</code>
@@ -285,7 +267,7 @@
                 <h2>Design Principles</h2>
                 <div class="principles">
                     <div class="principle">
-                        <h3>🌊 Ocean-Inspired</h3>
+                        <h3><i data-lucide="waves" class="icon-md"></i> Ocean-Inspired</h3>
                         <p>
                             Our color palette draws from maritime themes — Waves blues for trust and professionalism, 
                             Pearl neutrals for clean surfaces, and Coral accents for semantic feedback. 
@@ -293,21 +275,21 @@
                         </p>
                     </div>
                     <div class="principle">
-                        <h3>⚡ Performance First</h3>
+                        <h3><i data-lucide="zap" class="icon-md"></i> Performance First</h3>
                         <p>
                             Built with CSS custom properties and utility-first approach for minimal overhead. 
                             Optimized for fast load times and smooth interactions across all devices and network conditions.
                         </p>
                     </div>
                     <div class="principle">
-                        <h3>♿ Accessibility Built-in</h3>
+                        <h3><i data-lucide="accessibility" class="icon-md"></i> Accessibility Built-in</h3>
                         <p>
                             WCAG AA compliance by default. Every component tested for color contrast (4.5:1 minimum), 
                             keyboard navigation, screen reader compatibility, and touch target sizing (44x44px minimum).
                         </p>
                     </div>
                     <div class="principle">
-                        <h3>📱 Responsive by Design</h3>
+                        <h3><i data-lucide="smartphone" class="icon-md"></i> Responsive by Design</h3>
                         <p>
                             Mobile-first approach with touch-friendly targets and adaptive layouts. 
                             Components work seamlessly from 320px mobile screens to 2560px desktop monitors.
@@ -323,7 +305,7 @@
                 
                 <div class="grid-2">
                     <div class="card">
-                        <h3>🎨 Colors</h3>
+                        <h3><i data-lucide="palette" class="icon-md"></i> Colors</h3>
                         <p>Ocean-inspired palette with Waves (primary blues), Shore (neutral surfaces), Pearl (grayscale), and Coral (semantic feedback).</p>
                         <ul>
                             <li>→ <a href="colors.html">View Color System</a></li>
@@ -331,7 +313,7 @@
                     </div>
 
                     <div class="card">
-                        <h3>✍️ Typography</h3>
+                        <h3><i data-lucide="pen-line" class="icon-md"></i> Typography</h3>
                         <p>DM Sans for content, Inter for data values, Roboto Mono for code. Complete type scale from 12px to 60px.</p>
                         <ul>
                             <li>→ <a href="typography.html">View Typography</a></li>
@@ -405,7 +387,7 @@
                 </p>
                 
                 <div class="quick-start">
-                    <h3>🤖 Using with AI Tools</h3>
+                    <h3><i data-lucide="bot" class="icon-md"></i> Using with AI Tools</h3>
                     <p>Copy this page's URL and reference it in your prompts:</p>
                     <div style="background: var(--color-pearl-100); padding: var(--spacing-md); border-radius: var(--radius-md); margin: var(--spacing-md) 0;">
                         <p style="font-size: var(--font-size-sm); color: var(--color-text-secondary); margin-bottom: var(--spacing-sm);">
@@ -418,10 +400,10 @@
                     </div>
                     <p style="margin-top: var(--spacing-md);">The AI will:</p>
                     <ul style="margin-left: var(--spacing-lg); margin-top: var(--spacing-sm);">
-                        <li>✓ Use Waves (#025E96) for primary actions</li>
-                        <li>✓ Apply DM Sans for content, Inter for prices</li>
-                        <li>✓ Follow accessibility guidelines</li>
-                        <li>✓ Match component patterns exactly</li>
+                        <li><i data-lucide="check" class="icon-sm icon-check"></i>Use Waves (#025E96) for primary actions</li>
+                        <li><i data-lucide="check" class="icon-sm icon-check"></i>Apply DM Sans for content, Inter for prices</li>
+                        <li><i data-lucide="check" class="icon-sm icon-check"></i>Follow accessibility guidelines</li>
+                        <li><i data-lucide="check" class="icon-sm icon-check"></i>Match component patterns exactly</li>
                     </ul>
                 </div>
             </section>
@@ -446,5 +428,6 @@
     </footer>
 
     <script src="navigation.js"></script>
+    <script>if(window.lucide) lucide.createIcons();</script>
 </body>
 </html>

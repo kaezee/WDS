@@ -251,6 +251,7 @@
             }
         }
     </style>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
     <nav class="nav">
@@ -583,7 +584,7 @@
 
                 <div class="usage-cards">
                     <div class="usage-card">
-                        <h4>🎨 DM Sans (Content)</h4>
+                        <h4><i data-lucide="palette" class="icon-md"></i> DM Sans (Content)</h4>
                         <ul>
                             <li>All headings H1-H6</li>
                             <li>Body paragraphs and articles</li>
@@ -595,7 +596,7 @@
                     </div>
 
                     <div class="usage-card">
-                        <h4>📊 Inter (Data Values)</h4>
+                        <h4><i data-lucide="bar-chart-2" class="icon-md"></i> Inter (Data Values)</h4>
                         <ul>
                             <li>Prices and currency amounts</li>
                             <li>Statistics and metrics</li>
@@ -607,7 +608,7 @@
                     </div>
 
                     <div class="usage-card">
-                        <h4>⌨️ Roboto Mono (Technical)</h4>
+                        <h4><i data-lucide="terminal" class="icon-md"></i> Roboto Mono (Technical)</h4>
                         <ul>
                             <li>Code snippets and examples</li>
                             <li>Transaction IDs</li>
@@ -626,7 +627,7 @@
 
                 <div class="dos-donts">
                     <div class="dos">
-                        <h4>✅ Do</h4>
+                        <h4><i data-lucide="check-circle" class="icon-md icon-check"></i> Do</h4>
                         <ul>
                             <li>Use DM Sans for all content and storytelling</li>
                             <li>Use Inter exclusively for numbers and prices</li>
@@ -640,7 +641,7 @@
                     </div>
 
                     <div class="donts">
-                        <h4>❌ Don't</h4>
+                        <h4><i data-lucide="x-circle" class="icon-md icon-x"></i> Don't</h4>
                         <ul>
                             <li>Don't mix DM Sans and Inter in body paragraphs</li>
                             <li>Don't use Inter for headings or general text</li>
@@ -658,13 +659,13 @@
             <!-- ACCESSIBILITY -->
             <section class="section">
                 <div style="background: var(--color-shore-ice); padding: var(--spacing-xl); border-radius: var(--radius-lg);">
-                    <h3>♿ Accessibility Guidelines</h3>
+                    <h3><i data-lucide="accessibility" class="icon-md"></i> Accessibility Guidelines</h3>
                     <ul style="list-style: none; padding: 0;">
-                        <li style="padding: var(--spacing-sm) 0;">✅ <strong>Minimum Size:</strong> Never go below 14px for UI text; 16px is standard body text size</li>
-                        <li style="padding: var(--spacing-sm) 0;">✅ <strong>Line Length:</strong> Limit text to 70-80 characters per line for optimal readability</li>
-                        <li style="padding: var(--spacing-sm) 0;">✅ <strong>Contrast:</strong> All text meets WCAG AA standards with proper color combinations</li>
-                        <li style="padding: var(--spacing-sm) 0;">✅ <strong>Responsive:</strong> Font sizes scale appropriately on mobile devices (minimum 14px)</li>
-                        <li style="padding: var(--spacing-sm) 0;">✅ <strong>Hierarchy:</strong> Clear visual distinction between heading levels using size and weight</li>
+                        <li style="padding: var(--spacing-sm) 0;"><i data-lucide="check" class="icon-sm icon-check"></i> <strong>Minimum Size:</strong> Never go below 14px for UI text; 16px is standard body text size</li>
+                        <li style="padding: var(--spacing-sm) 0;"><i data-lucide="check" class="icon-sm icon-check"></i> <strong>Line Length:</strong> Limit text to 70-80 characters per line for optimal readability</li>
+                        <li style="padding: var(--spacing-sm) 0;"><i data-lucide="check" class="icon-sm icon-check"></i> <strong>Contrast:</strong> All text meets WCAG AA standards with proper color combinations</li>
+                        <li style="padding: var(--spacing-sm) 0;"><i data-lucide="check" class="icon-sm icon-check"></i> <strong>Responsive:</strong> Font sizes scale appropriately on mobile devices (minimum 14px)</li>
+                        <li style="padding: var(--spacing-sm) 0;"><i data-lucide="check" class="icon-sm icon-check"></i> <strong>Hierarchy:</strong> Clear visual distinction between heading levels using size and weight</li>
                     </ul>
                 </div>
             </section>
@@ -677,5 +678,6 @@
     </footer>
 
     <script src="navigation.js"></script>
+    <script>if(window.lucide) lucide.createIcons();</script>
 </body>
 </html>
