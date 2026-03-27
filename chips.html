@@ -78,13 +78,13 @@
                             <h4 style="font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-3);">With Icon</h4>
                             <div class="chip-group">
                                 <span class="chip-filter">
-                                    <span class="chip-filter-icon"></span>
+                                    <i data-lucide="map-pin" class="chip-filter-icon"></i>
                                     Iceland
                                     <button class="chip-filter-remove"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
                                 </span>
-                                
+
                                 <span class="chip-filter">
-                                    <span class="chip-filter-icon"></span>
+                                    <i data-lucide="tag" class="chip-filter-icon"></i>
                                     $0 - $50
                                     <button class="chip-filter-remove"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
                                 </span>
@@ -205,15 +205,15 @@
                             <h4 style="font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-semibold); color: var(--color-text-secondary); margin-bottom: var(--spacing-3);">With Icons</h4>
                             <div class="chip-group">
                                 <span class="chip-interactive selected">
-                                    <span class="chip-interactive-icon"></span>
+                                    <i data-lucide="droplets" class="chip-interactive-icon"></i>
                                     Fresh
                                 </span>
                                 <span class="chip-interactive">
-                                    <span class="chip-interactive-icon"></span>
+                                    <i data-lucide="snowflake" class="chip-interactive-icon"></i>
                                     Frozen
                                 </span>
                                 <span class="chip-interactive selected">
-                                    <span class="chip-interactive-icon"></span>
+                                    <i data-lucide="zap" class="chip-interactive-icon"></i>
                                     Express
                                 </span>
                             </div>
@@ -311,7 +311,7 @@ const CategoryFilter = () => {
                 </div>
                 
                 <div id="count-preview" class="tab-content active">
-                    <div class="preview-box">
+                    <div class="preview-box" style="flex-direction: column; align-items: flex-start;">
                         <div style="display: flex; gap: var(--spacing-6); flex-wrap: wrap; align-items: center;">
                             <div style="display: flex; align-items: center; gap: var(--spacing-2);">
                                 <span style="font-family: var(--font-heading); font-size: var(--font-size-base); color: var(--color-text-primary);">Cart</span>

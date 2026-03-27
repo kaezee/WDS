@@ -35,6 +35,11 @@
   display: block;
 }
 
+/* Hide empty icon slots — only show when actual logo is provided */
+.cert-badge-icon:empty {
+  display: none;
+}
+
 /* ===========================
    COLOR VARIANTS
    =========================== */
