@@ -11,15 +11,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--color-pearl-200); margin-bottom: var(--spacing-6); }
-        .tab-btn { padding: var(--spacing-3) var(--spacing-5); background: none; border: none; font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-pearl-600); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
-        .tab-btn:hover { color: var(--color-waves-500); }
-        .tab-btn.active { color: var(--color-waves-500); border-bottom-color: var(--color-waves-500); }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .preview-box { background: var(--color-shore-base); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); }
-    </style>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
@@ -169,7 +160,7 @@
                     <div class="code-example">
                         <div class="code-header">
                             <span>HTML + CSS</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>&lt;!-- Order Summary Card --&gt;
 &lt;div class="card-order"&gt;
@@ -213,7 +204,7 @@
                     <div class="code-example">
                         <div class="code-header">
                             <span>JSX</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>const OrderCard = ({ order }) => {
   return (
@@ -282,23 +273,6 @@
     </footer>
 
     <script src="navigation.js"></script>
-    <script>
-        function switchTab(event, tabId) {
-            const section = event.target.closest('.section');
-            section.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            section.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            event.target.classList.add('active');
-        }
-        
-        function copyCode(btn) {
-            const codeBlock = btn.closest('.code-example').querySelector('code');
-            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
-                btn.textContent = 'Copied!';
-                setTimeout(() => btn.textContent = 'Copy', 2000);
-            });
-        }
-    </script>
     <script>if(window.lucide) lucide.createIcons();</script>
 </body>
 </html>

@@ -14,60 +14,6 @@
             text-align: left;
         }
 
-        .tab-nav {
-            display: flex;
-            gap: 0;
-            border-bottom: 2px solid var(--color-pearl-200);
-            margin-bottom: var(--spacing-6);
-        }
-        
-        .tab-btn {
-            padding: var(--spacing-3) var(--spacing-5);
-            background: none;
-            border: none;
-            font-family: var(--font-heading);
-            font-size: var(--font-size-sm);
-            font-weight: var(--font-weight-medium);
-            color: var(--color-pearl-600);
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -2px;
-            transition: all 0.2s;
-        }
-        
-        .tab-btn:hover {
-            color: var(--color-waves-500);
-        }
-        
-        .tab-btn.active {
-            color: var(--color-waves-500);
-            border-bottom-color: var(--color-waves-500);
-        }
-        
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        .preview-box {
-            background: white;
-            border: 1px solid var(--color-border-default);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-8);
-            margin-bottom: var(--spacing-6);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-4);
-            flex-wrap: wrap;
-        }
-        
-        .preview-box.dark {
-            background: var(--color-waves-500);
-        }
-
         .component-section {
             margin-bottom: var(--spacing-16);
         }
@@ -498,19 +444,6 @@ const FluidButton = ({ children, variant = 'primary', onClick, size = 'md' }) =&
 
     <script src="navigation.js"></script>
     <script>
-        // Tab switching function
-        function switchTab(event, tabId) {
-            const section = event.target.closest('.component-section');
-            const allTabs = section.querySelectorAll('.tab-content');
-            const allBtns = section.querySelectorAll('.tab-btn');
-            
-            allTabs.forEach(tab => tab.classList.remove('active'));
-            allBtns.forEach(btn => btn.classList.remove('active'));
-            
-            document.getElementById(tabId).classList.add('active');
-            event.target.classList.add('active');
-        }
-
         // Micro-interactions carousel
         const microInteractions = [
             {

@@ -16,7 +16,6 @@
         .component-tab-btn.active { color: var(--color-waves-500); border-bottom-color: var(--color-waves-500); }
         .component-tab-content { display: none; }
         .component-tab-content.active { display: block; }
-        .preview-box { background: var(--color-shore-base); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); }
         .demo-content { padding: var(--spacing-6); background: white; border: 1px solid var(--color-border-default); border-radius: var(--radius-md); font-family: var(--font-heading); color: var(--color-text-secondary); }
     </style>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
@@ -99,7 +98,7 @@
                     <div class="code-example">
                         <div class="code-header">
                             <span>HTML + CSS</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>&lt;div class="tabs" id="my-tabs"&gt;
   &lt;div class="tabs-list" role="tablist"&gt;
@@ -155,7 +154,7 @@ function switchTab(containerId, index) {
                     <div class="code-example">
                         <div class="code-header">
                             <span>JSX</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>const Tabs = ({ tabs, children }) => {
   const [activeTab, setActiveTab] = useState(0);
@@ -258,7 +257,7 @@ function switchTab(containerId, index) {
                     <div class="code-example">
                         <div class="code-header">
                             <span>HTML + CSS</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>&lt;button class="tab active"&gt;
   All Orders
@@ -275,7 +274,7 @@ function switchTab(containerId, index) {
                     <div class="code-example">
                         <div class="code-header">
                             <span>JSX</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>const tabs = [
   { label: 'All Orders', count: 24 },
@@ -336,7 +335,7 @@ function switchTab(containerId, index) {
                     <div class="code-example">
                         <div class="code-header">
                             <span>HTML + CSS</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>&lt;div class="tabs tabs-pills"&gt;
   &lt;div class="tabs-list" role="tablist"&gt;
@@ -353,7 +352,7 @@ function switchTab(containerId, index) {
                     <div class="code-example">
                         <div class="code-header">
                             <span>JSX</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>&lt;Tabs variant="pills" tabs={['Products', 'Suppliers', 'Orders']}&gt;
   {/* content */}
@@ -406,7 +405,7 @@ function switchTab(containerId, index) {
                     <div class="code-example">
                         <div class="code-header">
                             <span>HTML + CSS</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>&lt;div class="tabs tabs-boxed"&gt;
   &lt;div class="tabs-list" role="tablist"&gt;
@@ -423,7 +422,7 @@ function switchTab(containerId, index) {
                     <div class="code-example">
                         <div class="code-header">
                             <span>JSX</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>&lt;Tabs variant="boxed" tabs={['Monthly', 'Quarterly', 'Yearly']}&gt;
   {/* content */}
@@ -482,7 +481,7 @@ function switchTab(containerId, index) {
                     <div class="code-example">
                         <div class="code-header">
                             <span>HTML + CSS</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>&lt;div class="tabs tabs-vertical"&gt;
   &lt;div class="tabs-list" role="tablist"&gt;
@@ -500,7 +499,7 @@ function switchTab(containerId, index) {
                     <div class="code-example">
                         <div class="code-header">
                             <span>JSX</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>&lt;Tabs 
   variant="vertical" 
@@ -529,14 +528,6 @@ function switchTab(containerId, index) {
             event.target.classList.add('active');
         }
         
-        function copyCode(btn) {
-            const codeBlock = btn.closest('.code-example').querySelector('code');
-            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
-                btn.textContent = 'Copied!';
-                setTimeout(() => btn.textContent = 'Copy', 2000);
-            });
-        }
-
         function switchDemoTab(containerId, index) {
             const container = document.getElementById(containerId);
             const tabs = container.querySelectorAll('.tab');

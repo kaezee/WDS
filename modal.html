@@ -10,15 +10,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        .tab-nav { display: flex; gap: 0; border-bottom: 2px solid var(--color-pearl-200); margin-bottom: var(--spacing-6); }
-        .tab-btn { padding: var(--spacing-3) var(--spacing-5); background: none; border: none; font-family: var(--font-heading); font-size: var(--font-size-sm); font-weight: var(--font-weight-medium); color: var(--color-pearl-600); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.2s; }
-        .tab-btn:hover { color: var(--color-waves-500); }
-        .tab-btn.active { color: var(--color-waves-500); border-bottom-color: var(--color-waves-500); }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .preview-box { background: var(--color-shore-base); border: 1px solid var(--color-border-default); border-radius: var(--radius-lg); padding: var(--spacing-8); margin-bottom: var(--spacing-6); display: flex; flex-wrap: wrap; gap: var(--spacing-4); }
-    </style>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
@@ -70,7 +61,7 @@
                     <div class="code-example">
                         <div class="code-header">
                             <span>HTML + CSS</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>&lt;!-- Modal Overlay --&gt;
 &lt;div class="modal-overlay hidden" id="my-modal"&gt;
@@ -115,7 +106,7 @@ function closeModal(id) {
                     <div class="code-example">
                         <div class="code-header">
                             <span>JSX</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>const Modal = ({ isOpen, onClose, title, children, onConfirm, size = 'md' }) => {
   if (!isOpen) return null;
@@ -182,7 +173,7 @@ function closeModal(id) {
                     <div class="code-example">
                         <div class="code-header">
                             <span>HTML + CSS</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>&lt;div class="modal-overlay hidden" id="confirmation-modal"&gt;
   &lt;div class="modal modal-md modal-confirmation"&gt;
@@ -208,7 +199,7 @@ function closeModal(id) {
                     <div class="code-example">
                         <div class="code-header">
                             <span>JSX</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>const ConfirmationModal = ({ isOpen, onClose, onConfirm }) => {
   if (!isOpen) return null;
@@ -262,7 +253,7 @@ function closeModal(id) {
                     <div class="code-example">
                         <div class="code-header">
                             <span>HTML + CSS</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>&lt;div class="modal-overlay hidden" id="warning-modal"&gt;
   &lt;div class="modal modal-md modal-warning"&gt;
@@ -288,7 +279,7 @@ function closeModal(id) {
                     <div class="code-example">
                         <div class="code-header">
                             <span>JSX</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>const WarningModal = ({ isOpen, onClose, onConfirm }) => {
   if (!isOpen) return null;
@@ -342,7 +333,7 @@ function closeModal(id) {
                     <div class="code-example">
                         <div class="code-header">
                             <span>HTML + CSS</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>&lt;div class="modal-overlay hidden" id="danger-modal"&gt;
   &lt;div class="modal modal-md modal-danger"&gt;
@@ -368,7 +359,7 @@ function closeModal(id) {
                     <div class="code-example">
                         <div class="code-header">
                             <span>JSX</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>const DangerModal = ({ isOpen, onClose, onConfirm }) => {
   if (!isOpen) return null;
@@ -424,7 +415,7 @@ function closeModal(id) {
                     <div class="code-example">
                         <div class="code-header">
                             <span>HTML + CSS</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>&lt;!-- Small Modal --&gt;
 &lt;div class="modal modal-sm"&gt;...&lt;/div&gt;
@@ -441,7 +432,7 @@ function closeModal(id) {
                     <div class="code-example">
                         <div class="code-header">
                             <span>JSX</span>
-                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            <button class="copy-btn" onclick="copyCode(this)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>
                         </div>
                         <pre><code>&lt;Modal size="sm"&gt;...&lt;/Modal&gt;
 &lt;Modal size="md"&gt;...&lt;/Modal&gt;
@@ -583,22 +574,6 @@ function closeModal(id) {
 
     <script src="navigation.js"></script>
     <script>
-        function switchTab(event, tabId) {
-            const section = event.target.closest('.section');
-            section.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            section.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            event.target.classList.add('active');
-        }
-        
-        function copyCode(btn) {
-            const codeBlock = btn.closest('.code-example').querySelector('code');
-            navigator.clipboard.writeText(codeBlock.textContent).then(() => {
-                btn.textContent = 'Copied!';
-                setTimeout(() => btn.textContent = 'Copy', 2000);
-            });
-        }
-
         function openModal(id) {
             document.getElementById(id).classList.remove('hidden');
             document.body.classList.add('modal-open');

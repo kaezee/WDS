@@ -449,3 +449,34 @@
     initNavigation();
   }
 })();
+
+// ============================================================
+// GLOBAL DOCUMENTATION UTILITIES
+// Shared across all component pages
+// ============================================================
+
+var COPY_SVG  = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+var CHECK_SVG = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+
+window.copyCode = function(btn) {
+  var codeBlock = btn.closest('.code-example').querySelector('code');
+  navigator.clipboard.writeText(codeBlock.textContent).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = CHECK_SVG + ' Copied!';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = COPY_SVG + ' Copy';
+    }, 2000);
+  }).catch(function() {
+    btn.innerHTML = COPY_SVG + ' Copy';
+  });
+};
+
+window.switchTab = function(event, tabId) {
+  var section = event.target.closest('.component-section, .section, section, .tab-group');
+  if (!section) { section = document.body; }
+  section.querySelectorAll('.tab-content').forEach(function(c) { c.classList.remove('active'); });
+  section.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  document.getElementById(tabId).classList.add('active');
+  event.target.classList.add('active');
+};

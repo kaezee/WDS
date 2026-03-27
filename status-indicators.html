@@ -10,58 +10,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Roboto+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Tab Navigation */
-        .tab-nav {
-            display: flex;
-            gap: 0;
-            border-bottom: 2px solid var(--color-pearl-200);
-            margin-bottom: var(--spacing-6);
-        }
-        
-        .tab-btn {
-            padding: var(--spacing-3) var(--spacing-5);
-            background: none;
-            border: none;
-            font-family: var(--font-heading);
-            font-size: var(--font-size-sm);
-            font-weight: var(--font-weight-medium);
-            color: var(--color-pearl-600);
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -2px;
-            transition: all 0.2s;
-        }
-        
-        .tab-btn:hover {
-            color: var(--color-waves-500);
-        }
-        
-        .tab-btn.active {
-            color: var(--color-waves-500);
-            border-bottom-color: var(--color-waves-500);
-        }
-        
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        /* Preview Box */
-        .preview-box {
-            background: white;
-            border: 1px solid var(--color-border-default);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-8);
-            margin-bottom: var(--spacing-6);
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-4);
-            flex-wrap: wrap;
-        }
-        
         /* Product Card Demo */
         .product-card-demo {
             position: relative;
@@ -398,19 +346,6 @@
 
     <script src="navigation.js"></script>
     
-    <script>
-        function switchTab(event, tabId) {
-            const section = event.target.closest('.component-section');
-            const tabButtons = section.querySelectorAll('.tab-btn');
-            const tabContents = section.querySelectorAll('.tab-content');
-            
-            tabButtons.forEach(btn => btn.classList.remove('active'));
-            tabContents.forEach(content => content.classList.remove('active'));
-            
-            event.target.classList.add('active');
-            document.getElementById(tabId).classList.add('active');
-        }
-    </script>
     <script>if(window.lucide) lucide.createIcons();</script>
 </body>
 </html>
