@@ -9,7 +9,7 @@
    =================================== */
 
 .card-product {
-  background: white;
+  background: var(--color-background);
   border: 1px solid var(--color-pearl-200);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -115,7 +115,7 @@
    =================================== */
 
 .card-category {
-  background: white;
+  background: var(--color-background);
   border: 1px solid var(--color-pearl-200);
   border-radius: var(--radius-lg);
   padding: var(--spacing-6);
@@ -186,7 +186,7 @@
    =================================== */
 
 .card-supplier {
-  background: white;
+  background: var(--color-background);
   border: 1px solid var(--color-pearl-200);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -214,7 +214,7 @@
 .card-supplier-logo {
   width: 80px;
   height: 80px;
-  background: white;
+  background: var(--color-background);
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
@@ -290,7 +290,7 @@
    =================================== */
 
 .card-order {
-  background: white;
+  background: var(--color-background);
   border: 1px solid var(--color-pearl-200);
   border-radius: var(--radius-lg);
   padding: var(--spacing-5);
@@ -385,7 +385,7 @@
    =================================== */
 
 .card-blog {
-  background: white;
+  background: var(--color-background);
   border: 1px solid var(--color-pearl-200);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -502,7 +502,7 @@
    =================================== */
 
 .card-info {
-  background: white;
+  background: var(--color-background);
   border: 1px solid var(--color-pearl-200);
   border-radius: var(--radius-lg);
   padding: var(--spacing-5);

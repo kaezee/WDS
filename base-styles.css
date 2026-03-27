@@ -290,7 +290,7 @@ pre code {
    ============================================ */
 
 .site-nav {
-  background-color: #FFFFFF;
+  background-color: var(--color-background);
   border-bottom: 1px solid var(--color-border-default);
   padding: var(--spacing-md) 0;
   position: sticky;
@@ -356,7 +356,7 @@ pre code {
 
 /* Background colors */
 .bg-shore { background-color: var(--color-shore-base); }
-.bg-white { background-color: #FFFFFF; }
+.bg-white { background-color: var(--color-background); }
 .bg-waves { background-color: var(--color-waves-500); }
 .bg-waves-light { background-color: var(--color-waves-50); }
 

@@ -7,23 +7,23 @@
 .cert-badge {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-xs) var(--spacing-md);
   font-family: var(--font-heading);
-  font-size: 12px;
+  font-size: var(--font-size-xs);
   font-weight: var(--font-weight-semibold);
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   white-space: nowrap;
-  line-height: 1.4;
-  transition: all 0.2s ease;
+  line-height: var(--line-height-normal);
+  transition: all var(--transition-base);
 }
 
 /* Icon Placeholder - Rectangle for user to replace with actual icon */
 .cert-badge-icon {
   display: inline-block;
-  width: 16px;
-  height: 16px;
-  border-radius: 2px;
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+  border-radius: var(--radius-sm);
   flex-shrink: 0;
 }
 
@@ -41,32 +41,33 @@
 
 /* GREEN - Sustainable, Organic, Eco-Friendly Certifications */
 .cert-badge-green {
-  background: #D4F4E2; /* Success-100 */
-  color: #2C7048;      /* Success-700 */
+  background: var(--color-success-50);
+  color: var(--color-success-700);
 }
 
 .cert-badge-green .cert-badge-icon {
-  background: rgba(44, 112, 72, 0.1); /* Success-700 at 10% opacity */
+  background: var(--color-success-300);
+  opacity: 0.4;
 }
 
 /* BLUE - MSC, General Quality Certifications */
 .cert-badge-blue {
-  background: #E6F2F8; /* Waves-50 */
-  color: #01385A;      /* Waves-700 */
+  background: var(--color-waves-50);
+  color: var(--color-waves-700);
 }
 
 .cert-badge-blue .cert-badge-icon {
-  background: rgba(1, 56, 90, 0.1); /* Waves-700 at 10% opacity */
+  background: var(--color-waves-100);
 }
 
 /* GRAY - ISO, Standard Compliance, Other Certifications */
 .cert-badge-gray {
-  background: #EDF2F7; /* Pearl-100 */
-  color: #2D3748;      /* Pearl-700 */
+  background: var(--color-pearl-100);
+  color: var(--color-pearl-700);
 }
 
 .cert-badge-gray .cert-badge-icon {
-  background: rgba(45, 55, 72, 0.1); /* Pearl-700 at 10% opacity */
+  background: var(--color-pearl-200);
 }
 
 /* ===========================

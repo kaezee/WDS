@@ -256,6 +256,37 @@
 
 
   /* ============================================
+     ICON SIZES
+     Consistent icon dimensions for Lucide and SVG icons
+     ============================================ */
+
+  --icon-size-xs:  12px;  /* Inline / caption level */
+  --icon-size-sm:  18px;  /* Compact UI — badges, chips */
+  --icon-size-md:  24px;  /* Default — body text, buttons */
+  --icon-size-lg:  30px;  /* Prominent — section headings */
+  --icon-size-xl:  40px;  /* Feature cards, hero areas */
+
+
+  /* ============================================
+     LAYOUT
+     Structural dimensions for the shell
+     ============================================ */
+
+  --nav-height:    64px;
+  --sidenav-width: 260px;
+  --color-background: #FFFFFF;  /* White surfaces — cards, panels, nav */
+
+
+  /* ============================================
+     SEMANTIC SURFACE COLORS (extended)
+     ============================================ */
+
+  --color-success-50: #EAF7F0;  /* Very light success background */
+  --color-error-50:   #FFECEC;  /* Very light error background */
+  --color-warning-50: #FFF4E6;  /* Very light warning background */
+
+
+  /* ============================================
      BREAKPOINTS (Reference Only)
      Use in media queries: @media (min-width: 768px)
      ============================================ */
